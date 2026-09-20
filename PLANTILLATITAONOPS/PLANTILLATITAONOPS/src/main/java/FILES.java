@@ -1,5 +1,6 @@
 
 import interfaz.Control_y_reportes;
+import interfaz.Gestion_de_operadores;
 import interfaz.Rutas;
 
 /*
@@ -38,6 +39,7 @@ public class FILES extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         control_y_reportes = new javax.swing.JMenuItem();
         btn_rutas = new javax.swing.JMenuItem();
+        gestion_operarios = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,6 +57,7 @@ public class FILES extends javax.swing.JFrame {
         jMenu1.setText("File");
 
         jMenuItem1.setText("LOGIN");
+        jMenuItem1.addActionListener(this::jMenuItem1ActionPerformed);
         jMenu1.add(jMenuItem1);
 
         jMenuItem2.setText("GESTIÓN USUARIOS");
@@ -72,6 +75,10 @@ public class FILES extends javax.swing.JFrame {
         btn_rutas.setText("RUTAS");
         btn_rutas.addActionListener(this::btn_rutasActionPerformed);
         jMenu1.add(btn_rutas);
+
+        gestion_operarios.setText("GESTION DE OPERARIOS");
+        gestion_operarios.addActionListener(this::gestion_operariosActionPerformed);
+        jMenu1.add(gestion_operarios);
 
         jMenuBar1.add(jMenu1);
 
@@ -126,6 +133,18 @@ public class FILES extends javax.swing.JFrame {
        panta.setVisible(true);
     }//GEN-LAST:event_btn_rutasActionPerformed
 
+    private void gestion_operariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestion_operariosActionPerformed
+       Gestion_de_operadores panta = new Gestion_de_operadores();
+       jDesktopPane1.add(panta);
+       panta.setVisible(true);
+    }//GEN-LAST:event_gestion_operariosActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        LOGIN panta = new LOGIN();
+       jDesktopPane1.add(panta);
+       panta.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -154,6 +173,7 @@ public class FILES extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem btn_rutas;
     private javax.swing.JMenuItem control_y_reportes;
+    private javax.swing.JMenuItem gestion_operarios;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
