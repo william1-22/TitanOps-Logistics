@@ -1,7 +1,11 @@
+package com.titanops.vista;
 
-import interfaz.Control_y_reportes;
-import interfaz.Gestion_de_operadores;
-import interfaz.Rutas;
+
+import com.titanops.vista.LOGIN;
+import com.titanops.vista.GESTIONUS1;
+import com.titanops.vista.Control_y_reportes;
+import com.titanops.vista.Gestion_de_operadores;
+import com.titanops.vista.Rutas;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
