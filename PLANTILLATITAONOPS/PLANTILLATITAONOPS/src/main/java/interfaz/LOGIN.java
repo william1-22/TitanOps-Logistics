@@ -93,7 +93,6 @@ public class LOGIN extends javax.swing.JInternalFrame {
         jPasswordField1.setBackground(new java.awt.Color(255, 255, 255));
         jPasswordField1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 36)); // NOI18N
         jPasswordField1.setForeground(new java.awt.Color(0, 0, 0));
-        jPasswordField1.setText("jPasswordField1");
         jPasswordField1.setBorder(null);
 
         INICIAR.setBackground(new java.awt.Color(93, 36, 23));
