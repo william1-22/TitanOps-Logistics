@@ -1,51 +1,47 @@
 package com.titanops.modelo;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 
+/** Mapea la tabla public.maquinaria de Supabase. */
 public class Maquinaria {
     private int idMaquinaria;
-    private String codigo;
-    private String nombre;
     private int idCategoria;
-    private String nombreCategoria;
+    private String codigoInventario;
     private String marca;
     private String modelo;
-    private Integer anio;
-    private String numeroSerie;
+    private BigDecimal tonelaje;
+    private BigDecimal horasUso;
     private String estadoOperativo;
-    private BigDecimal costoHora;
+    private Boolean activo;
+    private Timestamp fechaRegistro;
 
     public Maquinaria() {}
 
-    public Maquinaria(int idMaquinaria, String codigo, String nombre, int idCategoria, 
-                      String marca, String modelo, Integer anio, String numeroSerie, 
-                      String estadoOperativo, BigDecimal costoHora) {
+    public Maquinaria(int idMaquinaria, int idCategoria, String codigoInventario,
+                      String marca, String modelo, BigDecimal tonelaje,
+                      BigDecimal horasUso, String estadoOperativo, Boolean activo,
+                      Timestamp fechaRegistro) {
         this.idMaquinaria = idMaquinaria;
-        this.codigo = codigo;
-        this.nombre = nombre;
         this.idCategoria = idCategoria;
+        this.codigoInventario = codigoInventario;
         this.marca = marca;
         this.modelo = modelo;
-        this.anio = anio;
-        this.numeroSerie = numeroSerie;
+        this.tonelaje = tonelaje;
+        this.horasUso = horasUso;
         this.estadoOperativo = estadoOperativo;
-        this.costoHora = costoHora;
+        this.activo = activo;
+        this.fechaRegistro = fechaRegistro;
     }
 
     public int getIdMaquinaria() { return idMaquinaria; }
     public void setIdMaquinaria(int idMaquinaria) { this.idMaquinaria = idMaquinaria; }
 
-    public String getCodigo() { return codigo; }
-    public void setCodigo(String codigo) { this.codigo = codigo; }
-
-    public String getNombre() { return nombre; }
-    public void setNombre(String nombre) { this.nombre = nombre; }
-
     public int getIdCategoria() { return idCategoria; }
     public void setIdCategoria(int idCategoria) { this.idCategoria = idCategoria; }
 
-    public String getNombreCategoria() { return nombreCategoria; }
-    public void setNombreCategoria(String nombreCategoria) { this.nombreCategoria = nombreCategoria; }
+    public String getCodigoInventario() { return codigoInventario; }
+    public void setCodigoInventario(String codigoInventario) { this.codigoInventario = codigoInventario; }
 
     public String getMarca() { return marca; }
     public void setMarca(String marca) { this.marca = marca; }
@@ -53,20 +49,27 @@ public class Maquinaria {
     public String getModelo() { return modelo; }
     public void setModelo(String modelo) { this.modelo = modelo; }
 
-    public Integer getAnio() { return anio; }
-    public void setAnio(Integer anio) { this.anio = anio; }
+    public BigDecimal getTonelaje() { return tonelaje; }
+    public void setTonelaje(BigDecimal tonelaje) { this.tonelaje = tonelaje; }
 
-    public String getNumeroSerie() { return numeroSerie; }
-    public void setNumeroSerie(String numeroSerie) { this.numeroSerie = numeroSerie; }
+    public BigDecimal getHorasUso() { return horasUso; }
+    public void setHorasUso(BigDecimal horasUso) { this.horasUso = horasUso; }
 
     public String getEstadoOperativo() { return estadoOperativo; }
     public void setEstadoOperativo(String estadoOperativo) { this.estadoOperativo = estadoOperativo; }
 
-    public BigDecimal getCostoHora() { return costoHora; }
-    public void setCostoHora(BigDecimal costoHora) { this.costoHora = costoHora; }
+    public Boolean getActivo() { return activo; }
+    public void setActivo(Boolean activo) { this.activo = activo; }
+
+    public Timestamp getFechaRegistro() { return fechaRegistro; }
+    public void setFechaRegistro(Timestamp fechaRegistro) { this.fechaRegistro = fechaRegistro; }
 
     @Override
     public String toString() {
-        return codigo + " - " + nombre;
+        String descripcion = marca == null ? "" : " - " + marca;
+        if (modelo != null && !modelo.isBlank()) {
+            descripcion += " " + modelo;
+        }
+        return codigoInventario + descripcion;
     }
 }

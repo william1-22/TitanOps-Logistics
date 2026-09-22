@@ -4,6 +4,8 @@
 
 package com.mycompany.plantillatitaonops;
 
+import com.titanops.vista.FILES;
+
 /**
  *
  * @author aleyt
@@ -11,6 +13,6 @@ package com.mycompany.plantillatitaonops;
 public class PLANTILLATITAONOPS {
 
     public static void main(String[] args) {
-        System.out.println("gogogo");
+        FILES.main(args);
     }
 }

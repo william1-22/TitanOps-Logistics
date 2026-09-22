@@ -1,5 +1,8 @@
 package com.titanops.vista;
 
+import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
@@ -16,6 +19,9 @@ public class LOGIN extends javax.swing.JInternalFrame {
      */
     public LOGIN() {
         initComponents();
+        getRootPane().setDefaultButton(INICIAR);
+        jTextField1.setToolTipText("Nombre de usuario");
+        jPasswordField1.setToolTipText("Contraseña");
     }
 
     /**
@@ -166,6 +172,45 @@ public class LOGIN extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    public String obtenerUsername() {
+        return jTextField1.getText();
+    }
+
+    public char[] obtenerClave() {
+        return jPasswordField1.getPassword();
+    }
+
+    public void alIniciarSesion(ActionListener listener) {
+        INICIAR.addActionListener(listener);
+        jPasswordField1.addActionListener(listener);
+    }
+
+    public void alCancelar(ActionListener listener) {
+        CANCELAR.addActionListener(listener);
+    }
+
+    public void establecerProcesando(boolean procesando) {
+        jTextField1.setEnabled(!procesando);
+        jPasswordField1.setEnabled(!procesando);
+        INICIAR.setEnabled(!procesando);
+        CANCELAR.setEnabled(!procesando);
+        INICIAR.setText(procesando ? "VALIDANDO..." : "INICIAR");
+    }
+
+    public void limpiarClave() {
+        jPasswordField1.setText("");
+        jPasswordField1.requestFocusInWindow();
+    }
+
+    public void mostrarError(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje, "Inicio de sesión",
+                JOptionPane.ERROR_MESSAGE);
+    }
+
+    public void cerrar() {
+        dispose();
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

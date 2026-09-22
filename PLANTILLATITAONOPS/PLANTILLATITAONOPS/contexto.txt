@@ -1,0 +1,119 @@
+los commits son precisos de de que se implemento, asi que la exportacion del github al contexto que le des a la ia te va a servir bastante
+
+te vas a mover al submai ya esta todo ahi
+
+git checkout submain
+git pull origin submain
+CONTEXTO TÉCNICO Y ARQUITECTURA BASE: PROYECTO TITANOPS-LOGISTICS
+1. Estado Actual del Repositorio y Entorno
+Rama de trabajo unificada: Los cambios de infraestructura, limpieza de vistas, conexión a base de datos y modelos ya fueron integrados en la rama submain mediante Pull Request aprobado.
+
+Comandos iniciales para sincronizar:
+git checkout submain
+git pull origin submain
+
+
+Gestor de dependencias: Maven (pom.xml). Se resolvieron y unificaron las dependencias base:   org.postgresql:postgresql:42.7.3 (Driver JDBC oficial para PostgreSQL).   com.toedter:jcalendar:1.4 (Componentes gráficos de calendario y fechas).   org.netbeans.external:AbsoluteLayout:RELEASE280 (Manejador de diseño absoluto de NetBeans).   Compilación: Verificada en NetBeans con estado limpio BUILD SUCCESS
+
+2. Infraestructura de Base de Datos (Supabase Cloud)
+Motor: PostgreSQL alojado en Supabase (Región AWS US East 1).
+
+Mecanismo de Conexión: Se implementó obligatoriamente el Session Pooler (IPv4). La conexión directa de Supabase requiere IPv6 nativo y falla en redes locales convencionales, por lo que el Session Pooler en el puerto 5432 es el estándar activo.
+
+Clase Singleton: com.titanops.conexion.ConexionBD.
+Para obtener una conexión activa en cualquier DAO o consulta:
+Connection con = ConexionBD.getInstancia().getConexion();
+
+Maneja reconexión automática si el canal se cierra y previene la apertura descontrolada de sockets.
+
+3. Organización Arquitectónica (Patrón MVC + DAO)
+El código fue reestructurado en paquetes profesionales para desacoplar la interfaz gráfica del acceso a datos:
+
+
+
+
+com.titanops
+├── conexion
+│   └── ConexionBD.java       # Singleton JDBC hacia Supabase (Session Pooler)
+├── dao
+│   ├── CrudDAO.java          # Interfaz generica base para todas las entidades
+│   └── (Aqui van los DAOs concretos: UsuarioDAO, OperadorDAO, etc.)
+├── modelo
+│   ├── Rol.java              # POJO tabla roles
+│   ├── Usuario.java          # POJO tabla usuarios
+│   ├── Operador.java         # POJO tabla operadores
+│   └── Maquinaria.java       # POJO tabla maquinaria
+├── controlador
+│   └── (Aqui van los controladores que median entre DAOs y Vistas)
+└── vista
+    ├── Certificaciones.java / .form
+    ├── Control_y_reportes.java / .form
+    ├── Gestion_de_operadores.java / .form
+    ├── GESTIONUS.java / .form
+    ├── LOGIN.java / .form
+    ├── MAQUINARIAGESTION.java / .form
+    ├── Operario.java / .form
+    ├── Rutas.java / .form
+    └── ... (Total de 13 formularios Swing con Matisse .form vinculados)
+
+    4. Contrato Genérico DAO (com.titanops.dao.CrudDAO<T>)
+Todas las operaciones CRUD estándar deben implementar la interfaz genérica CrudDAO<T>:
+
+
+package com.titanops.dao;
+
+import java.util.List;
+
+public interface CrudDAO<T> {
+    boolean insertar(T entidad);
+    boolean actualizar(T entidad);
+    boolean eliminar(int id);
+    T obtenerPorId(int id);
+    List<T> listarTodos();
+}
+
+
+
+
+
+Regla de diseño: Las mutaciones (insertar, actualizar, eliminar) devuelven boolean para reportar de inmediato el éxito/fallo a la interfaz Swing.
+
+
+Consultas especializadas (búsquedas por DUI, login con credenciales, filtrado por estado) se declaran como métodos adicionales en sus respectivos DAOs específicos.
+
+5. Clases Entidad Mapeadas (com.titanops.modelo)
+Las entidades ya cuentan con atributos privados, constructores sobrecargados, encapsulamiento completo (getters/setters) y métodos toString() configurados para su visualización directa en componentes JComboBox:
+
+
+
+
+Clase Modelo,Tabla en Supabase,Llave Primaria,Atributos Clave Mapeados
+Rol.java,roles,idRol (SERIAL),"nombreRol, descripcion"
+Usuario.java,usuarios,idUsuario (SERIAL),"nombreCompleto, dui, correo, username, passwordHash, idRol, nombreRol, estado, fechaCreacion"
+Operador.java,operadores,idOperador (SERIAL),"nombre, apellido, dui, telefono, tipoLicencia, estado"
+Maquinaria.java,maquinaria,idMaquinaria (SERIAL),"codigo, nombre, idCategoria, nombreCategoria, marca, modelo, anio, numeroSerie, estadoOperativo, costoHora"
+
+
+6. Tareas Prioritarias para la Lógica de Negocio (Siguiente Sprint)
+Implementar los DAOs concretos en com.titanops.dao:
+
+UsuarioDAO: Implementar CRUD y agregar método validarLogin(String username, String password).
+
+OperadorDAO: Implementar CRUD y validación por dui.
+
+MaquinariaDAO: Implementar CRUD y métodos de filtrado por estadoOperativo (Disponible, En Mantenimiento, Asignada).
+
+RolDAO: Implementar consulta para alimentar combos de roles.
+
+Implementar Controladores en com.titanops.controlador:
+
+Escuchar eventos de acción (ActionListener, MouseListener) de los botones de las vistas.
+
+Poblar los componentes JTable mediante DefaultTableModel consumiendo los métodos listarTodos() de los DAOs.
+
+Regla crítica de arquitectura: No incrustar código SQL ni llamadas JDBC directas dentro del código generado por NetBeans en com.titanops.vista. La vista solo captura inputs y dispara llamadas hacia el controlador.
+
+Flujo de Autenticación:
+
+Conectar LOGIN.java para validar contra la tabla usuarios y redireccionar a la pantalla principal según el rol asignado (idRol).
+Qué onda Néstor, ya te dejé toda la estructura base montada con la conexión a Supabase funcionando, los formularios organizados en vista, la interfaz genérica CrudDAO y los modelos (Usuario, Operador, Maquinaria, Rol) ya creados, por lo que de tu parte sería arrancar directamente con la lógica del sistema: lo más conveniente es que comiences programando el UsuarioDAO con la validación de credenciales para hacer funcional la pantalla de LOGIN y direccionar según el rol, para luego implementar los demás DAOs concretos (OperadorDAO, MaquinariaDAO, etc.) con sus respectivas operaciones CRUD y construir los controladores en com.titanops.controlador que manejen los eventos de los botones y pueblen las JTable con DefaultTableModel, recordando la regla de no meter sentencias SQL directas dentro de los formularios en vista para mantener intacto el desacoplamiento MVC; cualquier duda que te surja con las consultas o la conexión me avisás y lo coordinamos.

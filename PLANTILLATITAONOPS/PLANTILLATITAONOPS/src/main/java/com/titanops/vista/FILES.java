@@ -1,11 +1,12 @@
 package com.titanops.vista;
 
-
-import com.titanops.vista.LOGIN;
-import com.titanops.vista.GESTIONUS1;
-import com.titanops.vista.Control_y_reportes;
-import com.titanops.vista.Gestion_de_operadores;
-import com.titanops.vista.Rutas;
+import com.titanops.controlador.LoginController;
+import com.titanops.dao.RolDAO;
+import com.titanops.dao.UsuarioDAO;
+import com.titanops.modelo.Rol;
+import com.titanops.modelo.Usuario;
+import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -19,11 +20,17 @@ import com.titanops.vista.Rutas;
 public class FILES extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FILES.class.getName());
+    private Usuario usuarioAutenticado;
+    private LOGIN loginActivo;
+    private LoginController loginController;
 
     public FILES() {
         initComponents();
         setSize(1000, 700);
         setLocationRelativeTo(null);
+        setTitle("TitanOps");
+        configurarAccesos(null);
+        java.awt.EventQueue.invokeLater(this::mostrarLogin);
     }
 
     /**
@@ -105,7 +112,9 @@ public class FILES extends javax.swing.JFrame {
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         System.out.println("1. CLICK");
 
-        GESTIONUS1 panta = new GESTIONUS1(jDesktopPane1);
+        GESTIONUS1 panta = new GESTIONUS1(
+                jDesktopPane1,
+                usuarioAutenticado == null ? null : usuarioAutenticado.getIdUsuario());
 
       
 
@@ -144,10 +153,77 @@ public class FILES extends javax.swing.JFrame {
     }//GEN-LAST:event_gestion_operariosActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        LOGIN panta = new LOGIN();
-       jDesktopPane1.add(panta);
-       panta.setVisible(true);
+        if (usuarioAutenticado == null) {
+            mostrarLogin();
+        } else {
+            cerrarSesion();
+        }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void mostrarLogin() {
+        if (loginActivo != null && !loginActivo.isClosed()) {
+            loginActivo.setVisible(true);
+            loginActivo.toFront();
+            return;
+        }
+
+        loginActivo = new LOGIN();
+        loginController = new LoginController(
+                loginActivo, new UsuarioDAO(), new RolDAO(), this::iniciarSesion);
+        jDesktopPane1.add(loginActivo);
+
+        int x = Math.max(0, (jDesktopPane1.getWidth() - loginActivo.getWidth()) / 2);
+        int y = Math.max(0, (jDesktopPane1.getHeight() - loginActivo.getHeight()) / 2);
+        loginActivo.setLocation(x, y);
+        loginActivo.setVisible(true);
+        loginActivo.toFront();
+    }
+
+    private void iniciarSesion(Usuario usuario, Rol rol) {
+        usuarioAutenticado = usuario;
+        loginActivo = null;
+        configurarAccesos(rol);
+        setTitle("TitanOps - " + usuario.getNombreCompleto() + " - " + rol.getNombreRol());
+        JOptionPane.showMessageDialog(this,
+                "Bienvenido, " + usuario.getNombreCompleto() + ".",
+                "Sesión iniciada", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    private void configurarAccesos(Rol rol) {
+        boolean autenticado = rol != null;
+        boolean administrador = autenticado
+                && "ADMINISTRADOR".equalsIgnoreCase(rol.getNombreRol());
+        boolean operadorDespacho = autenticado
+                && "OPERADOR_DESPACHO".equalsIgnoreCase(rol.getNombreRol());
+        boolean accesoOperativo = administrador || operadorDespacho;
+
+        jMenuItem1.setText(autenticado ? "CERRAR SESIÓN" : "INICIAR SESIÓN");
+        jMenuItem2.setEnabled(administrador);
+        jMenuItem3.setEnabled(accesoOperativo);
+        control_y_reportes.setEnabled(accesoOperativo);
+        btn_rutas.setEnabled(accesoOperativo);
+        gestion_operarios.setEnabled(accesoOperativo);
+    }
+
+    private void cerrarSesion() {
+        int respuesta = JOptionPane.showConfirmDialog(this,
+                "¿Deseas cerrar la sesión actual?", "Cerrar sesión",
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (respuesta != JOptionPane.YES_OPTION) {
+            return;
+        }
+
+        for (JInternalFrame frame : jDesktopPane1.getAllFrames()) {
+            frame.dispose();
+        }
+
+        usuarioAutenticado = null;
+        loginActivo = null;
+        loginController = null;
+        configurarAccesos(null);
+        setTitle("TitanOps");
+        mostrarLogin();
+    }
 
     /**
      * @param args the command line arguments

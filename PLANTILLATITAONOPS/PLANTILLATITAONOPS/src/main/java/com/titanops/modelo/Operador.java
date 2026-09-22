@@ -1,50 +1,69 @@
 package com.titanops.modelo;
 
+import java.sql.Timestamp;
+
+/** Mapea la tabla public.operadores de Supabase. */
 public class Operador {
     private int idOperador;
-    private String nombre;
-    private String apellido;
+    private String nombres;
+    private String apellidos;
     private String dui;
+    private String licenciaTipo;
+    private String turno;
     private String telefono;
-    private String tipoLicencia;
-    private String estado;
+    private String estadoOperativo;
+    private Boolean activo;
+    private Timestamp fechaRegistro;
 
     public Operador() {}
 
-    public Operador(int idOperador, String nombre, String apellido, String dui, 
-                    String telefono, String tipoLicencia, String estado) {
+    public Operador(int idOperador, String nombres, String apellidos, String dui,
+                    String licenciaTipo, String turno, String telefono,
+                    String estadoOperativo, Boolean activo, Timestamp fechaRegistro) {
         this.idOperador = idOperador;
-        this.nombre = nombre;
-        this.apellido = apellido;
+        this.nombres = nombres;
+        this.apellidos = apellidos;
         this.dui = dui;
+        this.licenciaTipo = licenciaTipo;
+        this.turno = turno;
         this.telefono = telefono;
-        this.tipoLicencia = tipoLicencia;
-        this.estado = estado;
+        this.estadoOperativo = estadoOperativo;
+        this.activo = activo;
+        this.fechaRegistro = fechaRegistro;
     }
 
     public int getIdOperador() { return idOperador; }
     public void setIdOperador(int idOperador) { this.idOperador = idOperador; }
 
-    public String getNombre() { return nombre; }
-    public void setNombre(String nombre) { this.nombre = nombre; }
+    public String getNombres() { return nombres; }
+    public void setNombres(String nombres) { this.nombres = nombres; }
 
-    public String getApellido() { return apellido; }
-    public void setApellido(String apellido) { this.apellido = apellido; }
+    public String getApellidos() { return apellidos; }
+    public void setApellidos(String apellidos) { this.apellidos = apellidos; }
 
     public String getDui() { return dui; }
     public void setDui(String dui) { this.dui = dui; }
 
+    public String getLicenciaTipo() { return licenciaTipo; }
+    public void setLicenciaTipo(String licenciaTipo) { this.licenciaTipo = licenciaTipo; }
+
+    public String getTurno() { return turno; }
+    public void setTurno(String turno) { this.turno = turno; }
+
     public String getTelefono() { return telefono; }
     public void setTelefono(String telefono) { this.telefono = telefono; }
 
-    public String getTipoLicencia() { return tipoLicencia; }
-    public void setTipoLicencia(String tipoLicencia) { this.tipoLicencia = tipoLicencia; }
+    public String getEstadoOperativo() { return estadoOperativo; }
+    public void setEstadoOperativo(String estadoOperativo) { this.estadoOperativo = estadoOperativo; }
 
-    public String getEstado() { return estado; }
-    public void setEstado(String estado) { this.estado = estado; }
+    public Boolean getActivo() { return activo; }
+    public void setActivo(Boolean activo) { this.activo = activo; }
+
+    public Timestamp getFechaRegistro() { return fechaRegistro; }
+    public void setFechaRegistro(Timestamp fechaRegistro) { this.fechaRegistro = fechaRegistro; }
 
     @Override
     public String toString() {
-        return nombre + " " + apellido;
+        return nombres + " " + apellidos;
     }
 }

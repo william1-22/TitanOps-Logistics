@@ -1,5 +1,19 @@
 package com.titanops.vista;
 
+import com.titanops.controlador.GestionUsuariosController;
+import com.titanops.controlador.GestionUsuariosController.ResultadoOperacion;
+import com.titanops.controlador.GestionUsuariosController.UsuarioFila;
+import com.titanops.dao.RolDAO;
+import com.titanops.dao.UsuarioDAO;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.SwingWorker;
+import javax.swing.table.DefaultTableModel;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
@@ -11,11 +25,30 @@ package com.titanops.vista;
  */
 public class GESTIONUS extends javax.swing.JInternalFrame {
 
+    private static final DateTimeFormatter FORMATO_FECHA =
+            DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+    private final GestionUsuariosController controller;
+    private final Integer idUsuarioSesion;
+    private boolean cargando;
+    private boolean recargaPendiente;
+
     /**
      * Creates new form PLANTILLA4
      */
     public GESTIONUS() {
+        this((Integer) null);
+    }
+
+    public GESTIONUS(Integer idUsuarioSesion) {
+        this(idUsuarioSesion, new GestionUsuariosController(new UsuarioDAO(), new RolDAO()));
+    }
+
+    GESTIONUS(Integer idUsuarioSesion, GestionUsuariosController controller) {
         initComponents();
+        this.idUsuarioSesion = idUsuarioSesion;
+        this.controller = controller;
+        configurarVista();
+        recargarUsuarios();
     }
 
     /**
@@ -67,14 +100,9 @@ public class GESTIONUS extends javax.swing.JInternalFrame {
         jTable1.setBackground(new java.awt.Color(168, 171, 143));
         jTable1.setForeground(new java.awt.Color(0, 0, 0));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
+            new Object [][] {},
             new String [] {
-                "Usuario", "Correo", "Contraseña", "Rol"
+                "ID", "Nombre completo", "Usuario", "Rol", "Estado", "Fecha de creación"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -83,7 +111,7 @@ public class GESTIONUS extends javax.swing.JInternalFrame {
         GUARDARUS.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
         GUARDARUS.setForeground(new java.awt.Color(255, 255, 255));
         GUARDARUS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/multimedia/ELIMINARPEQUEÑO.png"))); // NOI18N
-        GUARDARUS.setText("ELIMINAR");
+        GUARDARUS.setText("DESACTIVAR");
         GUARDARUS.setBorder(null);
 
         GUARDARUS1.setBackground(new java.awt.Color(93, 36, 23));
@@ -147,6 +175,214 @@ public class GESTIONUS extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void configurarVista() {
+        DefaultTableModel modelo = new DefaultTableModel(
+                new Object[]{"ID", "Nombre completo", "Usuario", "Rol", "Estado",
+                    "Fecha de creación"}, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        jTable1.setModel(modelo);
+        jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        jTable1.setAutoCreateRowSorter(true);
+        jTable1.getTableHeader().setReorderingAllowed(false);
+
+        GUARDARUS1.addActionListener(event -> abrirCrearUsuario());
+        GUARDARUS2.addActionListener(event -> abrirEditarUsuario());
+        GUARDARUS.addActionListener(event -> cambiarEstadoSeleccionado());
+        jTable1.getSelectionModel().addListSelectionListener(
+                event -> actualizarBotonesSeleccion());
+        GUARDARUS2.setEnabled(false);
+        GUARDARUS.setEnabled(false);
+    }
+
+    public final void recargarUsuarios() {
+        if (cargando) {
+            recargaPendiente = true;
+            return;
+        }
+        cargando = true;
+        GUARDARUS1.setEnabled(false);
+
+        new SwingWorker<List<UsuarioFila>, Void>() {
+            @Override
+            protected List<UsuarioFila> doInBackground() {
+                return controller.listarUsuarios();
+            }
+
+            @Override
+            protected void done() {
+                cargando = false;
+                GUARDARUS1.setEnabled(true);
+                try {
+                    llenarTabla(get());
+                } catch (InterruptedException exception) {
+                    Thread.currentThread().interrupt();
+                    mostrarError("Se interrumpió la carga de usuarios.");
+                } catch (ExecutionException exception) {
+                    mostrarError("No fue posible cargar los usuarios.");
+                } finally {
+                    if (recargaPendiente) {
+                        recargaPendiente = false;
+                        recargarUsuarios();
+                    }
+                }
+            }
+        }.execute();
+    }
+
+    private void llenarTabla(List<UsuarioFila> usuarios) {
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        jTable1.clearSelection();
+        modelo.setRowCount(0);
+        for (UsuarioFila usuario : usuarios) {
+            String fecha = usuario.fechaCreacion() == null
+                    ? "" : usuario.fechaCreacion().toLocalDateTime().format(FORMATO_FECHA);
+            modelo.addRow(new Object[]{
+                usuario.idUsuario(),
+                usuario.nombreCompleto(),
+                usuario.username(),
+                usuario.rol(),
+                usuario.activo() ? "ACTIVO" : "INACTIVO",
+                fecha
+            });
+        }
+        actualizarBotonesSeleccion();
+    }
+
+    private void actualizarBotonesSeleccion() {
+        int fila = jTable1.getSelectedRow();
+        boolean seleccionValida = fila >= 0 && !cargando;
+        GUARDARUS2.setEnabled(seleccionValida);
+        GUARDARUS.setEnabled(seleccionValida);
+        if (!seleccionValida) {
+            GUARDARUS.setText("DESACTIVAR");
+            return;
+        }
+        int filaModelo = jTable1.convertRowIndexToModel(fila);
+        boolean activo = "ACTIVO".equals(jTable1.getModel().getValueAt(filaModelo, 4));
+        GUARDARUS.setText(activo ? "DESACTIVAR" : "REACTIVAR");
+    }
+
+    private Integer idUsuarioSeleccionado() {
+        int fila = jTable1.getSelectedRow();
+        if (fila < 0) {
+            return null;
+        }
+        int filaModelo = jTable1.convertRowIndexToModel(fila);
+        return (Integer) jTable1.getModel().getValueAt(filaModelo, 0);
+    }
+
+    private boolean usuarioSeleccionadoActivo() {
+        int filaModelo = jTable1.convertRowIndexToModel(jTable1.getSelectedRow());
+        return "ACTIVO".equals(jTable1.getModel().getValueAt(filaModelo, 4));
+    }
+
+    private void abrirCrearUsuario() {
+        javax.swing.JDesktopPane desktop = getDesktopPane();
+        if (desktop == null) {
+            mostrarError("No se encontró el escritorio principal.");
+            return;
+        }
+
+        for (JInternalFrame frame : desktop.getAllFrames()) {
+            if (frame instanceof GESTIONUS1 formulario) {
+                formulario.dispose();
+            }
+        }
+
+        GESTIONUS1 crearUsuario = new GESTIONUS1(desktop, idUsuarioSesion);
+        desktop.add(crearUsuario);
+        crearUsuario.setLocation(20, 20);
+        crearUsuario.setVisible(true);
+        crearUsuario.toFront();
+    }
+
+    private void abrirEditarUsuario() {
+        Integer idUsuario = idUsuarioSeleccionado();
+        if (idUsuario == null) {
+            return;
+        }
+        javax.swing.JDesktopPane desktop = getDesktopPane();
+        if (desktop == null) {
+            mostrarError("No se encontró el escritorio principal.");
+            return;
+        }
+
+        for (JInternalFrame frame : desktop.getAllFrames()) {
+            if (frame instanceof GESTIONUS1 formulario) {
+                formulario.dispose();
+            }
+        }
+
+        GESTIONUS1 editarUsuario =
+                new GESTIONUS1(desktop, idUsuarioSesion, idUsuario);
+        desktop.add(editarUsuario);
+        editarUsuario.setLocation(20, 20);
+        editarUsuario.setVisible(true);
+        editarUsuario.toFront();
+    }
+
+    private void cambiarEstadoSeleccionado() {
+        Integer idUsuario = idUsuarioSeleccionado();
+        if (idUsuario == null) {
+            return;
+        }
+        boolean activar = !usuarioSeleccionadoActivo();
+        String accion = activar ? "reactivar" : "desactivar";
+        int respuesta = JOptionPane.showConfirmDialog(this,
+                "¿Deseas " + accion + " el usuario seleccionado?",
+                activar ? "Reactivar usuario" : "Desactivar usuario",
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (respuesta != JOptionPane.YES_OPTION) {
+            return;
+        }
+
+        cargando = true;
+        GUARDARUS.setEnabled(false);
+        GUARDARUS1.setEnabled(false);
+        GUARDARUS2.setEnabled(false);
+        new SwingWorker<ResultadoOperacion, Void>() {
+            @Override
+            protected ResultadoOperacion doInBackground() {
+                return controller.cambiarEstadoUsuario(
+                        idUsuario, activar, idUsuarioSesion);
+            }
+
+            @Override
+            protected void done() {
+                cargando = false;
+                GUARDARUS1.setEnabled(true);
+                try {
+                    ResultadoOperacion resultado = get();
+                    if (!resultado.exitoso()) {
+                        JOptionPane.showMessageDialog(GESTIONUS.this, resultado.mensaje(),
+                                "Validación", JOptionPane.WARNING_MESSAGE);
+                        actualizarBotonesSeleccion();
+                        return;
+                    }
+                    JOptionPane.showMessageDialog(GESTIONUS.this, resultado.mensaje(),
+                            "Gestión de usuarios", JOptionPane.INFORMATION_MESSAGE);
+                    recargarUsuarios();
+                } catch (InterruptedException exception) {
+                    Thread.currentThread().interrupt();
+                    mostrarError("Se interrumpió la actualización del usuario.");
+                    actualizarBotonesSeleccion();
+                } catch (ExecutionException exception) {
+                    mostrarError("No fue posible actualizar el estado del usuario.");
+                    actualizarBotonesSeleccion();
+                }
+            }
+        }.execute();
+    }
+
+    private void mostrarError(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje, "Gestión de usuarios",
+                JOptionPane.ERROR_MESSAGE);
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -1,5 +1,24 @@
 package com.titanops.vista;
 
+import com.titanops.controlador.GestionUsuariosController;
+import com.titanops.controlador.GestionUsuariosController.ResultadoCreacion;
+import com.titanops.controlador.GestionUsuariosController.ResultadoOperacion;
+import com.titanops.controlador.GestionUsuariosController.UsuarioEdicion;
+import com.titanops.dao.RolDAO;
+import com.titanops.dao.UsuarioDAO;
+import com.titanops.modelo.Rol;
+import java.awt.Color;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+import java.util.concurrent.ExecutionException;
+import javax.swing.BorderFactory;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
+import javax.swing.SwingWorker;
+import javax.swing.border.TitledBorder;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
@@ -12,14 +31,39 @@ package com.titanops.vista;
 public class GESTIONUS1 extends javax.swing.JInternalFrame {
 
     private javax.swing.JDesktopPane desktop;
+    private final GestionUsuariosController controller;
+    private final Integer idUsuarioSesion;
+    private final Integer idUsuarioEdicion;
+    private boolean operacionEnCurso;
 
     public GESTIONUS1(javax.swing.JDesktopPane desktop) {
+        this(desktop, null);
+    }
+
+    public GESTIONUS1(javax.swing.JDesktopPane desktop, Integer idUsuarioSesion) {
+        this(desktop, idUsuarioSesion, null,
+                new GestionUsuariosController(new UsuarioDAO(), new RolDAO()));
+    }
+
+    public GESTIONUS1(javax.swing.JDesktopPane desktop, Integer idUsuarioSesion,
+                      int idUsuarioEdicion) {
+        this(desktop, idUsuarioSesion, idUsuarioEdicion,
+                new GestionUsuariosController(new UsuarioDAO(), new RolDAO()));
+    }
+
+    GESTIONUS1(javax.swing.JDesktopPane desktop, Integer idUsuarioSesion,
+               Integer idUsuarioEdicion, GestionUsuariosController controller) {
         initComponents();
         this.desktop = desktop;
+        this.idUsuarioSesion = idUsuarioSesion;
+        this.idUsuarioEdicion = idUsuarioEdicion;
+        this.controller = controller;
+        configurarFormulario();
+        cargarRoles();
     }
 
     public GESTIONUS1() {
-        initComponents();
+        this((javax.swing.JDesktopPane) null, null);
     }
 
     /**
@@ -36,7 +80,7 @@ public class GESTIONUS1 extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel00 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JPasswordField();
         jTextField2 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
@@ -103,7 +147,7 @@ public class GESTIONUS1 extends javax.swing.JInternalFrame {
         jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
         jComboBox1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 36)); // NOI18N
         jComboBox1.setForeground(new java.awt.Color(0, 0, 0));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ADMINISTRADOR", "GESTOR" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {}));
         jComboBox1.setBorder(null);
 
         GUARDARUS.setBackground(new java.awt.Color(93, 36, 23));
@@ -217,8 +261,200 @@ public class GESTIONUS1 extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void configurarFormulario() {
+        boolean editando = idUsuarioEdicion != null;
+        jLabel1.setText(editando ? "EDITAR USUARIO" : "CREAR USUARIO");
+        GUARDARUS.setText(editando ? "ACTUALIZAR" : "GUARDAR");
+        aplicarTitulo(jTextField2, "Usuario");
+        aplicarTitulo(jTextField3, "Nombre completo");
+        aplicarTitulo(jTextField1,
+                editando ? "Nueva contraseña (opcional)" : "Contraseña");
+        aplicarTitulo(jComboBox1, "Rol");
+
+        jTextField2.setToolTipText("Nombre de usuario para iniciar sesión");
+        jTextField3.setToolTipText("Nombre completo de la persona");
+        jTextField1.setToolTipText(editando
+                ? "Déjala vacía para conservar la contraseña actual"
+                : "Mínimo 8 caracteres");
+        GUARDARUS.setToolTipText(editando ? "Actualizar usuario" : "Crear usuario");
+        GUARDARUS.addActionListener(event -> guardarUsuario());
+        GUARDARUS1.addActionListener(event -> dispose());
+        getRootPane().setDefaultButton(GUARDARUS);
+    }
+
+    private void aplicarTitulo(javax.swing.JComponent componente, String titulo) {
+        TitledBorder borde = BorderFactory.createTitledBorder(
+                BorderFactory.createLineBorder(new Color(84, 88, 47)), titulo);
+        borde.setTitleColor(Color.DARK_GRAY);
+        componente.setBorder(borde);
+    }
+
+    private void cargarRoles() {
+        cambiarEstadoFormulario(true);
+        new SwingWorker<List<Rol>, Void>() {
+            @Override
+            protected List<Rol> doInBackground() {
+                return controller.listarRoles();
+            }
+
+            @Override
+            protected void done() {
+                try {
+                    DefaultComboBoxModel<String> modelo = new DefaultComboBoxModel<>();
+                    for (Rol rol : get()) {
+                        modelo.addElement(rol.getNombreRol());
+                    }
+                    jComboBox1.setModel(modelo);
+                    cambiarEstadoFormulario(false);
+                    GUARDARUS.setEnabled(modelo.getSize() > 0);
+                    if (modelo.getSize() == 0) {
+                        mostrarError("No se encontraron roles disponibles.");
+                    } else if (idUsuarioEdicion != null) {
+                        cargarUsuarioEdicion();
+                    }
+                } catch (InterruptedException exception) {
+                    Thread.currentThread().interrupt();
+                    cambiarEstadoFormulario(false);
+                    GUARDARUS.setEnabled(false);
+                    mostrarError("Se interrumpió la carga de roles.");
+                } catch (ExecutionException exception) {
+                    cambiarEstadoFormulario(false);
+                    GUARDARUS.setEnabled(false);
+                    mostrarError("No fue posible cargar los roles.");
+                }
+            }
+        }.execute();
+    }
+
+    private void cargarUsuarioEdicion() {
+        cambiarEstadoFormulario(true);
+        new SwingWorker<Optional<UsuarioEdicion>, Void>() {
+            @Override
+            protected Optional<UsuarioEdicion> doInBackground() {
+                return controller.obtenerUsuarioEdicion(idUsuarioEdicion);
+            }
+
+            @Override
+            protected void done() {
+                cambiarEstadoFormulario(false);
+                try {
+                    Optional<UsuarioEdicion> usuario = get();
+                    if (usuario.isEmpty()) {
+                        mostrarError("El usuario seleccionado ya no está disponible.");
+                        dispose();
+                        return;
+                    }
+                    jTextField3.setText(usuario.get().nombreCompleto());
+                    jTextField2.setText(usuario.get().username());
+                    jTextField1.setText("");
+                    jComboBox1.setSelectedItem(usuario.get().rol());
+                } catch (InterruptedException exception) {
+                    Thread.currentThread().interrupt();
+                    mostrarError("Se interrumpió la carga del usuario.");
+                } catch (ExecutionException exception) {
+                    mostrarError("No fue posible cargar el usuario.");
+                }
+            }
+        }.execute();
+    }
+
+    private void guardarUsuario() {
+        if (operacionEnCurso) {
+            return;
+        }
+
+        String nombreCompleto = jTextField3.getText();
+        String username = jTextField2.getText();
+        String nombreRol = (String) jComboBox1.getSelectedItem();
+        char[] clave = jTextField1.getPassword();
+        cambiarEstadoFormulario(true);
+
+        new SwingWorker<ResultadoOperacion, Void>() {
+            @Override
+            protected ResultadoOperacion doInBackground() {
+                try {
+                    if (idUsuarioEdicion != null) {
+                        return controller.actualizarUsuario(
+                                idUsuarioEdicion, nombreCompleto, username, clave,
+                                nombreRol, idUsuarioSesion);
+                    }
+                    ResultadoCreacion resultado = controller.crearUsuario(
+                            nombreCompleto, username, clave, nombreRol);
+                    return new ResultadoOperacion(resultado.exitoso(), resultado.mensaje());
+                } finally {
+                    Arrays.fill(clave, '\0');
+                }
+            }
+
+            @Override
+            protected void done() {
+                cambiarEstadoFormulario(false);
+                try {
+                    ResultadoOperacion resultado = get();
+                    if (!resultado.exitoso()) {
+                        JOptionPane.showMessageDialog(GESTIONUS1.this, resultado.mensaje(),
+                                "Validación", JOptionPane.WARNING_MESSAGE);
+                        return;
+                    }
+
+                    if (idUsuarioEdicion == null) {
+                        limpiarFormulario();
+                    } else {
+                        jTextField1.setText("");
+                    }
+                    refrescarListadosAbiertos();
+                    JOptionPane.showMessageDialog(GESTIONUS1.this, resultado.mensaje(),
+                            idUsuarioEdicion == null ? "Usuario creado" : "Usuario actualizado",
+                            JOptionPane.INFORMATION_MESSAGE);
+                } catch (InterruptedException exception) {
+                    Thread.currentThread().interrupt();
+                    mostrarError("Se interrumpió la creación del usuario.");
+                } catch (ExecutionException exception) {
+                    mostrarError("Ocurrió un error al crear el usuario.");
+                }
+            }
+        }.execute();
+    }
+
+    private void cambiarEstadoFormulario(boolean ocupado) {
+        operacionEnCurso = ocupado;
+        jTextField1.setEnabled(!ocupado);
+        jTextField2.setEnabled(!ocupado);
+        jTextField3.setEnabled(!ocupado);
+        jComboBox1.setEnabled(!ocupado);
+        GUARDARUS.setEnabled(!ocupado);
+    }
+
+    private void limpiarFormulario() {
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
+        jTextField2.requestFocusInWindow();
+    }
+
+    private void refrescarListadosAbiertos() {
+        javax.swing.JDesktopPane panel = obtenerDesktop();
+        if (panel == null) {
+            return;
+        }
+        for (JInternalFrame frame : panel.getAllFrames()) {
+            if (frame instanceof GESTIONUS gestionUsuarios) {
+                gestionUsuarios.recargarUsuarios();
+            }
+        }
+    }
+
+    private javax.swing.JDesktopPane obtenerDesktop() {
+        return desktop != null ? desktop : getDesktopPane();
+    }
+
+    private void mostrarError(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje, "Gestión de usuarios",
+                JOptionPane.ERROR_MESSAGE);
+    }
+
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
+        guardarUsuario();
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
@@ -230,16 +466,26 @@ public class GESTIONUS1 extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void GUARDARUS2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GUARDARUS2ActionPerformed
-        GESTIONUS panta = new GESTIONUS();
+        javax.swing.JDesktopPane panel = obtenerDesktop();
+        if (panel == null) {
+            mostrarError("No se encontró el escritorio principal.");
+            return;
+        }
 
-        desktop.add(panta);
+        for (JInternalFrame frame : panel.getAllFrames()) {
+            if (frame instanceof GESTIONUS gestionUsuarios) {
+                gestionUsuarios.recargarUsuarios();
+                gestionUsuarios.setVisible(true);
+                gestionUsuarios.toFront();
+                return;
+            }
+        }
 
+        GESTIONUS panta = new GESTIONUS(idUsuarioSesion);
+        panel.add(panta);
         panta.setSize(900, 550);
-
         panta.setLocation(20, 20);
-
         panta.setVisible(true);
-
         panta.toFront();
     }//GEN-LAST:event_GUARDARUS2ActionPerformed
 
@@ -256,7 +502,7 @@ public class GESTIONUS1 extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPasswordField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables

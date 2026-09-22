@@ -1,5 +1,6 @@
 package com.titanops.modelo;
 
+/** Mapea la tabla public.roles de Supabase. */
 public class Rol {
     private int idRol;
     private String nombreRol;

@@ -1,0 +1,387 @@
+CONTEXTO ORGANIZADO DEL PROYECTO TITANOPS-LOGISTICS
+Actualizado: 2026-09-21
+
+======================================================================
+1. OBJETIVO DE ESTE DOCUMENTO
+======================================================================
+
+Este archivo resume el estado comprobado del proyecto, las decisiones de
+arquitectura, las restricciones y el orden recomendado de implementación.
+
+Fuentes utilizadas:
+- Código de la rama remota origin/submain.
+- Historial de Git.
+- Archivo contexto.txt original.
+
+No se incluyen direcciones privadas, usuarios, contraseñas ni otros secretos.
+
+======================================================================
+2. ESTADO ACTUAL VERIFICADO
+======================================================================
+
+Rama local actual: nestor
+Base técnica aplicada: origin/submain
+Commit base: 63d5048 - Merge pull request #1 from william1-22/feature/william-db
+
+La rama local nestor fue creada desde el mismo commit que origin/submain. El
+código de 63d5048 es la base de trabajo y los cambios de mapeo continúan sobre
+esta rama.
+
+Comandos equivalentes para repetir esta sincronización destructiva:
+
+    git fetch origin submain
+    git switch submain
+    git reset --hard origin/submain
+
+ADVERTENCIA: reset --hard descarta los cambios versionados de la rama local.
+Antes de usarlo debe comprobarse el estado con:
+
+    git status
+
+Estado de compilación en este equipo:
+- El pom.xml solicita Java 25.
+- Debian conserva el runtime OpenJDK 25 instalado por el sistema.
+- Homebrew proporciona OpenJDK/Javac 27 y Maven 3.9.16 para desarrollo.
+- Homebrew no ofrece OpenJDK 26 en Linux; su fórmula estable es OpenJDK 27.
+- El comando mvn test finalizó con BUILD SUCCESS usando Java 27 y release 25.
+- Existen 10 pruebas unitarias: 3 para BCrypt y 7 para gestión de usuarios.
+- El repositorio todavía no incluye Maven Wrapper (mvnw).
+
+======================================================================
+3. TECNOLOGÍAS Y DEPENDENCIAS
+======================================================================
+
+- Lenguaje: Java.
+- Interfaz: Java Swing con formularios Matisse de NetBeans.
+- Construcción: Maven mediante pom.xml.
+- Base de datos: PostgreSQL alojado en Supabase.
+- Acceso a datos: JDBC.
+- Patrón previsto: MVC + DAO.
+
+Dependencias declaradas:
+- org.postgresql:postgresql:42.7.3
+- com.toedter:jcalendar:1.4
+- org.netbeans.external:AbsoluteLayout:RELEASE280
+- org.mindrot:jbcrypt:0.4
+- org.junit.jupiter:junit-jupiter:5.14.2 (pruebas)
+
+======================================================================
+4. CONEXIÓN A LA BASE DE DATOS
+======================================================================
+
+Clase existente:
+    com.titanops.conexion.ConexionBD
+
+La clase implementa un Singleton y permite obtener una conexión mediante:
+
+    Connection con = ConexionBD.getInstancia().getConexion();
+
+Comportamiento observado:
+- Utiliza el Session Pooler de Supabase por el puerto 5432.
+- Está configurada para una región AWS US East 1.
+- Abre la conexión al crear el Singleton.
+- Intenta reconectarse si la conexión es nula o está cerrada.
+- Incluye un método para cerrar la conexión y un main de prueba manual.
+
+DECISIÓN VIGENTE DEL PROYECTO:
+ConexionBD.java debe conservarse tal como está. El trabajo actual no incluye
+cambiar su configuración ni su mecanismo de conexión.
+
+======================================================================
+5. ARQUITECTURA PRESENTE
+======================================================================
+
+src/main/java
+├── com/mycompany/plantillatitaonops
+│   └── PLANTILLATITAONOPS.java        Punto de entrada heredado
+└── com/titanops
+    ├── conexion
+    │   └── ConexionBD.java            Singleton JDBC
+    ├── controlador
+    │   ├── LoginController.java       Coordina vista y autenticación
+    │   └── GestionUsuariosController.java
+    │                                  Valida creación y prepara listados
+    ├── dao
+    │   ├── CrudDAO.java               Contrato CRUD genérico
+    │   ├── RolDAO.java                CRUD y búsqueda de roles
+    │   └── UsuarioDAO.java            CRUD, login y activación
+    ├── modelo
+    │   ├── Rol.java
+    │   ├── Usuario.java
+    │   ├── CategoriaMaquinaria.java
+    │   ├── Maquinaria.java
+    │   ├── Operador.java
+    │   ├── OperadorCertificacion.java
+    │   ├── RutaDestino.java
+    │   ├── Asignacion.java
+    │   └── Mantenimiento.java
+    ├── seguridad
+    │   └── PasswordHasher.java        Generación y validación BCrypt
+    └── vista
+        └── 14 clases Java con sus 14 formularios .form
+
+Todavía no existen:
+- Controladores para operadores, maquinaria y los módulos restantes.
+- DAOs concretos para operadores, maquinaria y los módulos restantes.
+- Pruebas automatizadas para controladores y otros DAO.
+
+El esquema real verificado y su correspondencia con Java están documentados en
+SUPABASE_ESQUEMA.md.
+
+Vistas verificadas:
+- Certifiaciones
+- Control_y_reportes
+- FILES
+- GESTIONUS
+- GESTIONUS1
+- Gestion_de_operadores
+- LOGIN
+- MAQUINARIAGESTION
+- Operario
+- Rutas
+- panelAsignar
+- panelCrear
+- panelEditar
+- tipo_exportar
+
+Nota: nombres como "Certifiaciones", "FILES", "GESTIONUS1" y la combinación
+de mayúsculas/minúsculas deben revisarse más adelante, pero no deben renombrarse
+sin comprobar primero las referencias creadas por NetBeans.
+
+======================================================================
+6. CONTRATO DAO OBLIGATORIO
+======================================================================
+
+Los DAOs concretos deben implementar CrudDAO<T>:
+
+    boolean insertar(T entidad);
+    boolean actualizar(T entidad);
+    boolean eliminar(int id);
+    T obtenerPorId(int id);
+    List<T> listarTodos();
+
+Las consultas especializadas se agregan únicamente al DAO correspondiente:
+- UsuarioDAO: implementado con CRUD, autenticación BCrypt, búsqueda por
+  username, desactivación lógica, reactivación y cambio de clave.
+- RolDAO: implementado con CRUD y búsqueda por nombre.
+- OperadorDAO: búsqueda y validación por DUI.
+- MaquinariaDAO: filtros por estado operativo.
+
+Las mutaciones devuelven boolean para que el controlador pueda informar el
+resultado a la interfaz.
+
+======================================================================
+7. MODELOS DISPONIBLES
+======================================================================
+
+Rol / tabla roles
+- Llave: idRol.
+- Datos: nombreRol y descripcion.
+
+Usuario / tabla usuarios
+- Llave: idUsuario.
+- Datos: idRol, nombreCompleto, username, claveHash, activo y fechaCreacion.
+- La tabla no tiene DUI ni correo.
+
+CategoriaMaquinaria / tabla categorias_maquinaria
+- Llave: idCategoria.
+- Datos: nombreCategoria, descripcion y activo.
+
+Operador / tabla operadores
+- Llave: idOperador.
+- Datos: nombres, apellidos, dui, licenciaTipo, turno, telefono,
+  estadoOperativo, activo y fechaRegistro.
+
+Maquinaria / tabla maquinaria
+- Llave: idMaquinaria.
+- Datos: idCategoria, codigoInventario, marca, modelo, tonelaje, horasUso,
+  estadoOperativo, activo y fechaRegistro.
+
+OperadorCertificacion / tabla operadores_certificaciones
+- Llave: idCertificacion.
+- Datos: idOperador, idCategoria, numeroAcreditacion, fechaExpedicion y
+  fechaVencimiento.
+
+RutaDestino / tabla rutas_destinos
+- Llave: idRuta.
+- Datos: nombreProyecto, puntoOrigen, puntoDestino, distanciaKm y estado.
+
+Asignacion / tabla asignaciones
+- Llave: idAsignacion.
+- Relaciona maquinaria, operador, ruta y usuario registrador.
+- Incluye fechas, estadoAsignacion y observaciones.
+
+Mantenimiento / tabla mantenimientos
+- Llave: idMantenimiento.
+- Relaciona maquinaria y usuario registrador.
+- Incluye tipo, fechas, diagnostico, costo, estado y taller responsable.
+
+Los nueve modelos reflejan las columnas verificadas del esquema public.
+
+======================================================================
+8. REGLAS DE ARQUITECTURA
+======================================================================
+
+1. Las vistas no deben contener SQL ni abrir conexiones JDBC.
+2. Los DAO son los únicos responsables de ejecutar SQL y mapear ResultSet.
+3. Los controladores coordinan vistas, validaciones y DAO.
+4. Los modelos representan los datos; no deben conocer componentes Swing.
+5. Las JTable se llenan desde el controlador con DefaultTableModel y datos
+   obtenidos mediante listarTodos() u otra consulta del DAO.
+6. Los eventos ActionListener y MouseListener deben delegar la lógica al
+   controlador y no convertirse en lógica de negocio dentro del .form.
+7. Todas las consultas deben usar PreparedStatement; nunca concatenar entradas
+   del usuario dentro del SQL.
+8. Las contraseñas deben comprobarse con un hash seguro. No se almacenan ni se
+   comparan como texto plano.
+9. No registrar credenciales, contraseñas ni cadenas de conexión completas.
+
+======================================================================
+9. INFORMACIÓN QUE FALTA CONFIRMAR
+======================================================================
+
+El esquema, sus tipos, restricciones y estados ya fueron verificados. BCrypt es
+el formato establecido para claveHash. El primer administrador ya fue creado,
+está activo y su inicio de sesión fue validado. Los permisos iniciales son:
+- ADMINISTRADOR: acceso a todos los módulos.
+- OPERADOR_DESPACHO: acceso operativo sin gestión de usuarios.
+
+Falta confirmar:
+- Validaciones de formato requeridas para DUI y teléfono.
+- Pantalla principal correcta después del login.
+
+Política confirmada para usuarios:
+- No se eliminan físicamente; se desactivan y pueden reactivarse.
+- Un administrador no puede desactivar su propia sesión.
+- El sistema siempre debe conservar al menos un administrador activo.
+
+No se debe inventar esta información en el código. La base de datos o su script
+de creación debe ser la fuente de verdad.
+
+======================================================================
+10. PLAN DE TRABAJO RECOMENDADO
+======================================================================
+
+FASE 0 - Línea base y mapeo
+1. Trabajar en la rama nestor.
+2. Conservar ConexionBD.java sin cambios.
+3. Mantener documentado el esquema verificado de Supabase.
+4. Mantener los nueve modelos alineados con sus tablas.
+5. Agregar Maven Wrapper para que el proyecto no dependa de una instalación
+   global de Maven.
+6. Mantener mvn test como validación mínima; actualmente produce BUILD SUCCESS.
+
+Criterio de cierre:
+- El proyecto compila desde una terminal limpia.
+- Las nueve tablas y sus relaciones están documentadas y mapeadas.
+
+FASE 1 - Autenticación como primer flujo vertical
+1. COMPLETADO: UsuarioDAO implementa CrudDAO<Usuario>.
+2. COMPLETADO: validarLogin devuelve Optional<Usuario>.
+3. COMPLETADO: RolDAO consulta y administra roles.
+4. COMPLETADO: claves nuevas y cambios de clave usan BCrypt.
+5. COMPLETADO: LoginController ejecuta la autenticación fuera del hilo gráfico.
+6. COMPLETADO: LOGIN.java está conectado sin SQL ni JDBC.
+7. COMPLETADO: FILES aplica permisos según el rol autenticado.
+8. COMPLETADO: el rechazo de credenciales y el inicio de sesión exitoso del
+   primer administrador fueron probados de extremo a extremo.
+
+Criterio de cierre:
+- LOGIN no contiene SQL.
+- La autenticación usa consultas parametrizadas y hash seguro.
+- El resultado y los errores se muestran correctamente.
+
+FASE 2 - Gestión de usuarios y roles
+1. COMPLETADO: UsuarioDAO contiene CRUD, cambio de clave y activación lógica.
+2. COMPLETADO: el combo de roles se alimenta mediante RolDAO y Supabase.
+3. COMPLETADO: GestionUsuariosController valida creación y prepara el listado.
+4. COMPLETADO: usernames se normalizan y los duplicados se validan sin
+   distinguir mayúsculas de minúsculas.
+5. COMPLETADO: GESTIONUS lista datos reales sin hashes y se actualiza después
+   de crear, editar, desactivar o reactivar.
+6. COMPLETADO: la edición permite cambiar datos, rol y opcionalmente la clave.
+7. COMPLETADO: la desactivación es lógica y permite reactivación posterior.
+8. COMPLETADO: se protege la sesión actual y al último administrador activo.
+
+FASE 3 - Gestión de operadores
+1. Crear OperadorDAO.
+2. Implementar CRUD y búsqueda por DUI.
+3. Crear el controlador correspondiente.
+4. Conectar Gestion_de_operadores y sus paneles auxiliares.
+
+FASE 4 - Gestión de maquinaria
+1. Crear MaquinariaDAO.
+2. Implementar CRUD.
+3. Agregar filtro por estadoOperativo.
+4. Crear el controlador y conectar MAQUINARIAGESTION.
+
+Estados confirmados: DISPONIBLE, EN_RUTA y MANTENIMIENTO.
+
+FASE 5 - Módulos restantes
+1. Rutas y asignaciones.
+2. Certificaciones.
+3. Control y reportes.
+4. Exportación.
+5. Revisión del punto de entrada y navegación completa.
+
+FASE 6 - Calidad final
+1. Pruebas de DAO contra un entorno controlado.
+2. Pruebas de controladores sin depender directamente de Swing cuando sea
+   posible.
+3. Manejo uniforme de errores y mensajes.
+4. Revisión de recursos, nombres y código duplicado.
+5. Compilación limpia y recorrido manual de todos los flujos.
+
+======================================================================
+11. PRÓXIMA ACCIÓN CONCRETA
+======================================================================
+
+Las FASES 0, 1 y 2 están completadas. La próxima acción es iniciar la FASE 3:
+verificar las pantallas de operadores, crear OperadorDAO, definir las
+validaciones de DUI y teléfono, y conectar su CRUD con Supabase.
+
+======================================================================
+12. LÍNEA DE DESARROLLO PARA RETOMAR MAÑANA
+======================================================================
+
+Punto de reanudación: inicio de la FASE 3 - Gestión de operadores.
+
+Estado que debe conservarse:
+- Rama de trabajo: nestor.
+- FASE 0 completada: esquema de Supabase verificado y nueve modelos mapeados.
+- FASE 1 completada: login BCrypt, sesión y permisos por rol.
+- FASE 2 completada: crear, listar, editar, desactivar y reactivar usuarios.
+- El primer administrador está activo y el acceso fue validado.
+- Hay 10 pruebas automatizadas aprobadas.
+- ConexionBD.java debe permanecer sin cambios.
+- Los cambios continúan sin commit hasta recibir autorización.
+
+Comandos iniciales para retomar:
+
+    cd ~/TitanOps-Logistics/PLANTILLATITAONOPS/PLANTILLATITAONOPS
+    git switch nestor
+    git status --short
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    mvn -q test
+
+Orden de trabajo de la FASE 3:
+1. Revisar Gestion_de_operadores, Operario, panelCrear, panelEditar y
+   panelAsignar antes de cambiar sus formularios.
+2. Confirmar en Supabase las restricciones y valores admitidos de operadores:
+   DUI, licenciaTipo, turno, telefono, estadoOperativo y activo.
+3. Crear OperadorDAO con PreparedStatement, CRUD y búsqueda por DUI.
+4. Definir validaciones de DUI y teléfono en un controlador independiente de
+   Swing y cubrirlas con pruebas unitarias.
+5. Conectar el listado de operadores mediante SwingWorker.
+6. Conectar creación y edición sin introducir SQL en las vistas.
+7. Implementar desactivación y reactivación lógica; no borrar físicamente.
+8. Ejecutar mvn test, validar los archivos .form y hacer una prueba de lectura
+   real contra Supabase antes de cualquier escritura de prueba.
+
+Criterio de cierre de la FASE 3:
+- El administrador puede crear, consultar, editar, desactivar y reactivar
+  operadores.
+- No se permiten DUI duplicados.
+- Las vistas no contienen SQL ni credenciales.
+- Las operaciones de red no bloquean el hilo gráfico de Swing.
+- Todas las pruebas y la compilación terminan sin errores.
