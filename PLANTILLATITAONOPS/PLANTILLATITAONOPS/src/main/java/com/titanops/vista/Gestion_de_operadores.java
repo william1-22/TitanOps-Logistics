@@ -138,7 +138,7 @@ public class Gestion_de_operadores extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btn_operarioActionPerformed
 
     private void btn_operario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_operario1ActionPerformed
-        // TODO add your handling code here:
+        mostrarPanel(new Certifiaciones());
     }//GEN-LAST:event_btn_operario1ActionPerformed
 
     

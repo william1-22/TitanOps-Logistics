@@ -135,13 +135,16 @@ public class FILES extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void control_y_reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_control_y_reportesActionPerformed
-        Control_y_reportes panta = new Control_y_reportes(jDesktopPane1);
+        Control_y_reportes panta = new Control_y_reportes(
+                jDesktopPane1,
+                usuarioAutenticado == null ? null : usuarioAutenticado.getIdUsuario());
         jDesktopPane1.add(panta);
         panta.setVisible(true);
     }//GEN-LAST:event_control_y_reportesActionPerformed
 
     private void btn_rutasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_rutasActionPerformed
-       Rutas panta = new Rutas();
+       Rutas panta = new Rutas(
+               usuarioAutenticado == null ? null : usuarioAutenticado.getIdUsuario());
        jDesktopPane1.add(panta);
        panta.setVisible(true);
     }//GEN-LAST:event_btn_rutasActionPerformed

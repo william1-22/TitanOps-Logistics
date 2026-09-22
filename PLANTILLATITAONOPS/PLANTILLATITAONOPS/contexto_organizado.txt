@@ -1,5 +1,5 @@
 CONTEXTO ORGANIZADO DEL PROYECTO TITANOPS-LOGISTICS
-Actualizado: 2026-09-21
+Actualizado: 2026-09-22
 
 ======================================================================
 1. OBJETIVO DE ESTE DOCUMENTO
@@ -22,6 +22,7 @@ No se incluyen direcciones privadas, usuarios, contraseñas ni otros secretos.
 Rama local actual: nestor
 Base técnica aplicada: origin/submain
 Commit base: 63d5048 - Merge pull request #1 from william1-22/feature/william-db
+Commit actual antes de FASE 3: 1e6a476 - fase 0 a 2 terminadas
 
 La rama local nestor fue creada desde el mismo commit que origin/submain. El
 código de 63d5048 es la base de trabajo y los cambios de mapeo continúan sobre
@@ -44,7 +45,11 @@ Estado de compilación en este equipo:
 - Homebrew proporciona OpenJDK/Javac 27 y Maven 3.9.16 para desarrollo.
 - Homebrew no ofrece OpenJDK 26 en Linux; su fórmula estable es OpenJDK 27.
 - El comando mvn test finalizó con BUILD SUCCESS usando Java 27 y release 25.
-- Existen 10 pruebas unitarias: 3 para BCrypt y 7 para gestión de usuarios.
+- Existen 76 pruebas automatizadas aprobadas: 3 para BCrypt, 7 para gestión de
+  usuarios, 10 para gestión de operadores, 12 para gestión de maquinaria, 8
+  para rutas, 9 para asignaciones, 10 para certificaciones y 4 de
+  construcción/renderizado Swing, más 12 para control/mantenimientos y 1 prueba
+  headless de su vista.
 - El repositorio todavía no incluye Maven Wrapper (mvnw).
 
 ======================================================================
@@ -99,12 +104,33 @@ src/main/java
     │   └── ConexionBD.java            Singleton JDBC
     ├── controlador
     │   ├── LoginController.java       Coordina vista y autenticación
-    │   └── GestionUsuariosController.java
-    │                                  Valida creación y prepara listados
+    │   ├── GestionUsuariosController.java
+    │   │                              Valida creación y prepara listados
+    │   ├── GestionOperadoresController.java
+    │   │                              Valida y coordina el CRUD de operadores
+    │   ├── GestionMaquinariaController.java
+    │   │                              Valida y coordina maquinaria/categorías
+    │   ├── GestionRutasController.java
+    │   │                              Valida y coordina el CRUD de rutas
+    │   ├── GestionAsignacionesController.java
+    │   │                              Coordina reservas y cierres de asignaciones
+    │   ├── GestionCertificacionesController.java
+    │   │                              Valida acreditaciones y vigencias
+    │   └── GestionControlReportesController.java
+    │                                  Controla estados y mantenimientos
     ├── dao
     │   ├── CrudDAO.java               Contrato CRUD genérico
     │   ├── RolDAO.java                CRUD y búsqueda de roles
-    │   └── UsuarioDAO.java            CRUD, login y activación
+    │   ├── UsuarioDAO.java            CRUD, login y activación
+    │   ├── OperadorDAO.java           CRUD, DUI y activación lógica
+    │   ├── CategoriaMaquinariaDAO.java
+    │   │                              Catálogo de categorías
+    │   ├── MaquinariaDAO.java         CRUD, filtros y activación lógica
+    │   ├── RutaDestinoDAO.java        CRUD, estados y rutas asignables
+    │   ├── AsignacionDAO.java         CRUD y transacciones de recursos
+    │   ├── OperadorCertificacionDAO.java
+    │   │                              CRUD y acreditaciones únicas
+    │   └── MantenimientoDAO.java      CRUD y reserva/liberación transaccional
     ├── modelo
     │   ├── Rol.java
     │   ├── Usuario.java
@@ -121,9 +147,9 @@ src/main/java
         └── 14 clases Java con sus 14 formularios .form
 
 Todavía no existen:
-- Controladores para operadores, maquinaria y los módulos restantes.
-- DAOs concretos para operadores, maquinaria y los módulos restantes.
-- Pruebas automatizadas para controladores y otros DAO.
+- Controladores para exportación.
+- Servicios concretos para generar archivos de reporte.
+- Pruebas automatizadas específicas para esos módulos pendientes.
 
 El esquema real verificado y su correspondencia con Java están documentados en
 SUPABASE_ESQUEMA.md.
@@ -164,8 +190,18 @@ Las consultas especializadas se agregan únicamente al DAO correspondiente:
 - UsuarioDAO: implementado con CRUD, autenticación BCrypt, búsqueda por
   username, desactivación lógica, reactivación y cambio de clave.
 - RolDAO: implementado con CRUD y búsqueda por nombre.
-- OperadorDAO: búsqueda y validación por DUI.
-- MaquinariaDAO: filtros por estado operativo.
+- OperadorDAO: implementado con CRUD, búsqueda y validación por DUI,
+  desactivación lógica y reactivación.
+- MaquinariaDAO: implementado con CRUD, código único, filtros por estado
+  operativo, desactivación lógica y reactivación.
+- RutaDestinoDAO: implementado con CRUD, cancelación lógica, filtros por estado
+  y consulta de rutas asignables.
+- AsignacionDAO: implementado con CRUD y transacciones atómicas para reservar o
+  liberar operador, maquinaria y ruta.
+- OperadorCertificacionDAO: implementado con CRUD, búsqueda y validación de
+  números de acreditación únicos.
+- MantenimientoDAO: implementado con CRUD y transacciones atómicas para reservar
+  o liberar maquinaria al iniciar, finalizar o cancelar mantenimiento.
 
 Las mutaciones devuelven boolean para que el controlador pueda informar el
 resultado a la interfaz.
@@ -246,8 +282,13 @@ está activo y su inicio de sesión fue validado. Los permisos iniciales son:
 - ADMINISTRADOR: acceso a todos los módulos.
 - OPERADOR_DESPACHO: acceso operativo sin gestión de usuarios.
 
+Reglas adoptadas en la FASE 3 y conservadas al recibir el aval para continuar:
+- DUI obligatorio en formato 00000000-0; también se aceptan nueve dígitos y se
+  normalizan automáticamente.
+- Teléfono opcional en formato 0000-0000; también se aceptan ocho dígitos y se
+  normalizan automáticamente.
+
 Falta confirmar:
-- Validaciones de formato requeridas para DUI y teléfono.
 - Pantalla principal correcta después del login.
 
 Política confirmada para usuarios:
@@ -255,8 +296,9 @@ Política confirmada para usuarios:
 - Un administrador no puede desactivar su propia sesión.
 - El sistema siempre debe conservar al menos un administrador activo.
 
-No se debe inventar esta información en el código. La base de datos o su script
-de creación debe ser la fuente de verdad.
+La base de datos o su script de creación debe seguir siendo la fuente de verdad.
+Si el negocio confirma formatos diferentes, deben ajustarse el controlador y sus
+pruebas antes de ingresar datos reales.
 
 ======================================================================
 10. PLAN DE TRABAJO RECOMENDADO
@@ -267,8 +309,8 @@ FASE 0 - Línea base y mapeo
 2. Conservar ConexionBD.java sin cambios.
 3. Mantener documentado el esquema verificado de Supabase.
 4. Mantener los nueve modelos alineados con sus tablas.
-5. Agregar Maven Wrapper para que el proyecto no dependa de una instalación
-   global de Maven.
+5. PENDIENTE TÉCNICO: agregar Maven Wrapper para que el proyecto no dependa de
+   una instalación global de Maven.
 6. Mantener mvn test como validación mínima; actualmente produce BUILD SUCCESS.
 
 Criterio de cierre:
@@ -304,24 +346,81 @@ FASE 2 - Gestión de usuarios y roles
 8. COMPLETADO: se protege la sesión actual y al último administrador activo.
 
 FASE 3 - Gestión de operadores
-1. Crear OperadorDAO.
-2. Implementar CRUD y búsqueda por DUI.
-3. Crear el controlador correspondiente.
-4. Conectar Gestion_de_operadores y sus paneles auxiliares.
+1. COMPLETADO: OperadorDAO implementa CrudDAO<Operador> con PreparedStatement.
+2. COMPLETADO: CRUD, búsqueda/validación por DUI y listados reales.
+3. COMPLETADO: GestionOperadoresController normaliza y valida nombres, DUI,
+   teléfono, licencia, turno y estado operativo.
+4. COMPLETADO: Operario está conectado con SwingWorker para que JDBC no bloquee
+   el hilo gráfico.
+5. COMPLETADO: crear, buscar, editar, desactivar y reactivar están disponibles
+   desde la interfaz; la desactivación es lógica.
+6. COMPLETADO: lectura real y CRUD transaccional contra Supabase; inserción,
+   búsqueda, actualización, desactivación y reactivación fueron comprobadas y el
+   rollback confirmó que no quedó ningún operador de prueba.
+7. COMPLETADO: 10 pruebas de controlador y 1 prueba headless de la vista.
+
+Aval recibido para continuar a la FASE 4. Los formatos adoptados para DUI y
+teléfono se mantienen vigentes.
 
 FASE 4 - Gestión de maquinaria
-1. Crear MaquinariaDAO.
-2. Implementar CRUD.
-3. Agregar filtro por estadoOperativo.
-4. Crear el controlador y conectar MAQUINARIAGESTION.
+1. COMPLETADO: MaquinariaDAO implementa CrudDAO<Maquinaria> con
+   PreparedStatement, código único y activación lógica.
+2. COMPLETADO: CategoriaMaquinariaDAO permite alimentar y mantener el catálogo
+   requerido por maquinaria.
+3. COMPLETADO: GestionMaquinariaController valida categoría, código, marca,
+   modelo, tonelaje, horas de uso y estado operativo.
+4. COMPLETADO: filtro por estadoOperativo y búsqueda por código, categoría,
+   marca o modelo.
+5. COMPLETADO: MAQUINARIAGESTION crea categorías y permite crear, listar, editar,
+   desactivar y reactivar maquinaria usando SwingWorker.
+6. COMPLETADO: 12 pruebas de controlador y 1 prueba headless de la vista.
+7. COMPLETADO: lectura y CRUD transaccional real contra Supabase, con rollback
+   confirmado y sin registros de prueba persistentes.
+
+Estado real observado en Supabase al validar:
+- 0 categorías de maquinaria.
+- 0 registros de maquinaria.
+- La pantalla permite crear la primera categoría para operar desde esta base vacía.
+
+El usuario dio el aval para continuar a la FASE 5. El recorrido visual/manual
+de MAQUINARIAGESTION puede repetirse como parte de la navegación final.
 
 Estados confirmados: DISPONIBLE, EN_RUTA y MANTENIMIENTO.
 
 FASE 5 - Módulos restantes
-1. Rutas y asignaciones.
-2. Certificaciones.
-3. Control y reportes.
-4. Exportación.
+1. COMPLETADO A NIVEL DE CÓDIGO E INTEGRACIÓN: rutas y asignaciones.
+   - RutaDestinoDAO y GestionRutasController permiten crear, listar, filtrar,
+     editar y cancelar rutas.
+   - AsignacionDAO reserva operador y maquinaria al iniciar, y libera ambos al
+     finalizar o cancelar, dentro de una sola transacción.
+   - Rutas, panelCrear, panelEditar y panelAsignar están conectados y ejecutan
+     JDBC mediante SwingWorker; FILES transmite el id del usuario autenticado.
+   - 8 pruebas de rutas, 9 de asignaciones y 1 prueba headless de las vistas.
+   - Prueba transaccional real aprobada: recursos pasaron a EN_RUTA, luego a
+     DISPONIBLE, la ruta terminó FINALIZADA y el rollback dejó 0 registros de
+     prueba. Las secuencias de identidad sí pueden haber avanzado.
+2. COMPLETADO A NIVEL DE CÓDIGO E INTEGRACIÓN: certificaciones.
+   - OperadorCertificacionDAO implementa CRUD, búsqueda por acreditación y
+     validación de duplicados sin distinguir mayúsculas/minúsculas.
+   - GestionCertificacionesController valida operador, categoría, número único y
+     el orden de las fechas; calcula VIGENTE, VENCE PRONTO y VENCIDA.
+   - Certifiaciones está conectada al botón existente de
+     Gestion_de_operadores y permite crear, buscar, filtrar, editar y eliminar.
+   - 10 pruebas de controlador y 1 prueba headless de la vista.
+   - CRUD transaccional real aprobado en Supabase; el rollback dejó 0 registros
+     de prueba. Las secuencias de identidad sí pueden haber avanzado.
+3. COMPLETADO A NIVEL DE CÓDIGO E INTEGRACIÓN: control y reportes.
+   - MantenimientoDAO implementa CRUD seguro y transacciones para cambiar la
+     maquinaria entre DISPONIBLE y MANTENIMIENTO.
+   - GestionControlReportesController valida tipos, fechas, diagnóstico, costo,
+     taller y sesión; consolida estados de la flota y sus contadores.
+   - Control_y_reportes ofrece las pestañas ESTADO DE MAQUINARIA y
+     MANTENIMIENTOS, con filtros, alta, edición, finalización y cancelación.
+   - 12 pruebas de controlador y 1 prueba headless de la vista.
+   - Flujo transaccional real aprobado en Supabase; inicio, edición,
+     finalización, cancelación y liberación fueron comprobados. El rollback dejó
+     0 registros de prueba y las secuencias de identidad pueden haber avanzado.
+4. SIGUIENTE BLOQUE: exportación.
 5. Revisión del punto de entrada y navegación completa.
 
 FASE 6 - Calidad final
@@ -336,23 +435,36 @@ FASE 6 - Calidad final
 11. PRÓXIMA ACCIÓN CONCRETA
 ======================================================================
 
-Las FASES 0, 1 y 2 están completadas. La próxima acción es iniciar la FASE 3:
-verificar las pantallas de operadores, crear OperadorDAO, definir las
-validaciones de DUI y teléfono, y conectar su CRUD con Supabase.
+Las FASES 0, 1, 2, 3 y 4 están completadas a nivel de código e integración. El
+bloque 5A de rutas y asignaciones, el bloque 5B de certificaciones y el bloque
+5C de control y reportes también están implementados y verificados. La próxima
+acción, después del aval visual del usuario, es iniciar el bloque 5D:
+exportación de reportes.
 
 ======================================================================
 12. LÍNEA DE DESARROLLO PARA RETOMAR MAÑANA
 ======================================================================
 
-Punto de reanudación: inicio de la FASE 3 - Gestión de operadores.
+Punto de reanudación: aval visual del bloque 5C antes de iniciar exportación.
 
 Estado que debe conservarse:
 - Rama de trabajo: nestor.
-- FASE 0 completada: esquema de Supabase verificado y nueve modelos mapeados.
+- FASE 0 completada funcionalmente: esquema verificado y nueve modelos mapeados;
+  Maven Wrapper continúa como pendiente técnico.
 - FASE 1 completada: login BCrypt, sesión y permisos por rol.
 - FASE 2 completada: crear, listar, editar, desactivar y reactivar usuarios.
+- FASE 3 completada a nivel de código e integración: crear, buscar, editar,
+  desactivar y reactivar operadores.
+- FASE 4 completada a nivel de código e integración: categorías, creación,
+  búsqueda, filtros, edición, desactivación y reactivación de maquinaria.
+- FASE 5A completada a nivel de código e integración: rutas y asignaciones,
+  incluida la reserva/liberación transaccional de recursos.
+- FASE 5B completada a nivel de código e integración: certificaciones de
+  operadores, vigencias, búsqueda, edición y eliminación.
+- FASE 5C completada a nivel de código e integración: resumen de flota y control
+  transaccional de mantenimientos.
 - El primer administrador está activo y el acceso fue validado.
-- Hay 10 pruebas automatizadas aprobadas.
+- Hay 76 pruebas automatizadas aprobadas.
 - ConexionBD.java debe permanecer sin cambios.
 - Los cambios continúan sin commit hasta recibir autorización.
 
@@ -364,24 +476,20 @@ Comandos iniciales para retomar:
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
     mvn -q test
 
-Orden de trabajo de la FASE 3:
-1. Revisar Gestion_de_operadores, Operario, panelCrear, panelEditar y
-   panelAsignar antes de cambiar sus formularios.
-2. Confirmar en Supabase las restricciones y valores admitidos de operadores:
-   DUI, licenciaTipo, turno, telefono, estadoOperativo y activo.
-3. Crear OperadorDAO con PreparedStatement, CRUD y búsqueda por DUI.
-4. Definir validaciones de DUI y teléfono en un controlador independiente de
-   Swing y cubrirlas con pruebas unitarias.
-5. Conectar el listado de operadores mediante SwingWorker.
-6. Conectar creación y edición sin introducir SQL en las vistas.
-7. Implementar desactivación y reactivación lógica; no borrar físicamente.
-8. Ejecutar mvn test, validar los archivos .form y hacer una prueba de lectura
-   real contra Supabase antes de cualquier escritura de prueba.
+Orden para otorgar el aval visual del bloque 5C:
+1. Abrir CONTROL Y REPORTES desde el menú principal.
+2. Revisar contadores y filtros en ESTADO DE MAQUINARIA.
+3. Con una máquina DISPONIBLE, iniciar un mantenimiento PREVENTIVO o CORRECTIVO.
+4. Editar diagnóstico, costo, taller o fecha estimada.
+5. Finalizar o cancelar y confirmar que la máquina vuelve a DISPONIBLE.
+6. Dar el aval para iniciar el bloque 5D de exportación.
 
-Criterio de cierre de la FASE 3:
-- El administrador puede crear, consultar, editar, desactivar y reactivar
-  operadores.
-- No se permiten DUI duplicados.
+Criterio de cierre del bloque 5C:
+- El resumen diferencia maquinaria DISPONIBLE, EN_RUTA, MANTENIMIENTO e INACTIVA.
+- Solo una máquina activa y DISPONIBLE puede iniciar mantenimiento.
+- Finalizar o cancelar libera la maquinaria dentro de la misma transacción.
+- Los costos respetan numeric(10,2) y las fechas estimadas son posteriores al
+  ingreso.
 - Las vistas no contienen SQL ni credenciales.
 - Las operaciones de red no bloquean el hilo gráfico de Swing.
 - Todas las pruebas y la compilación terminan sin errores.

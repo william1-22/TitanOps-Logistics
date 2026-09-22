@@ -1,5 +1,42 @@
 package com.titanops.vista;
 
+import com.titanops.controlador.GestionMaquinariaController;
+import com.titanops.controlador.GestionMaquinariaController.CategoriaOpcion;
+import com.titanops.controlador.GestionMaquinariaController.MaquinariaEdicion;
+import com.titanops.controlador.GestionMaquinariaController.MaquinariaFila;
+import com.titanops.controlador.GestionMaquinariaController.ResultadoCreacion;
+import com.titanops.controlador.GestionMaquinariaController.ResultadoCategoria;
+import com.titanops.controlador.GestionMaquinariaController.ResultadoOperacion;
+import com.titanops.dao.CategoriaMaquinariaDAO;
+import com.titanops.dao.MaquinariaDAO;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.math.BigDecimal;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.concurrent.ExecutionException;
+import javax.swing.BorderFactory;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
+import javax.swing.SwingConstants;
+import javax.swing.SwingWorker;
+import javax.swing.table.DefaultTableModel;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
@@ -11,15 +48,52 @@ package com.titanops.vista;
  */
 public class MAQUINARIAGESTION extends javax.swing.JInternalFrame {
 
-   private javax.swing.JDesktopPane desktop;
+    private static final Color COLOR_FONDO = new Color(159, 161, 122);
+    private static final Color COLOR_PANEL = new Color(134, 137, 93);
+    private static final Color COLOR_CABECERA = new Color(84, 88, 47);
+    private static final Color COLOR_ACCION = new Color(93, 36, 23);
+    private static final DateTimeFormatter FORMATO_FECHA =
+            DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+
+    private javax.swing.JDesktopPane desktop;
+    private final GestionMaquinariaController controller;
+    private final JTextField txtCodigo = new JTextField(18);
+    private final JTextField txtMarca = new JTextField(18);
+    private final JTextField txtModelo = new JTextField(18);
+    private final JTextField txtTonelaje = new JTextField(12);
+    private final JTextField txtHorasUso = new JTextField(12);
+    private final JTextField txtBuscar = new JTextField(24);
+    private final JComboBox<CategoriaOpcion> cmbCategoria = new JComboBox<>();
+    private final JComboBox<String> cmbEstado = new JComboBox<>(
+            GestionMaquinariaController.ESTADOS_OPERATIVOS.toArray(String[]::new));
+    private final JComboBox<String> cmbFiltroEstado = new JComboBox<>();
+    private final JButton btnGuardar = crearBoton("GUARDAR");
+    private final JButton btnNuevaCategoria = crearBoton("NUEVA CATEGORÍA");
+    private final JButton btnLimpiar = crearBoton("LIMPIAR");
+    private final JButton btnBuscar = crearBoton("BUSCAR");
+    private final JButton btnEditar = crearBoton("EDITAR");
+    private final JButton btnEstadoRegistro = crearBoton("DESACTIVAR");
+    private final JLabel lblEstadoCarga = new JLabel(" ");
+    private List<CategoriaOpcion> categorias = List.of();
+    private boolean cargando;
+    private boolean recargaPendiente;
 
     public MAQUINARIAGESTION(javax.swing.JDesktopPane desktop) {
-        initComponents();
-        this.desktop = desktop;
+        this(desktop, new GestionMaquinariaController(
+                new MaquinariaDAO(), new CategoriaMaquinariaDAO()));
     }
 
     public MAQUINARIAGESTION() {
+        this(null);
+    }
+
+    MAQUINARIAGESTION(javax.swing.JDesktopPane desktop,
+                      GestionMaquinariaController controller) {
         initComponents();
+        this.desktop = desktop;
+        this.controller = controller;
+        configurarVista();
+        cargarDatosIniciales();
     }
 
     /**
@@ -409,6 +483,646 @@ public class MAQUINARIAGESTION extends javax.swing.JInternalFrame {
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField6ActionPerformed
+
+    private void configurarVista() {
+        setTitle("Gestión de maquinaria");
+        getContentPane().removeAll();
+        getContentPane().setLayout(new BorderLayout());
+        getContentPane().setBackground(COLOR_FONDO);
+
+        JLabel titulo = new JLabel("GESTIÓN DE MAQUINARIA", SwingConstants.CENTER);
+        titulo.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 36));
+        titulo.setForeground(Color.BLACK);
+        titulo.setBorder(BorderFactory.createEmptyBorder(16, 10, 16, 10));
+        JPanel cabecera = new JPanel(new BorderLayout());
+        cabecera.setBackground(COLOR_CABECERA);
+        cabecera.add(titulo, BorderLayout.CENTER);
+
+        JPanel formulario = construirFormularioCreacion();
+        JPanel listado = construirListado();
+        JPanel centro = new JPanel(new BorderLayout(14, 0));
+        centro.setBackground(COLOR_FONDO);
+        centro.setBorder(BorderFactory.createEmptyBorder(14, 14, 8, 14));
+        centro.add(formulario, BorderLayout.WEST);
+        centro.add(listado, BorderLayout.CENTER);
+
+        lblEstadoCarga.setForeground(Color.DARK_GRAY);
+        lblEstadoCarga.setBorder(BorderFactory.createEmptyBorder(4, 16, 8, 16));
+        getContentPane().add(cabecera, BorderLayout.NORTH);
+        getContentPane().add(centro, BorderLayout.CENTER);
+        getContentPane().add(lblEstadoCarga, BorderLayout.SOUTH);
+
+        txtCodigo.setToolTipText("Código único de inventario");
+        txtTonelaje.setToolTipText("Hasta 8 enteros y 2 decimales");
+        txtHorasUso.setToolTipText("Hasta 8 enteros y 2 decimales");
+        txtBuscar.setToolTipText("Buscar por código, categoría, marca o modelo");
+        btnGuardar.addActionListener(event -> crearMaquinaria());
+        btnNuevaCategoria.addActionListener(event -> crearCategoria());
+        btnLimpiar.addActionListener(event -> limpiarFormulario());
+        btnBuscar.addActionListener(event -> recargarMaquinaria());
+        btnEditar.addActionListener(event -> cargarEdicionSeleccionada());
+        btnEstadoRegistro.addActionListener(event -> cambiarEstadoSeleccionado());
+        txtBuscar.addActionListener(event -> recargarMaquinaria());
+        cmbFiltroEstado.addActionListener(event -> {
+            if (!cargando) {
+                recargarMaquinaria();
+            }
+        });
+        jTable1.getSelectionModel().addListSelectionListener(
+                event -> actualizarBotonesSeleccion());
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent event) {
+                if (event.getClickCount() == 2 && jTable1.getSelectedRow() >= 0) {
+                    cargarEdicionSeleccionada();
+                }
+            }
+        });
+
+        setMinimumSize(new Dimension(920, 620));
+        setSize(1120, 700);
+        actualizarBotonesSeleccion();
+    }
+
+    private JPanel construirFormularioCreacion() {
+        JPanel panel = new JPanel(new GridBagLayout());
+        panel.setBackground(COLOR_PANEL);
+        panel.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(COLOR_CABECERA),
+                BorderFactory.createEmptyBorder(12, 12, 12, 12)));
+        panel.setPreferredSize(new Dimension(350, 500));
+
+        JLabel titulo = new JLabel("DATOS DE LA MAQUINARIA");
+        titulo.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 18));
+        GridBagConstraints tituloConstraints = restricciones(0, 0);
+        tituloConstraints.gridwidth = 2;
+        tituloConstraints.insets = new Insets(4, 4, 18, 4);
+        panel.add(titulo, tituloConstraints);
+
+        agregarCampo(panel, 1, "Código", txtCodigo);
+        agregarCampo(panel, 2, "Categoría", cmbCategoria);
+        agregarCampo(panel, 3, "Marca", txtMarca);
+        agregarCampo(panel, 4, "Modelo", txtModelo);
+        agregarCampo(panel, 5, "Tonelaje", txtTonelaje);
+        agregarCampo(panel, 6, "Horas de uso", txtHorasUso);
+        agregarCampo(panel, 7, "Estado", cmbEstado);
+
+        GridBagConstraints categoriaNueva = restricciones(0, 8);
+        categoriaNueva.gridwidth = 2;
+        categoriaNueva.insets = new Insets(12, 4, 4, 4);
+        panel.add(btnNuevaCategoria, categoriaNueva);
+
+        JPanel acciones = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 0));
+        acciones.setBackground(COLOR_PANEL);
+        acciones.add(btnLimpiar);
+        acciones.add(btnGuardar);
+        GridBagConstraints botones = restricciones(0, 9);
+        botones.gridwidth = 2;
+        botones.insets = new Insets(22, 4, 4, 4);
+        panel.add(acciones, botones);
+        return panel;
+    }
+
+    private void crearCategoria() {
+        if (cargando) {
+            return;
+        }
+        JTextField nombre = new JTextField(24);
+        JTextField descripcion = new JTextField(24);
+        JPanel formulario = new JPanel(new GridBagLayout());
+        formulario.setBorder(BorderFactory.createEmptyBorder(8, 8, 8, 8));
+        agregarCampo(formulario, 0, "Nombre", nombre);
+        agregarCampo(formulario, 1, "Descripción (opcional)", descripcion);
+
+        int respuesta = JOptionPane.showConfirmDialog(this, formulario,
+                "Nueva categoría de maquinaria", JOptionPane.OK_CANCEL_OPTION,
+                JOptionPane.PLAIN_MESSAGE);
+        if (respuesta != JOptionPane.OK_OPTION) {
+            return;
+        }
+
+        String nombreCategoria = nombre.getText();
+        String descripcionCategoria = descripcion.getText();
+        iniciarOperacion();
+        new SwingWorker<ResultadoCategoriaConListado, Void>() {
+            @Override
+            protected ResultadoCategoriaConListado doInBackground() {
+                ResultadoCategoria resultado = controller.crearCategoria(
+                        nombreCategoria, descripcionCategoria);
+                List<CategoriaOpcion> listado = resultado.exitoso()
+                        ? controller.listarCategorias() : List.of();
+                return new ResultadoCategoriaConListado(resultado, listado);
+            }
+
+            @Override
+            protected void done() {
+                try {
+                    ResultadoCategoriaConListado datos = get();
+                    if (!datos.resultado().exitoso()) {
+                        mostrarValidacion(datos.resultado().mensaje());
+                        return;
+                    }
+                    categorias = datos.categorias();
+                    llenarCategorias();
+                    seleccionarCategoria(cmbCategoria,
+                            datos.resultado().idCategoria());
+                    JOptionPane.showMessageDialog(MAQUINARIAGESTION.this,
+                            datos.resultado().mensaje(), "Categoría de maquinaria",
+                            JOptionPane.INFORMATION_MESSAGE);
+                    lblEstadoCarga.setText("Categoría disponible para registrar maquinaria.");
+                } catch (InterruptedException exception) {
+                    Thread.currentThread().interrupt();
+                    mostrarError("Se interrumpió la creación de la categoría.");
+                } catch (ExecutionException exception) {
+                    mostrarError("No fue posible crear la categoría.");
+                } finally {
+                    terminarOperacion();
+                }
+            }
+        }.execute();
+    }
+
+    private JPanel construirListado() {
+        JPanel panel = new JPanel(new BorderLayout(0, 10));
+        panel.setBackground(COLOR_FONDO);
+
+        JPanel filtros = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 4));
+        filtros.setBackground(COLOR_FONDO);
+        filtros.add(new JLabel("Buscar:"));
+        filtros.add(txtBuscar);
+        DefaultComboBoxModel<String> estados = new DefaultComboBoxModel<>();
+        estados.addElement("TODOS");
+        for (String estado : GestionMaquinariaController.ESTADOS_OPERATIVOS) {
+            estados.addElement(estado);
+        }
+        cmbFiltroEstado.setModel(estados);
+        filtros.add(new JLabel("Estado:"));
+        filtros.add(cmbFiltroEstado);
+        filtros.add(btnBuscar);
+
+        DefaultTableModel modeloTabla = new DefaultTableModel(new Object[]{
+            "ID", "Código", "Categoría", "Marca", "Modelo", "Tonelaje",
+            "Horas", "Estado operativo", "Estado del registro", "Fecha de registro"
+        }, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        jTable1.setModel(modeloTabla);
+        jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        jTable1.setAutoCreateRowSorter(true);
+        jTable1.getTableHeader().setReorderingAllowed(false);
+        JScrollPane scroll = new JScrollPane(jTable1);
+
+        JPanel acciones = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 4));
+        acciones.setBackground(COLOR_FONDO);
+        acciones.add(btnEditar);
+        acciones.add(btnEstadoRegistro);
+
+        panel.add(filtros, BorderLayout.NORTH);
+        panel.add(scroll, BorderLayout.CENTER);
+        panel.add(acciones, BorderLayout.SOUTH);
+        return panel;
+    }
+
+    private void cargarDatosIniciales() {
+        if (cargando) {
+            return;
+        }
+        cargando = true;
+        cambiarEstadoInterfaz(true);
+        lblEstadoCarga.setText("Cargando categorías y maquinaria...");
+        new SwingWorker<DatosIniciales, Void>() {
+            @Override
+            protected DatosIniciales doInBackground() {
+                return new DatosIniciales(
+                        controller.listarCategorias(), controller.listarMaquinaria());
+            }
+
+            @Override
+            protected void done() {
+                cargando = false;
+                try {
+                    DatosIniciales datos = get();
+                    categorias = datos.categorias();
+                    llenarCategorias();
+                    llenarTabla(datos.maquinaria());
+                    lblEstadoCarga.setText(categorias.stream().anyMatch(CategoriaOpcion::activa)
+                            ? "Datos cargados correctamente."
+                            : "No hay categorías activas; crea una categoría en la base antes de registrar maquinaria.");
+                } catch (InterruptedException exception) {
+                    Thread.currentThread().interrupt();
+                    mostrarError("Se interrumpió la carga inicial.");
+                } catch (ExecutionException exception) {
+                    mostrarError("No fue posible cargar las categorías y la maquinaria.");
+                } finally {
+                    cambiarEstadoInterfaz(false);
+                }
+            }
+        }.execute();
+    }
+
+    private void llenarCategorias() {
+        DefaultComboBoxModel<CategoriaOpcion> modelo = new DefaultComboBoxModel<>();
+        for (CategoriaOpcion categoria : categorias) {
+            if (categoria.activa()) {
+                modelo.addElement(categoria);
+            }
+        }
+        cmbCategoria.setModel(modelo);
+    }
+
+    public final void recargarMaquinaria() {
+        if (cargando) {
+            recargaPendiente = true;
+            return;
+        }
+        cargando = true;
+        cambiarEstadoInterfaz(true);
+        lblEstadoCarga.setText("Cargando maquinaria...");
+        String filtro = txtBuscar.getText();
+        String estado = (String) cmbFiltroEstado.getSelectedItem();
+        new SwingWorker<List<MaquinariaFila>, Void>() {
+            @Override
+            protected List<MaquinariaFila> doInBackground() {
+                return controller.listarMaquinaria(filtro, estado);
+            }
+
+            @Override
+            protected void done() {
+                cargando = false;
+                try {
+                    List<MaquinariaFila> filas = get();
+                    llenarTabla(filas);
+                    lblEstadoCarga.setText(filas.size() + " registro(s) mostrado(s).");
+                } catch (InterruptedException exception) {
+                    Thread.currentThread().interrupt();
+                    mostrarError("Se interrumpió la carga de maquinaria.");
+                } catch (ExecutionException exception) {
+                    mostrarError("No fue posible cargar la maquinaria.");
+                } finally {
+                    cambiarEstadoInterfaz(false);
+                    if (recargaPendiente) {
+                        recargaPendiente = false;
+                        recargarMaquinaria();
+                    }
+                }
+            }
+        }.execute();
+    }
+
+    private void llenarTabla(List<MaquinariaFila> filas) {
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        jTable1.clearSelection();
+        modelo.setRowCount(0);
+        for (MaquinariaFila maquinaria : filas) {
+            String fecha = maquinaria.fechaRegistro() == null ? ""
+                    : maquinaria.fechaRegistro().toLocalDateTime().format(FORMATO_FECHA);
+            modelo.addRow(new Object[]{
+                maquinaria.idMaquinaria(),
+                maquinaria.codigoInventario(),
+                maquinaria.categoria(),
+                valorVisible(maquinaria.marca()),
+                valorVisible(maquinaria.modelo()),
+                decimalVisible(maquinaria.tonelaje()),
+                decimalVisible(maquinaria.horasUso()),
+                maquinaria.estadoOperativo(),
+                maquinaria.activa() ? "ACTIVA" : "INACTIVA",
+                fecha
+            });
+        }
+        actualizarBotonesSeleccion();
+    }
+
+    private void crearMaquinaria() {
+        if (cargando) {
+            return;
+        }
+        CategoriaOpcion categoria = (CategoriaOpcion) cmbCategoria.getSelectedItem();
+        String codigo = txtCodigo.getText();
+        String marca = txtMarca.getText();
+        String modelo = txtModelo.getText();
+        String tonelaje = txtTonelaje.getText();
+        String horas = txtHorasUso.getText();
+        String estado = (String) cmbEstado.getSelectedItem();
+        iniciarOperacion();
+        new SwingWorker<ResultadoCreacion, Void>() {
+            @Override
+            protected ResultadoCreacion doInBackground() {
+                return controller.crearMaquinaria(
+                        categoria == null ? null : categoria.idCategoria(),
+                        codigo, marca, modelo, tonelaje, horas, estado);
+            }
+
+            @Override
+            protected void done() {
+                terminarOperacion();
+                try {
+                    ResultadoCreacion resultado = get();
+                    if (!resultado.exitoso()) {
+                        mostrarValidacion(resultado.mensaje());
+                        return;
+                    }
+                    limpiarFormulario();
+                    JOptionPane.showMessageDialog(MAQUINARIAGESTION.this,
+                            resultado.mensaje(), "Maquinaria creada",
+                            JOptionPane.INFORMATION_MESSAGE);
+                    recargarMaquinaria();
+                } catch (InterruptedException exception) {
+                    Thread.currentThread().interrupt();
+                    mostrarError("Se interrumpió la creación de maquinaria.");
+                } catch (ExecutionException exception) {
+                    mostrarError("No fue posible crear la maquinaria.");
+                }
+            }
+        }.execute();
+    }
+
+    private void cargarEdicionSeleccionada() {
+        Integer idMaquinaria = idMaquinariaSeleccionada();
+        if (idMaquinaria == null || cargando) {
+            return;
+        }
+        iniciarOperacion();
+        new SwingWorker<Optional<MaquinariaEdicion>, Void>() {
+            @Override
+            protected Optional<MaquinariaEdicion> doInBackground() {
+                return controller.obtenerMaquinariaEdicion(idMaquinaria);
+            }
+
+            @Override
+            protected void done() {
+                terminarOperacion();
+                try {
+                    Optional<MaquinariaEdicion> maquinaria = get();
+                    if (maquinaria.isEmpty()) {
+                        mostrarValidacion("La maquinaria seleccionada ya no está disponible.");
+                        recargarMaquinaria();
+                        return;
+                    }
+                    mostrarFormularioEdicion(maquinaria.get());
+                } catch (InterruptedException exception) {
+                    Thread.currentThread().interrupt();
+                    mostrarError("Se interrumpió la carga de maquinaria.");
+                } catch (ExecutionException exception) {
+                    mostrarError("No fue posible cargar la maquinaria.");
+                }
+            }
+        }.execute();
+    }
+
+    private void mostrarFormularioEdicion(MaquinariaEdicion maquinaria) {
+        JTextField codigo = new JTextField(maquinaria.codigoInventario(), 20);
+        JComboBox<CategoriaOpcion> categoria = new JComboBox<>();
+        DefaultComboBoxModel<CategoriaOpcion> categoriasEdicion = new DefaultComboBoxModel<>();
+        for (CategoriaOpcion opcion : categorias) {
+            if (opcion.activa() || opcion.idCategoria() == maquinaria.idCategoria()) {
+                categoriasEdicion.addElement(opcion);
+            }
+        }
+        categoria.setModel(categoriasEdicion);
+        seleccionarCategoria(categoria, maquinaria.idCategoria());
+        JTextField marca = new JTextField(valorVisible(maquinaria.marca()), 20);
+        JTextField modelo = new JTextField(valorVisible(maquinaria.modelo()), 20);
+        JTextField tonelaje = new JTextField(decimalVisible(maquinaria.tonelaje()), 12);
+        JTextField horas = new JTextField(decimalVisible(maquinaria.horasUso()), 12);
+        JComboBox<String> estado = new JComboBox<>(
+                GestionMaquinariaController.ESTADOS_OPERATIVOS.toArray(String[]::new));
+        estado.setSelectedItem(maquinaria.estadoOperativo());
+
+        JPanel formulario = new JPanel(new GridBagLayout());
+        formulario.setBorder(BorderFactory.createEmptyBorder(8, 8, 8, 8));
+        agregarCampo(formulario, 0, "Código", codigo);
+        agregarCampo(formulario, 1, "Categoría", categoria);
+        agregarCampo(formulario, 2, "Marca", marca);
+        agregarCampo(formulario, 3, "Modelo", modelo);
+        agregarCampo(formulario, 4, "Tonelaje", tonelaje);
+        agregarCampo(formulario, 5, "Horas de uso", horas);
+        agregarCampo(formulario, 6, "Estado", estado);
+
+        int respuesta = JOptionPane.showConfirmDialog(this, formulario,
+                "Editar maquinaria", JOptionPane.OK_CANCEL_OPTION,
+                JOptionPane.PLAIN_MESSAGE);
+        if (respuesta != JOptionPane.OK_OPTION) {
+            return;
+        }
+        CategoriaOpcion categoriaSeleccionada =
+                (CategoriaOpcion) categoria.getSelectedItem();
+        actualizarMaquinaria(maquinaria.idMaquinaria(),
+                categoriaSeleccionada == null ? null
+                        : categoriaSeleccionada.idCategoria(),
+                codigo.getText(), marca.getText(), modelo.getText(),
+                tonelaje.getText(), horas.getText(),
+                (String) estado.getSelectedItem());
+    }
+
+    private void actualizarMaquinaria(
+            int idMaquinaria, Integer idCategoria, String codigo, String marca,
+            String modelo, String tonelaje, String horas, String estado) {
+        iniciarOperacion();
+        new SwingWorker<ResultadoOperacion, Void>() {
+            @Override
+            protected ResultadoOperacion doInBackground() {
+                return controller.actualizarMaquinaria(idMaquinaria, idCategoria,
+                        codigo, marca, modelo, tonelaje, horas, estado);
+            }
+
+            @Override
+            protected void done() {
+                terminarOperacion();
+                procesarResultadoOperacion(this,
+                        "Se interrumpió la actualización de maquinaria.",
+                        "No fue posible actualizar la maquinaria.");
+            }
+        }.execute();
+    }
+
+    private void cambiarEstadoSeleccionado() {
+        Integer idMaquinaria = idMaquinariaSeleccionada();
+        if (idMaquinaria == null || cargando) {
+            return;
+        }
+        boolean activar = !maquinariaSeleccionadaActiva();
+        String accion = activar ? "reactivar" : "desactivar";
+        int respuesta = JOptionPane.showConfirmDialog(this,
+                "¿Deseas " + accion + " la maquinaria seleccionada?",
+                activar ? "Reactivar maquinaria" : "Desactivar maquinaria",
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (respuesta != JOptionPane.YES_OPTION) {
+            return;
+        }
+
+        iniciarOperacion();
+        new SwingWorker<ResultadoOperacion, Void>() {
+            @Override
+            protected ResultadoOperacion doInBackground() {
+                return controller.cambiarEstadoRegistro(idMaquinaria, activar);
+            }
+
+            @Override
+            protected void done() {
+                terminarOperacion();
+                procesarResultadoOperacion(this,
+                        "Se interrumpió el cambio de estado de la maquinaria.",
+                        "No fue posible cambiar el estado de la maquinaria.");
+            }
+        }.execute();
+    }
+
+    private void procesarResultadoOperacion(
+            SwingWorker<ResultadoOperacion, Void> worker,
+            String mensajeInterrumpido, String mensajeError) {
+        try {
+            ResultadoOperacion resultado = worker.get();
+            if (!resultado.exitoso()) {
+                mostrarValidacion(resultado.mensaje());
+                return;
+            }
+            JOptionPane.showMessageDialog(this, resultado.mensaje(),
+                    "Gestión de maquinaria", JOptionPane.INFORMATION_MESSAGE);
+            recargarMaquinaria();
+        } catch (InterruptedException exception) {
+            Thread.currentThread().interrupt();
+            mostrarError(mensajeInterrumpido);
+        } catch (ExecutionException exception) {
+            mostrarError(mensajeError);
+        }
+    }
+
+    private void iniciarOperacion() {
+        cargando = true;
+        cambiarEstadoInterfaz(true);
+        lblEstadoCarga.setText("Procesando...");
+    }
+
+    private void terminarOperacion() {
+        cargando = false;
+        cambiarEstadoInterfaz(false);
+        if ("Procesando...".equals(lblEstadoCarga.getText())) {
+            lblEstadoCarga.setText("Listo.");
+        }
+    }
+
+    private void cambiarEstadoInterfaz(boolean ocupado) {
+        boolean hayCategorias = categorias.stream().anyMatch(CategoriaOpcion::activa)
+                || cmbCategoria.getItemCount() > 0;
+        txtCodigo.setEnabled(!ocupado);
+        txtMarca.setEnabled(!ocupado);
+        txtModelo.setEnabled(!ocupado);
+        txtTonelaje.setEnabled(!ocupado);
+        txtHorasUso.setEnabled(!ocupado);
+        txtBuscar.setEnabled(!ocupado);
+        cmbCategoria.setEnabled(!ocupado && hayCategorias);
+        cmbEstado.setEnabled(!ocupado);
+        cmbFiltroEstado.setEnabled(!ocupado);
+        btnGuardar.setEnabled(!ocupado && hayCategorias);
+        btnNuevaCategoria.setEnabled(!ocupado);
+        btnLimpiar.setEnabled(!ocupado);
+        btnBuscar.setEnabled(!ocupado);
+        jTable1.setEnabled(!ocupado);
+        actualizarBotonesSeleccion();
+    }
+
+    private void actualizarBotonesSeleccion() {
+        boolean seleccionValida = jTable1.getSelectedRow() >= 0 && !cargando;
+        btnEditar.setEnabled(seleccionValida);
+        btnEstadoRegistro.setEnabled(seleccionValida);
+        btnEstadoRegistro.setText(seleccionValida && !maquinariaSeleccionadaActiva()
+                ? "REACTIVAR" : "DESACTIVAR");
+    }
+
+    private Integer idMaquinariaSeleccionada() {
+        int fila = jTable1.getSelectedRow();
+        if (fila < 0) {
+            return null;
+        }
+        int filaModelo = jTable1.convertRowIndexToModel(fila);
+        return (Integer) jTable1.getModel().getValueAt(filaModelo, 0);
+    }
+
+    private boolean maquinariaSeleccionadaActiva() {
+        int fila = jTable1.getSelectedRow();
+        if (fila < 0) {
+            return false;
+        }
+        int filaModelo = jTable1.convertRowIndexToModel(fila);
+        return "ACTIVA".equals(jTable1.getModel().getValueAt(filaModelo, 8));
+    }
+
+    private void limpiarFormulario() {
+        txtCodigo.setText("");
+        txtMarca.setText("");
+        txtModelo.setText("");
+        txtTonelaje.setText("");
+        txtHorasUso.setText("");
+        if (cmbCategoria.getItemCount() > 0) {
+            cmbCategoria.setSelectedIndex(0);
+        }
+        cmbEstado.setSelectedItem("DISPONIBLE");
+        txtCodigo.requestFocusInWindow();
+    }
+
+    private void seleccionarCategoria(JComboBox<CategoriaOpcion> combo, int idCategoria) {
+        for (int indice = 0; indice < combo.getItemCount(); indice++) {
+            if (combo.getItemAt(indice).idCategoria() == idCategoria) {
+                combo.setSelectedIndex(indice);
+                return;
+            }
+        }
+    }
+
+    private void agregarCampo(JPanel panel, int fila, String etiqueta,
+                              java.awt.Component componente) {
+        GridBagConstraints izquierda = restricciones(0, fila);
+        izquierda.anchor = GridBagConstraints.LINE_END;
+        panel.add(new JLabel(etiqueta + ":"), izquierda);
+        GridBagConstraints derecha = restricciones(1, fila);
+        derecha.fill = GridBagConstraints.HORIZONTAL;
+        derecha.weightx = 1.0;
+        panel.add(componente, derecha);
+    }
+
+    private GridBagConstraints restricciones(int columna, int fila) {
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.gridx = columna;
+        constraints.gridy = fila;
+        constraints.insets = new Insets(5, 6, 5, 6);
+        return constraints;
+    }
+
+    private static JButton crearBoton(String texto) {
+        JButton boton = new JButton(texto);
+        boton.setBackground(COLOR_ACCION);
+        boton.setForeground(Color.WHITE);
+        boton.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 14));
+        boton.setBorder(BorderFactory.createEmptyBorder(7, 13, 7, 13));
+        return boton;
+    }
+
+    private String decimalVisible(BigDecimal valor) {
+        return valor == null ? "" : valor.stripTrailingZeros().toPlainString();
+    }
+
+    private String valorVisible(String valor) {
+        return valor == null ? "" : valor;
+    }
+
+    private void mostrarValidacion(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje, "Validación",
+                JOptionPane.WARNING_MESSAGE);
+    }
+
+    private void mostrarError(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje, "Gestión de maquinaria",
+                JOptionPane.ERROR_MESSAGE);
+    }
+
+    private record DatosIniciales(List<CategoriaOpcion> categorias,
+                                  List<MaquinariaFila> maquinaria) {}
+
+    private record ResultadoCategoriaConListado(ResultadoCategoria resultado,
+                                                 List<CategoriaOpcion> categorias) {}
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

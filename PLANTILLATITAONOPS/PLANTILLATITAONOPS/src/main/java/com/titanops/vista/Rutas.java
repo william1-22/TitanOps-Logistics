@@ -4,6 +4,12 @@
  */
 package com.titanops.vista;
 
+import com.titanops.controlador.GestionAsignacionesController;
+import com.titanops.controlador.GestionRutasController;
+import com.titanops.dao.AsignacionDAO;
+import com.titanops.dao.MaquinariaDAO;
+import com.titanops.dao.OperadorDAO;
+import com.titanops.dao.RutaDestinoDAO;
 
 /**
  *
@@ -11,19 +17,32 @@ package com.titanops.vista;
  */
 public class Rutas extends javax.swing.JInternalFrame {
 
-
+    private final Integer idUsuarioSesion;
+    private final GestionRutasController rutasController;
+    private final GestionAsignacionesController asignacionesController;
 
     public Rutas() {
+        this(null);
+    }
+
+    public Rutas(Integer idUsuarioSesion) {
+        this(idUsuarioSesion,
+                new GestionRutasController(new RutaDestinoDAO()),
+                new GestionAsignacionesController(new AsignacionDAO(),
+                        new MaquinariaDAO(), new OperadorDAO(),
+                        new RutaDestinoDAO()));
+    }
+
+    Rutas(Integer idUsuarioSesion,
+          GestionRutasController rutasController,
+          GestionAsignacionesController asignacionesController) {
+        this.idUsuarioSesion = idUsuarioSesion;
+        this.rutasController = rutasController;
+        this.asignacionesController = asignacionesController;
         initComponents();
-  panelVista.setLayout(new java.awt.BorderLayout());
-
-    mostrarPanel(new panelCrear());
-
-  
-
-       
-
-        
+        setTitle("Gestión de rutas y asignaciones");
+        panelVista.setLayout(new java.awt.BorderLayout());
+        mostrarPanel(new panelCrear(rutasController));
     }
 
     /**
@@ -141,28 +160,23 @@ public class Rutas extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_crearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_crearActionPerformed
- mostrarPanel(new panelCrear());        // TODO add your handling code here:
+        mostrarPanel(new panelCrear(rutasController));
     }//GEN-LAST:event_btn_crearActionPerformed
 
     private void btn_asignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_asignarActionPerformed
-  mostrarPanel(new panelAsignar());        // TODO add your handling code here:
+        mostrarPanel(new panelAsignar(idUsuarioSesion, asignacionesController));
     }//GEN-LAST:event_btn_asignarActionPerformed
 
     private void btn_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarActionPerformed
-mostrarPanel(new panelEditar());        // TODO add your handling code here:
+        mostrarPanel(new panelEditar(rutasController));
     }//GEN-LAST:event_btn_editarActionPerformed
 
     private void mostrarPanel(javax.swing.JPanel panel) {
-
-    panelVista.removeAll();
-
-    
-    // El JPanel ocupa exactamente TODO panelVista
-    panelVista.add(panel, java.awt.BorderLayout.CENTER);
-
-    panelVista.revalidate();
-    panelVista.repaint();
-}
+        panelVista.removeAll();
+        panelVista.add(panel, java.awt.BorderLayout.CENTER);
+        panelVista.revalidate();
+        panelVista.repaint();
+    }
     
     
  

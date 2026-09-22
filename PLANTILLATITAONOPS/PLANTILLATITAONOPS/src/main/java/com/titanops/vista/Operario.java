@@ -4,17 +4,65 @@
  */
 package com.titanops.vista;
 
+import com.titanops.controlador.GestionOperadoresController;
+import com.titanops.controlador.GestionOperadoresController.OperadorEdicion;
+import com.titanops.controlador.GestionOperadoresController.OperadorFila;
+import com.titanops.controlador.GestionOperadoresController.ResultadoCreacion;
+import com.titanops.controlador.GestionOperadoresController.ResultadoOperacion;
+import com.titanops.dao.OperadorDAO;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.Optional;
+import java.util.concurrent.ExecutionException;
+import javax.swing.BorderFactory;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
+import javax.swing.SwingWorker;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Natha
  */
 public class Operario extends javax.swing.JPanel {
 
+    private static final Color COLOR_FONDO = new Color(134, 137, 93);
+    private static final Color COLOR_ACCION = new Color(93, 36, 23);
+    private static final DateTimeFormatter FORMATO_FECHA =
+            DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+    private final GestionOperadoresController controller;
+    private final JButton btnEditar = crearBotonAccion("EDITAR");
+    private final JButton btnEstado = crearBotonAccion("DESACTIVAR");
+    private final JTextField txtTelefonoCreacion = new JTextField(16);
+    private boolean cargando;
+    private boolean recargaPendiente;
+
     /**
      * Creates new form Operario
      */
     public Operario() {
+        this(new GestionOperadoresController(new OperadorDAO()));
+    }
+
+    Operario(GestionOperadoresController controller) {
         initComponents();
+        this.controller = controller;
+        configurarVista();
+        recargarOperadores("");
     }
 
     /**
@@ -229,12 +277,507 @@ public class Operario extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_operarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_operarioActionPerformed
-       // mostrarPanel(new panelCrear());        // TODO add your handling code here:
+       recargarOperadores(txt_nombre_operario1.getText());
     }//GEN-LAST:event_btn_operarioActionPerformed
 
     private void btn_operario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_operario1ActionPerformed
-        // TODO add your handling code here:
+        crearOperador();
     }//GEN-LAST:event_btn_operario1ActionPerformed
+
+    private void configurarVista() {
+        removeAll();
+        setLayout(new BorderLayout());
+        add(jScrollPane1, BorderLayout.CENTER);
+        jScrollPane1.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        jScrollPane1.getVerticalScrollBar().setUnitIncrement(18);
+
+        jComboBox1.setModel(new DefaultComboBoxModel<>(
+                GestionOperadoresController.LICENCIAS_SUGERIDAS.toArray(String[]::new)));
+        jComboBox1.setEditable(true);
+        jComboBox2.setModel(new DefaultComboBoxModel<>(
+                GestionOperadoresController.TURNOS.toArray(String[]::new)));
+        jComboBox3.setModel(new DefaultComboBoxModel<>(new String[]{
+            "DISPONIBLE", "EN_RUTA", "DESCANSO"
+        }));
+
+        DefaultTableModel modelo = new DefaultTableModel(new Object[]{
+            "ID", "Nombres", "Apellidos", "DUI", "Licencia", "Turno",
+            "Teléfono", "Estado operativo", "Estado del registro", "Fecha de registro"
+        }, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        jTable1.setModel(modelo);
+        jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        jTable1.setAutoCreateRowSorter(true);
+        jTable1.getTableHeader().setReorderingAllowed(false);
+
+        JPanel barraAcciones = new JPanel(new FlowLayout(FlowLayout.LEFT, 12, 5));
+        barraAcciones.setBackground(COLOR_FONDO);
+        barraAcciones.add(btnEditar);
+        barraAcciones.add(btnEstado);
+
+        JScrollPane tablaScroll = new JScrollPane(jTable1);
+        JPanel contenedorTabla = new JPanel(new BorderLayout(0, 6));
+        contenedorTabla.setBackground(COLOR_FONDO);
+        contenedorTabla.add(barraAcciones, BorderLayout.NORTH);
+        contenedorTabla.add(tablaScroll, BorderLayout.CENTER);
+        jScrollPane2.setViewportView(contenedorTabla);
+        jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane2.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+        jScrollPane2.setPreferredSize(new Dimension(840, 430));
+        reconstruirFormularioCreacion();
+
+        txt_nombre_operario2.setToolTipText("Nombres del operador");
+        txt_apellido_operario.setToolTipText("Apellidos del operador");
+        txt_dui.setToolTipText("DUI en formato 00000000-0");
+        txtTelefonoCreacion.setToolTipText("Teléfono opcional en formato 0000-0000");
+        txt_nombre_operario1.setToolTipText(
+                "Buscar por nombre, DUI, teléfono, licencia, turno o estado");
+        btn_operario1.setToolTipText("Crear operador");
+        btn_operario.setToolTipText("Aplicar búsqueda");
+        btnEditar.setToolTipText("Editar el operador seleccionado");
+        btnEstado.setToolTipText("Desactivar o reactivar el operador seleccionado");
+
+        txt_nombre_operario1.addActionListener(
+                event -> recargarOperadores(txt_nombre_operario1.getText()));
+        btnEditar.addActionListener(event -> cargarEdicionSeleccionada());
+        btnEstado.addActionListener(event -> cambiarEstadoSeleccionado());
+        jTable1.getSelectionModel().addListSelectionListener(
+                event -> actualizarBotonesSeleccion());
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent event) {
+                if (event.getClickCount() == 2 && jTable1.getSelectedRow() >= 0) {
+                    cargarEdicionSeleccionada();
+                }
+            }
+        });
+        actualizarBotonesSeleccion();
+    }
+
+    public final void recargarOperadores(String filtro) {
+        if (cargando) {
+            recargaPendiente = true;
+            return;
+        }
+        cargando = true;
+        cambiarEstadoInterfaz(true);
+
+        new SwingWorker<List<OperadorFila>, Void>() {
+            @Override
+            protected List<OperadorFila> doInBackground() {
+                return controller.listarOperadores(filtro);
+            }
+
+            @Override
+            protected void done() {
+                cargando = false;
+                cambiarEstadoInterfaz(false);
+                try {
+                    llenarTabla(get());
+                } catch (InterruptedException exception) {
+                    Thread.currentThread().interrupt();
+                    mostrarError("Se interrumpió la carga de operadores.");
+                } catch (ExecutionException exception) {
+                    mostrarError("No fue posible cargar los operadores.");
+                } finally {
+                    if (recargaPendiente) {
+                        recargaPendiente = false;
+                        recargarOperadores(txt_nombre_operario1.getText());
+                    }
+                }
+            }
+        }.execute();
+    }
+
+    private void llenarTabla(List<OperadorFila> operadores) {
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        jTable1.clearSelection();
+        modelo.setRowCount(0);
+        for (OperadorFila operador : operadores) {
+            String fecha = operador.fechaRegistro() == null ? ""
+                    : operador.fechaRegistro().toLocalDateTime().format(FORMATO_FECHA);
+            modelo.addRow(new Object[]{
+                operador.idOperador(),
+                operador.nombres(),
+                operador.apellidos(),
+                operador.dui(),
+                operador.licenciaTipo(),
+                operador.turno(),
+                operador.telefono() == null ? "" : operador.telefono(),
+                operador.estadoOperativo(),
+                operador.activo() ? "ACTIVO" : "INACTIVO",
+                fecha
+            });
+        }
+        actualizarBotonesSeleccion();
+    }
+
+    private void crearOperador() {
+        if (cargando) {
+            return;
+        }
+        String nombres = txt_nombre_operario2.getText();
+        String apellidos = txt_apellido_operario.getText();
+        String dui = txt_dui.getText();
+        String licencia = valorCombo(jComboBox1);
+        String turno = valorCombo(jComboBox2);
+        String estado = valorCombo(jComboBox3);
+        String telefono = txtTelefonoCreacion.getText();
+        cargando = true;
+        cambiarEstadoInterfaz(true);
+
+        new SwingWorker<ResultadoCreacion, Void>() {
+            @Override
+            protected ResultadoCreacion doInBackground() {
+                return controller.crearOperador(
+                        nombres, apellidos, dui, licencia, turno, telefono, estado);
+            }
+
+            @Override
+            protected void done() {
+                cargando = false;
+                cambiarEstadoInterfaz(false);
+                try {
+                    ResultadoCreacion resultado = get();
+                    if (!resultado.exitoso()) {
+                        mostrarValidacion(resultado.mensaje());
+                        return;
+                    }
+                    limpiarFormularioCreacion();
+                    JOptionPane.showMessageDialog(Operario.this, resultado.mensaje(),
+                            "Operador creado", JOptionPane.INFORMATION_MESSAGE);
+                    recargarOperadores(txt_nombre_operario1.getText());
+                } catch (InterruptedException exception) {
+                    Thread.currentThread().interrupt();
+                    mostrarError("Se interrumpió la creación del operador.");
+                } catch (ExecutionException exception) {
+                    mostrarError("No fue posible crear el operador.");
+                }
+            }
+        }.execute();
+    }
+
+    private void cargarEdicionSeleccionada() {
+        Integer idOperador = idOperadorSeleccionado();
+        if (idOperador == null || cargando) {
+            return;
+        }
+        cargando = true;
+        cambiarEstadoInterfaz(true);
+
+        new SwingWorker<Optional<OperadorEdicion>, Void>() {
+            @Override
+            protected Optional<OperadorEdicion> doInBackground() {
+                return controller.obtenerOperadorEdicion(idOperador);
+            }
+
+            @Override
+            protected void done() {
+                cargando = false;
+                cambiarEstadoInterfaz(false);
+                try {
+                    Optional<OperadorEdicion> operador = get();
+                    if (operador.isEmpty()) {
+                        mostrarValidacion("El operador seleccionado ya no está disponible.");
+                        recargarOperadores(txt_nombre_operario1.getText());
+                        return;
+                    }
+                    mostrarFormularioEdicion(operador.get());
+                } catch (InterruptedException exception) {
+                    Thread.currentThread().interrupt();
+                    mostrarError("Se interrumpió la carga del operador.");
+                } catch (ExecutionException exception) {
+                    mostrarError("No fue posible cargar el operador.");
+                }
+            }
+        }.execute();
+    }
+
+    private void mostrarFormularioEdicion(OperadorEdicion operador) {
+        JTextField nombres = new JTextField(operador.nombres(), 24);
+        JTextField apellidos = new JTextField(operador.apellidos(), 24);
+        JTextField dui = new JTextField(operador.dui(), 12);
+        JComboBox<String> licencia = new JComboBox<>(
+                GestionOperadoresController.LICENCIAS_SUGERIDAS.toArray(String[]::new));
+        licencia.setEditable(true);
+        licencia.setSelectedItem(operador.licenciaTipo());
+        JComboBox<String> turno = new JComboBox<>(
+                GestionOperadoresController.TURNOS.toArray(String[]::new));
+        turno.setSelectedItem(operador.turno());
+        JTextField telefono = new JTextField(
+                operador.telefono() == null ? "" : operador.telefono(), 12);
+        JComboBox<String> estado = new JComboBox<>(
+                new String[]{"DISPONIBLE", "EN_RUTA", "DESCANSO"});
+        estado.setSelectedItem(operador.activo()
+                ? operador.estadoOperativo() : "DISPONIBLE");
+
+        JPanel formulario = new JPanel(new GridBagLayout());
+        formulario.setBorder(BorderFactory.createEmptyBorder(8, 8, 8, 8));
+        agregarCampo(formulario, 0, "Nombres", nombres);
+        agregarCampo(formulario, 1, "Apellidos", apellidos);
+        agregarCampo(formulario, 2, "DUI", dui);
+        agregarCampo(formulario, 3, "Licencia", licencia);
+        agregarCampo(formulario, 4, "Turno", turno);
+        agregarCampo(formulario, 5, "Teléfono (opcional)", telefono);
+        agregarCampo(formulario, 6, "Estado operativo", estado);
+        if (!operador.activo()) {
+            GridBagConstraints aviso = restricciones(0, 7);
+            aviso.gridwidth = 2;
+            formulario.add(new JLabel(
+                    "El operador seguirá inactivo hasta usar la acción REACTIVAR."), aviso);
+        }
+
+        int respuesta = JOptionPane.showConfirmDialog(this, formulario,
+                "Editar operador", JOptionPane.OK_CANCEL_OPTION,
+                JOptionPane.PLAIN_MESSAGE);
+        if (respuesta != JOptionPane.OK_OPTION) {
+            return;
+        }
+        actualizarOperador(operador.idOperador(), nombres.getText(), apellidos.getText(),
+                dui.getText(), valorCombo(licencia), valorCombo(turno),
+                telefono.getText(), valorCombo(estado));
+    }
+
+    private void actualizarOperador(int idOperador, String nombres, String apellidos,
+                                    String dui, String licencia, String turno,
+                                    String telefono, String estado) {
+        cargando = true;
+        cambiarEstadoInterfaz(true);
+        new SwingWorker<ResultadoOperacion, Void>() {
+            @Override
+            protected ResultadoOperacion doInBackground() {
+                return controller.actualizarOperador(idOperador, nombres, apellidos, dui,
+                        licencia, turno, telefono, estado);
+            }
+
+            @Override
+            protected void done() {
+                cargando = false;
+                cambiarEstadoInterfaz(false);
+                try {
+                    ResultadoOperacion resultado = get();
+                    if (!resultado.exitoso()) {
+                        mostrarValidacion(resultado.mensaje());
+                        return;
+                    }
+                    JOptionPane.showMessageDialog(Operario.this, resultado.mensaje(),
+                            "Gestión de operadores", JOptionPane.INFORMATION_MESSAGE);
+                    recargarOperadores(txt_nombre_operario1.getText());
+                } catch (InterruptedException exception) {
+                    Thread.currentThread().interrupt();
+                    mostrarError("Se interrumpió la actualización del operador.");
+                } catch (ExecutionException exception) {
+                    mostrarError("No fue posible actualizar el operador.");
+                }
+            }
+        }.execute();
+    }
+
+    private void cambiarEstadoSeleccionado() {
+        Integer idOperador = idOperadorSeleccionado();
+        if (idOperador == null || cargando) {
+            return;
+        }
+        boolean activar = !operadorSeleccionadoActivo();
+        String accion = activar ? "reactivar" : "desactivar";
+        int respuesta = JOptionPane.showConfirmDialog(this,
+                "¿Deseas " + accion + " el operador seleccionado?",
+                activar ? "Reactivar operador" : "Desactivar operador",
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (respuesta != JOptionPane.YES_OPTION) {
+            return;
+        }
+
+        cargando = true;
+        cambiarEstadoInterfaz(true);
+        new SwingWorker<ResultadoOperacion, Void>() {
+            @Override
+            protected ResultadoOperacion doInBackground() {
+                return controller.cambiarEstadoOperador(idOperador, activar);
+            }
+
+            @Override
+            protected void done() {
+                cargando = false;
+                cambiarEstadoInterfaz(false);
+                try {
+                    ResultadoOperacion resultado = get();
+                    if (!resultado.exitoso()) {
+                        mostrarValidacion(resultado.mensaje());
+                        return;
+                    }
+                    JOptionPane.showMessageDialog(Operario.this, resultado.mensaje(),
+                            "Gestión de operadores", JOptionPane.INFORMATION_MESSAGE);
+                    recargarOperadores(txt_nombre_operario1.getText());
+                } catch (InterruptedException exception) {
+                    Thread.currentThread().interrupt();
+                    mostrarError("Se interrumpió el cambio de estado del operador.");
+                } catch (ExecutionException exception) {
+                    mostrarError("No fue posible cambiar el estado del operador.");
+                }
+            }
+        }.execute();
+    }
+
+    private void cambiarEstadoInterfaz(boolean ocupado) {
+        txt_nombre_operario2.setEnabled(!ocupado);
+        txt_apellido_operario.setEnabled(!ocupado);
+        txt_dui.setEnabled(!ocupado);
+        txtTelefonoCreacion.setEnabled(!ocupado);
+        txt_nombre_operario1.setEnabled(!ocupado);
+        jComboBox1.setEnabled(!ocupado);
+        jComboBox2.setEnabled(!ocupado);
+        jComboBox3.setEnabled(!ocupado);
+        btn_operario.setEnabled(!ocupado);
+        btn_operario1.setEnabled(!ocupado);
+        jTable1.setEnabled(!ocupado);
+        actualizarBotonesSeleccion();
+    }
+
+    private void actualizarBotonesSeleccion() {
+        boolean seleccionValida = jTable1.getSelectedRow() >= 0 && !cargando;
+        btnEditar.setEnabled(seleccionValida);
+        btnEstado.setEnabled(seleccionValida);
+        btnEstado.setText(seleccionValida && !operadorSeleccionadoActivo()
+                ? "REACTIVAR" : "DESACTIVAR");
+    }
+
+    private Integer idOperadorSeleccionado() {
+        int fila = jTable1.getSelectedRow();
+        if (fila < 0) {
+            return null;
+        }
+        int filaModelo = jTable1.convertRowIndexToModel(fila);
+        return (Integer) jTable1.getModel().getValueAt(filaModelo, 0);
+    }
+
+    private boolean operadorSeleccionadoActivo() {
+        int fila = jTable1.getSelectedRow();
+        if (fila < 0) {
+            return false;
+        }
+        int filaModelo = jTable1.convertRowIndexToModel(fila);
+        return "ACTIVO".equals(jTable1.getModel().getValueAt(filaModelo, 8));
+    }
+
+    private void limpiarFormularioCreacion() {
+        txt_nombre_operario2.setText("");
+        txt_apellido_operario.setText("");
+        txt_dui.setText("");
+        txtTelefonoCreacion.setText("");
+        jComboBox1.setSelectedIndex(0);
+        jComboBox2.setSelectedIndex(0);
+        jComboBox3.setSelectedIndex(0);
+        txt_nombre_operario2.requestFocusInWindow();
+    }
+
+    private String valorCombo(JComboBox<String> combo) {
+        Object valor = combo.isEditable() ? combo.getEditor().getItem()
+                : combo.getSelectedItem();
+        return valor == null ? "" : valor.toString();
+    }
+
+    private void reconstruirFormularioCreacion() {
+        txt_nombre_operario2.setColumns(18);
+        txt_apellido_operario.setColumns(18);
+        txt_dui.setColumns(12);
+        txt_nombre_operario1.setColumns(30);
+
+        contenidoOperario.removeAll();
+        contenidoOperario.setLayout(new GridBagLayout());
+        contenidoOperario.setBackground(COLOR_FONDO);
+        contenidoOperario.setBorder(BorderFactory.createEmptyBorder(18, 22, 18, 22));
+
+        agregarCampoCreacion(0, 0, "Nombres", txt_nombre_operario2);
+        agregarCampoCreacion(2, 0, "Licencia", jComboBox1);
+        agregarCampoCreacion(0, 1, "Apellidos", txt_apellido_operario);
+        agregarCampoCreacion(2, 1, "Turno", jComboBox2);
+        agregarCampoCreacion(0, 2, "DUI", txt_dui);
+        agregarCampoCreacion(2, 2, "Estado", jComboBox3);
+        agregarCampoCreacion(0, 3, "Teléfono", txtTelefonoCreacion);
+
+        GridBagConstraints guardar = restricciones(0, 4);
+        guardar.gridwidth = 4;
+        guardar.anchor = GridBagConstraints.CENTER;
+        guardar.insets = new Insets(15, 6, 22, 6);
+        contenidoOperario.add(btn_operario1, guardar);
+
+        GridBagConstraints etiquetaBuscar = restricciones(0, 5);
+        etiquetaBuscar.anchor = GridBagConstraints.LINE_END;
+        contenidoOperario.add(new JLabel("BUSCAR:"), etiquetaBuscar);
+        GridBagConstraints buscar = restricciones(1, 5);
+        buscar.gridwidth = 2;
+        buscar.fill = GridBagConstraints.HORIZONTAL;
+        buscar.weightx = 1.0;
+        contenidoOperario.add(txt_nombre_operario1, buscar);
+        GridBagConstraints botonBuscar = restricciones(3, 5);
+        botonBuscar.fill = GridBagConstraints.HORIZONTAL;
+        contenidoOperario.add(btn_operario, botonBuscar);
+
+        GridBagConstraints tabla = restricciones(0, 6);
+        tabla.gridwidth = 4;
+        tabla.fill = GridBagConstraints.BOTH;
+        tabla.weightx = 1.0;
+        tabla.weighty = 1.0;
+        tabla.insets = new Insets(15, 6, 6, 6);
+        contenidoOperario.add(jScrollPane2, tabla);
+        contenidoOperario.revalidate();
+        contenidoOperario.repaint();
+    }
+
+    private void agregarCampoCreacion(int columna, int fila, String etiqueta,
+                                      java.awt.Component componente) {
+        GridBagConstraints label = restricciones(columna, fila);
+        label.anchor = GridBagConstraints.LINE_END;
+        contenidoOperario.add(new JLabel(etiqueta + ":"), label);
+        GridBagConstraints campo = restricciones(columna + 1, fila);
+        campo.fill = GridBagConstraints.HORIZONTAL;
+        campo.weightx = 0.5;
+        contenidoOperario.add(componente, campo);
+    }
+
+    private void agregarCampo(JPanel panel, int fila, String etiqueta,
+                              java.awt.Component componente) {
+        GridBagConstraints izquierda = restricciones(0, fila);
+        izquierda.anchor = GridBagConstraints.LINE_END;
+        panel.add(new JLabel(etiqueta + ":"), izquierda);
+        GridBagConstraints derecha = restricciones(1, fila);
+        derecha.fill = GridBagConstraints.HORIZONTAL;
+        derecha.weightx = 1.0;
+        panel.add(componente, derecha);
+    }
+
+    private GridBagConstraints restricciones(int columna, int fila) {
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.gridx = columna;
+        constraints.gridy = fila;
+        constraints.insets = new Insets(4, 6, 4, 6);
+        return constraints;
+    }
+
+    private static JButton crearBotonAccion(String texto) {
+        JButton boton = new JButton(texto);
+        boton.setBackground(COLOR_ACCION);
+        boton.setForeground(Color.WHITE);
+        boton.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 16));
+        boton.setBorder(BorderFactory.createEmptyBorder(7, 14, 7, 14));
+        return boton;
+    }
+
+    private void mostrarValidacion(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje, "Validación",
+                JOptionPane.WARNING_MESSAGE);
+    }
+
+    private void mostrarError(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje, "Gestión de operadores",
+                JOptionPane.ERROR_MESSAGE);
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
