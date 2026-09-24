@@ -65,6 +65,7 @@ public class panelAsignar extends JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
         panelSuperior = new javax.swing.JPanel();
         panelCaptura = new javax.swing.JPanel();
         panelFormulario = new javax.swing.JPanel();
@@ -102,64 +103,88 @@ public class panelAsignar extends JPanel {
 
         panelSuperior.setOpaque(false);
         panelSuperior.setLayout(new java.awt.BorderLayout(0, 6));
+
         panelCaptura.setOpaque(false);
         panelCaptura.setLayout(new java.awt.BorderLayout());
+
         panelFormulario.setOpaque(false);
         panelFormulario.setLayout(new java.awt.GridLayout(3, 4, 10, 8));
+
         lblMaquinaria.setText("Maquinaria:");
         panelFormulario.add(lblMaquinaria);
         panelFormulario.add(cmbMaquinaria);
+
         lblOperador.setText("Operador:");
         panelFormulario.add(lblOperador);
         panelFormulario.add(cmbOperador);
+
         lblRuta.setText("Ruta / proyecto:");
         panelFormulario.add(lblRuta);
         panelFormulario.add(cmbRuta);
+
         lblRetorno.setText("Retorno estimado:");
         panelFormulario.add(lblRetorno);
         panelFormulario.add(spnRetorno);
+
         lblObservaciones.setText("Observaciones:");
         panelFormulario.add(lblObservaciones);
+
         txtObservaciones.setColumns(30);
         txtObservaciones.setRows(3);
         scrollObservaciones.setViewportView(txtObservaciones);
+
         panelFormulario.add(scrollObservaciones);
+
         panelAccionCrear.setOpaque(false);
+
         btnAsignar.setText("INICIAR ASIGNACIÓN");
         panelAccionCrear.add(btnAsignar);
+
         panelFormulario.add(panelAccionCrear);
         panelFormulario.add(lblRelleno);
+
         panelCaptura.add(panelFormulario, java.awt.BorderLayout.CENTER);
+
         panelSuperior.add(panelCaptura, java.awt.BorderLayout.CENTER);
 
         panelFiltros.setOpaque(false);
         panelFiltros.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 8, 4));
+
         lblBuscar.setText("Buscar:");
         panelFiltros.add(lblBuscar);
+
         txtBuscar.setColumns(22);
         panelFiltros.add(txtBuscar);
+
         lblFiltroEstado.setText("Estado:");
         panelFiltros.add(lblFiltroEstado);
         panelFiltros.add(cmbEstadoFiltro);
+
         btnActualizar.setText("ACTUALIZAR");
         panelFiltros.add(btnActualizar);
+
         lblEstado.setText(" ");
         panelFiltros.add(lblEstado);
+
         panelSuperior.add(panelFiltros, java.awt.BorderLayout.SOUTH);
+
         add(panelSuperior, java.awt.BorderLayout.NORTH);
 
         scrollTabla.setViewportView(tabla);
+
         add(scrollTabla, java.awt.BorderLayout.CENTER);
 
         panelAcciones.setOpaque(false);
         panelAcciones.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 10, 5));
+
         btnFinalizar.setText("FINALIZAR");
         panelAcciones.add(btnFinalizar);
+
         btnCancelar.setText("CANCELAR");
         panelAcciones.add(btnCancelar);
+
         add(panelAcciones, java.awt.BorderLayout.SOUTH);
-    }
-    // </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>//GEN-END:initComponents
 
     private void configurarVista() {
         spnRetorno.setModel(crearModeloFecha());

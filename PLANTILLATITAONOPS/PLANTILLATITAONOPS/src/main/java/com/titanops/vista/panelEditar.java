@@ -52,6 +52,7 @@ public class panelEditar extends JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
         panelFiltros = new javax.swing.JPanel();
         lblBuscar = new javax.swing.JLabel();
         txtBuscar = new javax.swing.JTextField();
@@ -72,31 +73,40 @@ public class panelEditar extends JPanel {
 
         panelFiltros.setOpaque(false);
         panelFiltros.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 8, 5));
+
         lblBuscar.setText("Buscar:");
         panelFiltros.add(lblBuscar);
+
         txtBuscar.setColumns(28);
         panelFiltros.add(txtBuscar);
+
         lblFiltroEstado.setText("Estado:");
         panelFiltros.add(lblFiltroEstado);
         panelFiltros.add(cmbEstado);
+
         btnBuscar.setText("BUSCAR");
         panelFiltros.add(btnBuscar);
+
         lblEstado.setText(" ");
         panelFiltros.add(lblEstado);
+
         add(panelFiltros, java.awt.BorderLayout.NORTH);
 
         scrollTabla.setViewportView(tabla);
+
         add(scrollTabla, java.awt.BorderLayout.CENTER);
 
         panelAcciones.setOpaque(false);
         panelAcciones.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 10, 5));
+
         btnEditar.setText("EDITAR");
         panelAcciones.add(btnEditar);
+
         btnCancelar.setText("CANCELAR RUTA");
         panelAcciones.add(btnCancelar);
+
         add(panelAcciones, java.awt.BorderLayout.SOUTH);
-    }
-    // </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>//GEN-END:initComponents
 
     private void configurarVista() {
         cmbEstado.addItem("TODOS");

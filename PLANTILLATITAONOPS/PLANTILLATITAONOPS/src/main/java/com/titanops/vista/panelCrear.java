@@ -45,6 +45,7 @@ public class panelCrear extends JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
         panelSuperior = new javax.swing.JPanel();
         panelCaptura = new javax.swing.JPanel();
         panelFormulario = new javax.swing.JPanel();
@@ -74,54 +75,75 @@ public class panelCrear extends JPanel {
 
         panelSuperior.setOpaque(false);
         panelSuperior.setLayout(new java.awt.BorderLayout(0, 6));
+
         panelCaptura.setOpaque(false);
         panelCaptura.setLayout(new java.awt.BorderLayout());
+
         panelFormulario.setOpaque(false);
         panelFormulario.setLayout(new java.awt.GridLayout(2, 4, 10, 8));
+
         lblProyecto.setText("Proyecto:");
         panelFormulario.add(lblProyecto);
+
         txtProyecto.setColumns(24);
         panelFormulario.add(txtProyecto);
+
         lblDistancia.setText("Distancia (km):");
         panelFormulario.add(lblDistancia);
+
         txtDistancia.setColumns(12);
         panelFormulario.add(txtDistancia);
+
         lblOrigen.setText("Origen:");
         panelFormulario.add(lblOrigen);
+
         txtOrigen.setColumns(24);
         panelFormulario.add(txtOrigen);
+
         lblDestino.setText("Destino:");
         panelFormulario.add(lblDestino);
+
         txtDestino.setColumns(24);
         panelFormulario.add(txtDestino);
+
         panelCaptura.add(panelFormulario, java.awt.BorderLayout.CENTER);
 
         panelAcciones.setOpaque(false);
         panelAcciones.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 8));
+
         btnGuardar.setText("GUARDAR RUTA");
         panelAcciones.add(btnGuardar);
+
         btnLimpiar.setText("LIMPIAR");
         panelAcciones.add(btnLimpiar);
+
         panelCaptura.add(panelAcciones, java.awt.BorderLayout.SOUTH);
+
         panelSuperior.add(panelCaptura, java.awt.BorderLayout.CENTER);
 
         panelBusqueda.setOpaque(false);
         panelBusqueda.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 8, 4));
+
         lblBuscar.setText("Buscar:");
         panelBusqueda.add(lblBuscar);
+
         txtBuscar.setColumns(28);
         panelBusqueda.add(txtBuscar);
+
         btnBuscar.setText("BUSCAR");
         panelBusqueda.add(btnBuscar);
+
         lblEstado.setText(" ");
         panelBusqueda.add(lblEstado);
+
         panelSuperior.add(panelBusqueda, java.awt.BorderLayout.SOUTH);
+
         add(panelSuperior, java.awt.BorderLayout.NORTH);
 
         scrollTabla.setViewportView(tabla);
+
         add(scrollTabla, java.awt.BorderLayout.CENTER);
-    }
-    // </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>//GEN-END:initComponents
 
     private void configurarVista() {
         tabla.setModel(new DefaultTableModel(

@@ -84,6 +84,7 @@ public class Control_y_reportes extends JInternalFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
         lblTitulo = new javax.swing.JLabel();
         tabsControl = new javax.swing.JTabbedPane();
         panelEstado = new javax.swing.JPanel();
@@ -119,8 +120,8 @@ public class Control_y_reportes extends JInternalFrame {
         scrollDiagnostico = new javax.swing.JScrollPane();
         txtDiagnostico = new javax.swing.JTextArea();
         panelAccionesCreacion = new javax.swing.JPanel();
-        btnIniciar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
+        btnIniciar = new javax.swing.JButton();
         lblRelleno1 = new javax.swing.JLabel();
         lblRelleno2 = new javax.swing.JLabel();
         lblRelleno3 = new javax.swing.JLabel();
@@ -144,10 +145,9 @@ public class Control_y_reportes extends JInternalFrame {
         setResizable(true);
         setTitle("Control operativo y reportes");
         setPreferredSize(new java.awt.Dimension(1160, 760));
-        getContentPane().setLayout(new java.awt.BorderLayout());
 
         lblTitulo.setBackground(new java.awt.Color(84, 88, 47));
-        lblTitulo.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 34));
+        lblTitulo.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 34)); // NOI18N
         lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitulo.setText("CONTROL OPERATIVO");
         lblTitulo.setBorder(javax.swing.BorderFactory.createEmptyBorder(18, 8, 18, 8));
@@ -157,115 +157,166 @@ public class Control_y_reportes extends JInternalFrame {
         panelEstado.setBackground(new java.awt.Color(134, 137, 93));
         panelEstado.setBorder(javax.swing.BorderFactory.createEmptyBorder(12, 14, 12, 14));
         panelEstado.setLayout(new java.awt.BorderLayout(8, 8));
+
         panelEstadoSuperior.setOpaque(false);
         panelEstadoSuperior.setLayout(new java.awt.BorderLayout(0, 6));
+
         panelFiltrosEstado.setOpaque(false);
         panelFiltrosEstado.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 8, 5));
+
         lblBuscarEstado.setText("Buscar:");
         panelFiltrosEstado.add(lblBuscarEstado);
+
         txtBuscarEstado.setColumns(22);
         panelFiltrosEstado.add(txtBuscarEstado);
+
         lblFiltroEstadoMaquinaria.setText("Estado:");
         panelFiltrosEstado.add(lblFiltroEstadoMaquinaria);
         panelFiltrosEstado.add(cmbEstadoMaquinaria);
+
         btnBuscarEstado.setText("ACTUALIZAR");
         panelFiltrosEstado.add(btnBuscarEstado);
+
         btnExportar.setText("EXPORTAR");
         panelFiltrosEstado.add(btnExportar);
+
         panelEstadoSuperior.add(panelFiltrosEstado, java.awt.BorderLayout.NORTH);
+
         panelResumen.setOpaque(false);
         panelResumen.setLayout(new java.awt.GridLayout(1, 4, 8, 4));
+
         lblDisponibles.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDisponibles.setText("Disponibles: 0");
         panelResumen.add(lblDisponibles);
+
         lblEnRuta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblEnRuta.setText("En ruta: 0");
         panelResumen.add(lblEnRuta);
+
         lblMantenimiento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblMantenimiento.setText("Mantenimiento: 0");
         panelResumen.add(lblMantenimiento);
+
         lblInactivas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblInactivas.setText("Inactivas: 0");
         panelResumen.add(lblInactivas);
+
         panelEstadoSuperior.add(panelResumen, java.awt.BorderLayout.SOUTH);
+
         panelEstado.add(panelEstadoSuperior, java.awt.BorderLayout.NORTH);
+
         scrollEstado.setViewportView(tablaEstado);
+
         panelEstado.add(scrollEstado, java.awt.BorderLayout.CENTER);
+
         tabsControl.addTab("ESTADO DE MAQUINARIA", panelEstado);
 
         panelMantenimientos.setBackground(new java.awt.Color(134, 137, 93));
         panelMantenimientos.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 14, 10, 14));
         panelMantenimientos.setLayout(new java.awt.BorderLayout(8, 8));
+
         panelMantenimientoSuperior.setOpaque(false);
         panelMantenimientoSuperior.setLayout(new java.awt.BorderLayout(0, 6));
+
         panelFormularioMantenimiento.setOpaque(false);
         panelFormularioMantenimiento.setLayout(new java.awt.GridLayout(4, 4, 10, 6));
+
         lblMaquinaria.setText("Maquinaria:");
         panelFormularioMantenimiento.add(lblMaquinaria);
         panelFormularioMantenimiento.add(cmbMaquinaria);
+
         lblTipo.setText("Tipo:");
         panelFormularioMantenimiento.add(lblTipo);
         panelFormularioMantenimiento.add(cmbTipo);
+
         lblSalidaEstimada.setText("Salida estimada:");
         panelFormularioMantenimiento.add(lblSalidaEstimada);
         panelFormularioMantenimiento.add(fechaSalidaEstimada);
+
         lblCosto.setText("Costo:");
         panelFormularioMantenimiento.add(lblCosto);
+
         txtCosto.setColumns(12);
         panelFormularioMantenimiento.add(txtCosto);
+
         lblTaller.setText("Taller:");
         panelFormularioMantenimiento.add(lblTaller);
+
         txtTaller.setColumns(22);
         panelFormularioMantenimiento.add(txtTaller);
+
         lblDiagnostico.setText("Diagnóstico:");
         panelFormularioMantenimiento.add(lblDiagnostico);
+
         txtDiagnostico.setColumns(28);
         txtDiagnostico.setRows(3);
         scrollDiagnostico.setViewportView(txtDiagnostico);
+
         panelFormularioMantenimiento.add(scrollDiagnostico);
+
         panelAccionesCreacion.setOpaque(false);
-        btnIniciar.setText("INICIAR MANTENIMIENTO");
-        panelAccionesCreacion.add(btnIniciar);
+
         btnLimpiar.setText("LIMPIAR");
         panelAccionesCreacion.add(btnLimpiar);
+
+        btnIniciar.setText("INICIAR MANTENIMIENTO");
+        panelAccionesCreacion.add(btnIniciar);
+
         panelFormularioMantenimiento.add(panelAccionesCreacion);
         panelFormularioMantenimiento.add(lblRelleno1);
         panelFormularioMantenimiento.add(lblRelleno2);
         panelFormularioMantenimiento.add(lblRelleno3);
+
         panelMantenimientoSuperior.add(panelFormularioMantenimiento, java.awt.BorderLayout.CENTER);
+
         panelFiltrosMantenimiento.setOpaque(false);
         panelFiltrosMantenimiento.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 8, 3));
+
         lblBuscarMantenimiento.setText("Buscar:");
         panelFiltrosMantenimiento.add(lblBuscarMantenimiento);
+
         txtBuscarMantenimiento.setColumns(20);
         panelFiltrosMantenimiento.add(txtBuscarMantenimiento);
+
         lblFiltroEstadoMantenimiento.setText("Estado:");
         panelFiltrosMantenimiento.add(lblFiltroEstadoMantenimiento);
         panelFiltrosMantenimiento.add(cmbEstadoMantenimiento);
+
         btnBuscarMantenimiento.setText("ACTUALIZAR");
         panelFiltrosMantenimiento.add(btnBuscarMantenimiento);
+
         panelMantenimientoSuperior.add(panelFiltrosMantenimiento, java.awt.BorderLayout.SOUTH);
+
         panelMantenimientos.add(panelMantenimientoSuperior, java.awt.BorderLayout.NORTH);
+
         scrollMantenimientos.setViewportView(tablaMantenimientos);
+
         panelMantenimientos.add(scrollMantenimientos, java.awt.BorderLayout.CENTER);
+
         panelAccionesMantenimiento.setOpaque(false);
         panelAccionesMantenimiento.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 8, 3));
+
         btnEditar.setText("EDITAR");
         panelAccionesMantenimiento.add(btnEditar);
+
         btnFinalizar.setText("FINALIZAR");
         panelAccionesMantenimiento.add(btnFinalizar);
+
         btnCancelar.setText("CANCELAR");
         panelAccionesMantenimiento.add(btnCancelar);
+
         panelMantenimientos.add(panelAccionesMantenimiento, java.awt.BorderLayout.SOUTH);
+
         tabsControl.addTab("MANTENIMIENTOS", panelMantenimientos);
+
         getContentPane().add(tabsControl, java.awt.BorderLayout.CENTER);
 
         lblEstadoCarga.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 12, 6, 12));
         lblEstadoCarga.setText(" ");
         getContentPane().add(lblEstadoCarga, java.awt.BorderLayout.SOUTH);
-        setSize(1160, 760);
-    }
-    // </editor-fold>//GEN-END:initComponents
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
 
     private void configurarVista() {
         for (String estado : GestionControlReportesController.ESTADOS_MAQUINARIA) {
@@ -875,9 +926,9 @@ public class Control_y_reportes extends JInternalFrame {
     private javax.swing.JScrollPane scrollDiagnostico;
     private javax.swing.JScrollPane scrollEstado;
     private javax.swing.JScrollPane scrollMantenimientos;
-    private javax.swing.JTabbedPane tabsControl;
     private javax.swing.JTable tablaEstado;
     private javax.swing.JTable tablaMantenimientos;
+    private javax.swing.JTabbedPane tabsControl;
     private javax.swing.JTextField txtBuscarEstado;
     private javax.swing.JTextField txtBuscarMantenimiento;
     private javax.swing.JTextField txtCosto;

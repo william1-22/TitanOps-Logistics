@@ -69,6 +69,7 @@ public class Certifiaciones extends JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
         panelSuperior = new javax.swing.JPanel();
         panelFormulario = new javax.swing.JPanel();
         lblOperador = new javax.swing.JLabel();
@@ -83,7 +84,6 @@ public class Certifiaciones extends JPanel {
         fechaVencimiento = new com.toedter.calendar.JDateChooser();
         panelAccionesCreacion = new javax.swing.JPanel();
         btnGuardar = new javax.swing.JButton();
-        btnLimpiar = new javax.swing.JButton();
         lblRelleno = new javax.swing.JLabel();
         panelFiltros = new javax.swing.JPanel();
         lblBuscar = new javax.swing.JLabel();
@@ -92,6 +92,7 @@ public class Certifiaciones extends JPanel {
         cmbVigencia = new javax.swing.JComboBox<>();
         btnBuscar = new javax.swing.JButton();
         lblEstado = new javax.swing.JLabel();
+        btnLimpiar = new javax.swing.JButton();
         scrollTabla = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
         panelAccionesTabla = new javax.swing.JPanel();
@@ -108,59 +109,80 @@ public class Certifiaciones extends JPanel {
 
         panelFormulario.setOpaque(false);
         panelFormulario.setLayout(new java.awt.GridLayout(3, 4, 10, 8));
+
         lblOperador.setText("Operador:");
         panelFormulario.add(lblOperador);
         panelFormulario.add(cmbOperador);
+
         lblCategoria.setText("Categoría:");
         panelFormulario.add(lblCategoria);
         panelFormulario.add(cmbCategoria);
+
         lblNumero.setText("N.º acreditación:");
         panelFormulario.add(lblNumero);
+
         txtNumero.setColumns(18);
         panelFormulario.add(txtNumero);
+
         lblExpedicion.setText("Expedición:");
         panelFormulario.add(lblExpedicion);
         panelFormulario.add(fechaExpedicion);
+
         lblVencimiento.setText("Vencimiento:");
         panelFormulario.add(lblVencimiento);
         panelFormulario.add(fechaVencimiento);
+
         panelAccionesCreacion.setOpaque(false);
+
         btnGuardar.setText("GUARDAR CERTIFICACIÓN");
         panelAccionesCreacion.add(btnGuardar);
-        btnLimpiar.setText("LIMPIAR");
-        panelAccionesCreacion.add(btnLimpiar);
+
         panelFormulario.add(panelAccionesCreacion);
         panelFormulario.add(lblRelleno);
+
         panelSuperior.add(panelFormulario, java.awt.BorderLayout.CENTER);
 
         panelFiltros.setOpaque(false);
         panelFiltros.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 8, 4));
+
         lblBuscar.setText("Buscar:");
         panelFiltros.add(lblBuscar);
+
         txtBuscar.setColumns(22);
         panelFiltros.add(txtBuscar);
+
         lblVigencia.setText("Vigencia:");
         panelFiltros.add(lblVigencia);
         panelFiltros.add(cmbVigencia);
+
         btnBuscar.setText("BUSCAR");
         panelFiltros.add(btnBuscar);
+
         lblEstado.setText(" ");
         panelFiltros.add(lblEstado);
+
+        btnLimpiar.setText("LIMPIAR");
+        panelFiltros.add(btnLimpiar);
+
         panelSuperior.add(panelFiltros, java.awt.BorderLayout.SOUTH);
+
         add(panelSuperior, java.awt.BorderLayout.NORTH);
 
         scrollTabla.setViewportView(tabla);
+
         add(scrollTabla, java.awt.BorderLayout.CENTER);
 
         panelAccionesTabla.setOpaque(false);
         panelAccionesTabla.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 10, 4));
+
         btnEditar.setText("EDITAR");
         panelAccionesTabla.add(btnEditar);
+
         btnEliminar.setText("ELIMINAR");
         panelAccionesTabla.add(btnEliminar);
+
         add(panelAccionesTabla, java.awt.BorderLayout.SOUTH);
-    }
-    // </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>//GEN-END:initComponents
 
     private void configurarVista() {
 

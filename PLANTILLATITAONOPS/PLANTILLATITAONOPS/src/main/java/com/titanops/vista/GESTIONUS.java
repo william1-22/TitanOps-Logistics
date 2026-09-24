@@ -100,29 +100,40 @@ public class GESTIONUS extends javax.swing.JInternalFrame {
         jTable1.setBackground(new java.awt.Color(168, 171, 143));
         jTable1.setForeground(new java.awt.Color(0, 0, 0));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {},
+            new Object [][] {
+
+            },
             new String [] {
                 "ID", "Nombre completo", "Usuario", "Rol", "Estado", "Fecha de creación"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 
         GUARDARUS.setBackground(new java.awt.Color(93, 36, 23));
-        GUARDARUS.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
+        GUARDARUS.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         GUARDARUS.setForeground(new java.awt.Color(255, 255, 255));
         GUARDARUS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/multimedia/ELIMINARPEQUEÑO.png"))); // NOI18N
         GUARDARUS.setText("DESACTIVAR");
         GUARDARUS.setBorder(null);
 
         GUARDARUS1.setBackground(new java.awt.Color(93, 36, 23));
-        GUARDARUS1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
+        GUARDARUS1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         GUARDARUS1.setForeground(new java.awt.Color(255, 255, 255));
         GUARDARUS1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/multimedia/NUEVOPEQUEÑO.png"))); // NOI18N
         GUARDARUS1.setText("CREAR");
         GUARDARUS1.setBorder(null);
 
         GUARDARUS2.setBackground(new java.awt.Color(93, 36, 23));
-        GUARDARUS2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
+        GUARDARUS2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         GUARDARUS2.setForeground(new java.awt.Color(255, 255, 255));
         GUARDARUS2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/multimedia/EDITARPEQUEÑO.png"))); // NOI18N
         GUARDARUS2.setText("EDITAR");

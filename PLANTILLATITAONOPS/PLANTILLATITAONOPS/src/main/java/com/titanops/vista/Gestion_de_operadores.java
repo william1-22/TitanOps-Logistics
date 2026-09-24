@@ -52,7 +52,7 @@ public class Gestion_de_operadores extends javax.swing.JInternalFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(289, 289, 289)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -75,14 +75,14 @@ public class Gestion_de_operadores extends javax.swing.JInternalFrame {
         );
 
         btn_operario.setBackground(new java.awt.Color(93, 36, 23));
-        btn_operario.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        btn_operario.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btn_operario.setForeground(new java.awt.Color(255, 255, 255));
         btn_operario.setText("OPERARIO");
         btn_operario.setBorder(null);
         btn_operario.addActionListener(this::btn_operarioActionPerformed);
 
         btn_operario1.setBackground(new java.awt.Color(93, 36, 23));
-        btn_operario1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        btn_operario1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btn_operario1.setForeground(new java.awt.Color(255, 255, 255));
         btn_operario1.setText("CERTIFICACIONES");
         btn_operario1.setBorder(null);
@@ -114,7 +114,7 @@ public class Gestion_de_operadores extends javax.swing.JInternalFrame {
                     .addComponent(btn_operario1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(panelVista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(357, Short.MAX_VALUE))
+                .addContainerGap(153, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -127,7 +127,7 @@ public class Gestion_de_operadores extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 12, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
