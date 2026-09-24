@@ -35,13 +35,6 @@ public class panelEditar extends JPanel {
     private static final Color COLOR_ACCION = new Color(93, 36, 23);
 
     private final GestionRutasController controller;
-    private final JTextField txtBuscar = new JTextField(28);
-    private final JComboBox<String> cmbEstado = new JComboBox<>();
-    private final JButton btnBuscar = crearBoton("BUSCAR");
-    private final JButton btnEditar = crearBoton("EDITAR");
-    private final JButton btnCancelar = crearBoton("CANCELAR RUTA");
-    private final JLabel lblEstado = new JLabel(" ");
-    private final JTable tabla = new JTable();
     private boolean cargando;
 
     public panelEditar() {
@@ -50,29 +43,66 @@ public class panelEditar extends JPanel {
 
     panelEditar(GestionRutasController controller) {
         this.controller = controller;
-        construirVista();
+        initComponents();
+        configurarVista();
         configurarEventos();
         recargarRutas();
     }
 
-    private void construirVista() {
-        setLayout(new BorderLayout(8, 8));
-        setBackground(COLOR_FONDO);
-        setBorder(BorderFactory.createEmptyBorder(18, 22, 18, 22));
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+        panelFiltros = new javax.swing.JPanel();
+        lblBuscar = new javax.swing.JLabel();
+        txtBuscar = new javax.swing.JTextField();
+        lblFiltroEstado = new javax.swing.JLabel();
+        cmbEstado = new javax.swing.JComboBox<>();
+        btnBuscar = new javax.swing.JButton();
+        lblEstado = new javax.swing.JLabel();
+        scrollTabla = new javax.swing.JScrollPane();
+        tabla = new javax.swing.JTable();
+        panelAcciones = new javax.swing.JPanel();
+        btnEditar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(134, 137, 93));
+        setBorder(javax.swing.BorderFactory.createEmptyBorder(18, 22, 18, 22));
+        setPreferredSize(new java.awt.Dimension(1120, 700));
+        setLayout(new java.awt.BorderLayout(8, 8));
+
+        panelFiltros.setOpaque(false);
+        panelFiltros.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 8, 5));
+        lblBuscar.setText("Buscar:");
+        panelFiltros.add(lblBuscar);
+        txtBuscar.setColumns(28);
+        panelFiltros.add(txtBuscar);
+        lblFiltroEstado.setText("Estado:");
+        panelFiltros.add(lblFiltroEstado);
+        panelFiltros.add(cmbEstado);
+        btnBuscar.setText("BUSCAR");
+        panelFiltros.add(btnBuscar);
+        lblEstado.setText(" ");
+        panelFiltros.add(lblEstado);
+        add(panelFiltros, java.awt.BorderLayout.NORTH);
+
+        scrollTabla.setViewportView(tabla);
+        add(scrollTabla, java.awt.BorderLayout.CENTER);
+
+        panelAcciones.setOpaque(false);
+        panelAcciones.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 10, 5));
+        btnEditar.setText("EDITAR");
+        panelAcciones.add(btnEditar);
+        btnCancelar.setText("CANCELAR RUTA");
+        panelAcciones.add(btnCancelar);
+        add(panelAcciones, java.awt.BorderLayout.SOUTH);
+    }
+    // </editor-fold>//GEN-END:initComponents
+
+    private void configurarVista() {
         cmbEstado.addItem("TODOS");
         for (String estado : GestionRutasController.ESTADOS) {
             cmbEstado.addItem(estado);
         }
-        JPanel filtros = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 5));
-        filtros.setOpaque(false);
-        filtros.add(new JLabel("Buscar:"));
-        filtros.add(txtBuscar);
-        filtros.add(new JLabel("Estado:"));
-        filtros.add(cmbEstado);
-        filtros.add(btnBuscar);
-        filtros.add(lblEstado);
-        add(filtros, BorderLayout.NORTH);
 
         tabla.setModel(new DefaultTableModel(
                 new Object[]{"ID", "PROYECTO", "ORIGEN", "DESTINO", "KM", "ESTADO"}, 0) {
@@ -83,13 +113,9 @@ public class panelEditar extends JPanel {
         });
         tabla.setAutoCreateRowSorter(true);
         tabla.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        add(new JScrollPane(tabla), BorderLayout.CENTER);
-
-        JPanel acciones = new JPanel(new FlowLayout(FlowLayout.RIGHT, 10, 5));
-        acciones.setOpaque(false);
-        acciones.add(btnEditar);
-        acciones.add(btnCancelar);
-        add(acciones, BorderLayout.SOUTH);
+        configurarBoton(btnBuscar);
+        configurarBoton(btnEditar);
+        configurarBoton(btnCancelar);
         actualizarBotonesSeleccion();
     }
 
@@ -315,13 +341,11 @@ public class panelEditar extends JPanel {
         return constraints;
     }
 
-    private static JButton crearBoton(String texto) {
-        JButton boton = new JButton(texto);
+    private static void configurarBoton(JButton boton) {
         boton.setBackground(COLOR_ACCION);
         boton.setForeground(Color.WHITE);
         boton.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 14));
         boton.setBorder(BorderFactory.createEmptyBorder(8, 14, 8, 14));
-        return boton;
     }
 
     private String decimalVisible(BigDecimal valor) {
@@ -337,4 +361,19 @@ public class panelEditar extends JPanel {
         JOptionPane.showMessageDialog(this, mensaje, "Rutas",
                 JOptionPane.ERROR_MESSAGE);
     }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JComboBox<String> cmbEstado;
+    private javax.swing.JLabel lblBuscar;
+    private javax.swing.JLabel lblEstado;
+    private javax.swing.JLabel lblFiltroEstado;
+    private javax.swing.JPanel panelAcciones;
+    private javax.swing.JPanel panelFiltros;
+    private javax.swing.JScrollPane scrollTabla;
+    private javax.swing.JTable tabla;
+    private javax.swing.JTextField txtBuscar;
+    // End of variables declaration//GEN-END:variables
 }

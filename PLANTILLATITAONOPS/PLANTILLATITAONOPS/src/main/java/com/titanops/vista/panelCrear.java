@@ -6,11 +6,7 @@ import com.titanops.controlador.GestionRutasController.RutaFila;
 import com.titanops.dao.RutaDestinoDAO;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -32,16 +28,6 @@ public class panelCrear extends JPanel {
     private static final Color COLOR_ACCION = new Color(93, 36, 23);
 
     private final GestionRutasController controller;
-    private final JTextField txtProyecto = new JTextField(24);
-    private final JTextField txtOrigen = new JTextField(24);
-    private final JTextField txtDestino = new JTextField(24);
-    private final JTextField txtDistancia = new JTextField(12);
-    private final JTextField txtBuscar = new JTextField(28);
-    private final JButton btnGuardar = crearBoton("GUARDAR RUTA");
-    private final JButton btnLimpiar = crearBoton("LIMPIAR");
-    private final JButton btnBuscar = crearBoton("BUSCAR");
-    private final JLabel lblEstado = new JLabel(" ");
-    private final JTable tabla = new JTable();
     private boolean cargando;
 
     public panelCrear() {
@@ -50,45 +36,94 @@ public class panelCrear extends JPanel {
 
     panelCrear(GestionRutasController controller) {
         this.controller = controller;
-        construirVista();
+        initComponents();
+        configurarVista();
         configurarEventos();
         recargarRutas();
     }
 
-    private void construirVista() {
-        setLayout(new BorderLayout(8, 8));
-        setBackground(COLOR_FONDO);
-        setBorder(BorderFactory.createEmptyBorder(18, 22, 18, 22));
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+        panelSuperior = new javax.swing.JPanel();
+        panelCaptura = new javax.swing.JPanel();
+        panelFormulario = new javax.swing.JPanel();
+        lblProyecto = new javax.swing.JLabel();
+        txtProyecto = new javax.swing.JTextField();
+        lblDistancia = new javax.swing.JLabel();
+        txtDistancia = new javax.swing.JTextField();
+        lblOrigen = new javax.swing.JLabel();
+        txtOrigen = new javax.swing.JTextField();
+        lblDestino = new javax.swing.JLabel();
+        txtDestino = new javax.swing.JTextField();
+        panelAcciones = new javax.swing.JPanel();
+        btnGuardar = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
+        panelBusqueda = new javax.swing.JPanel();
+        lblBuscar = new javax.swing.JLabel();
+        txtBuscar = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
+        lblEstado = new javax.swing.JLabel();
+        scrollTabla = new javax.swing.JScrollPane();
+        tabla = new javax.swing.JTable();
 
-        JPanel formulario = new JPanel(new GridBagLayout());
-        formulario.setOpaque(false);
-        agregarCampo(formulario, 0, 0, "Proyecto", txtProyecto);
-        agregarCampo(formulario, 2, 0, "Distancia (km)", txtDistancia);
-        agregarCampo(formulario, 0, 1, "Origen", txtOrigen);
-        agregarCampo(formulario, 2, 1, "Destino", txtDestino);
+        setBackground(new java.awt.Color(134, 137, 93));
+        setBorder(javax.swing.BorderFactory.createEmptyBorder(18, 22, 18, 22));
+        setPreferredSize(new java.awt.Dimension(1120, 700));
+        setLayout(new java.awt.BorderLayout(8, 8));
 
-        JPanel acciones = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 8));
-        acciones.setOpaque(false);
-        acciones.add(btnGuardar);
-        acciones.add(btnLimpiar);
-        GridBagConstraints accionesConstraint = restricciones(0, 2);
-        accionesConstraint.gridwidth = 4;
-        accionesConstraint.fill = GridBagConstraints.HORIZONTAL;
-        formulario.add(acciones, accionesConstraint);
+        panelSuperior.setOpaque(false);
+        panelSuperior.setLayout(new java.awt.BorderLayout(0, 6));
+        panelCaptura.setOpaque(false);
+        panelCaptura.setLayout(new java.awt.BorderLayout());
+        panelFormulario.setOpaque(false);
+        panelFormulario.setLayout(new java.awt.GridLayout(2, 4, 10, 8));
+        lblProyecto.setText("Proyecto:");
+        panelFormulario.add(lblProyecto);
+        txtProyecto.setColumns(24);
+        panelFormulario.add(txtProyecto);
+        lblDistancia.setText("Distancia (km):");
+        panelFormulario.add(lblDistancia);
+        txtDistancia.setColumns(12);
+        panelFormulario.add(txtDistancia);
+        lblOrigen.setText("Origen:");
+        panelFormulario.add(lblOrigen);
+        txtOrigen.setColumns(24);
+        panelFormulario.add(txtOrigen);
+        lblDestino.setText("Destino:");
+        panelFormulario.add(lblDestino);
+        txtDestino.setColumns(24);
+        panelFormulario.add(txtDestino);
+        panelCaptura.add(panelFormulario, java.awt.BorderLayout.CENTER);
 
-        JPanel busqueda = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 4));
-        busqueda.setOpaque(false);
-        busqueda.add(new JLabel("Buscar:"));
-        busqueda.add(txtBuscar);
-        busqueda.add(btnBuscar);
-        busqueda.add(lblEstado);
+        panelAcciones.setOpaque(false);
+        panelAcciones.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 8));
+        btnGuardar.setText("GUARDAR RUTA");
+        panelAcciones.add(btnGuardar);
+        btnLimpiar.setText("LIMPIAR");
+        panelAcciones.add(btnLimpiar);
+        panelCaptura.add(panelAcciones, java.awt.BorderLayout.SOUTH);
+        panelSuperior.add(panelCaptura, java.awt.BorderLayout.CENTER);
 
-        JPanel superior = new JPanel(new BorderLayout());
-        superior.setOpaque(false);
-        superior.add(formulario, BorderLayout.CENTER);
-        superior.add(busqueda, BorderLayout.SOUTH);
-        add(superior, BorderLayout.NORTH);
+        panelBusqueda.setOpaque(false);
+        panelBusqueda.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 8, 4));
+        lblBuscar.setText("Buscar:");
+        panelBusqueda.add(lblBuscar);
+        txtBuscar.setColumns(28);
+        panelBusqueda.add(txtBuscar);
+        btnBuscar.setText("BUSCAR");
+        panelBusqueda.add(btnBuscar);
+        lblEstado.setText(" ");
+        panelBusqueda.add(lblEstado);
+        panelSuperior.add(panelBusqueda, java.awt.BorderLayout.SOUTH);
+        add(panelSuperior, java.awt.BorderLayout.NORTH);
 
+        scrollTabla.setViewportView(tabla);
+        add(scrollTabla, java.awt.BorderLayout.CENTER);
+    }
+    // </editor-fold>//GEN-END:initComponents
+
+    private void configurarVista() {
         tabla.setModel(new DefaultTableModel(
                 new Object[]{"ID", "PROYECTO", "ORIGEN", "DESTINO", "KM", "ESTADO"}, 0) {
             @Override
@@ -98,7 +133,9 @@ public class panelCrear extends JPanel {
         });
         tabla.setAutoCreateRowSorter(true);
         tabla.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        add(new JScrollPane(tabla), BorderLayout.CENTER);
+        configurarBoton(btnGuardar);
+        configurarBoton(btnLimpiar);
+        configurarBoton(btnBuscar);
     }
 
     private void configurarEventos() {
@@ -207,32 +244,11 @@ public class panelCrear extends JPanel {
         txtProyecto.requestFocusInWindow();
     }
 
-    private void agregarCampo(JPanel panel, int columna, int fila, String etiqueta,
-                              java.awt.Component componente) {
-        GridBagConstraints label = restricciones(columna, fila);
-        label.anchor = GridBagConstraints.LINE_END;
-        panel.add(new JLabel(etiqueta + ":"), label);
-        GridBagConstraints campo = restricciones(columna + 1, fila);
-        campo.fill = GridBagConstraints.HORIZONTAL;
-        campo.weightx = 1.0;
-        panel.add(componente, campo);
-    }
-
-    private GridBagConstraints restricciones(int columna, int fila) {
-        GridBagConstraints constraints = new GridBagConstraints();
-        constraints.gridx = columna;
-        constraints.gridy = fila;
-        constraints.insets = new Insets(5, 6, 5, 6);
-        return constraints;
-    }
-
-    private static JButton crearBoton(String texto) {
-        JButton boton = new JButton(texto);
+    private static void configurarBoton(JButton boton) {
         boton.setBackground(COLOR_ACCION);
         boton.setForeground(Color.WHITE);
         boton.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 14));
         boton.setBorder(BorderFactory.createEmptyBorder(8, 14, 8, 14));
-        return boton;
     }
 
     private String decimalVisible(BigDecimal valor) {
@@ -248,4 +264,28 @@ public class panelCrear extends JPanel {
         JOptionPane.showMessageDialog(this, mensaje, "Rutas",
                 JOptionPane.ERROR_MESSAGE);
     }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnLimpiar;
+    private javax.swing.JLabel lblBuscar;
+    private javax.swing.JLabel lblDestino;
+    private javax.swing.JLabel lblDistancia;
+    private javax.swing.JLabel lblEstado;
+    private javax.swing.JLabel lblOrigen;
+    private javax.swing.JLabel lblProyecto;
+    private javax.swing.JPanel panelAcciones;
+    private javax.swing.JPanel panelBusqueda;
+    private javax.swing.JPanel panelCaptura;
+    private javax.swing.JPanel panelFormulario;
+    private javax.swing.JPanel panelSuperior;
+    private javax.swing.JScrollPane scrollTabla;
+    private javax.swing.JTable tabla;
+    private javax.swing.JTextField txtBuscar;
+    private javax.swing.JTextField txtDestino;
+    private javax.swing.JTextField txtDistancia;
+    private javax.swing.JTextField txtOrigen;
+    private javax.swing.JTextField txtProyecto;
+    // End of variables declaration//GEN-END:variables
 }

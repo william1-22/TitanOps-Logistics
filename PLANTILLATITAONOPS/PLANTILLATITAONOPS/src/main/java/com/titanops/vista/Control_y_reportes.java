@@ -54,33 +54,6 @@ public class Control_y_reportes extends JInternalFrame {
     private final JDesktopPane desktop;
     private final Integer idUsuarioSesion;
     private final GestionControlReportesController controller;
-
-    private final JTextField txtBuscarEstado = new JTextField(22);
-    private final JComboBox<String> cmbEstadoMaquinaria = new JComboBox<>();
-    private final JButton btnBuscarEstado = crearBoton("ACTUALIZAR");
-    private final JButton btnExportar = crearBoton("EXPORTAR");
-    private final JTable tablaEstado = new JTable();
-    private final JLabel lblDisponibles = crearIndicador("Disponibles: 0");
-    private final JLabel lblEnRuta = crearIndicador("En ruta: 0");
-    private final JLabel lblMantenimiento = crearIndicador("Mantenimiento: 0");
-    private final JLabel lblInactivas = crearIndicador("Inactivas: 0");
-
-    private final JComboBox<MaquinariaOpcion> cmbMaquinaria = new JComboBox<>();
-    private final JComboBox<String> cmbTipo = new JComboBox<>();
-    private final JDateChooser fechaSalidaEstimada = new JDateChooser();
-    private final JTextArea txtDiagnostico = new JTextArea(3, 28);
-    private final JTextField txtCosto = new JTextField(12);
-    private final JTextField txtTaller = new JTextField(22);
-    private final JButton btnIniciar = crearBoton("INICIAR MANTENIMIENTO");
-    private final JButton btnLimpiar = crearBoton("LIMPIAR");
-    private final JTextField txtBuscarMantenimiento = new JTextField(20);
-    private final JComboBox<String> cmbEstadoMantenimiento = new JComboBox<>();
-    private final JButton btnBuscarMantenimiento = crearBoton("ACTUALIZAR");
-    private final JButton btnEditar = crearBoton("EDITAR");
-    private final JButton btnFinalizar = crearBoton("FINALIZAR");
-    private final JButton btnCancelar = crearBoton("CANCELAR");
-    private final JTable tablaMantenimientos = new JTable();
-    private final JLabel lblEstadoCarga = new JLabel(" ");
     private boolean cargando;
 
     public Control_y_reportes() {
@@ -102,67 +75,202 @@ public class Control_y_reportes extends JInternalFrame {
         this.desktop = desktop;
         this.idUsuarioSesion = idUsuarioSesion;
         this.controller = controller;
-        construirVista();
+        initComponents();
+        configurarVista();
         configurarEventos();
         cargarTodo();
     }
 
-    private void construirVista() {
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+        lblTitulo = new javax.swing.JLabel();
+        tabsControl = new javax.swing.JTabbedPane();
+        panelEstado = new javax.swing.JPanel();
+        panelEstadoSuperior = new javax.swing.JPanel();
+        panelFiltrosEstado = new javax.swing.JPanel();
+        lblBuscarEstado = new javax.swing.JLabel();
+        txtBuscarEstado = new javax.swing.JTextField();
+        lblFiltroEstadoMaquinaria = new javax.swing.JLabel();
+        cmbEstadoMaquinaria = new javax.swing.JComboBox<>();
+        btnBuscarEstado = new javax.swing.JButton();
+        btnExportar = new javax.swing.JButton();
+        panelResumen = new javax.swing.JPanel();
+        lblDisponibles = new javax.swing.JLabel();
+        lblEnRuta = new javax.swing.JLabel();
+        lblMantenimiento = new javax.swing.JLabel();
+        lblInactivas = new javax.swing.JLabel();
+        scrollEstado = new javax.swing.JScrollPane();
+        tablaEstado = new javax.swing.JTable();
+        panelMantenimientos = new javax.swing.JPanel();
+        panelMantenimientoSuperior = new javax.swing.JPanel();
+        panelFormularioMantenimiento = new javax.swing.JPanel();
+        lblMaquinaria = new javax.swing.JLabel();
+        cmbMaquinaria = new javax.swing.JComboBox<>();
+        lblTipo = new javax.swing.JLabel();
+        cmbTipo = new javax.swing.JComboBox<>();
+        lblSalidaEstimada = new javax.swing.JLabel();
+        fechaSalidaEstimada = new com.toedter.calendar.JDateChooser();
+        lblCosto = new javax.swing.JLabel();
+        txtCosto = new javax.swing.JTextField();
+        lblTaller = new javax.swing.JLabel();
+        txtTaller = new javax.swing.JTextField();
+        lblDiagnostico = new javax.swing.JLabel();
+        scrollDiagnostico = new javax.swing.JScrollPane();
+        txtDiagnostico = new javax.swing.JTextArea();
+        panelAccionesCreacion = new javax.swing.JPanel();
+        btnIniciar = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
+        lblRelleno1 = new javax.swing.JLabel();
+        lblRelleno2 = new javax.swing.JLabel();
+        lblRelleno3 = new javax.swing.JLabel();
+        panelFiltrosMantenimiento = new javax.swing.JPanel();
+        lblBuscarMantenimiento = new javax.swing.JLabel();
+        txtBuscarMantenimiento = new javax.swing.JTextField();
+        lblFiltroEstadoMantenimiento = new javax.swing.JLabel();
+        cmbEstadoMantenimiento = new javax.swing.JComboBox<>();
+        btnBuscarMantenimiento = new javax.swing.JButton();
+        scrollMantenimientos = new javax.swing.JScrollPane();
+        tablaMantenimientos = new javax.swing.JTable();
+        panelAccionesMantenimiento = new javax.swing.JPanel();
+        btnEditar = new javax.swing.JButton();
+        btnFinalizar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        lblEstadoCarga = new javax.swing.JLabel();
+
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
         setTitle("Control operativo y reportes");
-        getContentPane().setLayout(new BorderLayout());
+        setPreferredSize(new java.awt.Dimension(1160, 760));
+        getContentPane().setLayout(new java.awt.BorderLayout());
 
-        JLabel titulo = new JLabel("CONTROL OPERATIVO", JLabel.CENTER);
-        titulo.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 34));
-        titulo.setForeground(Color.BLACK);
-        titulo.setOpaque(true);
-        titulo.setBackground(COLOR_CABECERA);
-        titulo.setBorder(BorderFactory.createEmptyBorder(18, 8, 18, 8));
-        add(titulo, BorderLayout.NORTH);
+        lblTitulo.setBackground(new java.awt.Color(84, 88, 47));
+        lblTitulo.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 34));
+        lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitulo.setText("CONTROL OPERATIVO");
+        lblTitulo.setBorder(javax.swing.BorderFactory.createEmptyBorder(18, 8, 18, 8));
+        lblTitulo.setOpaque(true);
+        getContentPane().add(lblTitulo, java.awt.BorderLayout.NORTH);
 
-        JTabbedPane tabs = new JTabbedPane();
-        tabs.addTab("ESTADO DE MAQUINARIA", construirPanelEstado());
-        tabs.addTab("MANTENIMIENTOS", construirPanelMantenimientos());
-        add(tabs, BorderLayout.CENTER);
+        panelEstado.setBackground(new java.awt.Color(134, 137, 93));
+        panelEstado.setBorder(javax.swing.BorderFactory.createEmptyBorder(12, 14, 12, 14));
+        panelEstado.setLayout(new java.awt.BorderLayout(8, 8));
+        panelEstadoSuperior.setOpaque(false);
+        panelEstadoSuperior.setLayout(new java.awt.BorderLayout(0, 6));
+        panelFiltrosEstado.setOpaque(false);
+        panelFiltrosEstado.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 8, 5));
+        lblBuscarEstado.setText("Buscar:");
+        panelFiltrosEstado.add(lblBuscarEstado);
+        txtBuscarEstado.setColumns(22);
+        panelFiltrosEstado.add(txtBuscarEstado);
+        lblFiltroEstadoMaquinaria.setText("Estado:");
+        panelFiltrosEstado.add(lblFiltroEstadoMaquinaria);
+        panelFiltrosEstado.add(cmbEstadoMaquinaria);
+        btnBuscarEstado.setText("ACTUALIZAR");
+        panelFiltrosEstado.add(btnBuscarEstado);
+        btnExportar.setText("EXPORTAR");
+        panelFiltrosEstado.add(btnExportar);
+        panelEstadoSuperior.add(panelFiltrosEstado, java.awt.BorderLayout.NORTH);
+        panelResumen.setOpaque(false);
+        panelResumen.setLayout(new java.awt.GridLayout(1, 4, 8, 4));
+        lblDisponibles.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDisponibles.setText("Disponibles: 0");
+        panelResumen.add(lblDisponibles);
+        lblEnRuta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblEnRuta.setText("En ruta: 0");
+        panelResumen.add(lblEnRuta);
+        lblMantenimiento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMantenimiento.setText("Mantenimiento: 0");
+        panelResumen.add(lblMantenimiento);
+        lblInactivas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblInactivas.setText("Inactivas: 0");
+        panelResumen.add(lblInactivas);
+        panelEstadoSuperior.add(panelResumen, java.awt.BorderLayout.SOUTH);
+        panelEstado.add(panelEstadoSuperior, java.awt.BorderLayout.NORTH);
+        scrollEstado.setViewportView(tablaEstado);
+        panelEstado.add(scrollEstado, java.awt.BorderLayout.CENTER);
+        tabsControl.addTab("ESTADO DE MAQUINARIA", panelEstado);
 
-        lblEstadoCarga.setBorder(BorderFactory.createEmptyBorder(4, 12, 6, 12));
-        add(lblEstadoCarga, BorderLayout.SOUTH);
+        panelMantenimientos.setBackground(new java.awt.Color(134, 137, 93));
+        panelMantenimientos.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 14, 10, 14));
+        panelMantenimientos.setLayout(new java.awt.BorderLayout(8, 8));
+        panelMantenimientoSuperior.setOpaque(false);
+        panelMantenimientoSuperior.setLayout(new java.awt.BorderLayout(0, 6));
+        panelFormularioMantenimiento.setOpaque(false);
+        panelFormularioMantenimiento.setLayout(new java.awt.GridLayout(4, 4, 10, 6));
+        lblMaquinaria.setText("Maquinaria:");
+        panelFormularioMantenimiento.add(lblMaquinaria);
+        panelFormularioMantenimiento.add(cmbMaquinaria);
+        lblTipo.setText("Tipo:");
+        panelFormularioMantenimiento.add(lblTipo);
+        panelFormularioMantenimiento.add(cmbTipo);
+        lblSalidaEstimada.setText("Salida estimada:");
+        panelFormularioMantenimiento.add(lblSalidaEstimada);
+        panelFormularioMantenimiento.add(fechaSalidaEstimada);
+        lblCosto.setText("Costo:");
+        panelFormularioMantenimiento.add(lblCosto);
+        txtCosto.setColumns(12);
+        panelFormularioMantenimiento.add(txtCosto);
+        lblTaller.setText("Taller:");
+        panelFormularioMantenimiento.add(lblTaller);
+        txtTaller.setColumns(22);
+        panelFormularioMantenimiento.add(txtTaller);
+        lblDiagnostico.setText("Diagnóstico:");
+        panelFormularioMantenimiento.add(lblDiagnostico);
+        txtDiagnostico.setColumns(28);
+        txtDiagnostico.setRows(3);
+        scrollDiagnostico.setViewportView(txtDiagnostico);
+        panelFormularioMantenimiento.add(scrollDiagnostico);
+        panelAccionesCreacion.setOpaque(false);
+        btnIniciar.setText("INICIAR MANTENIMIENTO");
+        panelAccionesCreacion.add(btnIniciar);
+        btnLimpiar.setText("LIMPIAR");
+        panelAccionesCreacion.add(btnLimpiar);
+        panelFormularioMantenimiento.add(panelAccionesCreacion);
+        panelFormularioMantenimiento.add(lblRelleno1);
+        panelFormularioMantenimiento.add(lblRelleno2);
+        panelFormularioMantenimiento.add(lblRelleno3);
+        panelMantenimientoSuperior.add(panelFormularioMantenimiento, java.awt.BorderLayout.CENTER);
+        panelFiltrosMantenimiento.setOpaque(false);
+        panelFiltrosMantenimiento.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 8, 3));
+        lblBuscarMantenimiento.setText("Buscar:");
+        panelFiltrosMantenimiento.add(lblBuscarMantenimiento);
+        txtBuscarMantenimiento.setColumns(20);
+        panelFiltrosMantenimiento.add(txtBuscarMantenimiento);
+        lblFiltroEstadoMantenimiento.setText("Estado:");
+        panelFiltrosMantenimiento.add(lblFiltroEstadoMantenimiento);
+        panelFiltrosMantenimiento.add(cmbEstadoMantenimiento);
+        btnBuscarMantenimiento.setText("ACTUALIZAR");
+        panelFiltrosMantenimiento.add(btnBuscarMantenimiento);
+        panelMantenimientoSuperior.add(panelFiltrosMantenimiento, java.awt.BorderLayout.SOUTH);
+        panelMantenimientos.add(panelMantenimientoSuperior, java.awt.BorderLayout.NORTH);
+        scrollMantenimientos.setViewportView(tablaMantenimientos);
+        panelMantenimientos.add(scrollMantenimientos, java.awt.BorderLayout.CENTER);
+        panelAccionesMantenimiento.setOpaque(false);
+        panelAccionesMantenimiento.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 8, 3));
+        btnEditar.setText("EDITAR");
+        panelAccionesMantenimiento.add(btnEditar);
+        btnFinalizar.setText("FINALIZAR");
+        panelAccionesMantenimiento.add(btnFinalizar);
+        btnCancelar.setText("CANCELAR");
+        panelAccionesMantenimiento.add(btnCancelar);
+        panelMantenimientos.add(panelAccionesMantenimiento, java.awt.BorderLayout.SOUTH);
+        tabsControl.addTab("MANTENIMIENTOS", panelMantenimientos);
+        getContentPane().add(tabsControl, java.awt.BorderLayout.CENTER);
+
+        lblEstadoCarga.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 12, 6, 12));
+        lblEstadoCarga.setText(" ");
+        getContentPane().add(lblEstadoCarga, java.awt.BorderLayout.SOUTH);
         setSize(1160, 760);
     }
+    // </editor-fold>//GEN-END:initComponents
 
-    private JPanel construirPanelEstado() {
-        JPanel panel = new JPanel(new BorderLayout(8, 8));
-        panel.setBackground(COLOR_FONDO);
-        panel.setBorder(BorderFactory.createEmptyBorder(12, 14, 12, 14));
-
+    private void configurarVista() {
         for (String estado : GestionControlReportesController.ESTADOS_MAQUINARIA) {
             cmbEstadoMaquinaria.addItem(estado);
         }
-        JPanel filtros = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 5));
-        filtros.setOpaque(false);
-        filtros.add(new JLabel("Buscar:"));
-        filtros.add(txtBuscarEstado);
-        filtros.add(new JLabel("Estado:"));
-        filtros.add(cmbEstadoMaquinaria);
-        filtros.add(btnBuscarEstado);
-        filtros.add(btnExportar);
-
-        JPanel resumen = new JPanel(new GridLayout(1, 4, 8, 4));
-        resumen.setOpaque(false);
-        resumen.add(lblDisponibles);
-        resumen.add(lblEnRuta);
-        resumen.add(lblMantenimiento);
-        resumen.add(lblInactivas);
-
-        JPanel superior = new JPanel(new BorderLayout());
-        superior.setOpaque(false);
-        superior.add(filtros, BorderLayout.NORTH);
-        superior.add(resumen, BorderLayout.SOUTH);
-        panel.add(superior, BorderLayout.NORTH);
-
         tablaEstado.setModel(new DefaultTableModel(new Object[]{"ID", "CÓDIGO",
             "DESCRIPCIÓN", "ESTADO", "REGISTRO"}, 0) {
             @Override
@@ -172,14 +280,6 @@ public class Control_y_reportes extends JInternalFrame {
         });
         tablaEstado.setAutoCreateRowSorter(true);
         tablaEstado.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        panel.add(new JScrollPane(tablaEstado), BorderLayout.CENTER);
-        return panel;
-    }
-
-    private JPanel construirPanelMantenimientos() {
-        JPanel panel = new JPanel(new BorderLayout(8, 8));
-        panel.setBackground(COLOR_FONDO);
-        panel.setBorder(BorderFactory.createEmptyBorder(10, 14, 10, 14));
 
         for (String tipo : GestionControlReportesController.TIPOS_MANTENIMIENTO) {
             cmbTipo.addItem(tipo);
@@ -190,46 +290,9 @@ public class Control_y_reportes extends JInternalFrame {
         txtDiagnostico.setLineWrap(true);
         txtDiagnostico.setWrapStyleWord(true);
 
-        JPanel formulario = new JPanel(new GridBagLayout());
-        formulario.setOpaque(false);
-        agregarCampo(formulario, 0, 0, "Maquinaria", cmbMaquinaria);
-        agregarCampo(formulario, 2, 0, "Tipo", cmbTipo);
-        agregarCampo(formulario, 0, 1, "Salida estimada", fechaSalidaEstimada);
-        agregarCampo(formulario, 2, 1, "Costo", txtCosto);
-        agregarCampo(formulario, 0, 2, "Taller", txtTaller);
-        GridBagConstraints diagnosticoLabel = restricciones(2, 2);
-        diagnosticoLabel.anchor = GridBagConstraints.FIRST_LINE_END;
-        formulario.add(new JLabel("Diagnóstico:"), diagnosticoLabel);
-        GridBagConstraints diagnosticoCampo = restricciones(3, 2);
-        diagnosticoCampo.fill = GridBagConstraints.BOTH;
-        diagnosticoCampo.weightx = 1.0;
-        formulario.add(new JScrollPane(txtDiagnostico), diagnosticoCampo);
-
-        JPanel accionesCreacion = new JPanel(new FlowLayout(FlowLayout.CENTER, 8, 3));
-        accionesCreacion.setOpaque(false);
-        accionesCreacion.add(btnIniciar);
-        accionesCreacion.add(btnLimpiar);
-        GridBagConstraints acciones = restricciones(0, 3);
-        acciones.gridwidth = 4;
-        formulario.add(accionesCreacion, acciones);
-
         for (String estado : GestionControlReportesController.ESTADOS_MANTENIMIENTO) {
             cmbEstadoMantenimiento.addItem(estado);
         }
-        JPanel filtros = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 3));
-        filtros.setOpaque(false);
-        filtros.add(new JLabel("Buscar:"));
-        filtros.add(txtBuscarMantenimiento);
-        filtros.add(new JLabel("Estado:"));
-        filtros.add(cmbEstadoMantenimiento);
-        filtros.add(btnBuscarMantenimiento);
-
-        JPanel superior = new JPanel(new BorderLayout());
-        superior.setOpaque(false);
-        superior.add(formulario, BorderLayout.CENTER);
-        superior.add(filtros, BorderLayout.SOUTH);
-        panel.add(superior, BorderLayout.NORTH);
-
         tablaMantenimientos.setModel(new DefaultTableModel(new Object[]{"ID",
             "MAQUINARIA", "DESCRIPCIÓN", "TIPO", "INGRESO", "SALIDA EST.",
             "SALIDA REAL", "COSTO", "ESTADO", "TALLER", "DIAGNÓSTICO"}, 0) {
@@ -240,16 +303,19 @@ public class Control_y_reportes extends JInternalFrame {
         });
         tablaMantenimientos.setAutoCreateRowSorter(true);
         tablaMantenimientos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        panel.add(new JScrollPane(tablaMantenimientos), BorderLayout.CENTER);
-
-        JPanel accionesTabla = new JPanel(new FlowLayout(FlowLayout.RIGHT, 8, 3));
-        accionesTabla.setOpaque(false);
-        accionesTabla.add(btnEditar);
-        accionesTabla.add(btnFinalizar);
-        accionesTabla.add(btnCancelar);
-        panel.add(accionesTabla, BorderLayout.SOUTH);
+        configurarBoton(btnBuscarEstado);
+        configurarBoton(btnExportar);
+        configurarBoton(btnIniciar);
+        configurarBoton(btnLimpiar);
+        configurarBoton(btnBuscarMantenimiento);
+        configurarBoton(btnEditar);
+        configurarBoton(btnFinalizar);
+        configurarBoton(btnCancelar);
+        configurarIndicador(lblDisponibles);
+        configurarIndicador(lblEnRuta);
+        configurarIndicador(lblMantenimiento);
+        configurarIndicador(lblInactivas);
         actualizarBotonesSeleccion();
-        return panel;
     }
 
     private void configurarEventos() {
@@ -711,21 +777,17 @@ public class Control_y_reportes extends JInternalFrame {
         return constraints;
     }
 
-    private static JButton crearBoton(String texto) {
-        JButton boton = new JButton(texto);
+    private static void configurarBoton(JButton boton) {
         boton.setBackground(COLOR_ACCION);
         boton.setForeground(Color.WHITE);
         boton.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 13));
         boton.setBorder(BorderFactory.createEmptyBorder(7, 12, 7, 12));
-        return boton;
     }
 
-    private static JLabel crearIndicador(String texto) {
-        JLabel label = new JLabel(texto, JLabel.CENTER);
+    private static void configurarIndicador(JLabel label) {
         label.setOpaque(true);
         label.setBackground(new Color(168, 171, 143));
         label.setBorder(BorderFactory.createEmptyBorder(8, 8, 8, 8));
-        return label;
     }
 
     private Timestamp aTimestamp(Date fecha) {
@@ -766,4 +828,60 @@ public class Control_y_reportes extends JInternalFrame {
 
     private record DatosEstado(List<EstadoMaquinariaFila> filas,
                                ResumenControl resumen) {}
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscarEstado;
+    private javax.swing.JButton btnBuscarMantenimiento;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnExportar;
+    private javax.swing.JButton btnFinalizar;
+    private javax.swing.JButton btnIniciar;
+    private javax.swing.JButton btnLimpiar;
+    private javax.swing.JComboBox<String> cmbEstadoMantenimiento;
+    private javax.swing.JComboBox<String> cmbEstadoMaquinaria;
+    private javax.swing.JComboBox<MaquinariaOpcion> cmbMaquinaria;
+    private javax.swing.JComboBox<String> cmbTipo;
+    private com.toedter.calendar.JDateChooser fechaSalidaEstimada;
+    private javax.swing.JLabel lblBuscarEstado;
+    private javax.swing.JLabel lblBuscarMantenimiento;
+    private javax.swing.JLabel lblCosto;
+    private javax.swing.JLabel lblDiagnostico;
+    private javax.swing.JLabel lblDisponibles;
+    private javax.swing.JLabel lblEnRuta;
+    private javax.swing.JLabel lblEstadoCarga;
+    private javax.swing.JLabel lblFiltroEstadoMantenimiento;
+    private javax.swing.JLabel lblFiltroEstadoMaquinaria;
+    private javax.swing.JLabel lblInactivas;
+    private javax.swing.JLabel lblMantenimiento;
+    private javax.swing.JLabel lblMaquinaria;
+    private javax.swing.JLabel lblRelleno1;
+    private javax.swing.JLabel lblRelleno2;
+    private javax.swing.JLabel lblRelleno3;
+    private javax.swing.JLabel lblSalidaEstimada;
+    private javax.swing.JLabel lblTaller;
+    private javax.swing.JLabel lblTipo;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JPanel panelAccionesCreacion;
+    private javax.swing.JPanel panelAccionesMantenimiento;
+    private javax.swing.JPanel panelEstado;
+    private javax.swing.JPanel panelEstadoSuperior;
+    private javax.swing.JPanel panelFiltrosEstado;
+    private javax.swing.JPanel panelFiltrosMantenimiento;
+    private javax.swing.JPanel panelFormularioMantenimiento;
+    private javax.swing.JPanel panelMantenimientoSuperior;
+    private javax.swing.JPanel panelMantenimientos;
+    private javax.swing.JPanel panelResumen;
+    private javax.swing.JScrollPane scrollDiagnostico;
+    private javax.swing.JScrollPane scrollEstado;
+    private javax.swing.JScrollPane scrollMantenimientos;
+    private javax.swing.JTabbedPane tabsControl;
+    private javax.swing.JTable tablaEstado;
+    private javax.swing.JTable tablaMantenimientos;
+    private javax.swing.JTextField txtBuscarEstado;
+    private javax.swing.JTextField txtBuscarMantenimiento;
+    private javax.swing.JTextField txtCosto;
+    private javax.swing.JTextArea txtDiagnostico;
+    private javax.swing.JTextField txtTaller;
+    // End of variables declaration//GEN-END:variables
 }

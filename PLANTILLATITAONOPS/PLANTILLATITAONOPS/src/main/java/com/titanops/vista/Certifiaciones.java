@@ -13,7 +13,6 @@ import com.titanops.dao.OperadorDAO;
 import com.toedter.calendar.JDateChooser;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -46,20 +45,6 @@ public class Certifiaciones extends JPanel {
             DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     private final GestionCertificacionesController controller;
-    private final JComboBox<OperadorOpcion> cmbOperador = new JComboBox<>();
-    private final JComboBox<CategoriaOpcion> cmbCategoria = new JComboBox<>();
-    private final JTextField txtNumero = new JTextField(18);
-    private final JDateChooser fechaExpedicion = new JDateChooser();
-    private final JDateChooser fechaVencimiento = new JDateChooser();
-    private final JTextField txtBuscar = new JTextField(22);
-    private final JComboBox<String> cmbVigencia = new JComboBox<>();
-    private final JButton btnGuardar = crearBoton("GUARDAR CERTIFICACIÓN");
-    private final JButton btnLimpiar = crearBoton("LIMPIAR");
-    private final JButton btnBuscar = crearBoton("BUSCAR");
-    private final JButton btnEditar = crearBoton("EDITAR");
-    private final JButton btnEliminar = crearBoton("ELIMINAR");
-    private final JLabel lblEstado = new JLabel(" ");
-    private final JTable tabla = new JTable();
     private List<OperadorOpcion> operadores = List.of();
     private List<CategoriaOpcion> categorias = List.of();
     private boolean cargando;
@@ -71,54 +56,122 @@ public class Certifiaciones extends JPanel {
 
     Certifiaciones(GestionCertificacionesController controller) {
         this.controller = controller;
-        construirVista();
+        initComponents();
+        configurarVista();
         configurarEventos();
         cargarDatos();
     }
 
-    private void construirVista() {
-        setLayout(new BorderLayout(8, 8));
-        setBackground(COLOR_FONDO);
-        setBorder(BorderFactory.createEmptyBorder(14, 18, 14, 18));
+    /**
+     * Inicializa los componentes administrados por NetBeans GUI Builder.
+     * La lógica y las consultas permanecen fuera de este bloque protegido.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+        panelSuperior = new javax.swing.JPanel();
+        panelFormulario = new javax.swing.JPanel();
+        lblOperador = new javax.swing.JLabel();
+        cmbOperador = new javax.swing.JComboBox<>();
+        lblCategoria = new javax.swing.JLabel();
+        cmbCategoria = new javax.swing.JComboBox<>();
+        lblNumero = new javax.swing.JLabel();
+        txtNumero = new javax.swing.JTextField();
+        lblExpedicion = new javax.swing.JLabel();
+        fechaExpedicion = new com.toedter.calendar.JDateChooser();
+        lblVencimiento = new javax.swing.JLabel();
+        fechaVencimiento = new com.toedter.calendar.JDateChooser();
+        panelAccionesCreacion = new javax.swing.JPanel();
+        btnGuardar = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
+        lblRelleno = new javax.swing.JLabel();
+        panelFiltros = new javax.swing.JPanel();
+        lblBuscar = new javax.swing.JLabel();
+        txtBuscar = new javax.swing.JTextField();
+        lblVigencia = new javax.swing.JLabel();
+        cmbVigencia = new javax.swing.JComboBox<>();
+        btnBuscar = new javax.swing.JButton();
+        lblEstado = new javax.swing.JLabel();
+        scrollTabla = new javax.swing.JScrollPane();
+        tabla = new javax.swing.JTable();
+        panelAccionesTabla = new javax.swing.JPanel();
+        btnEditar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(134, 137, 93));
+        setBorder(javax.swing.BorderFactory.createEmptyBorder(14, 18, 14, 18));
+        setPreferredSize(new java.awt.Dimension(980, 650));
+        setLayout(new java.awt.BorderLayout(8, 8));
+
+        panelSuperior.setOpaque(false);
+        panelSuperior.setLayout(new java.awt.BorderLayout(0, 6));
+
+        panelFormulario.setOpaque(false);
+        panelFormulario.setLayout(new java.awt.GridLayout(3, 4, 10, 8));
+        lblOperador.setText("Operador:");
+        panelFormulario.add(lblOperador);
+        panelFormulario.add(cmbOperador);
+        lblCategoria.setText("Categoría:");
+        panelFormulario.add(lblCategoria);
+        panelFormulario.add(cmbCategoria);
+        lblNumero.setText("N.º acreditación:");
+        panelFormulario.add(lblNumero);
+        txtNumero.setColumns(18);
+        panelFormulario.add(txtNumero);
+        lblExpedicion.setText("Expedición:");
+        panelFormulario.add(lblExpedicion);
+        panelFormulario.add(fechaExpedicion);
+        lblVencimiento.setText("Vencimiento:");
+        panelFormulario.add(lblVencimiento);
+        panelFormulario.add(fechaVencimiento);
+        panelAccionesCreacion.setOpaque(false);
+        btnGuardar.setText("GUARDAR CERTIFICACIÓN");
+        panelAccionesCreacion.add(btnGuardar);
+        btnLimpiar.setText("LIMPIAR");
+        panelAccionesCreacion.add(btnLimpiar);
+        panelFormulario.add(panelAccionesCreacion);
+        panelFormulario.add(lblRelleno);
+        panelSuperior.add(panelFormulario, java.awt.BorderLayout.CENTER);
+
+        panelFiltros.setOpaque(false);
+        panelFiltros.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 8, 4));
+        lblBuscar.setText("Buscar:");
+        panelFiltros.add(lblBuscar);
+        txtBuscar.setColumns(22);
+        panelFiltros.add(txtBuscar);
+        lblVigencia.setText("Vigencia:");
+        panelFiltros.add(lblVigencia);
+        panelFiltros.add(cmbVigencia);
+        btnBuscar.setText("BUSCAR");
+        panelFiltros.add(btnBuscar);
+        lblEstado.setText(" ");
+        panelFiltros.add(lblEstado);
+        panelSuperior.add(panelFiltros, java.awt.BorderLayout.SOUTH);
+        add(panelSuperior, java.awt.BorderLayout.NORTH);
+
+        scrollTabla.setViewportView(tabla);
+        add(scrollTabla, java.awt.BorderLayout.CENTER);
+
+        panelAccionesTabla.setOpaque(false);
+        panelAccionesTabla.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 10, 4));
+        btnEditar.setText("EDITAR");
+        panelAccionesTabla.add(btnEditar);
+        btnEliminar.setText("ELIMINAR");
+        panelAccionesTabla.add(btnEliminar);
+        add(panelAccionesTabla, java.awt.BorderLayout.SOUTH);
+    }
+    // </editor-fold>//GEN-END:initComponents
+
+    private void configurarVista() {
 
         configurarFecha(fechaExpedicion);
         configurarFecha(fechaVencimiento);
         fechaExpedicion.setDate(desdeLocalDate(LocalDate.now()));
         fechaVencimiento.setDate(desdeLocalDate(LocalDate.now().plusYears(1)));
 
-        JPanel formulario = new JPanel(new GridBagLayout());
-        formulario.setOpaque(false);
-        agregarCampo(formulario, 0, 0, "Operador", cmbOperador);
-        agregarCampo(formulario, 2, 0, "Categoría", cmbCategoria);
-        agregarCampo(formulario, 0, 1, "N.º acreditación", txtNumero);
-        agregarCampo(formulario, 2, 1, "Expedición", fechaExpedicion);
-        agregarCampo(formulario, 0, 2, "Vencimiento", fechaVencimiento);
-
-        JPanel accionesCreacion = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 4));
-        accionesCreacion.setOpaque(false);
-        accionesCreacion.add(btnGuardar);
-        accionesCreacion.add(btnLimpiar);
-        GridBagConstraints acciones = restricciones(2, 2);
-        acciones.gridwidth = 2;
-        formulario.add(accionesCreacion, acciones);
-
         for (String estado : GestionCertificacionesController.ESTADOS_VIGENCIA) {
             cmbVigencia.addItem(estado);
         }
-        JPanel filtros = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 4));
-        filtros.setOpaque(false);
-        filtros.add(new JLabel("Buscar:"));
-        filtros.add(txtBuscar);
-        filtros.add(new JLabel("Vigencia:"));
-        filtros.add(cmbVigencia);
-        filtros.add(btnBuscar);
-        filtros.add(lblEstado);
-
-        JPanel superior = new JPanel(new BorderLayout());
-        superior.setOpaque(false);
-        superior.add(formulario, BorderLayout.CENTER);
-        superior.add(filtros, BorderLayout.SOUTH);
-        add(superior, BorderLayout.NORTH);
 
         tabla.setModel(new DefaultTableModel(new Object[]{"ID", "OPERADOR", "DUI",
             "CATEGORÍA", "ACREDITACIÓN", "EXPEDICIÓN", "VENCIMIENTO", "VIGENCIA"}, 0) {
@@ -129,13 +182,11 @@ public class Certifiaciones extends JPanel {
         });
         tabla.setAutoCreateRowSorter(true);
         tabla.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        add(new JScrollPane(tabla), BorderLayout.CENTER);
-
-        JPanel accionesTabla = new JPanel(new FlowLayout(FlowLayout.RIGHT, 10, 4));
-        accionesTabla.setOpaque(false);
-        accionesTabla.add(btnEditar);
-        accionesTabla.add(btnEliminar);
-        add(accionesTabla, BorderLayout.SOUTH);
+        configurarBoton(btnGuardar);
+        configurarBoton(btnLimpiar);
+        configurarBoton(btnBuscar);
+        configurarBoton(btnEditar);
+        configurarBoton(btnEliminar);
         actualizarBotonesSeleccion();
     }
 
@@ -513,13 +564,11 @@ public class Certifiaciones extends JPanel {
         return constraints;
     }
 
-    private static JButton crearBoton(String texto) {
-        JButton boton = new JButton(texto);
+    private static void configurarBoton(JButton boton) {
         boton.setBackground(COLOR_ACCION);
         boton.setForeground(Color.WHITE);
         boton.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 14));
         boton.setBorder(BorderFactory.createEmptyBorder(8, 14, 8, 14));
-        return boton;
     }
 
     private void configurarFecha(JDateChooser selector) {
@@ -548,4 +597,35 @@ public class Certifiaciones extends JPanel {
     private record DatosPantalla(List<OperadorOpcion> operadores,
                                   List<CategoriaOpcion> categorias,
                                   List<CertificacionFila> certificaciones) {}
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnLimpiar;
+    private javax.swing.JComboBox<CategoriaOpcion> cmbCategoria;
+    private javax.swing.JComboBox<OperadorOpcion> cmbOperador;
+    private javax.swing.JComboBox<String> cmbVigencia;
+    private com.toedter.calendar.JDateChooser fechaExpedicion;
+    private com.toedter.calendar.JDateChooser fechaVencimiento;
+    private javax.swing.JLabel lblBuscar;
+    private javax.swing.JLabel lblCategoria;
+    private javax.swing.JLabel lblEstado;
+    private javax.swing.JLabel lblExpedicion;
+    private javax.swing.JLabel lblNumero;
+    private javax.swing.JLabel lblOperador;
+    private javax.swing.JLabel lblRelleno;
+    private javax.swing.JLabel lblVencimiento;
+    private javax.swing.JLabel lblVigencia;
+    private javax.swing.JPanel panelAccionesCreacion;
+    private javax.swing.JPanel panelAccionesTabla;
+    private javax.swing.JPanel panelFiltros;
+    private javax.swing.JPanel panelFormulario;
+    private javax.swing.JPanel panelSuperior;
+    private javax.swing.JScrollPane scrollTabla;
+    private javax.swing.JTable tabla;
+    private javax.swing.JTextField txtBuscar;
+    private javax.swing.JTextField txtNumero;
+    // End of variables declaration//GEN-END:variables
 }

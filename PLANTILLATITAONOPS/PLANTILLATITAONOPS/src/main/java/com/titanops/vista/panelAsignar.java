@@ -13,11 +13,7 @@ import com.titanops.dao.OperadorDAO;
 import com.titanops.dao.RutaDestinoDAO;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -49,19 +45,6 @@ public class panelAsignar extends JPanel {
 
     private final Integer idUsuarioSesion;
     private final GestionAsignacionesController controller;
-    private final JComboBox<MaquinariaOpcion> cmbMaquinaria = new JComboBox<>();
-    private final JComboBox<OperadorOpcion> cmbOperador = new JComboBox<>();
-    private final JComboBox<RutaOpcion> cmbRuta = new JComboBox<>();
-    private final JSpinner spnRetorno = new JSpinner(crearModeloFecha());
-    private final JTextArea txtObservaciones = new JTextArea(3, 30);
-    private final JTextField txtBuscar = new JTextField(22);
-    private final JComboBox<String> cmbEstadoFiltro = new JComboBox<>();
-    private final JButton btnAsignar = crearBoton("INICIAR ASIGNACIÓN");
-    private final JButton btnActualizar = crearBoton("ACTUALIZAR");
-    private final JButton btnFinalizar = crearBoton("FINALIZAR");
-    private final JButton btnCancelar = crearBoton("CANCELAR");
-    private final JLabel lblEstado = new JLabel(" ");
-    private final JTable tabla = new JTable();
     private boolean cargando;
 
     public panelAsignar() {
@@ -73,60 +56,120 @@ public class panelAsignar extends JPanel {
                  GestionAsignacionesController controller) {
         this.idUsuarioSesion = idUsuarioSesion;
         this.controller = controller;
-        construirVista();
+        initComponents();
+        configurarVista();
         configurarEventos();
         cargarDatos();
     }
 
-    private void construirVista() {
-        setLayout(new BorderLayout(8, 8));
-        setBackground(COLOR_FONDO);
-        setBorder(BorderFactory.createEmptyBorder(14, 18, 14, 18));
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+        panelSuperior = new javax.swing.JPanel();
+        panelCaptura = new javax.swing.JPanel();
+        panelFormulario = new javax.swing.JPanel();
+        lblMaquinaria = new javax.swing.JLabel();
+        cmbMaquinaria = new javax.swing.JComboBox<>();
+        lblOperador = new javax.swing.JLabel();
+        cmbOperador = new javax.swing.JComboBox<>();
+        lblRuta = new javax.swing.JLabel();
+        cmbRuta = new javax.swing.JComboBox<>();
+        lblRetorno = new javax.swing.JLabel();
+        spnRetorno = new javax.swing.JSpinner();
+        lblObservaciones = new javax.swing.JLabel();
+        scrollObservaciones = new javax.swing.JScrollPane();
+        txtObservaciones = new javax.swing.JTextArea();
+        panelAccionCrear = new javax.swing.JPanel();
+        btnAsignar = new javax.swing.JButton();
+        lblRelleno = new javax.swing.JLabel();
+        panelFiltros = new javax.swing.JPanel();
+        lblBuscar = new javax.swing.JLabel();
+        txtBuscar = new javax.swing.JTextField();
+        lblFiltroEstado = new javax.swing.JLabel();
+        cmbEstadoFiltro = new javax.swing.JComboBox<>();
+        btnActualizar = new javax.swing.JButton();
+        lblEstado = new javax.swing.JLabel();
+        scrollTabla = new javax.swing.JScrollPane();
+        tabla = new javax.swing.JTable();
+        panelAcciones = new javax.swing.JPanel();
+        btnFinalizar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(134, 137, 93));
+        setBorder(javax.swing.BorderFactory.createEmptyBorder(14, 18, 14, 18));
+        setPreferredSize(new java.awt.Dimension(1120, 700));
+        setLayout(new java.awt.BorderLayout(8, 8));
+
+        panelSuperior.setOpaque(false);
+        panelSuperior.setLayout(new java.awt.BorderLayout(0, 6));
+        panelCaptura.setOpaque(false);
+        panelCaptura.setLayout(new java.awt.BorderLayout());
+        panelFormulario.setOpaque(false);
+        panelFormulario.setLayout(new java.awt.GridLayout(3, 4, 10, 8));
+        lblMaquinaria.setText("Maquinaria:");
+        panelFormulario.add(lblMaquinaria);
+        panelFormulario.add(cmbMaquinaria);
+        lblOperador.setText("Operador:");
+        panelFormulario.add(lblOperador);
+        panelFormulario.add(cmbOperador);
+        lblRuta.setText("Ruta / proyecto:");
+        panelFormulario.add(lblRuta);
+        panelFormulario.add(cmbRuta);
+        lblRetorno.setText("Retorno estimado:");
+        panelFormulario.add(lblRetorno);
+        panelFormulario.add(spnRetorno);
+        lblObservaciones.setText("Observaciones:");
+        panelFormulario.add(lblObservaciones);
+        txtObservaciones.setColumns(30);
+        txtObservaciones.setRows(3);
+        scrollObservaciones.setViewportView(txtObservaciones);
+        panelFormulario.add(scrollObservaciones);
+        panelAccionCrear.setOpaque(false);
+        btnAsignar.setText("INICIAR ASIGNACIÓN");
+        panelAccionCrear.add(btnAsignar);
+        panelFormulario.add(panelAccionCrear);
+        panelFormulario.add(lblRelleno);
+        panelCaptura.add(panelFormulario, java.awt.BorderLayout.CENTER);
+        panelSuperior.add(panelCaptura, java.awt.BorderLayout.CENTER);
+
+        panelFiltros.setOpaque(false);
+        panelFiltros.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 8, 4));
+        lblBuscar.setText("Buscar:");
+        panelFiltros.add(lblBuscar);
+        txtBuscar.setColumns(22);
+        panelFiltros.add(txtBuscar);
+        lblFiltroEstado.setText("Estado:");
+        panelFiltros.add(lblFiltroEstado);
+        panelFiltros.add(cmbEstadoFiltro);
+        btnActualizar.setText("ACTUALIZAR");
+        panelFiltros.add(btnActualizar);
+        lblEstado.setText(" ");
+        panelFiltros.add(lblEstado);
+        panelSuperior.add(panelFiltros, java.awt.BorderLayout.SOUTH);
+        add(panelSuperior, java.awt.BorderLayout.NORTH);
+
+        scrollTabla.setViewportView(tabla);
+        add(scrollTabla, java.awt.BorderLayout.CENTER);
+
+        panelAcciones.setOpaque(false);
+        panelAcciones.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 10, 5));
+        btnFinalizar.setText("FINALIZAR");
+        panelAcciones.add(btnFinalizar);
+        btnCancelar.setText("CANCELAR");
+        panelAcciones.add(btnCancelar);
+        add(panelAcciones, java.awt.BorderLayout.SOUTH);
+    }
+    // </editor-fold>//GEN-END:initComponents
+
+    private void configurarVista() {
+        spnRetorno.setModel(crearModeloFecha());
         spnRetorno.setEditor(new JSpinner.DateEditor(spnRetorno, "dd/MM/yyyy HH:mm"));
         txtObservaciones.setLineWrap(true);
         txtObservaciones.setWrapStyleWord(true);
-        JPanel formulario = new JPanel(new GridBagLayout());
-        formulario.setOpaque(false);
-        agregarCampo(formulario, 0, 0, "Maquinaria", cmbMaquinaria);
-        agregarCampo(formulario, 2, 0, "Operador", cmbOperador);
-        agregarCampo(formulario, 0, 1, "Ruta / proyecto", cmbRuta);
-        agregarCampo(formulario, 2, 1, "Retorno estimado", spnRetorno);
-
-        GridBagConstraints labelObservaciones = restricciones(0, 2);
-        labelObservaciones.anchor = GridBagConstraints.FIRST_LINE_END;
-        formulario.add(new JLabel("Observaciones:"), labelObservaciones);
-        GridBagConstraints observaciones = restricciones(1, 2);
-        observaciones.gridwidth = 3;
-        observaciones.fill = GridBagConstraints.BOTH;
-        observaciones.weightx = 1.0;
-        formulario.add(new JScrollPane(txtObservaciones), observaciones);
-
-        JPanel accionCrear = new JPanel(new FlowLayout(FlowLayout.CENTER, 8, 4));
-        accionCrear.setOpaque(false);
-        accionCrear.add(btnAsignar);
-        GridBagConstraints accion = restricciones(0, 3);
-        accion.gridwidth = 4;
-        formulario.add(accionCrear, accion);
-
-        JPanel filtros = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 4));
-        filtros.setOpaque(false);
         cmbEstadoFiltro.addItem("TODOS");
         for (String estado : GestionAsignacionesController.ESTADOS) {
             cmbEstadoFiltro.addItem(estado);
         }
-        filtros.add(new JLabel("Buscar:"));
-        filtros.add(txtBuscar);
-        filtros.add(new JLabel("Estado:"));
-        filtros.add(cmbEstadoFiltro);
-        filtros.add(btnActualizar);
-        filtros.add(lblEstado);
-
-        JPanel superior = new JPanel(new BorderLayout());
-        superior.setOpaque(false);
-        superior.add(formulario, BorderLayout.CENTER);
-        superior.add(filtros, BorderLayout.SOUTH);
-        add(superior, BorderLayout.NORTH);
 
         tabla.setModel(new DefaultTableModel(new Object[]{"ID", "MAQUINARIA",
             "OPERADOR", "PROYECTO", "ASIGNADA", "RETORNO EST.", "ESTADO",
@@ -138,13 +181,10 @@ public class panelAsignar extends JPanel {
         });
         tabla.setAutoCreateRowSorter(true);
         tabla.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        add(new JScrollPane(tabla), BorderLayout.CENTER);
-
-        JPanel acciones = new JPanel(new FlowLayout(FlowLayout.RIGHT, 10, 5));
-        acciones.setOpaque(false);
-        acciones.add(btnFinalizar);
-        acciones.add(btnCancelar);
-        add(acciones, BorderLayout.SOUTH);
+        configurarBoton(btnAsignar);
+        configurarBoton(btnActualizar);
+        configurarBoton(btnFinalizar);
+        configurarBoton(btnCancelar);
         actualizarBotonesSeleccion();
     }
 
@@ -377,25 +417,6 @@ public class panelAsignar extends JPanel {
         btnCancelar.setEnabled(habilitar);
     }
 
-    private void agregarCampo(JPanel panel, int columna, int fila, String etiqueta,
-                              java.awt.Component componente) {
-        GridBagConstraints label = restricciones(columna, fila);
-        label.anchor = GridBagConstraints.LINE_END;
-        panel.add(new JLabel(etiqueta + ":"), label);
-        GridBagConstraints campo = restricciones(columna + 1, fila);
-        campo.fill = GridBagConstraints.HORIZONTAL;
-        campo.weightx = 1.0;
-        panel.add(componente, campo);
-    }
-
-    private GridBagConstraints restricciones(int columna, int fila) {
-        GridBagConstraints constraints = new GridBagConstraints();
-        constraints.gridx = columna;
-        constraints.gridy = fila;
-        constraints.insets = new Insets(4, 6, 4, 6);
-        return constraints;
-    }
-
     private static SpinnerDateModel crearModeloFecha() {
         return new SpinnerDateModel(fechaInicialRetorno(), null, null,
                 Calendar.MINUTE);
@@ -409,13 +430,11 @@ public class panelAsignar extends JPanel {
         return calendar.getTime();
     }
 
-    private static JButton crearBoton(String texto) {
-        JButton boton = new JButton(texto);
+    private static void configurarBoton(JButton boton) {
         boton.setBackground(COLOR_ACCION);
         boton.setForeground(Color.WHITE);
         boton.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 14));
         boton.setBorder(BorderFactory.createEmptyBorder(8, 14, 8, 14));
-        return boton;
     }
 
     private String fechaVisible(Timestamp fecha) {
@@ -440,4 +459,36 @@ public class panelAsignar extends JPanel {
                                   List<OperadorOpcion> operadores,
                                   List<RutaOpcion> rutas,
                                   List<AsignacionFila> asignaciones) {}
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnAsignar;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnFinalizar;
+    private javax.swing.JComboBox<String> cmbEstadoFiltro;
+    private javax.swing.JComboBox<MaquinariaOpcion> cmbMaquinaria;
+    private javax.swing.JComboBox<OperadorOpcion> cmbOperador;
+    private javax.swing.JComboBox<RutaOpcion> cmbRuta;
+    private javax.swing.JLabel lblBuscar;
+    private javax.swing.JLabel lblEstado;
+    private javax.swing.JLabel lblFiltroEstado;
+    private javax.swing.JLabel lblMaquinaria;
+    private javax.swing.JLabel lblObservaciones;
+    private javax.swing.JLabel lblOperador;
+    private javax.swing.JLabel lblRelleno;
+    private javax.swing.JLabel lblRetorno;
+    private javax.swing.JLabel lblRuta;
+    private javax.swing.JPanel panelAccionCrear;
+    private javax.swing.JPanel panelAcciones;
+    private javax.swing.JPanel panelCaptura;
+    private javax.swing.JPanel panelFiltros;
+    private javax.swing.JPanel panelFormulario;
+    private javax.swing.JPanel panelSuperior;
+    private javax.swing.JScrollPane scrollObservaciones;
+    private javax.swing.JScrollPane scrollTabla;
+    private javax.swing.JSpinner spnRetorno;
+    private javax.swing.JTable tabla;
+    private javax.swing.JTextField txtBuscar;
+    private javax.swing.JTextArea txtObservaciones;
+    // End of variables declaration//GEN-END:variables
 }

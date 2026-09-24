@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <Properties>
+    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="5d" green="89" red="86" type="rgb"/>
+    </Property>
+    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+      <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+        <EmptyBorder bottom="14" left="18" right="18" top="14"/>
+      </Border>
+    </Property>
+    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor"><Dimension value="[980, 650]"/></Property>
+  </Properties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -8,58 +19,151 @@
     <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
-    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="3"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
   </AuxValues>
 
-  <Layout>
-    <DimensionLayout dim="0">
-      <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="scrollCertificaciones" alignment="1" max="32767" attributes="0"/>
-      </Group>
-    </DimensionLayout>
-    <DimensionLayout dim="1">
-      <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="scrollCertificaciones" min="-2" pref="631" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
-      </Group>
-    </DimensionLayout>
+  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout">
+    <Property name="horizontalGap" type="int" value="8"/>
+    <Property name="verticalGap" type="int" value="8"/>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JScrollPane" name="scrollCertificaciones">
-
-      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+    <Container class="javax.swing.JPanel" name="panelSuperior">
+      <Properties>
+        <Property name="opaque" type="boolean" value="false"/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+          <BorderConstraints direction="North"/>
+        </Constraint>
+      </Constraints>
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout">
+        <Property name="verticalGap" type="int" value="6"/>
+      </Layout>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="panelCertificaciones">
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="list1" min="-2" pref="252" max="-2" attributes="0"/>
-                      <EmptySpace pref="569" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                      <Component id="list1" min="-2" pref="214" max="-2" attributes="0"/>
-                      <EmptySpace pref="369" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
+        <Container class="javax.swing.JPanel" name="panelFormulario">
+          <Properties>
+            <Property name="opaque" type="boolean" value="false"/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+              <BorderConstraints direction="Center"/>
+            </Constraint>
+          </Constraints>
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+            <Property name="columns" type="int" value="4"/>
+            <Property name="rows" type="int" value="3"/>
+            <Property name="horizontalGap" type="int" value="10"/>
+            <Property name="verticalGap" type="int" value="8"/>
           </Layout>
           <SubComponents>
-            <Component class="java.awt.List" name="list1">
+            <Component class="javax.swing.JLabel" name="lblOperador">
+              <Properties><Property name="text" type="java.lang.String" value="Operador:"/></Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cmbOperador">
+              <AuxValues><AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;OperadorOpcion&gt;"/></AuxValues>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblCategoria">
+              <Properties><Property name="text" type="java.lang.String" value="Categoría:"/></Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cmbCategoria">
+              <AuxValues><AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;CategoriaOpcion&gt;"/></AuxValues>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblNumero">
+              <Properties><Property name="text" type="java.lang.String" value="N.º acreditación:"/></Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtNumero">
+              <Properties><Property name="columns" type="int" value="18"/></Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblExpedicion">
+              <Properties><Property name="text" type="java.lang.String" value="Expedición:"/></Properties>
+            </Component>
+            <Component class="com.toedter.calendar.JDateChooser" name="fechaExpedicion"/>
+            <Component class="javax.swing.JLabel" name="lblVencimiento">
+              <Properties><Property name="text" type="java.lang.String" value="Vencimiento:"/></Properties>
+            </Component>
+            <Component class="com.toedter.calendar.JDateChooser" name="fechaVencimiento"/>
+            <Container class="javax.swing.JPanel" name="panelAccionesCreacion">
+              <Properties><Property name="opaque" type="boolean" value="false"/></Properties>
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JButton" name="btnGuardar">
+                  <Properties><Property name="text" type="java.lang.String" value="GUARDAR CERTIFICACIÓN"/></Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnLimpiar">
+                  <Properties><Property name="text" type="java.lang.String" value="LIMPIAR"/></Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JLabel" name="lblRelleno"/>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="panelFiltros">
+          <Properties><Property name="opaque" type="boolean" value="false"/></Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+              <BorderConstraints direction="South"/>
+            </Constraint>
+          </Constraints>
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
+            <Property name="alignment" type="int" value="0"/>
+            <Property name="horizontalGap" type="int" value="8"/>
+            <Property name="verticalGap" type="int" value="4"/>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="lblBuscar">
+              <Properties><Property name="text" type="java.lang.String" value="Buscar:"/></Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtBuscar">
+              <Properties><Property name="columns" type="int" value="22"/></Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblVigencia">
+              <Properties><Property name="text" type="java.lang.String" value="Vigencia:"/></Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cmbVigencia">
+              <AuxValues><AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/></AuxValues>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnBuscar">
+              <Properties><Property name="text" type="java.lang.String" value="BUSCAR"/></Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblEstado">
+              <Properties><Property name="text" type="java.lang.String" value=" "/></Properties>
             </Component>
           </SubComponents>
         </Container>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JScrollPane" name="scrollTabla">
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+          <BorderConstraints direction="Center"/>
+        </Constraint>
+      </Constraints>
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTable" name="tabla"/>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPanel" name="panelAccionesTabla">
+      <Properties><Property name="opaque" type="boolean" value="false"/></Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+          <BorderConstraints direction="South"/>
+        </Constraint>
+      </Constraints>
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
+        <Property name="alignment" type="int" value="2"/>
+        <Property name="horizontalGap" type="int" value="10"/>
+        <Property name="verticalGap" type="int" value="4"/>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JButton" name="btnEditar">
+          <Properties><Property name="text" type="java.lang.String" value="EDITAR"/></Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnEliminar">
+          <Properties><Property name="text" type="java.lang.String" value="ELIMINAR"/></Properties>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>
