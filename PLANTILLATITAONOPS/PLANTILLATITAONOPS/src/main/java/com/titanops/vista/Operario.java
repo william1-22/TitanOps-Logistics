@@ -105,7 +105,7 @@ public class Operario extends javax.swing.JPanel {
         jLabel3.setText("DUI");
 
         jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        jComboBox1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jComboBox1.setForeground(new java.awt.Color(0, 0, 0));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1. LIVIANA", "2. PESADA", "3. MORTORISTA " }));
         jComboBox1.setBorder(null);
@@ -115,13 +115,13 @@ public class Operario extends javax.swing.JPanel {
         jLabel5.setText("TURNO");
 
         jComboBox2.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        jComboBox2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jComboBox2.setForeground(new java.awt.Color(0, 0, 0));
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1. DIURNO", "2. NOCTURNO", "3. ROTATIVO " }));
         jComboBox2.setBorder(null);
 
         jComboBox3.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox3.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        jComboBox3.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jComboBox3.setForeground(new java.awt.Color(0, 0, 0));
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1. DISPONIBLE", "2. OCUPADO", "3. BAJA " }));
         jComboBox3.setBorder(null);
@@ -255,7 +255,7 @@ public class Operario extends javax.swing.JPanel {
                 .addGroup(contenidoOperarioLayout.createSequentialGroup()
                     .addGap(197, 197, 197)
                     .addComponent(btn_operario1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(649, Short.MAX_VALUE)))
+                    .addContainerGap(657, Short.MAX_VALUE)))
         );
 
         jScrollPane1.setViewportView(contenidoOperario);
@@ -264,15 +264,14 @@ public class Operario extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 921, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 29, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 844, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 872, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 780, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

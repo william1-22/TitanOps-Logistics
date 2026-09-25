@@ -84,7 +84,7 @@ public class LOGIN extends javax.swing.JInternalFrame {
         jLabel2.setText("Bienvenido");
 
         jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 36)); // NOI18N
+        jTextField1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(0, 0, 0));
         jTextField1.setBorder(null);
 
@@ -99,7 +99,7 @@ public class LOGIN extends javax.swing.JInternalFrame {
         CANCELAR.setBorder(null);
 
         jPasswordField1.setBackground(new java.awt.Color(255, 255, 255));
-        jPasswordField1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 36)); // NOI18N
+        jPasswordField1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         jPasswordField1.setForeground(new java.awt.Color(0, 0, 0));
         jPasswordField1.setBorder(null);
 

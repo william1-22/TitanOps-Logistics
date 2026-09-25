@@ -219,40 +219,26 @@ public class Control_y_reportes extends JInternalFrame {
         panelMantenimientoSuperior.setLayout(new java.awt.BorderLayout(0, 6));
 
         panelFormularioMantenimiento.setOpaque(false);
-        panelFormularioMantenimiento.setLayout(new java.awt.GridLayout(4, 4, 10, 6));
 
         lblMaquinaria.setText("Maquinaria:");
-        panelFormularioMantenimiento.add(lblMaquinaria);
-        panelFormularioMantenimiento.add(cmbMaquinaria);
 
         lblTipo.setText("Tipo:");
-        panelFormularioMantenimiento.add(lblTipo);
-        panelFormularioMantenimiento.add(cmbTipo);
 
         lblSalidaEstimada.setText("Salida estimada:");
-        panelFormularioMantenimiento.add(lblSalidaEstimada);
-        panelFormularioMantenimiento.add(fechaSalidaEstimada);
 
         lblCosto.setText("Costo:");
-        panelFormularioMantenimiento.add(lblCosto);
 
         txtCosto.setColumns(12);
-        panelFormularioMantenimiento.add(txtCosto);
 
         lblTaller.setText("Taller:");
-        panelFormularioMantenimiento.add(lblTaller);
 
         txtTaller.setColumns(22);
-        panelFormularioMantenimiento.add(txtTaller);
 
         lblDiagnostico.setText("Diagnóstico:");
-        panelFormularioMantenimiento.add(lblDiagnostico);
 
         txtDiagnostico.setColumns(28);
         txtDiagnostico.setRows(3);
         scrollDiagnostico.setViewportView(txtDiagnostico);
-
-        panelFormularioMantenimiento.add(scrollDiagnostico);
 
         panelAccionesCreacion.setOpaque(false);
 
@@ -262,10 +248,88 @@ public class Control_y_reportes extends JInternalFrame {
         btnIniciar.setText("INICIAR MANTENIMIENTO");
         panelAccionesCreacion.add(btnIniciar);
 
-        panelFormularioMantenimiento.add(panelAccionesCreacion);
-        panelFormularioMantenimiento.add(lblRelleno1);
-        panelFormularioMantenimiento.add(lblRelleno2);
-        panelFormularioMantenimiento.add(lblRelleno3);
+        javax.swing.GroupLayout panelFormularioMantenimientoLayout = new javax.swing.GroupLayout(panelFormularioMantenimiento);
+        panelFormularioMantenimiento.setLayout(panelFormularioMantenimientoLayout);
+        panelFormularioMantenimientoLayout.setHorizontalGroup(
+            panelFormularioMantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelFormularioMantenimientoLayout.createSequentialGroup()
+                .addGroup(panelFormularioMantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelFormularioMantenimientoLayout.createSequentialGroup()
+                        .addComponent(panelAccionesCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblRelleno1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(lblRelleno2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(lblRelleno3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(panelFormularioMantenimientoLayout.createSequentialGroup()
+                        .addGroup(panelFormularioMantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(lblMaquinaria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(panelFormularioMantenimientoLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(lblTaller, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lblSalidaEstimada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(panelFormularioMantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelFormularioMantenimientoLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(panelFormularioMantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cmbMaquinaria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(fechaSalidaEstimada, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE))
+                                .addGroup(panelFormularioMantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelFormularioMantenimientoLayout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(lblCosto, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(panelFormularioMantenimientoLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblTipo))))
+                            .addGroup(panelFormularioMantenimientoLayout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addComponent(txtTaller, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblDiagnostico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelFormularioMantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(scrollDiagnostico, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(cmbTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtCosto, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE))))
+                .addGap(1, 1, 1))
+        );
+        panelFormularioMantenimientoLayout.setVerticalGroup(
+            panelFormularioMantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelFormularioMantenimientoLayout.createSequentialGroup()
+                .addGroup(panelFormularioMantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelFormularioMantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblMaquinaria, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cmbMaquinaria, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelFormularioMantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelFormularioMantenimientoLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(panelFormularioMantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblSalidaEstimada, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelFormularioMantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblCosto, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtCosto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(6, 6, 6))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFormularioMantenimientoLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(fechaSalidaEstimada, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addGroup(panelFormularioMantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelFormularioMantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblTaller, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtTaller, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblDiagnostico, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(scrollDiagnostico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addGroup(panelFormularioMantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblRelleno1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblRelleno2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblRelleno3, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelAccionesCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
 
         panelMantenimientoSuperior.add(panelFormularioMantenimiento, java.awt.BorderLayout.CENTER);
 
