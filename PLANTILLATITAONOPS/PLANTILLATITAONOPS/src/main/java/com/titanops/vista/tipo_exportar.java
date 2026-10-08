@@ -4,17 +4,33 @@
  */
 package com.titanops.vista;
 
+import com.titanops.reporte.ReporteEstadoMaquinaria;
+import com.titanops.reporte.ReporteEstadoMaquinariaExporter;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Natha
  */
 public class tipo_exportar extends javax.swing.JInternalFrame {
+    private final ReporteEstadoMaquinaria reporte;
 
     /**
      * Creates new form tipo_exportar
      */
     public tipo_exportar() {
+        this(null);
+    }
+
+    public tipo_exportar(ReporteEstadoMaquinaria reporte) {
         initComponents();
+        this.reporte = reporte;
+
+        configurarEventos();
     }
 
     /**
@@ -29,17 +45,15 @@ public class tipo_exportar extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        GUARDARUS = new javax.swing.JButton();
-        GUARDARUS2 = new javax.swing.JButton();
-        GUARDARUS1 = new javax.swing.JButton();
+        GUARDARUS = new com.titanops.vista.componentes.Boton();
+        GUARDARUS2 = new com.titanops.vista.componentes.Boton();
+        GUARDARUS1 = new com.titanops.vista.componentes.Boton();
 
         setClosable(true);
         setMaximizable(true);
         setResizable(true);
 
-        jPanel1.setBackground(new java.awt.Color(134, 137, 93));
 
-        jPanel3.setBackground(new java.awt.Color(84, 88, 47));
 
         jLabel2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
         jLabel2.setText("EXPORTAR REPORTE");
@@ -61,19 +75,19 @@ public class tipo_exportar extends javax.swing.JInternalFrame {
                 .addGap(22, 22, 22))
         );
 
-        GUARDARUS.setBackground(new java.awt.Color(93, 36, 23));
+        GUARDARUS.setBackground(new java.awt.Color(37, 99, 235));
         GUARDARUS.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         GUARDARUS.setForeground(new java.awt.Color(255, 255, 255));
         GUARDARUS.setText("CSV");
         GUARDARUS.setBorder(null);
 
-        GUARDARUS2.setBackground(new java.awt.Color(93, 36, 23));
+        GUARDARUS2.setBackground(new java.awt.Color(37, 99, 235));
         GUARDARUS2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         GUARDARUS2.setForeground(new java.awt.Color(255, 255, 255));
         GUARDARUS2.setText("JSON");
         GUARDARUS2.setBorder(null);
 
-        GUARDARUS1.setBackground(new java.awt.Color(93, 36, 23));
+        GUARDARUS1.setBackground(new java.awt.Color(37, 99, 235));
         GUARDARUS1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         GUARDARUS1.setForeground(new java.awt.Color(255, 255, 255));
         GUARDARUS1.setText("PDF");
@@ -84,14 +98,13 @@ public class tipo_exportar extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(GUARDARUS1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
-                .addComponent(GUARDARUS2, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64)
-                .addComponent(GUARDARUS, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addComponent(GUARDARUS1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(GUARDARUS2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(GUARDARUS)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,17 +112,19 @@ public class tipo_exportar extends javax.swing.JInternalFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(69, 69, 69)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(GUARDARUS1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(GUARDARUS2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(GUARDARUS, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(115, Short.MAX_VALUE))
+                    .addComponent(GUARDARUS1)
+                    .addComponent(GUARDARUS2)
+                    .addComponent(GUARDARUS))
+                .addContainerGap(201, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,14 +133,145 @@ public class tipo_exportar extends javax.swing.JInternalFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        jPanel1.setForeground(new java.awt.Color(30, 41, 59));
+        jPanel1.setBackground(new java.awt.Color(239, 246, 255));
+        jPanel3.setForeground(new java.awt.Color(30, 41, 59));
+        jPanel3.setBackground(new java.awt.Color(30, 64, 175));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+
+
+        jPanel1.setForeground(new java.awt.Color(30, 41, 59));
+        jPanel1.setBackground(new java.awt.Color(239, 246, 255));
+        jPanel3.setForeground(new java.awt.Color(30, 41, 59));
+        jPanel3.setBackground(new java.awt.Color(30, 64, 175));
+        jLabel2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24));
+        jLabel2.setText("EXPORTAR REPORTE");
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        GUARDARUS.setText("CSV");
+        GUARDARUS.setBackground(new java.awt.Color(239, 246, 255));
+        GUARDARUS.setForeground(new java.awt.Color(30, 64, 175));
+        GUARDARUS.setFondoActivo(new java.awt.Color(37, 99, 235));
+        GUARDARUS.setTextoActivo(new java.awt.Color(255, 255, 255));
+        GUARDARUS.setColorFoco(new java.awt.Color(37, 99, 235));
+        GUARDARUS.setFont(new java.awt.Font("SansSerif", 1, 13));
+        GUARDARUS.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        GUARDARUS.setRolloverEnabled(true);
+        GUARDARUS.setContentAreaFilled(false);
+        GUARDARUS.setOpaque(false);
+        GUARDARUS2.setText("JSON");
+        GUARDARUS2.setBackground(new java.awt.Color(239, 246, 255));
+        GUARDARUS2.setForeground(new java.awt.Color(30, 64, 175));
+        GUARDARUS2.setFondoActivo(new java.awt.Color(37, 99, 235));
+        GUARDARUS2.setTextoActivo(new java.awt.Color(255, 255, 255));
+        GUARDARUS2.setColorFoco(new java.awt.Color(37, 99, 235));
+        GUARDARUS2.setFont(new java.awt.Font("SansSerif", 1, 13));
+        GUARDARUS2.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        GUARDARUS2.setRolloverEnabled(true);
+        GUARDARUS2.setContentAreaFilled(false);
+        GUARDARUS2.setOpaque(false);
+        GUARDARUS1.setText("PDF");
+        GUARDARUS1.setBackground(new java.awt.Color(239, 246, 255));
+        GUARDARUS1.setForeground(new java.awt.Color(30, 64, 175));
+        GUARDARUS1.setFondoActivo(new java.awt.Color(37, 99, 235));
+        GUARDARUS1.setTextoActivo(new java.awt.Color(255, 255, 255));
+        GUARDARUS1.setColorFoco(new java.awt.Color(37, 99, 235));
+        GUARDARUS1.setFont(new java.awt.Font("SansSerif", 1, 13));
+        GUARDARUS1.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        GUARDARUS1.setRolloverEnabled(true);
+        GUARDARUS1.setContentAreaFilled(false);
+        GUARDARUS1.setOpaque(false);
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void configurarEventos() {
+        GUARDARUS.addActionListener(event -> exportar("CSV"));
+        GUARDARUS2.addActionListener(event -> exportar("JSON"));
+        GUARDARUS1.addActionListener(event -> exportar("PDF"));
+    }
+
+    private void exportar(String formato) {
+        if (reporte == null) {
+            JOptionPane.showMessageDialog(this,
+                    "Abra la exportación desde el reporte de estado de maquinaria.",
+                    "Exportar reporte", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        JFileChooser selector = new JFileChooser();
+        selector.setDialogTitle("Guardar reporte " + formato);
+        selector.setSelectedFile(new File("reporte_estado_maquinaria."
+                + formato.toLowerCase()));
+        if (selector.showSaveDialog(this) != JFileChooser.APPROVE_OPTION) {
+            return;
+        }
+
+        Path destino = agregarExtension(selector.getSelectedFile().toPath(), formato);
+        if (Files.exists(destino)) {
+            int respuesta = JOptionPane.showConfirmDialog(this,
+                    "El archivo ya existe. ¿Deseas reemplazarlo?",
+                    "Confirmar reemplazo", JOptionPane.YES_NO_OPTION,
+                    JOptionPane.WARNING_MESSAGE);
+            if (respuesta != JOptionPane.YES_OPTION) {
+                return;
+            }
+        }
+
+        try {
+            switch (formato) {
+                case "CSV" -> ReporteEstadoMaquinariaExporter.exportarCsv(destino, reporte);
+                case "JSON" -> ReporteEstadoMaquinariaExporter.exportarJson(destino, reporte);
+                case "PDF" -> ReporteEstadoMaquinariaExporter.exportarPdf(destino, reporte);
+                default -> throw new IOException("Formato no soportado: " + formato);
+            }
+            JOptionPane.showMessageDialog(this,
+                    "Reporte exportado en:\n" + destino,
+                    "Exportar reporte", JOptionPane.INFORMATION_MESSAGE);
+        } catch (IOException exception) {
+            JOptionPane.showMessageDialog(this,
+                    "No fue posible exportar el reporte:\n" + exception.getMessage(),
+                    "Exportar reporte", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private Path agregarExtension(Path destino, String formato) {
+        String extension = "." + formato.toLowerCase();
+        String nombre = destino.getFileName().toString();
+        return nombre.toLowerCase().endsWith(extension)
+                ? destino : destino.resolveSibling(nombre + extension);
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton GUARDARUS;
-    private javax.swing.JButton GUARDARUS1;
-    private javax.swing.JButton GUARDARUS2;
+    private com.titanops.vista.componentes.Boton GUARDARUS;
+    private com.titanops.vista.componentes.Boton GUARDARUS1;
+    private com.titanops.vista.componentes.Boton GUARDARUS2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;

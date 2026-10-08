@@ -12,7 +12,6 @@ import com.titanops.dao.OperadorCertificacionDAO;
 import com.titanops.dao.OperadorDAO;
 import com.toedter.calendar.JDateChooser;
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -39,8 +38,6 @@ import javax.swing.table.DefaultTableModel;
 
 /** Gestión de certificaciones asociadas a operadores y categorías. */
 public class Certifiaciones extends JPanel {
-    private static final Color COLOR_FONDO = new Color(134, 137, 93);
-    private static final Color COLOR_ACCION = new Color(93, 36, 23);
     private static final DateTimeFormatter FORMATO_FECHA =
             DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
@@ -59,6 +56,7 @@ public class Certifiaciones extends JPanel {
         initComponents();
         configurarVista();
         configurarEventos();
+
         cargarDatos();
     }
 
@@ -70,115 +68,228 @@ public class Certifiaciones extends JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        txtBuscar = new com.titanops.vista.componentes.CampoTexto();
         panelSuperior = new javax.swing.JPanel();
         panelFormulario = new javax.swing.JPanel();
         lblOperador = new javax.swing.JLabel();
-        cmbOperador = new javax.swing.JComboBox<>();
+        cmbOperador = new com.titanops.vista.componentes.Selector<>();
         lblCategoria = new javax.swing.JLabel();
-        cmbCategoria = new javax.swing.JComboBox<>();
+        cmbCategoria = new com.titanops.vista.componentes.Selector<>();
         lblNumero = new javax.swing.JLabel();
-        txtNumero = new javax.swing.JTextField();
+        txtNumero = new com.titanops.vista.componentes.CampoTexto();
         lblExpedicion = new javax.swing.JLabel();
         fechaExpedicion = new com.toedter.calendar.JDateChooser();
         lblVencimiento = new javax.swing.JLabel();
         fechaVencimiento = new com.toedter.calendar.JDateChooser();
         panelAccionesCreacion = new javax.swing.JPanel();
-        btnGuardar = new javax.swing.JButton();
+        btnGuardar = new com.titanops.vista.componentes.Boton();
         lblRelleno = new javax.swing.JLabel();
         panelFiltros = new javax.swing.JPanel();
         lblBuscar = new javax.swing.JLabel();
-        txtBuscar = new javax.swing.JTextField();
         lblVigencia = new javax.swing.JLabel();
-        cmbVigencia = new javax.swing.JComboBox<>();
-        btnBuscar = new javax.swing.JButton();
+        cmbVigencia = new com.titanops.vista.componentes.Selector<>();
+        btnBuscar = new com.titanops.vista.componentes.Boton();
         lblEstado = new javax.swing.JLabel();
-        btnLimpiar = new javax.swing.JButton();
+        btnLimpiar = new com.titanops.vista.componentes.Boton();
         scrollTabla = new javax.swing.JScrollPane();
-        tabla = new javax.swing.JTable();
+        tabla = new com.titanops.vista.componentes.Tabla();
         panelAccionesTabla = new javax.swing.JPanel();
-        btnEditar = new javax.swing.JButton();
-        btnEliminar = new javax.swing.JButton();
+        btnEditar = new com.titanops.vista.componentes.Boton();
+        btnEliminar = new com.titanops.vista.componentes.Boton();
 
-        setBackground(new java.awt.Color(134, 137, 93));
+        txtBuscar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
+        txtBuscar.setColumns(22);
+        txtBuscar.setForeground(new java.awt.Color(30, 41, 59));
+        txtBuscar.setCaretColor(new java.awt.Color(37, 99, 235));
+        txtBuscar.setColorFoco(new java.awt.Color(37, 99, 235));
+        txtBuscar.setColorPlaceholder(new java.awt.Color(100, 116, 139));
+        txtBuscar.setDisabledTextColor(new java.awt.Color(100, 116, 139));
+        txtBuscar.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        txtBuscar.setPreferredSize(new java.awt.Dimension(200, 40));
+        txtBuscar.setSelectedTextColor(new java.awt.Color(30, 41, 59));
+        txtBuscar.setSelectionColor(new java.awt.Color(191, 219, 254));
+
+        setBackground(new java.awt.Color(239, 246, 255));
         setBorder(javax.swing.BorderFactory.createEmptyBorder(14, 18, 14, 18));
-        setPreferredSize(new java.awt.Dimension(980, 650));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setPreferredSize(new java.awt.Dimension(900, 540));
         setLayout(new java.awt.BorderLayout(8, 8));
 
         panelSuperior.setOpaque(false);
+        panelSuperior.setForeground(new java.awt.Color(30, 41, 59));
+        panelSuperior.setBackground(new java.awt.Color(248, 250, 252));
         panelSuperior.setLayout(new java.awt.BorderLayout(0, 6));
 
         panelFormulario.setOpaque(false);
+        panelFormulario.setForeground(new java.awt.Color(30, 41, 59));
+        panelFormulario.setBackground(new java.awt.Color(248, 250, 252));
         panelFormulario.setLayout(new java.awt.GridLayout(3, 4, 10, 8));
 
         lblOperador.setText("Operador:");
+        lblOperador.setForeground(new java.awt.Color(30, 41, 59));
         panelFormulario.add(lblOperador);
+
+        cmbOperador.setForeground(new java.awt.Color(30, 41, 59));
+        cmbOperador.setColorFoco(new java.awt.Color(37, 99, 235));
+        cmbOperador.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        cmbOperador.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(3, 8, 3, 8)));
+        cmbOperador.setPreferredSize(new java.awt.Dimension(180, 30));
         panelFormulario.add(cmbOperador);
 
         lblCategoria.setText("Categoría:");
+        lblCategoria.setForeground(new java.awt.Color(30, 41, 59));
         panelFormulario.add(lblCategoria);
+
+        cmbCategoria.setForeground(new java.awt.Color(30, 41, 59));
+        cmbCategoria.setColorFoco(new java.awt.Color(37, 99, 235));
+        cmbCategoria.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        cmbCategoria.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(3, 8, 3, 8)));
+        cmbCategoria.setPreferredSize(new java.awt.Dimension(180, 30));
         panelFormulario.add(cmbCategoria);
 
         lblNumero.setText("N.º acreditación:");
+        lblNumero.setForeground(new java.awt.Color(30, 41, 59));
         panelFormulario.add(lblNumero);
 
         txtNumero.setColumns(18);
+        txtNumero.setForeground(new java.awt.Color(30, 41, 59));
+        txtNumero.setColorFoco(new java.awt.Color(37, 99, 235));
+        txtNumero.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        txtNumero.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
+        txtNumero.setPreferredSize(new java.awt.Dimension(200, 40));
+        txtNumero.setSelectionColor(new java.awt.Color(191, 219, 254));
+        txtNumero.setSelectedTextColor(new java.awt.Color(30, 41, 59));
+        txtNumero.setCaretColor(new java.awt.Color(37, 99, 235));
+        txtNumero.setDisabledTextColor(new java.awt.Color(100, 116, 139));
+        txtNumero.setColorPlaceholder(new java.awt.Color(100, 116, 139));
         panelFormulario.add(txtNumero);
 
         lblExpedicion.setText("Expedición:");
+        lblExpedicion.setForeground(new java.awt.Color(30, 41, 59));
         panelFormulario.add(lblExpedicion);
         panelFormulario.add(fechaExpedicion);
 
         lblVencimiento.setText("Vencimiento:");
+        lblVencimiento.setForeground(new java.awt.Color(30, 41, 59));
         panelFormulario.add(lblVencimiento);
         panelFormulario.add(fechaVencimiento);
 
         panelAccionesCreacion.setOpaque(false);
+        panelAccionesCreacion.setForeground(new java.awt.Color(30, 41, 59));
+        panelAccionesCreacion.setBackground(new java.awt.Color(248, 250, 252));
 
         btnGuardar.setText("GUARDAR CERTIFICACIÓN");
+        btnGuardar.setBackground(new java.awt.Color(239, 246, 255));
+        btnGuardar.setForeground(new java.awt.Color(30, 64, 175));
+        btnGuardar.setFondoActivo(new java.awt.Color(37, 99, 235));
+        btnGuardar.setTextoActivo(new java.awt.Color(255, 255, 255));
+        btnGuardar.setColorFoco(new java.awt.Color(37, 99, 235));
+        btnGuardar.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        btnGuardar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        btnGuardar.setContentAreaFilled(false);
         panelAccionesCreacion.add(btnGuardar);
 
         panelFormulario.add(panelAccionesCreacion);
+
+        lblRelleno.setForeground(new java.awt.Color(30, 41, 59));
         panelFormulario.add(lblRelleno);
 
         panelSuperior.add(panelFormulario, java.awt.BorderLayout.CENTER);
 
         panelFiltros.setOpaque(false);
+        panelFiltros.setForeground(new java.awt.Color(30, 41, 59));
+        panelFiltros.setBackground(new java.awt.Color(248, 250, 252));
         panelFiltros.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 8, 4));
 
         lblBuscar.setText("Buscar:");
+        lblBuscar.setForeground(new java.awt.Color(30, 41, 59));
         panelFiltros.add(lblBuscar);
 
-        txtBuscar.setColumns(22);
-        panelFiltros.add(txtBuscar);
-
         lblVigencia.setText("Vigencia:");
+        lblVigencia.setForeground(new java.awt.Color(30, 41, 59));
         panelFiltros.add(lblVigencia);
+
+        cmbVigencia.setForeground(new java.awt.Color(30, 41, 59));
+        cmbVigencia.setColorFoco(new java.awt.Color(37, 99, 235));
+        cmbVigencia.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        cmbVigencia.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(3, 8, 3, 8)));
+        cmbVigencia.setPreferredSize(new java.awt.Dimension(180, 30));
         panelFiltros.add(cmbVigencia);
 
         btnBuscar.setText("BUSCAR");
+        btnBuscar.setBackground(new java.awt.Color(239, 246, 255));
+        btnBuscar.setForeground(new java.awt.Color(30, 64, 175));
+        btnBuscar.setFondoActivo(new java.awt.Color(37, 99, 235));
+        btnBuscar.setTextoActivo(new java.awt.Color(255, 255, 255));
+        btnBuscar.setColorFoco(new java.awt.Color(37, 99, 235));
+        btnBuscar.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        btnBuscar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        btnBuscar.setContentAreaFilled(false);
         panelFiltros.add(btnBuscar);
 
         lblEstado.setText(" ");
+        lblEstado.setForeground(new java.awt.Color(30, 41, 59));
         panelFiltros.add(lblEstado);
 
         btnLimpiar.setText("LIMPIAR");
+        btnLimpiar.setBackground(new java.awt.Color(239, 246, 255));
+        btnLimpiar.setForeground(new java.awt.Color(30, 64, 175));
+        btnLimpiar.setFondoActivo(new java.awt.Color(37, 99, 235));
+        btnLimpiar.setTextoActivo(new java.awt.Color(255, 255, 255));
+        btnLimpiar.setColorFoco(new java.awt.Color(37, 99, 235));
+        btnLimpiar.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        btnLimpiar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        btnLimpiar.setContentAreaFilled(false);
         panelFiltros.add(btnLimpiar);
 
         panelSuperior.add(panelFiltros, java.awt.BorderLayout.SOUTH);
 
         add(panelSuperior, java.awt.BorderLayout.NORTH);
 
+        scrollTabla.setForeground(new java.awt.Color(30, 41, 59));
+        scrollTabla.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)));
+        scrollTabla.setBackground(new java.awt.Color(255, 255, 255));
+
+        tabla.setForeground(new java.awt.Color(30, 41, 59));
+        tabla.setGridColor(new java.awt.Color(125, 211, 252));
+        tabla.setSelectionBackground(new java.awt.Color(219, 234, 254));
+        tabla.setSelectionForeground(new java.awt.Color(30, 64, 175));
+        tabla.setFondoCabecera(new java.awt.Color(224, 242, 254));
+        tabla.setTextoCabecera(new java.awt.Color(30, 64, 175));
+        tabla.setBordeCabecera(new java.awt.Color(125, 211, 252));
+        tabla.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)));
+        tabla.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        tabla.setRowHeight(30);
+        tabla.setFillsViewportHeight(true);
         scrollTabla.setViewportView(tabla);
 
         add(scrollTabla, java.awt.BorderLayout.CENTER);
 
         panelAccionesTabla.setOpaque(false);
+        panelAccionesTabla.setForeground(new java.awt.Color(30, 41, 59));
+        panelAccionesTabla.setBackground(new java.awt.Color(248, 250, 252));
         panelAccionesTabla.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 10, 4));
 
         btnEditar.setText("EDITAR");
+        btnEditar.setBackground(new java.awt.Color(239, 246, 255));
+        btnEditar.setForeground(new java.awt.Color(30, 64, 175));
+        btnEditar.setFondoActivo(new java.awt.Color(37, 99, 235));
+        btnEditar.setTextoActivo(new java.awt.Color(255, 255, 255));
+        btnEditar.setColorFoco(new java.awt.Color(37, 99, 235));
+        btnEditar.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        btnEditar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        btnEditar.setContentAreaFilled(false);
         panelAccionesTabla.add(btnEditar);
 
         btnEliminar.setText("ELIMINAR");
+        btnEliminar.setBackground(new java.awt.Color(239, 246, 255));
+        btnEliminar.setForeground(new java.awt.Color(30, 64, 175));
+        btnEliminar.setFondoActivo(new java.awt.Color(37, 99, 235));
+        btnEliminar.setTextoActivo(new java.awt.Color(255, 255, 255));
+        btnEliminar.setColorFoco(new java.awt.Color(37, 99, 235));
+        btnEliminar.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        btnEliminar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        btnEliminar.setContentAreaFilled(false);
         panelAccionesTabla.add(btnEliminar);
 
         add(panelAccionesTabla, java.awt.BorderLayout.SOUTH);
@@ -587,10 +698,7 @@ public class Certifiaciones extends JPanel {
     }
 
     private static void configurarBoton(JButton boton) {
-        boton.setBackground(COLOR_ACCION);
-        boton.setForeground(Color.WHITE);
-        boton.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 14));
-        boton.setBorder(BorderFactory.createEmptyBorder(8, 14, 8, 14));
+        // El color y el borde se definen desde el formulario de NetBeans.
     }
 
     private void configurarFecha(JDateChooser selector) {
@@ -621,14 +729,14 @@ public class Certifiaciones extends JPanel {
                                   List<CertificacionFila> certificaciones) {}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnEditar;
-    private javax.swing.JButton btnEliminar;
-    private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton btnLimpiar;
-    private javax.swing.JComboBox<CategoriaOpcion> cmbCategoria;
-    private javax.swing.JComboBox<OperadorOpcion> cmbOperador;
-    private javax.swing.JComboBox<String> cmbVigencia;
+    private com.titanops.vista.componentes.Boton btnBuscar;
+    private com.titanops.vista.componentes.Boton btnEditar;
+    private com.titanops.vista.componentes.Boton btnEliminar;
+    private com.titanops.vista.componentes.Boton btnGuardar;
+    private com.titanops.vista.componentes.Boton btnLimpiar;
+    private com.titanops.vista.componentes.Selector<CategoriaOpcion> cmbCategoria;
+    private com.titanops.vista.componentes.Selector<OperadorOpcion> cmbOperador;
+    private com.titanops.vista.componentes.Selector<String> cmbVigencia;
     private com.toedter.calendar.JDateChooser fechaExpedicion;
     private com.toedter.calendar.JDateChooser fechaVencimiento;
     private javax.swing.JLabel lblBuscar;
@@ -646,8 +754,8 @@ public class Certifiaciones extends JPanel {
     private javax.swing.JPanel panelFormulario;
     private javax.swing.JPanel panelSuperior;
     private javax.swing.JScrollPane scrollTabla;
-    private javax.swing.JTable tabla;
-    private javax.swing.JTextField txtBuscar;
-    private javax.swing.JTextField txtNumero;
+    private com.titanops.vista.componentes.Tabla tabla;
+    private com.titanops.vista.componentes.CampoTexto txtBuscar;
+    private com.titanops.vista.componentes.CampoTexto txtNumero;
     // End of variables declaration//GEN-END:variables
 }

@@ -43,6 +43,7 @@ public class Rutas extends javax.swing.JInternalFrame {
         setTitle("Gestión de rutas y asignaciones");
         panelVista.setLayout(new java.awt.BorderLayout());
         mostrarPanel(new panelCrear(rutasController));
+
     }
 
     /**
@@ -56,9 +57,9 @@ public class Rutas extends javax.swing.JInternalFrame {
 
         jPanel3 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
-        btn_crear = new javax.swing.JButton();
-        btn_asignar = new javax.swing.JButton();
-        btn_editar = new javax.swing.JButton();
+        btn_crear = new com.titanops.vista.componentes.Boton();
+        btn_asignar = new com.titanops.vista.componentes.Boton();
+        btn_editar = new com.titanops.vista.componentes.Boton();
         panelVista = new javax.swing.JPanel();
 
         setClosable(true);
@@ -67,26 +68,25 @@ public class Rutas extends javax.swing.JInternalFrame {
         setResizable(true);
         setPreferredSize(new java.awt.Dimension(1050, 801));
 
-        jPanel3.setBackground(new java.awt.Color(84, 88, 47));
 
         jLabel12.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 50)); // NOI18N
         jLabel12.setText("RUTAS");
 
-        btn_crear.setBackground(new java.awt.Color(93, 36, 23));
+        btn_crear.setBackground(new java.awt.Color(37, 99, 235));
         btn_crear.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         btn_crear.setForeground(new java.awt.Color(255, 255, 255));
         btn_crear.setText("CREAR RUTA");
         btn_crear.setBorder(null);
         btn_crear.addActionListener(this::btn_crearActionPerformed);
 
-        btn_asignar.setBackground(new java.awt.Color(93, 36, 23));
+        btn_asignar.setBackground(new java.awt.Color(37, 99, 235));
         btn_asignar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         btn_asignar.setForeground(new java.awt.Color(255, 255, 255));
         btn_asignar.setText("ASIGNAR RUTA");
         btn_asignar.setBorder(null);
         btn_asignar.addActionListener(this::btn_asignarActionPerformed);
 
-        btn_editar.setBackground(new java.awt.Color(93, 36, 23));
+        btn_editar.setBackground(new java.awt.Color(37, 99, 235));
         btn_editar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         btn_editar.setForeground(new java.awt.Color(255, 255, 255));
         btn_editar.setText("EDITAR");
@@ -99,14 +99,13 @@ public class Rutas extends javax.swing.JInternalFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(66, 66, 66)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(btn_crear, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(159, 159, 159)
-                        .addComponent(btn_asignar, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
-                .addComponent(btn_editar, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_crear)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_asignar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_editar)
                 .addGap(100, 100, 100))
         );
         jPanel3Layout.setVerticalGroup(
@@ -116,13 +115,12 @@ public class Rutas extends javax.swing.JInternalFrame {
                 .addComponent(jLabel12)
                 .addGap(106, 106, 106)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_crear, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_asignar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_editar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_crear)
+                    .addComponent(btn_asignar)
+                    .addComponent(btn_editar))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
-        panelVista.setBackground(new java.awt.Color(134, 137, 93));
 
         javax.swing.GroupLayout panelVistaLayout = new javax.swing.GroupLayout(panelVista);
         panelVista.setLayout(panelVistaLayout);
@@ -154,6 +152,80 @@ public class Rutas extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        jPanel3.setForeground(new java.awt.Color(30, 41, 59));
+        jPanel3.setBackground(new java.awt.Color(30, 64, 175));
+        panelVista.setForeground(new java.awt.Color(30, 41, 59));
+        panelVista.setBackground(new java.awt.Color(248, 250, 252));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+
+
+        jPanel3.setForeground(new java.awt.Color(30, 41, 59));
+        jPanel3.setBackground(new java.awt.Color(30, 64, 175));
+        jLabel12.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 50));
+        jLabel12.setText("RUTAS");
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        btn_crear.setText("CREAR RUTA");
+        btn_crear.setBackground(new java.awt.Color(239, 246, 255));
+        btn_crear.setForeground(new java.awt.Color(30, 64, 175));
+        btn_crear.setFondoActivo(new java.awt.Color(37, 99, 235));
+        btn_crear.setTextoActivo(new java.awt.Color(255, 255, 255));
+        btn_crear.setColorFoco(new java.awt.Color(37, 99, 235));
+        btn_crear.setFont(new java.awt.Font("SansSerif", 1, 13));
+        btn_crear.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        btn_crear.setRolloverEnabled(true);
+        btn_crear.setContentAreaFilled(false);
+        btn_crear.setOpaque(false);
+        btn_asignar.setText("ASIGNAR RUTA");
+        btn_asignar.setBackground(new java.awt.Color(239, 246, 255));
+        btn_asignar.setForeground(new java.awt.Color(30, 64, 175));
+        btn_asignar.setFondoActivo(new java.awt.Color(37, 99, 235));
+        btn_asignar.setTextoActivo(new java.awt.Color(255, 255, 255));
+        btn_asignar.setColorFoco(new java.awt.Color(37, 99, 235));
+        btn_asignar.setFont(new java.awt.Font("SansSerif", 1, 13));
+        btn_asignar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        btn_asignar.setRolloverEnabled(true);
+        btn_asignar.setContentAreaFilled(false);
+        btn_asignar.setOpaque(false);
+        btn_editar.setText("EDITAR");
+        btn_editar.setBackground(new java.awt.Color(239, 246, 255));
+        btn_editar.setForeground(new java.awt.Color(30, 64, 175));
+        btn_editar.setFondoActivo(new java.awt.Color(37, 99, 235));
+        btn_editar.setTextoActivo(new java.awt.Color(255, 255, 255));
+        btn_editar.setColorFoco(new java.awt.Color(37, 99, 235));
+        btn_editar.setFont(new java.awt.Font("SansSerif", 1, 13));
+        btn_editar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        btn_editar.setRolloverEnabled(true);
+        btn_editar.setContentAreaFilled(false);
+        btn_editar.setOpaque(false);
+        panelVista.setForeground(new java.awt.Color(30, 41, 59));
+        panelVista.setBackground(new java.awt.Color(248, 250, 252));
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -179,9 +251,9 @@ public class Rutas extends javax.swing.JInternalFrame {
     
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_asignar;
-    private javax.swing.JButton btn_crear;
-    private javax.swing.JButton btn_editar;
+    private com.titanops.vista.componentes.Boton btn_asignar;
+    private com.titanops.vista.componentes.Boton btn_crear;
+    private com.titanops.vista.componentes.Boton btn_editar;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel panelVista;

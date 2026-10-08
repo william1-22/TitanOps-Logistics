@@ -2,111 +2,246 @@
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
   <Properties>
-    <Property name="closable" type="boolean" value="true"/>
-    <Property name="maximizable" type="boolean" value="true"/>
-    <Property name="resizable" type="boolean" value="true"/>
+    <Property name="closable" type="boolean" value="true" />
+    <Property name="maximizable" type="boolean" value="true" />
+    <Property name="resizable" type="boolean" value="true" />
+    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="3b" green="29" red="1e" type="rgb" />
+    </Property>
+    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="ff" green="f6" red="ef" type="rgb" />
+    </Property>
   </Properties>
   <SyntheticProperties>
-    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1" />
   </SyntheticProperties>
   <AuxValues>
-    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
-    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
-    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
-    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
-    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
-    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
-    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="3"/>
-    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
-    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0" />
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false" />
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true" />
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false" />
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false" />
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1" />
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="3" />
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false" />
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2" />
   </AuxValues>
-
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+        <Component id="jPanel1" alignment="0" max="32767" attributes="0">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="3b" green="29" red="1e" type="rgb" />
+            </Property>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="f6" red="ef" type="rgb" />
+            </Property>
+          </Properties>
+        </Component>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel1" max="32767" attributes="0"/>
-              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-          </Group>
+        <Group type="102" attributes="0">
+          <EmptySpace max="-2" attributes="0" />
+          <Component id="jPanel1" max="32767" attributes="0">
+            <Properties>
+              <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                <Color blue="3b" green="29" red="1e" type="rgb" />
+              </Property>
+              <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                <Color blue="ff" green="f6" red="ef" type="rgb" />
+              </Property>
+            </Properties>
+          </Component>
+          <EmptySpace min="-2" pref="23" max="-2" attributes="0" />
+        </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="3b" green="29" red="1e" type="rgb" />
+        </Property>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="5d" green="89" red="86" type="rgb"/>
+          <Color blue="ff" green="f6" red="ef" type="rgb" />
         </Property>
       </Properties>
-
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
-              <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="GUARDARUS1" min="-2" pref="207" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-                          <Component id="GUARDARUS2" min="-2" pref="168" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="GUARDARUS" min="-2" pref="207" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="jScrollPane1" min="-2" pref="705" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace pref="31" max="32767" attributes="0"/>
+            <Component id="jPanel2" alignment="0" max="32767" attributes="0">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="3b" green="29" red="1e" type="rgb" />
+                </Property>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="f6" red="ef" type="rgb" />
+                </Property>
+              </Properties>
+            </Component>
+            <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0" />
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                <Group type="102" alignment="2" attributes="0">
+                  <Component id="GUARDARUS1" min="-2" max="-2" attributes="0">
+                    <Properties>
+                      <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                        <Color blue="3b" green="29" red="1e" type="rgb" />
+                      </Property>
+                      <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                        <Color blue="ff" green="f6" red="ef" type="rgb" />
+                      </Property>
+                    </Properties>
+                  </Component>
+                  <EmptySpace type="separate" max="-2" attributes="0" />
+                  <Component id="GUARDARUS2" min="-2" max="-2" attributes="0">
+                    <Properties>
+                      <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                        <Color blue="3b" green="29" red="1e" type="rgb" />
+                      </Property>
+                      <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                        <Color blue="ff" green="f6" red="ef" type="rgb" />
+                      </Property>
+                    </Properties>
+                  </Component>
+                  <EmptySpace type="separate" max="-2" attributes="0" />
+                  <Component id="GUARDARUS" min="-2" max="-2" attributes="0">
+                    <Properties>
+                      <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                        <Color blue="3b" green="29" red="1e" type="rgb" />
+                      </Property>
+                      <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                        <Color blue="ff" green="f6" red="ef" type="rgb" />
+                      </Property>
+                    </Properties>
+                  </Component>
+                </Group>
+                <Component id="jScrollPane1" min="-2" pref="705" max="-2" attributes="0">
+                  <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="3b" green="29" red="1e" type="rgb" />
+                    </Property>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="f6" red="ef" type="rgb" />
+                    </Property>
+                  </Properties>
+                </Component>
               </Group>
+              <EmptySpace pref="31" max="32767" attributes="0" />
+            </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="379" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="GUARDARUS1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="GUARDARUS2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="GUARDARUS" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+            <Group type="102" alignment="0" attributes="0">
+              <Component id="jPanel2" min="-2" max="-2" attributes="0">
+                <Properties>
+                  <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                    <Color blue="3b" green="29" red="1e" type="rgb" />
+                  </Property>
+                  <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                    <Color blue="ff" green="f6" red="ef" type="rgb" />
+                  </Property>
+                </Properties>
+              </Component>
+              <EmptySpace min="-2" pref="32" max="-2" attributes="0" />
+              <Component id="jScrollPane1" min="-2" pref="379" max="-2" attributes="0">
+                <Properties>
+                  <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                    <Color blue="3b" green="29" red="1e" type="rgb" />
+                  </Property>
+                  <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                    <Color blue="ff" green="f6" red="ef" type="rgb" />
+                  </Property>
+                </Properties>
+              </Component>
+              <EmptySpace max="32767" attributes="0" />
+              <Group type="103" groupAlignment="3" attributes="0">
+                <Component id="GUARDARUS1" alignment="3" min="-2" max="-2" attributes="0">
+                  <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="3b" green="29" red="1e" type="rgb" />
+                    </Property>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="f6" red="ef" type="rgb" />
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component id="GUARDARUS2" alignment="3" min="-2" max="-2" attributes="0">
+                  <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="3b" green="29" red="1e" type="rgb" />
+                    </Property>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="f6" red="ef" type="rgb" />
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component id="GUARDARUS" alignment="3" min="-2" max="-2" attributes="0">
+                  <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="3b" green="29" red="1e" type="rgb" />
+                    </Property>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="f6" red="ef" type="rgb" />
+                    </Property>
+                  </Properties>
+                </Component>
               </Group>
+              <EmptySpace min="-2" pref="17" max="-2" attributes="0" />
+            </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
         <Container class="javax.swing.JPanel" name="jPanel2">
           <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="3b" green="29" red="1e" type="rgb" />
+            </Property>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="2f" green="58" red="54" type="rgb"/>
+              <Color blue="af" green="40" red="1e" type="rgb" />
             </Property>
           </Properties>
-
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
+                <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="121" max="-2" attributes="0" />
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0">
+                    <Properties>
+                      <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                        <Color blue="3b" green="29" red="1e" type="rgb" />
+                      </Property>
+                      <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                        <Color blue="ff" green="f6" red="ef" type="rgb" />
+                      </Property>
+                    </Properties>
+                  </Component>
+                  <EmptySpace max="32767" attributes="0" />
+                </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="31" max="32767" attributes="0"/>
-                  </Group>
+                <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="29" max="-2" attributes="0" />
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0">
+                    <Properties>
+                      <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                        <Color blue="3b" green="29" red="1e" type="rgb" />
+                      </Property>
+                      <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                        <Color blue="ff" green="f6" red="ef" type="rgb" />
+                      </Property>
+                    </Properties>
+                  </Component>
+                  <EmptySpace pref="31" max="32767" attributes="0" />
+                </Group>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -114,137 +249,254 @@
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Arial Rounded MT Bold" size="50" style="0"/>
+                  <Font name="Arial Rounded MT Bold" size="50" style="0" />
                 </Property>
-                <Property name="text" type="java.lang.String" value="Gesti&#xf3;n de Usuarios"/>
+                <Property name="text" type="java.lang.String" value="Gestión de Usuarios" />
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb" />
+                </Property>
               </Properties>
             </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="3b" green="29" red="1e" type="rgb" />
+            </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                <LineBorder thickness="1" roundedCorners="false">
+                  <Color PropertyName="color" blue="fc" green="d3" red="7d" type="rgb" />
+                </LineBorder>
+              </Border>
+            </Property>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb" />
+            </Property>
+          </Properties>
           <AuxValues>
-            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true" />
           </AuxValues>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout" />
           <SubComponents>
-            <Component class="javax.swing.JTable" name="jTable1">
+            <Component class="com.titanops.vista.componentes.Tabla" name="jTable1">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="8f" green="ab" red="a8" type="rgb"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
-                </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="6" rowCount="0">
-                    <Column editable="false" title="ID" type="java.lang.Object"/>
-                    <Column editable="false" title="Nombre completo" type="java.lang.Object"/>
-                    <Column editable="false" title="Usuario" type="java.lang.Object"/>
-                    <Column editable="false" title="Rol" type="java.lang.Object"/>
-                    <Column editable="false" title="Estado" type="java.lang.Object"/>
-                    <Column editable="false" title="Fecha de creaci&#xf3;n" type="java.lang.Object"/>
+                    <Column editable="false" title="ID" type="java.lang.Object" />
+                    <Column editable="false" title="Nombre completo" type="java.lang.Object" />
+                    <Column editable="false" title="Usuario" type="java.lang.Object" />
+                    <Column editable="false" title="Rol" type="java.lang.Object" />
+                    <Column editable="false" title="Estado" type="java.lang.Object" />
+                    <Column editable="false" title="Fecha de creación" type="java.lang.Object" />
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
+                      <Title />
+                      <Editor />
+                      <Renderer />
                     </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
+                      <Title />
+                      <Editor />
+                      <Renderer />
                     </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
+                      <Title />
+                      <Editor />
+                      <Renderer />
                     </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
+                      <Title />
+                      <Editor />
+                      <Renderer />
                     </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
+                      <Title />
+                      <Editor />
+                      <Renderer />
                     </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
+                      <Title />
+                      <Editor />
+                      <Renderer />
                     </Column>
                   </TableColumnModel>
                 </Property>
                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                  <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
+                  <TableHeader reorderingAllowed="false" resizingAllowed="true" />
                 </Property>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb" />
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="3b" green="29" red="1e" type="rgb" />
+                </Property>
+                <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="fc" green="d3" red="7d" type="rgb" />
+                </Property>
+                <Property name="selectionBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="fe" green="ea" red="db" type="rgb" />
+                </Property>
+                <Property name="selectionForeground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="af" green="40" red="1e" type="rgb" />
+                </Property>
+                <Property name="fondoCabecera" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="fe" green="f2" red="e0" type="rgb" />
+                </Property>
+                <Property name="textoCabecera" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="af" green="40" red="1e" type="rgb" />
+                </Property>
+                <Property name="bordeCabecera" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="fc" green="d3" red="7d" type="rgb" />
+                </Property>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder thickness="1" roundedCorners="false">
+                      <Color PropertyName="color" blue="fc" green="d3" red="7d" type="rgb" />
+                    </LineBorder>
+                  </Border>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="SansSerif" size="13" style="0" />
+                </Property>
+                <Property name="rowHeight" type="int" value="30" />
+                <Property name="showVerticalLines" type="boolean" value="false" />
+                <Property name="fillsViewportHeight" type="boolean" value="true" />
               </Properties>
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="GUARDARUS">
+        <Component class="com.titanops.vista.componentes.Boton" name="GUARDARUS">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="17" green="24" red="5d" type="rgb"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/multimedia/ELIMINARPEQUEÑO.png" />
             </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Arial Rounded MT Bold" size="12" style="0"/>
+            <Property name="text" type="java.lang.String" value="DESACTIVAR" />
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="f6" red="ef" type="rgb" />
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+              <Color blue="af" green="40" red="1e" type="rgb" />
             </Property>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/multimedia/ELIMINARPEQUE&#xd1;O.png"/>
+            <Property name="fondoActivo" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="eb" green="63" red="25" type="rgb" />
             </Property>
-            <Property name="text" type="java.lang.String" value="DESACTIVAR"/>
+            <Property name="textoActivo" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb" />
+            </Property>
+            <Property name="colorFoco" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="eb" green="63" red="25" type="rgb" />
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="SansSerif" size="13" style="1" />
+            </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="null"/>
+              <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
+                <CompoundBorder>
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo" PropertyName="outside">
+                    <LineBorder thickness="1" roundedCorners="false">
+                      <Color PropertyName="color" blue="fc" green="d3" red="7d" type="rgb" />
+                    </LineBorder>
+                  </Border>
+                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo" PropertyName="inside">
+                    <EmptyBorder top="8" left="14" bottom="8" right="14" />
+                  </Border>
+                </CompoundBorder>
+              </Border>
             </Property>
+            <Property name="rolloverEnabled" type="boolean" value="true" />
+            <Property name="contentAreaFilled" type="boolean" value="false" />
+            <Property name="opaque" type="boolean" value="false" />
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="GUARDARUS1">
+        <Component class="com.titanops.vista.componentes.Boton" name="GUARDARUS1">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="17" green="24" red="5d" type="rgb"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/multimedia/NUEVOPEQUEÑO.png" />
             </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Arial Rounded MT Bold" size="12" style="0"/>
+            <Property name="text" type="java.lang.String" value="CREAR" />
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="f6" red="ef" type="rgb" />
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+              <Color blue="af" green="40" red="1e" type="rgb" />
             </Property>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/multimedia/NUEVOPEQUE&#xd1;O.png"/>
+            <Property name="fondoActivo" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="eb" green="63" red="25" type="rgb" />
             </Property>
-            <Property name="text" type="java.lang.String" value="CREAR"/>
+            <Property name="textoActivo" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb" />
+            </Property>
+            <Property name="colorFoco" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="eb" green="63" red="25" type="rgb" />
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="SansSerif" size="13" style="1" />
+            </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="null"/>
+              <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
+                <CompoundBorder>
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo" PropertyName="outside">
+                    <LineBorder thickness="1" roundedCorners="false">
+                      <Color PropertyName="color" blue="fc" green="d3" red="7d" type="rgb" />
+                    </LineBorder>
+                  </Border>
+                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo" PropertyName="inside">
+                    <EmptyBorder top="8" left="14" bottom="8" right="14" />
+                  </Border>
+                </CompoundBorder>
+              </Border>
             </Property>
+            <Property name="rolloverEnabled" type="boolean" value="true" />
+            <Property name="contentAreaFilled" type="boolean" value="false" />
+            <Property name="opaque" type="boolean" value="false" />
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="GUARDARUS2">
+        <Component class="com.titanops.vista.componentes.Boton" name="GUARDARUS2">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="17" green="24" red="5d" type="rgb"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/multimedia/EDITARPEQUEÑO.png" />
             </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Arial Rounded MT Bold" size="12" style="0"/>
+            <Property name="text" type="java.lang.String" value="EDITAR" />
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="f6" red="ef" type="rgb" />
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+              <Color blue="af" green="40" red="1e" type="rgb" />
             </Property>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/multimedia/EDITARPEQUE&#xd1;O.png"/>
+            <Property name="fondoActivo" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="eb" green="63" red="25" type="rgb" />
             </Property>
-            <Property name="text" type="java.lang.String" value="EDITAR"/>
+            <Property name="textoActivo" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb" />
+            </Property>
+            <Property name="colorFoco" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="eb" green="63" red="25" type="rgb" />
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="SansSerif" size="13" style="1" />
+            </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="null"/>
+              <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
+                <CompoundBorder>
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo" PropertyName="outside">
+                    <LineBorder thickness="1" roundedCorners="false">
+                      <Color PropertyName="color" blue="fc" green="d3" red="7d" type="rgb" />
+                    </LineBorder>
+                  </Border>
+                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo" PropertyName="inside">
+                    <EmptyBorder top="8" left="14" bottom="8" right="14" />
+                  </Border>
+                </CompoundBorder>
+              </Border>
             </Property>
+            <Property name="rolloverEnabled" type="boolean" value="true" />
+            <Property name="contentAreaFilled" type="boolean" value="false" />
+            <Property name="opaque" type="boolean" value="false" />
           </Properties>
         </Component>
       </SubComponents>

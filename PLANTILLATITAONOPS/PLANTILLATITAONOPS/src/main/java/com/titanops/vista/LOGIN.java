@@ -19,6 +19,7 @@ public class LOGIN extends javax.swing.JInternalFrame {
      */
     public LOGIN() {
         initComponents();
+
         getRootPane().setDefaultButton(INICIAR);
         jTextField1.setToolTipText("Nombre de usuario");
         jPasswordField1.setToolTipText("Contraseña");
@@ -38,21 +39,19 @@ public class LOGIN extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextField1 = new com.titanops.vista.componentes.CampoTexto();
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        CANCELAR = new javax.swing.JButton();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        INICIAR = new javax.swing.JButton();
+        CANCELAR = new com.titanops.vista.componentes.Boton();
+        jPasswordField1 = new com.titanops.vista.componentes.CampoClave();
+        INICIAR = new com.titanops.vista.componentes.Boton();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
 
-        jPanel1.setBackground(new java.awt.Color(134, 137, 93));
 
-        jPanel2.setBackground(new java.awt.Color(84, 88, 47));
 
         jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
         jLabel1.setText("LOGIN");
@@ -92,7 +91,7 @@ public class LOGIN extends javax.swing.JInternalFrame {
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/multimedia/CANDADO.png"))); // NOI18N
 
-        CANCELAR.setBackground(new java.awt.Color(93, 36, 23));
+        CANCELAR.setBackground(new java.awt.Color(37, 99, 235));
         CANCELAR.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         CANCELAR.setForeground(new java.awt.Color(255, 255, 255));
         CANCELAR.setText("CANCELAR");
@@ -103,7 +102,7 @@ public class LOGIN extends javax.swing.JInternalFrame {
         jPasswordField1.setForeground(new java.awt.Color(0, 0, 0));
         jPasswordField1.setBorder(null);
 
-        INICIAR.setBackground(new java.awt.Color(93, 36, 23));
+        INICIAR.setBackground(new java.awt.Color(37, 99, 235));
         INICIAR.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         INICIAR.setForeground(new java.awt.Color(255, 255, 255));
         INICIAR.setText("INICIAR");
@@ -153,11 +152,11 @@ public class LOGIN extends javax.swing.JInternalFrame {
                         .addGap(9, 9, 9)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel3)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(36, 36, 36)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel6)
-                            .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(41, 110, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -178,6 +177,123 @@ public class LOGIN extends javax.swing.JInternalFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        jPanel1.setForeground(new java.awt.Color(30, 41, 59));
+        jPanel1.setBackground(new java.awt.Color(239, 246, 255));
+        jPanel2.setForeground(new java.awt.Color(30, 41, 59));
+        jPanel2.setBackground(new java.awt.Color(30, 64, 175));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(30, 41, 59));
+        jLabel3.setForeground(new java.awt.Color(30, 41, 59));
+        jLabel6.setForeground(new java.awt.Color(30, 41, 59));
+
+
+        jPanel1.setForeground(new java.awt.Color(30, 41, 59));
+        jPanel1.setBackground(new java.awt.Color(239, 246, 255));
+        jPanel2.setForeground(new java.awt.Color(30, 41, 59));
+        jPanel2.setBackground(new java.awt.Color(30, 64, 175));
+        jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24));
+        jLabel1.setText("LOGIN");
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24));
+        jLabel2.setText("Bienvenido");
+        jLabel2.setForeground(new java.awt.Color(30, 41, 59));
+        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField1.setForeground(new java.awt.Color(30, 41, 59));
+        jTextField1.setColorFoco(new java.awt.Color(37, 99, 235));
+        jTextField1.setFont(new java.awt.Font("SansSerif", 0, 13));
+        jTextField1.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
+        jTextField1.setPreferredSize(new java.awt.Dimension(200, 40));
+        jTextField1.setSelectionColor(new java.awt.Color(191, 219, 254));
+        jTextField1.setSelectedTextColor(new java.awt.Color(30, 41, 59));
+        jTextField1.setCaretColor(new java.awt.Color(37, 99, 235));
+        jTextField1.setDisabledTextColor(new java.awt.Color(100, 116, 139));
+        jTextField1.setColorPlaceholder(new java.awt.Color(100, 116, 139));
+        jTextField1.setPlaceholder("Nombre de usuario");
+        jLabel3.setForeground(new java.awt.Color(30, 41, 59));
+        jLabel6.setForeground(new java.awt.Color(30, 41, 59));
+        CANCELAR.setText("CANCELAR");
+        CANCELAR.setBackground(new java.awt.Color(239, 246, 255));
+        CANCELAR.setForeground(new java.awt.Color(30, 64, 175));
+        CANCELAR.setFondoActivo(new java.awt.Color(37, 99, 235));
+        CANCELAR.setTextoActivo(new java.awt.Color(255, 255, 255));
+        CANCELAR.setColorFoco(new java.awt.Color(37, 99, 235));
+        CANCELAR.setFont(new java.awt.Font("SansSerif", 1, 13));
+        CANCELAR.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        CANCELAR.setRolloverEnabled(true);
+        CANCELAR.setContentAreaFilled(false);
+        CANCELAR.setOpaque(false);
+        jPasswordField1.setBackground(new java.awt.Color(255, 255, 255));
+        jPasswordField1.setForeground(new java.awt.Color(30, 41, 59));
+        jPasswordField1.setColorFoco(new java.awt.Color(37, 99, 235));
+        jPasswordField1.setFont(new java.awt.Font("SansSerif", 0, 13));
+        jPasswordField1.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
+        jPasswordField1.setPreferredSize(new java.awt.Dimension(200, 40));
+        jPasswordField1.setSelectionColor(new java.awt.Color(191, 219, 254));
+        jPasswordField1.setSelectedTextColor(new java.awt.Color(30, 41, 59));
+        jPasswordField1.setCaretColor(new java.awt.Color(37, 99, 235));
+        jPasswordField1.setDisabledTextColor(new java.awt.Color(100, 116, 139));
+        jPasswordField1.setColorPlaceholder(new java.awt.Color(100, 116, 139));
+        jPasswordField1.setPlaceholder("Contraseña");
+        INICIAR.setText("INICIAR");
+        INICIAR.setBackground(new java.awt.Color(239, 246, 255));
+        INICIAR.setForeground(new java.awt.Color(30, 64, 175));
+        INICIAR.setFondoActivo(new java.awt.Color(37, 99, 235));
+        INICIAR.setTextoActivo(new java.awt.Color(255, 255, 255));
+        INICIAR.setColorFoco(new java.awt.Color(37, 99, 235));
+        INICIAR.setFont(new java.awt.Font("SansSerif", 1, 13));
+        INICIAR.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        INICIAR.setRolloverEnabled(true);
+        INICIAR.setContentAreaFilled(false);
+        INICIAR.setOpaque(false);
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -222,8 +338,8 @@ public class LOGIN extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton CANCELAR;
-    private javax.swing.JButton INICIAR;
+    private com.titanops.vista.componentes.Boton CANCELAR;
+    private com.titanops.vista.componentes.Boton INICIAR;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -231,7 +347,7 @@ public class LOGIN extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private com.titanops.vista.componentes.CampoClave jPasswordField1;
+    private com.titanops.vista.componentes.CampoTexto jTextField1;
     // End of variables declaration//GEN-END:variables
 }

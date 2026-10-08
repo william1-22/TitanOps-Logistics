@@ -5,7 +5,6 @@ import com.titanops.controlador.GestionRutasController.ResultadoCreacion;
 import com.titanops.controlador.GestionRutasController.RutaFila;
 import com.titanops.dao.RutaDestinoDAO;
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Font;
 import java.math.BigDecimal;
 import java.util.List;
@@ -24,8 +23,6 @@ import javax.swing.table.DefaultTableModel;
 
 /** Pantalla para crear rutas y consultar el catálogo actual. */
 public class panelCrear extends JPanel {
-    private static final Color COLOR_FONDO = new Color(134, 137, 93);
-    private static final Color COLOR_ACCION = new Color(93, 36, 23);
 
     private final GestionRutasController controller;
     private boolean cargando;
@@ -39,6 +36,7 @@ public class panelCrear extends JPanel {
         initComponents();
         configurarVista();
         configurarEventos();
+
         recargarRutas();
     }
 
@@ -50,25 +48,24 @@ public class panelCrear extends JPanel {
         panelCaptura = new javax.swing.JPanel();
         panelFormulario = new javax.swing.JPanel();
         lblProyecto = new javax.swing.JLabel();
-        txtProyecto = new javax.swing.JTextField();
+        txtProyecto = new com.titanops.vista.componentes.CampoTexto();
         lblDistancia = new javax.swing.JLabel();
-        txtDistancia = new javax.swing.JTextField();
+        txtDistancia = new com.titanops.vista.componentes.CampoTexto();
         lblOrigen = new javax.swing.JLabel();
-        txtOrigen = new javax.swing.JTextField();
+        txtOrigen = new com.titanops.vista.componentes.CampoTexto();
         lblDestino = new javax.swing.JLabel();
-        txtDestino = new javax.swing.JTextField();
+        txtDestino = new com.titanops.vista.componentes.CampoTexto();
         panelAcciones = new javax.swing.JPanel();
-        btnGuardar = new javax.swing.JButton();
-        btnLimpiar = new javax.swing.JButton();
+        btnGuardar = new com.titanops.vista.componentes.Boton();
+        btnLimpiar = new com.titanops.vista.componentes.Boton();
         panelBusqueda = new javax.swing.JPanel();
         lblBuscar = new javax.swing.JLabel();
-        txtBuscar = new javax.swing.JTextField();
-        btnBuscar = new javax.swing.JButton();
+        txtBuscar = new com.titanops.vista.componentes.CampoTexto();
+        btnBuscar = new com.titanops.vista.componentes.Boton();
         lblEstado = new javax.swing.JLabel();
         scrollTabla = new javax.swing.JScrollPane();
-        tabla = new javax.swing.JTable();
+        tabla = new com.titanops.vista.componentes.Tabla();
 
-        setBackground(new java.awt.Color(134, 137, 93));
         setBorder(javax.swing.BorderFactory.createEmptyBorder(18, 22, 18, 22));
         setPreferredSize(new java.awt.Dimension(1120, 700));
         setLayout(new java.awt.BorderLayout(8, 8));
@@ -143,6 +140,161 @@ public class panelCrear extends JPanel {
         scrollTabla.setViewportView(tabla);
 
         add(scrollTabla, java.awt.BorderLayout.CENTER);
+
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        panelSuperior.setForeground(new java.awt.Color(30, 41, 59));
+        panelSuperior.setBackground(new java.awt.Color(248, 250, 252));
+        panelCaptura.setForeground(new java.awt.Color(30, 41, 59));
+        panelCaptura.setBackground(new java.awt.Color(248, 250, 252));
+        panelFormulario.setForeground(new java.awt.Color(30, 41, 59));
+        panelFormulario.setBackground(new java.awt.Color(248, 250, 252));
+        panelAcciones.setForeground(new java.awt.Color(30, 41, 59));
+        panelAcciones.setBackground(new java.awt.Color(248, 250, 252));
+        panelBusqueda.setForeground(new java.awt.Color(30, 41, 59));
+        panelBusqueda.setBackground(new java.awt.Color(248, 250, 252));
+        scrollTabla.setForeground(new java.awt.Color(30, 41, 59));
+        scrollTabla.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1));
+        scrollTabla.setBackground(new java.awt.Color(255, 255, 255));
+        lblProyecto.setForeground(new java.awt.Color(30, 41, 59));
+        lblDistancia.setForeground(new java.awt.Color(30, 41, 59));
+        lblOrigen.setForeground(new java.awt.Color(30, 41, 59));
+        lblDestino.setForeground(new java.awt.Color(30, 41, 59));
+        lblBuscar.setForeground(new java.awt.Color(30, 41, 59));
+        lblEstado.setForeground(new java.awt.Color(30, 41, 59));
+
+
+        panelSuperior.setOpaque(false);
+        panelSuperior.setForeground(new java.awt.Color(30, 41, 59));
+        panelSuperior.setBackground(new java.awt.Color(248, 250, 252));
+        panelCaptura.setOpaque(false);
+        panelCaptura.setForeground(new java.awt.Color(30, 41, 59));
+        panelCaptura.setBackground(new java.awt.Color(248, 250, 252));
+        panelFormulario.setOpaque(false);
+        panelFormulario.setForeground(new java.awt.Color(30, 41, 59));
+        panelFormulario.setBackground(new java.awt.Color(248, 250, 252));
+        lblProyecto.setText("Proyecto:");
+        lblProyecto.setForeground(new java.awt.Color(30, 41, 59));
+        txtProyecto.setBackground(new java.awt.Color(255, 255, 255));
+        txtProyecto.setForeground(new java.awt.Color(30, 41, 59));
+        txtProyecto.setColorFoco(new java.awt.Color(37, 99, 235));
+        txtProyecto.setFont(new java.awt.Font("SansSerif", 0, 13));
+        txtProyecto.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
+        txtProyecto.setPreferredSize(new java.awt.Dimension(200, 40));
+        txtProyecto.setSelectionColor(new java.awt.Color(191, 219, 254));
+        txtProyecto.setSelectedTextColor(new java.awt.Color(30, 41, 59));
+        txtProyecto.setCaretColor(new java.awt.Color(37, 99, 235));
+        txtProyecto.setDisabledTextColor(new java.awt.Color(100, 116, 139));
+        txtProyecto.setColorPlaceholder(new java.awt.Color(100, 116, 139));
+        lblDistancia.setText("Distancia (km):");
+        lblDistancia.setForeground(new java.awt.Color(30, 41, 59));
+        txtDistancia.setBackground(new java.awt.Color(255, 255, 255));
+        txtDistancia.setForeground(new java.awt.Color(30, 41, 59));
+        txtDistancia.setColorFoco(new java.awt.Color(37, 99, 235));
+        txtDistancia.setFont(new java.awt.Font("SansSerif", 0, 13));
+        txtDistancia.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
+        txtDistancia.setPreferredSize(new java.awt.Dimension(200, 40));
+        txtDistancia.setSelectionColor(new java.awt.Color(191, 219, 254));
+        txtDistancia.setSelectedTextColor(new java.awt.Color(30, 41, 59));
+        txtDistancia.setCaretColor(new java.awt.Color(37, 99, 235));
+        txtDistancia.setDisabledTextColor(new java.awt.Color(100, 116, 139));
+        txtDistancia.setColorPlaceholder(new java.awt.Color(100, 116, 139));
+        lblOrigen.setText("Origen:");
+        lblOrigen.setForeground(new java.awt.Color(30, 41, 59));
+        txtOrigen.setBackground(new java.awt.Color(255, 255, 255));
+        txtOrigen.setForeground(new java.awt.Color(30, 41, 59));
+        txtOrigen.setColorFoco(new java.awt.Color(37, 99, 235));
+        txtOrigen.setFont(new java.awt.Font("SansSerif", 0, 13));
+        txtOrigen.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
+        txtOrigen.setPreferredSize(new java.awt.Dimension(200, 40));
+        txtOrigen.setSelectionColor(new java.awt.Color(191, 219, 254));
+        txtOrigen.setSelectedTextColor(new java.awt.Color(30, 41, 59));
+        txtOrigen.setCaretColor(new java.awt.Color(37, 99, 235));
+        txtOrigen.setDisabledTextColor(new java.awt.Color(100, 116, 139));
+        txtOrigen.setColorPlaceholder(new java.awt.Color(100, 116, 139));
+        lblDestino.setText("Destino:");
+        lblDestino.setForeground(new java.awt.Color(30, 41, 59));
+        txtDestino.setBackground(new java.awt.Color(255, 255, 255));
+        txtDestino.setForeground(new java.awt.Color(30, 41, 59));
+        txtDestino.setColorFoco(new java.awt.Color(37, 99, 235));
+        txtDestino.setFont(new java.awt.Font("SansSerif", 0, 13));
+        txtDestino.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
+        txtDestino.setPreferredSize(new java.awt.Dimension(200, 40));
+        txtDestino.setSelectionColor(new java.awt.Color(191, 219, 254));
+        txtDestino.setSelectedTextColor(new java.awt.Color(30, 41, 59));
+        txtDestino.setCaretColor(new java.awt.Color(37, 99, 235));
+        txtDestino.setDisabledTextColor(new java.awt.Color(100, 116, 139));
+        txtDestino.setColorPlaceholder(new java.awt.Color(100, 116, 139));
+        panelAcciones.setOpaque(false);
+        panelAcciones.setForeground(new java.awt.Color(30, 41, 59));
+        panelAcciones.setBackground(new java.awt.Color(248, 250, 252));
+        btnGuardar.setText("GUARDAR RUTA");
+        btnGuardar.setBackground(new java.awt.Color(239, 246, 255));
+        btnGuardar.setForeground(new java.awt.Color(30, 64, 175));
+        btnGuardar.setFondoActivo(new java.awt.Color(37, 99, 235));
+        btnGuardar.setTextoActivo(new java.awt.Color(255, 255, 255));
+        btnGuardar.setColorFoco(new java.awt.Color(37, 99, 235));
+        btnGuardar.setFont(new java.awt.Font("SansSerif", 1, 13));
+        btnGuardar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        btnGuardar.setRolloverEnabled(true);
+        btnGuardar.setContentAreaFilled(false);
+        btnGuardar.setOpaque(false);
+        btnLimpiar.setText("LIMPIAR");
+        btnLimpiar.setBackground(new java.awt.Color(239, 246, 255));
+        btnLimpiar.setForeground(new java.awt.Color(30, 64, 175));
+        btnLimpiar.setFondoActivo(new java.awt.Color(37, 99, 235));
+        btnLimpiar.setTextoActivo(new java.awt.Color(255, 255, 255));
+        btnLimpiar.setColorFoco(new java.awt.Color(37, 99, 235));
+        btnLimpiar.setFont(new java.awt.Font("SansSerif", 1, 13));
+        btnLimpiar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        btnLimpiar.setRolloverEnabled(true);
+        btnLimpiar.setContentAreaFilled(false);
+        btnLimpiar.setOpaque(false);
+        panelBusqueda.setOpaque(false);
+        panelBusqueda.setForeground(new java.awt.Color(30, 41, 59));
+        panelBusqueda.setBackground(new java.awt.Color(248, 250, 252));
+        lblBuscar.setText("Buscar:");
+        lblBuscar.setForeground(new java.awt.Color(30, 41, 59));
+        txtBuscar.setBackground(new java.awt.Color(255, 255, 255));
+        txtBuscar.setForeground(new java.awt.Color(30, 41, 59));
+        txtBuscar.setColorFoco(new java.awt.Color(37, 99, 235));
+        txtBuscar.setFont(new java.awt.Font("SansSerif", 0, 13));
+        txtBuscar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
+        txtBuscar.setPreferredSize(new java.awt.Dimension(200, 40));
+        txtBuscar.setSelectionColor(new java.awt.Color(191, 219, 254));
+        txtBuscar.setSelectedTextColor(new java.awt.Color(30, 41, 59));
+        txtBuscar.setCaretColor(new java.awt.Color(37, 99, 235));
+        txtBuscar.setDisabledTextColor(new java.awt.Color(100, 116, 139));
+        txtBuscar.setColorPlaceholder(new java.awt.Color(100, 116, 139));
+        btnBuscar.setText("BUSCAR");
+        btnBuscar.setBackground(new java.awt.Color(239, 246, 255));
+        btnBuscar.setForeground(new java.awt.Color(30, 64, 175));
+        btnBuscar.setFondoActivo(new java.awt.Color(37, 99, 235));
+        btnBuscar.setTextoActivo(new java.awt.Color(255, 255, 255));
+        btnBuscar.setColorFoco(new java.awt.Color(37, 99, 235));
+        btnBuscar.setFont(new java.awt.Font("SansSerif", 1, 13));
+        btnBuscar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        btnBuscar.setRolloverEnabled(true);
+        btnBuscar.setContentAreaFilled(false);
+        btnBuscar.setOpaque(false);
+        lblEstado.setText(" ");
+        lblEstado.setForeground(new java.awt.Color(30, 41, 59));
+        scrollTabla.setForeground(new java.awt.Color(30, 41, 59));
+        scrollTabla.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1));
+        scrollTabla.setBackground(new java.awt.Color(255, 255, 255));
+        tabla.setBackground(new java.awt.Color(255, 255, 255));
+        tabla.setForeground(new java.awt.Color(30, 41, 59));
+        tabla.setGridColor(new java.awt.Color(125, 211, 252));
+        tabla.setSelectionBackground(new java.awt.Color(219, 234, 254));
+        tabla.setSelectionForeground(new java.awt.Color(30, 64, 175));
+        tabla.setFondoCabecera(new java.awt.Color(224, 242, 254));
+        tabla.setTextoCabecera(new java.awt.Color(30, 64, 175));
+        tabla.setBordeCabecera(new java.awt.Color(125, 211, 252));
+        tabla.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1));
+        tabla.setFont(new java.awt.Font("SansSerif", 0, 13));
+        tabla.setRowHeight(30);
+        tabla.setShowVerticalLines(false);
+        tabla.setFillsViewportHeight(true);
     }// </editor-fold>//GEN-END:initComponents
 
     private void configurarVista() {
@@ -267,10 +419,7 @@ public class panelCrear extends JPanel {
     }
 
     private static void configurarBoton(JButton boton) {
-        boton.setBackground(COLOR_ACCION);
-        boton.setForeground(Color.WHITE);
-        boton.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 14));
-        boton.setBorder(BorderFactory.createEmptyBorder(8, 14, 8, 14));
+        // El color y el borde se definen desde el formulario de NetBeans.
     }
 
     private String decimalVisible(BigDecimal valor) {
@@ -288,9 +437,9 @@ public class panelCrear extends JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton btnLimpiar;
+    private com.titanops.vista.componentes.Boton btnBuscar;
+    private com.titanops.vista.componentes.Boton btnGuardar;
+    private com.titanops.vista.componentes.Boton btnLimpiar;
     private javax.swing.JLabel lblBuscar;
     private javax.swing.JLabel lblDestino;
     private javax.swing.JLabel lblDistancia;
@@ -303,11 +452,11 @@ public class panelCrear extends JPanel {
     private javax.swing.JPanel panelFormulario;
     private javax.swing.JPanel panelSuperior;
     private javax.swing.JScrollPane scrollTabla;
-    private javax.swing.JTable tabla;
-    private javax.swing.JTextField txtBuscar;
-    private javax.swing.JTextField txtDestino;
-    private javax.swing.JTextField txtDistancia;
-    private javax.swing.JTextField txtOrigen;
-    private javax.swing.JTextField txtProyecto;
+    private com.titanops.vista.componentes.Tabla tabla;
+    private com.titanops.vista.componentes.CampoTexto txtBuscar;
+    private com.titanops.vista.componentes.CampoTexto txtDestino;
+    private com.titanops.vista.componentes.CampoTexto txtDistancia;
+    private com.titanops.vista.componentes.CampoTexto txtOrigen;
+    private com.titanops.vista.componentes.CampoTexto txtProyecto;
     // End of variables declaration//GEN-END:variables
 }

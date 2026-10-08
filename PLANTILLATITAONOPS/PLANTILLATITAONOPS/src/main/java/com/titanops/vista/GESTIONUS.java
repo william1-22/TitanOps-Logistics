@@ -15,7 +15,7 @@ import javax.swing.SwingWorker;
 import javax.swing.table.DefaultTableModel;
 
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/Systorigin/samuel-cambiosemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 
@@ -48,6 +48,7 @@ public class GESTIONUS extends javax.swing.JInternalFrame {
         this.idUsuarioSesion = idUsuarioSesion;
         this.controller = controller;
         configurarVista();
+
         recargarUsuarios();
     }
 
@@ -64,18 +65,16 @@ public class GESTIONUS extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        GUARDARUS = new javax.swing.JButton();
-        GUARDARUS1 = new javax.swing.JButton();
-        GUARDARUS2 = new javax.swing.JButton();
+        jTable1 = new com.titanops.vista.componentes.Tabla();
+        GUARDARUS = new com.titanops.vista.componentes.Boton();
+        GUARDARUS1 = new com.titanops.vista.componentes.Boton();
+        GUARDARUS2 = new com.titanops.vista.componentes.Boton();
 
         setClosable(true);
         setMaximizable(true);
         setResizable(true);
 
-        jPanel1.setBackground(new java.awt.Color(134, 137, 93));
 
-        jPanel2.setBackground(new java.awt.Color(84, 88, 47));
 
         jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 50)); // NOI18N
         jLabel1.setText("Gestión de Usuarios");
@@ -97,7 +96,7 @@ public class GESTIONUS extends javax.swing.JInternalFrame {
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
-        jTable1.setBackground(new java.awt.Color(168, 171, 143));
+        jTable1.setBackground(new java.awt.Color(255, 255, 255));
         jTable1.setForeground(new java.awt.Color(0, 0, 0));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -118,21 +117,21 @@ public class GESTIONUS extends javax.swing.JInternalFrame {
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 
-        GUARDARUS.setBackground(new java.awt.Color(93, 36, 23));
+        GUARDARUS.setBackground(new java.awt.Color(37, 99, 235));
         GUARDARUS.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         GUARDARUS.setForeground(new java.awt.Color(255, 255, 255));
         GUARDARUS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/multimedia/ELIMINARPEQUEÑO.png"))); // NOI18N
         GUARDARUS.setText("DESACTIVAR");
         GUARDARUS.setBorder(null);
 
-        GUARDARUS1.setBackground(new java.awt.Color(93, 36, 23));
+        GUARDARUS1.setBackground(new java.awt.Color(37, 99, 235));
         GUARDARUS1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         GUARDARUS1.setForeground(new java.awt.Color(255, 255, 255));
         GUARDARUS1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/multimedia/NUEVOPEQUEÑO.png"))); // NOI18N
         GUARDARUS1.setText("CREAR");
         GUARDARUS1.setBorder(null);
 
-        GUARDARUS2.setBackground(new java.awt.Color(93, 36, 23));
+        GUARDARUS2.setBackground(new java.awt.Color(37, 99, 235));
         GUARDARUS2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         GUARDARUS2.setForeground(new java.awt.Color(255, 255, 255));
         GUARDARUS2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/multimedia/EDITARPEQUEÑO.png"))); // NOI18N
@@ -147,12 +146,12 @@ public class GESTIONUS extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(GUARDARUS1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 51, 51)
-                        .addComponent(GUARDARUS2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(GUARDARUS, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(GUARDARUS1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(GUARDARUS2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(GUARDARUS))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 705, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
@@ -184,6 +183,103 @@ public class GESTIONUS extends javax.swing.JInternalFrame {
                 .addGap(23, 23, 23))
         );
 
+
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        jPanel1.setForeground(new java.awt.Color(30, 41, 59));
+        jPanel1.setBackground(new java.awt.Color(239, 246, 255));
+        jPanel2.setForeground(new java.awt.Color(30, 41, 59));
+        jPanel2.setBackground(new java.awt.Color(30, 64, 175));
+        jScrollPane1.setForeground(new java.awt.Color(30, 41, 59));
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1));
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+
+
+        jPanel1.setForeground(new java.awt.Color(30, 41, 59));
+        jPanel1.setBackground(new java.awt.Color(239, 246, 255));
+        jPanel2.setForeground(new java.awt.Color(30, 41, 59));
+        jPanel2.setBackground(new java.awt.Color(30, 64, 175));
+        jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 50));
+        jLabel1.setText("Gestión de Usuarios");
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setForeground(new java.awt.Color(30, 41, 59));
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1));
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jTable1.setBackground(new java.awt.Color(255, 255, 255));
+        jTable1.setForeground(new java.awt.Color(30, 41, 59));
+        jTable1.setGridColor(new java.awt.Color(125, 211, 252));
+        jTable1.setSelectionBackground(new java.awt.Color(219, 234, 254));
+        jTable1.setSelectionForeground(new java.awt.Color(30, 64, 175));
+        jTable1.setFondoCabecera(new java.awt.Color(224, 242, 254));
+        jTable1.setTextoCabecera(new java.awt.Color(30, 64, 175));
+        jTable1.setBordeCabecera(new java.awt.Color(125, 211, 252));
+        jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1));
+        jTable1.setFont(new java.awt.Font("SansSerif", 0, 13));
+        jTable1.setRowHeight(30);
+        jTable1.setShowVerticalLines(false);
+        jTable1.setFillsViewportHeight(true);
+        GUARDARUS.setText("DESACTIVAR");
+        GUARDARUS.setBackground(new java.awt.Color(239, 246, 255));
+        GUARDARUS.setForeground(new java.awt.Color(30, 64, 175));
+        GUARDARUS.setFondoActivo(new java.awt.Color(37, 99, 235));
+        GUARDARUS.setTextoActivo(new java.awt.Color(255, 255, 255));
+        GUARDARUS.setColorFoco(new java.awt.Color(37, 99, 235));
+        GUARDARUS.setFont(new java.awt.Font("SansSerif", 1, 13));
+        GUARDARUS.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        GUARDARUS.setRolloverEnabled(true);
+        GUARDARUS.setContentAreaFilled(false);
+        GUARDARUS.setOpaque(false);
+        GUARDARUS1.setText("CREAR");
+        GUARDARUS1.setBackground(new java.awt.Color(239, 246, 255));
+        GUARDARUS1.setForeground(new java.awt.Color(30, 64, 175));
+        GUARDARUS1.setFondoActivo(new java.awt.Color(37, 99, 235));
+        GUARDARUS1.setTextoActivo(new java.awt.Color(255, 255, 255));
+        GUARDARUS1.setColorFoco(new java.awt.Color(37, 99, 235));
+        GUARDARUS1.setFont(new java.awt.Font("SansSerif", 1, 13));
+        GUARDARUS1.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        GUARDARUS1.setRolloverEnabled(true);
+        GUARDARUS1.setContentAreaFilled(false);
+        GUARDARUS1.setOpaque(false);
+        GUARDARUS2.setText("EDITAR");
+        GUARDARUS2.setBackground(new java.awt.Color(239, 246, 255));
+        GUARDARUS2.setForeground(new java.awt.Color(30, 64, 175));
+        GUARDARUS2.setFondoActivo(new java.awt.Color(37, 99, 235));
+        GUARDARUS2.setTextoActivo(new java.awt.Color(255, 255, 255));
+        GUARDARUS2.setColorFoco(new java.awt.Color(37, 99, 235));
+        GUARDARUS2.setFont(new java.awt.Font("SansSerif", 1, 13));
+        GUARDARUS2.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        GUARDARUS2.setRolloverEnabled(true);
+        GUARDARUS2.setContentAreaFilled(false);
+        GUARDARUS2.setOpaque(false);
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -397,13 +493,13 @@ public class GESTIONUS extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton GUARDARUS;
-    private javax.swing.JButton GUARDARUS1;
-    private javax.swing.JButton GUARDARUS2;
+    private com.titanops.vista.componentes.Boton GUARDARUS;
+    private com.titanops.vista.componentes.Boton GUARDARUS1;
+    private com.titanops.vista.componentes.Boton GUARDARUS2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private com.titanops.vista.componentes.Tabla jTable1;
     // End of variables declaration//GEN-END:variables
 }

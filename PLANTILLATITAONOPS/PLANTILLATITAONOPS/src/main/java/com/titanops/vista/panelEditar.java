@@ -6,7 +6,6 @@ import com.titanops.controlador.GestionRutasController.RutaEdicion;
 import com.titanops.controlador.GestionRutasController.RutaFila;
 import com.titanops.dao.RutaDestinoDAO;
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -31,8 +30,6 @@ import javax.swing.table.DefaultTableModel;
 
 /** Pantalla para consultar, editar y cancelar rutas existentes. */
 public class panelEditar extends JPanel {
-    private static final Color COLOR_FONDO = new Color(134, 137, 93);
-    private static final Color COLOR_ACCION = new Color(93, 36, 23);
 
     private final GestionRutasController controller;
     private boolean cargando;
@@ -46,6 +43,7 @@ public class panelEditar extends JPanel {
         initComponents();
         configurarVista();
         configurarEventos();
+
         recargarRutas();
     }
 
@@ -55,18 +53,17 @@ public class panelEditar extends JPanel {
 
         panelFiltros = new javax.swing.JPanel();
         lblBuscar = new javax.swing.JLabel();
-        txtBuscar = new javax.swing.JTextField();
+        txtBuscar = new com.titanops.vista.componentes.CampoTexto();
         lblFiltroEstado = new javax.swing.JLabel();
-        cmbEstado = new javax.swing.JComboBox<>();
-        btnBuscar = new javax.swing.JButton();
+        cmbEstado = new com.titanops.vista.componentes.Selector<>();
+        btnBuscar = new com.titanops.vista.componentes.Boton();
         lblEstado = new javax.swing.JLabel();
         scrollTabla = new javax.swing.JScrollPane();
-        tabla = new javax.swing.JTable();
+        tabla = new com.titanops.vista.componentes.Tabla();
         panelAcciones = new javax.swing.JPanel();
-        btnEditar = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
+        btnEditar = new com.titanops.vista.componentes.Boton();
+        btnCancelar = new com.titanops.vista.componentes.Boton();
 
-        setBackground(new java.awt.Color(134, 137, 93));
         setBorder(javax.swing.BorderFactory.createEmptyBorder(18, 22, 18, 22));
         setPreferredSize(new java.awt.Dimension(1120, 700));
         setLayout(new java.awt.BorderLayout(8, 8));
@@ -106,6 +103,99 @@ public class panelEditar extends JPanel {
         panelAcciones.add(btnCancelar);
 
         add(panelAcciones, java.awt.BorderLayout.SOUTH);
+
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        panelFiltros.setForeground(new java.awt.Color(30, 41, 59));
+        panelFiltros.setBackground(new java.awt.Color(248, 250, 252));
+        scrollTabla.setForeground(new java.awt.Color(30, 41, 59));
+        scrollTabla.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1));
+        scrollTabla.setBackground(new java.awt.Color(255, 255, 255));
+        panelAcciones.setForeground(new java.awt.Color(30, 41, 59));
+        panelAcciones.setBackground(new java.awt.Color(248, 250, 252));
+        lblBuscar.setForeground(new java.awt.Color(30, 41, 59));
+        lblFiltroEstado.setForeground(new java.awt.Color(30, 41, 59));
+        lblEstado.setForeground(new java.awt.Color(30, 41, 59));
+
+
+        panelFiltros.setOpaque(false);
+        panelFiltros.setForeground(new java.awt.Color(30, 41, 59));
+        panelFiltros.setBackground(new java.awt.Color(248, 250, 252));
+        lblBuscar.setText("Buscar:");
+        lblBuscar.setForeground(new java.awt.Color(30, 41, 59));
+        txtBuscar.setBackground(new java.awt.Color(255, 255, 255));
+        txtBuscar.setForeground(new java.awt.Color(30, 41, 59));
+        txtBuscar.setColorFoco(new java.awt.Color(37, 99, 235));
+        txtBuscar.setFont(new java.awt.Font("SansSerif", 0, 13));
+        txtBuscar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
+        txtBuscar.setPreferredSize(new java.awt.Dimension(200, 40));
+        txtBuscar.setSelectionColor(new java.awt.Color(191, 219, 254));
+        txtBuscar.setSelectedTextColor(new java.awt.Color(30, 41, 59));
+        txtBuscar.setCaretColor(new java.awt.Color(37, 99, 235));
+        txtBuscar.setDisabledTextColor(new java.awt.Color(100, 116, 139));
+        txtBuscar.setColorPlaceholder(new java.awt.Color(100, 116, 139));
+        lblFiltroEstado.setText("Estado:");
+        lblFiltroEstado.setForeground(new java.awt.Color(30, 41, 59));
+        cmbEstado.setBackground(new java.awt.Color(255, 255, 255));
+        cmbEstado.setForeground(new java.awt.Color(30, 41, 59));
+        cmbEstado.setColorFoco(new java.awt.Color(37, 99, 235));
+        cmbEstado.setFont(new java.awt.Font("SansSerif", 0, 13));
+        cmbEstado.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(3, 8, 3, 8)));
+        cmbEstado.setPreferredSize(new java.awt.Dimension(180, 30));
+        btnBuscar.setText("BUSCAR");
+        btnBuscar.setBackground(new java.awt.Color(239, 246, 255));
+        btnBuscar.setForeground(new java.awt.Color(30, 64, 175));
+        btnBuscar.setFondoActivo(new java.awt.Color(37, 99, 235));
+        btnBuscar.setTextoActivo(new java.awt.Color(255, 255, 255));
+        btnBuscar.setColorFoco(new java.awt.Color(37, 99, 235));
+        btnBuscar.setFont(new java.awt.Font("SansSerif", 1, 13));
+        btnBuscar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        btnBuscar.setRolloverEnabled(true);
+        btnBuscar.setContentAreaFilled(false);
+        btnBuscar.setOpaque(false);
+        lblEstado.setText(" ");
+        lblEstado.setForeground(new java.awt.Color(30, 41, 59));
+        scrollTabla.setForeground(new java.awt.Color(30, 41, 59));
+        scrollTabla.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1));
+        scrollTabla.setBackground(new java.awt.Color(255, 255, 255));
+        tabla.setBackground(new java.awt.Color(255, 255, 255));
+        tabla.setForeground(new java.awt.Color(30, 41, 59));
+        tabla.setGridColor(new java.awt.Color(125, 211, 252));
+        tabla.setSelectionBackground(new java.awt.Color(219, 234, 254));
+        tabla.setSelectionForeground(new java.awt.Color(30, 64, 175));
+        tabla.setFondoCabecera(new java.awt.Color(224, 242, 254));
+        tabla.setTextoCabecera(new java.awt.Color(30, 64, 175));
+        tabla.setBordeCabecera(new java.awt.Color(125, 211, 252));
+        tabla.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1));
+        tabla.setFont(new java.awt.Font("SansSerif", 0, 13));
+        tabla.setRowHeight(30);
+        tabla.setShowVerticalLines(false);
+        tabla.setFillsViewportHeight(true);
+        panelAcciones.setOpaque(false);
+        panelAcciones.setForeground(new java.awt.Color(30, 41, 59));
+        panelAcciones.setBackground(new java.awt.Color(248, 250, 252));
+        btnEditar.setText("EDITAR");
+        btnEditar.setBackground(new java.awt.Color(239, 246, 255));
+        btnEditar.setForeground(new java.awt.Color(30, 64, 175));
+        btnEditar.setFondoActivo(new java.awt.Color(37, 99, 235));
+        btnEditar.setTextoActivo(new java.awt.Color(255, 255, 255));
+        btnEditar.setColorFoco(new java.awt.Color(37, 99, 235));
+        btnEditar.setFont(new java.awt.Font("SansSerif", 1, 13));
+        btnEditar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        btnEditar.setRolloverEnabled(true);
+        btnEditar.setContentAreaFilled(false);
+        btnEditar.setOpaque(false);
+        btnCancelar.setText("CANCELAR RUTA");
+        btnCancelar.setBackground(new java.awt.Color(239, 246, 255));
+        btnCancelar.setForeground(new java.awt.Color(30, 64, 175));
+        btnCancelar.setFondoActivo(new java.awt.Color(37, 99, 235));
+        btnCancelar.setTextoActivo(new java.awt.Color(255, 255, 255));
+        btnCancelar.setColorFoco(new java.awt.Color(37, 99, 235));
+        btnCancelar.setFont(new java.awt.Font("SansSerif", 1, 13));
+        btnCancelar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        btnCancelar.setRolloverEnabled(true);
+        btnCancelar.setContentAreaFilled(false);
+        btnCancelar.setOpaque(false);
     }// </editor-fold>//GEN-END:initComponents
 
     private void configurarVista() {
@@ -352,10 +442,7 @@ public class panelEditar extends JPanel {
     }
 
     private static void configurarBoton(JButton boton) {
-        boton.setBackground(COLOR_ACCION);
-        boton.setForeground(Color.WHITE);
-        boton.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 14));
-        boton.setBorder(BorderFactory.createEmptyBorder(8, 14, 8, 14));
+        // El color y el borde se definen desde el formulario de NetBeans.
     }
 
     private String decimalVisible(BigDecimal valor) {
@@ -373,17 +460,17 @@ public class panelEditar extends JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnEditar;
-    private javax.swing.JComboBox<String> cmbEstado;
+    private com.titanops.vista.componentes.Boton btnBuscar;
+    private com.titanops.vista.componentes.Boton btnCancelar;
+    private com.titanops.vista.componentes.Boton btnEditar;
+    private com.titanops.vista.componentes.Selector<String> cmbEstado;
     private javax.swing.JLabel lblBuscar;
     private javax.swing.JLabel lblEstado;
     private javax.swing.JLabel lblFiltroEstado;
     private javax.swing.JPanel panelAcciones;
     private javax.swing.JPanel panelFiltros;
     private javax.swing.JScrollPane scrollTabla;
-    private javax.swing.JTable tabla;
-    private javax.swing.JTextField txtBuscar;
+    private com.titanops.vista.componentes.Tabla tabla;
+    private com.titanops.vista.componentes.CampoTexto txtBuscar;
     // End of variables declaration//GEN-END:variables
 }

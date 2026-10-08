@@ -12,7 +12,6 @@ import com.titanops.dao.MaquinariaDAO;
 import com.titanops.dao.OperadorDAO;
 import com.titanops.dao.RutaDestinoDAO;
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Font;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -38,8 +37,6 @@ import javax.swing.table.DefaultTableModel;
 
 /** Pantalla para asignar recursos a rutas y cerrar asignaciones activas. */
 public class panelAsignar extends JPanel {
-    private static final Color COLOR_FONDO = new Color(134, 137, 93);
-    private static final Color COLOR_ACCION = new Color(93, 36, 23);
     private static final SimpleDateFormat FORMATO_FECHA =
             new SimpleDateFormat("dd/MM/yyyy HH:mm");
 
@@ -59,6 +56,7 @@ public class panelAsignar extends JPanel {
         initComponents();
         configurarVista();
         configurarEventos();
+
         cargarDatos();
     }
 
@@ -70,33 +68,32 @@ public class panelAsignar extends JPanel {
         panelCaptura = new javax.swing.JPanel();
         panelFormulario = new javax.swing.JPanel();
         lblMaquinaria = new javax.swing.JLabel();
-        cmbMaquinaria = new javax.swing.JComboBox<>();
+        cmbMaquinaria = new com.titanops.vista.componentes.Selector<>();
         lblOperador = new javax.swing.JLabel();
-        cmbOperador = new javax.swing.JComboBox<>();
+        cmbOperador = new com.titanops.vista.componentes.Selector<>();
         lblRuta = new javax.swing.JLabel();
-        cmbRuta = new javax.swing.JComboBox<>();
+        cmbRuta = new com.titanops.vista.componentes.Selector<>();
         lblRetorno = new javax.swing.JLabel();
         spnRetorno = new javax.swing.JSpinner();
         lblObservaciones = new javax.swing.JLabel();
         scrollObservaciones = new javax.swing.JScrollPane();
-        txtObservaciones = new javax.swing.JTextArea();
+        txtObservaciones = new com.titanops.vista.componentes.AreaTexto();
         panelAccionCrear = new javax.swing.JPanel();
-        btnAsignar = new javax.swing.JButton();
+        btnAsignar = new com.titanops.vista.componentes.Boton();
         lblRelleno = new javax.swing.JLabel();
         panelFiltros = new javax.swing.JPanel();
         lblBuscar = new javax.swing.JLabel();
-        txtBuscar = new javax.swing.JTextField();
+        txtBuscar = new com.titanops.vista.componentes.CampoTexto();
         lblFiltroEstado = new javax.swing.JLabel();
-        cmbEstadoFiltro = new javax.swing.JComboBox<>();
-        btnActualizar = new javax.swing.JButton();
+        cmbEstadoFiltro = new com.titanops.vista.componentes.Selector<>();
+        btnActualizar = new com.titanops.vista.componentes.Boton();
         lblEstado = new javax.swing.JLabel();
         scrollTabla = new javax.swing.JScrollPane();
-        tabla = new javax.swing.JTable();
+        tabla = new com.titanops.vista.componentes.Tabla();
         panelAcciones = new javax.swing.JPanel();
-        btnFinalizar = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
+        btnFinalizar = new com.titanops.vista.componentes.Boton();
+        btnCancelar = new com.titanops.vista.componentes.Boton();
 
-        setBackground(new java.awt.Color(134, 137, 93));
         setBorder(javax.swing.BorderFactory.createEmptyBorder(14, 18, 14, 18));
         setPreferredSize(new java.awt.Dimension(1120, 700));
         setLayout(new java.awt.BorderLayout(8, 8));
@@ -167,15 +164,15 @@ public class panelAsignar extends JPanel {
                 .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblMaquinaria, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cmbMaquinaria, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cmbMaquinaria, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblOperador, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cmbOperador, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cmbOperador, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(8, 8, 8)
                 .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblRuta, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cmbRuta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cmbRuta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblRetorno, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(spnRetorno, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -228,6 +225,232 @@ public class panelAsignar extends JPanel {
         panelAcciones.add(btnCancelar);
 
         add(panelAcciones, java.awt.BorderLayout.SOUTH);
+
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        panelSuperior.setForeground(new java.awt.Color(30, 41, 59));
+        panelSuperior.setBackground(new java.awt.Color(248, 250, 252));
+        panelCaptura.setForeground(new java.awt.Color(30, 41, 59));
+        panelCaptura.setBackground(new java.awt.Color(248, 250, 252));
+        panelFormulario.setForeground(new java.awt.Color(30, 41, 59));
+        panelFormulario.setBackground(new java.awt.Color(248, 250, 252));
+        scrollObservaciones.setForeground(new java.awt.Color(30, 41, 59));
+        scrollObservaciones.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1));
+        scrollObservaciones.setBackground(new java.awt.Color(255, 255, 255));
+        panelAccionCrear.setForeground(new java.awt.Color(30, 41, 59));
+        panelAccionCrear.setBackground(new java.awt.Color(248, 250, 252));
+        panelFiltros.setForeground(new java.awt.Color(30, 41, 59));
+        panelFiltros.setBackground(new java.awt.Color(248, 250, 252));
+        scrollTabla.setForeground(new java.awt.Color(30, 41, 59));
+        scrollTabla.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1));
+        scrollTabla.setBackground(new java.awt.Color(255, 255, 255));
+        panelAcciones.setForeground(new java.awt.Color(30, 41, 59));
+        panelAcciones.setBackground(new java.awt.Color(248, 250, 252));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        lblMaquinaria.setForeground(new java.awt.Color(30, 41, 59));
+        lblOperador.setForeground(new java.awt.Color(30, 41, 59));
+        lblRuta.setForeground(new java.awt.Color(30, 41, 59));
+        lblRetorno.setForeground(new java.awt.Color(30, 41, 59));
+        spnRetorno.setForeground(new java.awt.Color(30, 41, 59));
+        lblObservaciones.setForeground(new java.awt.Color(30, 41, 59));
+        lblRelleno.setForeground(new java.awt.Color(30, 41, 59));
+        lblBuscar.setForeground(new java.awt.Color(30, 41, 59));
+        lblFiltroEstado.setForeground(new java.awt.Color(30, 41, 59));
+        lblEstado.setForeground(new java.awt.Color(30, 41, 59));
+
+
+        panelSuperior.setOpaque(false);
+        panelSuperior.setForeground(new java.awt.Color(30, 41, 59));
+        panelSuperior.setBackground(new java.awt.Color(248, 250, 252));
+        panelCaptura.setOpaque(false);
+        panelCaptura.setForeground(new java.awt.Color(30, 41, 59));
+        panelCaptura.setBackground(new java.awt.Color(248, 250, 252));
+        panelFormulario.setOpaque(false);
+        panelFormulario.setForeground(new java.awt.Color(30, 41, 59));
+        panelFormulario.setBackground(new java.awt.Color(248, 250, 252));
+        lblMaquinaria.setText("Maquinaria:");
+        lblMaquinaria.setForeground(new java.awt.Color(30, 41, 59));
+        cmbMaquinaria.setBackground(new java.awt.Color(255, 255, 255));
+        cmbMaquinaria.setForeground(new java.awt.Color(30, 41, 59));
+        cmbMaquinaria.setColorFoco(new java.awt.Color(37, 99, 235));
+        cmbMaquinaria.setFont(new java.awt.Font("SansSerif", 0, 13));
+        cmbMaquinaria.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(3, 8, 3, 8)));
+        cmbMaquinaria.setPreferredSize(new java.awt.Dimension(180, 30));
+        lblOperador.setText("Operador:");
+        lblOperador.setForeground(new java.awt.Color(30, 41, 59));
+        cmbOperador.setBackground(new java.awt.Color(255, 255, 255));
+        cmbOperador.setForeground(new java.awt.Color(30, 41, 59));
+        cmbOperador.setColorFoco(new java.awt.Color(37, 99, 235));
+        cmbOperador.setFont(new java.awt.Font("SansSerif", 0, 13));
+        cmbOperador.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(3, 8, 3, 8)));
+        cmbOperador.setPreferredSize(new java.awt.Dimension(180, 30));
+        lblRuta.setText("Ruta / proyecto:");
+        lblRuta.setForeground(new java.awt.Color(30, 41, 59));
+        cmbRuta.setBackground(new java.awt.Color(255, 255, 255));
+        cmbRuta.setForeground(new java.awt.Color(30, 41, 59));
+        cmbRuta.setColorFoco(new java.awt.Color(37, 99, 235));
+        cmbRuta.setFont(new java.awt.Font("SansSerif", 0, 13));
+        cmbRuta.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(3, 8, 3, 8)));
+        cmbRuta.setPreferredSize(new java.awt.Dimension(180, 30));
+        lblRetorno.setText("Retorno estimado:");
+        lblRetorno.setForeground(new java.awt.Color(30, 41, 59));
+        spnRetorno.setForeground(new java.awt.Color(30, 41, 59));
+        lblObservaciones.setText("Observaciones:");
+        lblObservaciones.setForeground(new java.awt.Color(30, 41, 59));
+        scrollObservaciones.setForeground(new java.awt.Color(30, 41, 59));
+        scrollObservaciones.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1));
+        scrollObservaciones.setBackground(new java.awt.Color(255, 255, 255));
+        txtObservaciones.setBackground(new java.awt.Color(255, 255, 255));
+        txtObservaciones.setForeground(new java.awt.Color(30, 41, 59));
+        txtObservaciones.setColorFoco(new java.awt.Color(37, 99, 235));
+        txtObservaciones.setFont(new java.awt.Font("SansSerif", 0, 13));
+        txtObservaciones.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
+        txtObservaciones.setPreferredSize(new java.awt.Dimension(210, 82));
+        txtObservaciones.setSelectionColor(new java.awt.Color(191, 219, 254));
+        txtObservaciones.setSelectedTextColor(new java.awt.Color(30, 41, 59));
+        txtObservaciones.setCaretColor(new java.awt.Color(37, 99, 235));
+        txtObservaciones.setDisabledTextColor(new java.awt.Color(100, 116, 139));
+        txtObservaciones.setColorPlaceholder(new java.awt.Color(100, 116, 139));
+        panelAccionCrear.setOpaque(false);
+        panelAccionCrear.setForeground(new java.awt.Color(30, 41, 59));
+        panelAccionCrear.setBackground(new java.awt.Color(248, 250, 252));
+        btnAsignar.setText("INICIAR ASIGNACIÓN");
+        btnAsignar.setBackground(new java.awt.Color(239, 246, 255));
+        btnAsignar.setForeground(new java.awt.Color(30, 64, 175));
+        btnAsignar.setFondoActivo(new java.awt.Color(37, 99, 235));
+        btnAsignar.setTextoActivo(new java.awt.Color(255, 255, 255));
+        btnAsignar.setColorFoco(new java.awt.Color(37, 99, 235));
+        btnAsignar.setFont(new java.awt.Font("SansSerif", 1, 13));
+        btnAsignar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        btnAsignar.setRolloverEnabled(true);
+        btnAsignar.setContentAreaFilled(false);
+        btnAsignar.setOpaque(false);
+        lblRelleno.setForeground(new java.awt.Color(30, 41, 59));
+        panelFiltros.setOpaque(false);
+        panelFiltros.setForeground(new java.awt.Color(30, 41, 59));
+        panelFiltros.setBackground(new java.awt.Color(248, 250, 252));
+        lblBuscar.setText("Buscar:");
+        lblBuscar.setForeground(new java.awt.Color(30, 41, 59));
+        txtBuscar.setBackground(new java.awt.Color(255, 255, 255));
+        txtBuscar.setForeground(new java.awt.Color(30, 41, 59));
+        txtBuscar.setColorFoco(new java.awt.Color(37, 99, 235));
+        txtBuscar.setFont(new java.awt.Font("SansSerif", 0, 13));
+        txtBuscar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
+        txtBuscar.setPreferredSize(new java.awt.Dimension(200, 40));
+        txtBuscar.setSelectionColor(new java.awt.Color(191, 219, 254));
+        txtBuscar.setSelectedTextColor(new java.awt.Color(30, 41, 59));
+        txtBuscar.setCaretColor(new java.awt.Color(37, 99, 235));
+        txtBuscar.setDisabledTextColor(new java.awt.Color(100, 116, 139));
+        txtBuscar.setColorPlaceholder(new java.awt.Color(100, 116, 139));
+        lblFiltroEstado.setText("Estado:");
+        lblFiltroEstado.setForeground(new java.awt.Color(30, 41, 59));
+        cmbEstadoFiltro.setBackground(new java.awt.Color(255, 255, 255));
+        cmbEstadoFiltro.setForeground(new java.awt.Color(30, 41, 59));
+        cmbEstadoFiltro.setColorFoco(new java.awt.Color(37, 99, 235));
+        cmbEstadoFiltro.setFont(new java.awt.Font("SansSerif", 0, 13));
+        cmbEstadoFiltro.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(3, 8, 3, 8)));
+        cmbEstadoFiltro.setPreferredSize(new java.awt.Dimension(180, 30));
+        btnActualizar.setText("ACTUALIZAR");
+        btnActualizar.setBackground(new java.awt.Color(239, 246, 255));
+        btnActualizar.setForeground(new java.awt.Color(30, 64, 175));
+        btnActualizar.setFondoActivo(new java.awt.Color(37, 99, 235));
+        btnActualizar.setTextoActivo(new java.awt.Color(255, 255, 255));
+        btnActualizar.setColorFoco(new java.awt.Color(37, 99, 235));
+        btnActualizar.setFont(new java.awt.Font("SansSerif", 1, 13));
+        btnActualizar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        btnActualizar.setRolloverEnabled(true);
+        btnActualizar.setContentAreaFilled(false);
+        btnActualizar.setOpaque(false);
+        lblEstado.setText(" ");
+        lblEstado.setForeground(new java.awt.Color(30, 41, 59));
+        scrollTabla.setForeground(new java.awt.Color(30, 41, 59));
+        scrollTabla.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1));
+        scrollTabla.setBackground(new java.awt.Color(255, 255, 255));
+        tabla.setBackground(new java.awt.Color(255, 255, 255));
+        tabla.setForeground(new java.awt.Color(30, 41, 59));
+        tabla.setGridColor(new java.awt.Color(125, 211, 252));
+        tabla.setSelectionBackground(new java.awt.Color(219, 234, 254));
+        tabla.setSelectionForeground(new java.awt.Color(30, 64, 175));
+        tabla.setFondoCabecera(new java.awt.Color(224, 242, 254));
+        tabla.setTextoCabecera(new java.awt.Color(30, 64, 175));
+        tabla.setBordeCabecera(new java.awt.Color(125, 211, 252));
+        tabla.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1));
+        tabla.setFont(new java.awt.Font("SansSerif", 0, 13));
+        tabla.setRowHeight(30);
+        tabla.setShowVerticalLines(false);
+        tabla.setFillsViewportHeight(true);
+        panelAcciones.setOpaque(false);
+        panelAcciones.setForeground(new java.awt.Color(30, 41, 59));
+        panelAcciones.setBackground(new java.awt.Color(248, 250, 252));
+        btnFinalizar.setText("FINALIZAR");
+        btnFinalizar.setBackground(new java.awt.Color(239, 246, 255));
+        btnFinalizar.setForeground(new java.awt.Color(30, 64, 175));
+        btnFinalizar.setFondoActivo(new java.awt.Color(37, 99, 235));
+        btnFinalizar.setTextoActivo(new java.awt.Color(255, 255, 255));
+        btnFinalizar.setColorFoco(new java.awt.Color(37, 99, 235));
+        btnFinalizar.setFont(new java.awt.Font("SansSerif", 1, 13));
+        btnFinalizar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        btnFinalizar.setRolloverEnabled(true);
+        btnFinalizar.setContentAreaFilled(false);
+        btnFinalizar.setOpaque(false);
+        btnCancelar.setText("CANCELAR");
+        btnCancelar.setBackground(new java.awt.Color(239, 246, 255));
+        btnCancelar.setForeground(new java.awt.Color(30, 64, 175));
+        btnCancelar.setFondoActivo(new java.awt.Color(37, 99, 235));
+        btnCancelar.setTextoActivo(new java.awt.Color(255, 255, 255));
+        btnCancelar.setColorFoco(new java.awt.Color(37, 99, 235));
+        btnCancelar.setFont(new java.awt.Font("SansSerif", 1, 13));
+        btnCancelar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        btnCancelar.setRolloverEnabled(true);
+        btnCancelar.setContentAreaFilled(false);
+        btnCancelar.setOpaque(false);
     }// </editor-fold>//GEN-END:initComponents
 
     private void configurarVista() {
@@ -500,10 +723,7 @@ public class panelAsignar extends JPanel {
     }
 
     private static void configurarBoton(JButton boton) {
-        boton.setBackground(COLOR_ACCION);
-        boton.setForeground(Color.WHITE);
-        boton.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 14));
-        boton.setBorder(BorderFactory.createEmptyBorder(8, 14, 8, 14));
+        // El color y el borde se definen desde el formulario de NetBeans.
     }
 
     private String fechaVisible(Timestamp fecha) {
@@ -530,14 +750,14 @@ public class panelAsignar extends JPanel {
                                   List<AsignacionFila> asignaciones) {}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnActualizar;
-    private javax.swing.JButton btnAsignar;
-    private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnFinalizar;
-    private javax.swing.JComboBox<String> cmbEstadoFiltro;
-    private javax.swing.JComboBox<MaquinariaOpcion> cmbMaquinaria;
-    private javax.swing.JComboBox<OperadorOpcion> cmbOperador;
-    private javax.swing.JComboBox<RutaOpcion> cmbRuta;
+    private com.titanops.vista.componentes.Boton btnActualizar;
+    private com.titanops.vista.componentes.Boton btnAsignar;
+    private com.titanops.vista.componentes.Boton btnCancelar;
+    private com.titanops.vista.componentes.Boton btnFinalizar;
+    private com.titanops.vista.componentes.Selector<String> cmbEstadoFiltro;
+    private com.titanops.vista.componentes.Selector<MaquinariaOpcion> cmbMaquinaria;
+    private com.titanops.vista.componentes.Selector<OperadorOpcion> cmbOperador;
+    private com.titanops.vista.componentes.Selector<RutaOpcion> cmbRuta;
     private javax.swing.JLabel lblBuscar;
     private javax.swing.JLabel lblEstado;
     private javax.swing.JLabel lblFiltroEstado;
@@ -556,8 +776,8 @@ public class panelAsignar extends JPanel {
     private javax.swing.JScrollPane scrollObservaciones;
     private javax.swing.JScrollPane scrollTabla;
     private javax.swing.JSpinner spnRetorno;
-    private javax.swing.JTable tabla;
-    private javax.swing.JTextField txtBuscar;
-    private javax.swing.JTextArea txtObservaciones;
+    private com.titanops.vista.componentes.Tabla tabla;
+    private com.titanops.vista.componentes.CampoTexto txtBuscar;
+    private com.titanops.vista.componentes.AreaTexto txtObservaciones;
     // End of variables declaration//GEN-END:variables
 }

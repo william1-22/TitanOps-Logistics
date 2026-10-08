@@ -5,8 +5,12 @@ import com.titanops.dao.RolDAO;
 import com.titanops.dao.UsuarioDAO;
 import com.titanops.modelo.Rol;
 import com.titanops.modelo.Usuario;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import javax.swing.JInternalFrame;
+import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -23,14 +27,35 @@ public class FILES extends javax.swing.JFrame {
     private Usuario usuarioAutenticado;
     private LOGIN loginActivo;
     private LoginController loginController;
+    private javax.swing.JLabel logoTitan;
 
     public FILES() {
         initComponents();
+
+
+        configurarLogoTitan();
         setSize(1000, 700);
         setLocationRelativeTo(null);
         setTitle("TitanOps");
         configurarAccesos(null);
         java.awt.EventQueue.invokeLater(this::mostrarLogin);
+    }
+
+    private void configurarLogoTitan() {
+        jDesktopPane1.setLayout(null);
+        logoTitan = new javax.swing.JLabel(new javax.swing.ImageIcon(
+                getClass().getResource("/multimedia/LOGOSINFONDOPEQUELO.png")));
+        logoTitan.setHorizontalAlignment(SwingConstants.CENTER);
+        logoTitan.setVerticalAlignment(SwingConstants.CENTER);
+        logoTitan.setOpaque(false);
+        jDesktopPane1.add(logoTitan, JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent event) {
+                logoTitan.setBounds(0, 0, jDesktopPane1.getWidth(), jDesktopPane1.getHeight());
+            }
+        });
+        logoTitan.setBounds(0, 0, jDesktopPane1.getWidth(), jDesktopPane1.getHeight());
     }
 
     /**
@@ -48,6 +73,7 @@ public class FILES extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        gestion_categorias = new javax.swing.JMenuItem();
         control_y_reportes = new javax.swing.JMenuItem();
         btn_rutas = new javax.swing.JMenuItem();
         gestion_operarios = new javax.swing.JMenuItem();
@@ -79,6 +105,10 @@ public class FILES extends javax.swing.JFrame {
         jMenuItem3.addActionListener(this::jMenuItem3ActionPerformed);
         jMenu1.add(jMenuItem3);
 
+        gestion_categorias.setText("GESTIÓN DE CATEGORÍAS");
+        gestion_categorias.addActionListener(this::gestion_categoriasActionPerformed);
+        jMenu1.add(gestion_categorias);
+
         control_y_reportes.setText("CONTROL Y REPORTES");
         control_y_reportes.addActionListener(this::control_y_reportesActionPerformed);
         jMenu1.add(control_y_reportes);
@@ -106,6 +136,45 @@ public class FILES extends javax.swing.JFrame {
             .addComponent(jDesktopPane1)
         );
 
+
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        jDesktopPane1.setForeground(new java.awt.Color(30, 41, 59));
+        jDesktopPane1.setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        jMenuBar1.setForeground(new java.awt.Color(30, 41, 59));
+        jMenu1.setForeground(new java.awt.Color(30, 41, 59));
+        jMenuItem1.setForeground(new java.awt.Color(30, 41, 59));
+        jMenuItem2.setForeground(new java.awt.Color(30, 41, 59));
+        jMenuItem3.setForeground(new java.awt.Color(30, 41, 59));
+        gestion_categorias.setForeground(new java.awt.Color(30, 41, 59));
+        control_y_reportes.setForeground(new java.awt.Color(30, 41, 59));
+        btn_rutas.setForeground(new java.awt.Color(30, 41, 59));
+        gestion_operarios.setForeground(new java.awt.Color(30, 41, 59));
+
+
+        jMenuBar1.setForeground(new java.awt.Color(30, 41, 59));
+        jMenu1.setText("File");
+        jMenu1.setForeground(new java.awt.Color(30, 41, 59));
+        jMenuItem1.setText("LOGIN");
+        jMenuItem1.setForeground(new java.awt.Color(30, 41, 59));
+        jMenuItem2.setText("GESTIÓN USUARIOS");
+        jMenuItem2.setForeground(new java.awt.Color(30, 41, 59));
+        jMenuItem3.setText("MAQUINARIA");
+        jMenuItem3.setForeground(new java.awt.Color(30, 41, 59));
+        gestion_categorias.setText("GESTIÓN DE CATEGORÍAS");
+        gestion_categorias.setForeground(new java.awt.Color(30, 41, 59));
+        control_y_reportes.setText("CONTROL Y REPORTES");
+        control_y_reportes.setForeground(new java.awt.Color(30, 41, 59));
+        btn_rutas.setText("RUTAS");
+        btn_rutas.setForeground(new java.awt.Color(30, 41, 59));
+        gestion_operarios.setText("GESTION DE OPERARIOS");
+        gestion_operarios.setForeground(new java.awt.Color(30, 41, 59));
+        jDesktopPane1.setForeground(new java.awt.Color(30, 41, 59));
+        jDesktopPane1.setBackground(new java.awt.Color(239, 246, 255));
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -133,6 +202,14 @@ public class FILES extends javax.swing.JFrame {
 
         panta.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void gestion_categoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestion_categoriasActionPerformed
+        GestionCategorias panta = new GestionCategorias();
+        jDesktopPane1.add(panta);
+        panta.setLocation(20, 20);
+        panta.setVisible(true);
+        panta.toFront();
+    }//GEN-LAST:event_gestion_categoriasActionPerformed
 
     private void control_y_reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_control_y_reportesActionPerformed
         Control_y_reportes panta = new Control_y_reportes(
@@ -203,6 +280,7 @@ public class FILES extends javax.swing.JFrame {
         jMenuItem1.setText(autenticado ? "CERRAR SESIÓN" : "INICIAR SESIÓN");
         jMenuItem2.setEnabled(administrador);
         jMenuItem3.setEnabled(accesoOperativo);
+        gestion_categorias.setEnabled(administrador);
         control_y_reportes.setEnabled(accesoOperativo);
         btn_rutas.setEnabled(accesoOperativo);
         gestion_operarios.setEnabled(accesoOperativo);
@@ -256,6 +334,7 @@ public class FILES extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem btn_rutas;
     private javax.swing.JMenuItem control_y_reportes;
+    private javax.swing.JMenuItem gestion_categorias;
     private javax.swing.JMenuItem gestion_operarios;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;

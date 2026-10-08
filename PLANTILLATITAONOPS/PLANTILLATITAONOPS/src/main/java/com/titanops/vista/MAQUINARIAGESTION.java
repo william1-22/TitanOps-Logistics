@@ -10,7 +10,6 @@ import com.titanops.controlador.GestionMaquinariaController.ResultadoOperacion;
 import com.titanops.dao.CategoriaMaquinariaDAO;
 import com.titanops.dao.MaquinariaDAO;
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -48,32 +47,11 @@ import javax.swing.table.DefaultTableModel;
  */
 public class MAQUINARIAGESTION extends javax.swing.JInternalFrame {
 
-    private static final Color COLOR_FONDO = new Color(159, 161, 122);
-    private static final Color COLOR_PANEL = new Color(134, 137, 93);
-    private static final Color COLOR_CABECERA = new Color(84, 88, 47);
-    private static final Color COLOR_ACCION = new Color(93, 36, 23);
     private static final DateTimeFormatter FORMATO_FECHA =
             DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 
     private javax.swing.JDesktopPane desktop;
     private final GestionMaquinariaController controller;
-    private final JTextField txtCodigo = new JTextField(18);
-    private final JTextField txtMarca = new JTextField(18);
-    private final JTextField txtModelo = new JTextField(18);
-    private final JTextField txtTonelaje = new JTextField(12);
-    private final JTextField txtHorasUso = new JTextField(12);
-    private final JTextField txtBuscar = new JTextField(24);
-    private final JComboBox<CategoriaOpcion> cmbCategoria = new JComboBox<>();
-    private final JComboBox<String> cmbEstado = new JComboBox<>(
-            GestionMaquinariaController.ESTADOS_OPERATIVOS.toArray(String[]::new));
-    private final JComboBox<String> cmbFiltroEstado = new JComboBox<>();
-    private final JButton btnGuardar = crearBoton("GUARDAR");
-    private final JButton btnNuevaCategoria = crearBoton("NUEVA CATEGORÍA");
-    private final JButton btnLimpiar = crearBoton("LIMPIAR");
-    private final JButton btnBuscar = crearBoton("BUSCAR");
-    private final JButton btnEditar = crearBoton("EDITAR");
-    private final JButton btnEstadoRegistro = crearBoton("DESACTIVAR");
-    private final JLabel lblEstadoCarga = new JLabel(" ");
     private List<CategoriaOpcion> categorias = List.of();
     private boolean cargando;
     private boolean recargaPendiente;
@@ -93,6 +71,7 @@ public class MAQUINARIAGESTION extends javax.swing.JInternalFrame {
         this.desktop = desktop;
         this.controller = controller;
         configurarVista();
+
         cargarDatosIniciales();
     }
 
@@ -106,362 +85,339 @@ public class MAQUINARIAGESTION extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
+        panelCabecera = new javax.swing.JPanel();
+        lblTitulo = new javax.swing.JLabel();
+        panelCentro = new javax.swing.JPanel();
+        panelCreacion = new javax.swing.JPanel();
+        lblFormulario = new javax.swing.JLabel();
+        panelDatos = new javax.swing.JPanel();
+        lblTxtCodigo = new javax.swing.JLabel();
+        txtCodigo = new com.titanops.vista.componentes.CampoTexto();
+        lblCmbCategoria = new javax.swing.JLabel();
+        cmbCategoria = new com.titanops.vista.componentes.Selector();
+        lblTxtMarca = new javax.swing.JLabel();
+        txtMarca = new com.titanops.vista.componentes.CampoTexto();
+        lblTxtModelo = new javax.swing.JLabel();
+        txtModelo = new com.titanops.vista.componentes.CampoTexto();
+        lblTxtTonelaje = new javax.swing.JLabel();
+        txtTonelaje = new com.titanops.vista.componentes.CampoTexto();
+        lblTxtHorasUso = new javax.swing.JLabel();
+        txtHorasUso = new com.titanops.vista.componentes.CampoTexto();
+        lblCmbEstado = new javax.swing.JLabel();
+        cmbEstado = new com.titanops.vista.componentes.Selector();
+        panelAccionesCreacion = new javax.swing.JPanel();
+        btnNuevaCategoria = new com.titanops.vista.componentes.Boton();
+        btnLimpiar = new com.titanops.vista.componentes.Boton();
+        btnGuardar = new com.titanops.vista.componentes.Boton();
+        panelListado = new javax.swing.JPanel();
+        panelFiltros = new javax.swing.JPanel();
+        lblTxtBuscar = new javax.swing.JLabel();
+        txtBuscar = new com.titanops.vista.componentes.CampoTexto();
+        lblCmbFiltroEstado = new javax.swing.JLabel();
+        cmbFiltroEstado = new com.titanops.vista.componentes.Selector();
+        btnBuscar = new com.titanops.vista.componentes.Boton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+        jTable1 = new com.titanops.vista.componentes.Tabla();
+        panelAcciones = new javax.swing.JPanel();
+        btnEditar = new com.titanops.vista.componentes.Boton();
+        btnEstadoRegistro = new com.titanops.vista.componentes.Boton();
+        lblEstadoCarga = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(239, 246, 255));
         setClosable(true);
+        setForeground(new java.awt.Color(30, 41, 59));
         setMaximizable(true);
         setResizable(true);
+        setTitle("Gestión de maquinaria");
+        setPreferredSize(new java.awt.Dimension(1120, 700));
+        getContentPane().setLayout(new java.awt.BorderLayout(12, 12));
 
-        jPanel1.setBackground(new java.awt.Color(159, 161, 122));
+        jPanel1.setForeground(new java.awt.Color(30, 41, 59));
+        jPanel1.setBackground(new java.awt.Color(239, 246, 255));
+        jPanel1.setLayout(new java.awt.BorderLayout(0, 12));
 
-        jPanel2.setBackground(new java.awt.Color(84, 88, 47));
-        jPanel2.setForeground(new java.awt.Color(0, 0, 0));
+        panelCabecera.setForeground(new java.awt.Color(30, 41, 59));
+        panelCabecera.setBackground(new java.awt.Color(30, 64, 175));
+        panelCabecera.setLayout(new java.awt.BorderLayout());
 
-        jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 50)); // NOI18N
-        jLabel1.setText(" Gestión de Maquinaria");
+        lblTitulo.setText("GESTIÓN DE MAQUINARIA");
+        lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitulo.setFont(new java.awt.Font("SansSerif", 1, 26)); // NOI18N
+        lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        panelCabecera.add(lblTitulo, java.awt.BorderLayout.CENTER);
 
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/multimedia/FONDO11.png"))); // NOI18N
+        jPanel1.add(panelCabecera, java.awt.BorderLayout.NORTH);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel15)
-                .addGap(185, 185, 185)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel15)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(28, Short.MAX_VALUE))
-        );
+        panelCentro.setForeground(new java.awt.Color(30, 41, 59));
+        panelCentro.setBackground(new java.awt.Color(248, 250, 252));
+        panelCentro.setLayout(new java.awt.BorderLayout(16, 0));
 
-        jPanel3.setBackground(new java.awt.Color(134, 137, 93));
+        panelCreacion.setPreferredSize(new java.awt.Dimension(360, 500));
+        panelCreacion.setForeground(new java.awt.Color(30, 41, 59));
+        panelCreacion.setBackground(new java.awt.Color(248, 250, 252));
+        panelCreacion.setLayout(new java.awt.BorderLayout(0, 10));
 
-        jLabel3.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jLabel3.setText("ID Maquinaria");
+        lblFormulario.setText("DATOS DE LA MAQUINARIA");
+        lblFormulario.setForeground(new java.awt.Color(30, 41, 59));
+        panelCreacion.add(lblFormulario, java.awt.BorderLayout.NORTH);
 
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField2.setBorder(null);
-        jTextField2.addActionListener(this::jTextField2ActionPerformed);
+        panelDatos.setForeground(new java.awt.Color(30, 41, 59));
+        panelDatos.setBackground(new java.awt.Color(248, 250, 252));
+        panelDatos.setLayout(new java.awt.GridLayout(7, 2, 10, 10));
 
-        jLabel4.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jLabel4.setText("Nombre/Modelo");
+        lblTxtCodigo.setText("Código");
+        lblTxtCodigo.setForeground(new java.awt.Color(30, 41, 59));
+        panelDatos.add(lblTxtCodigo);
 
-        jTextField3.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField3.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField3.setBorder(null);
-        jTextField3.addActionListener(this::jTextField3ActionPerformed);
+        txtCodigo.setForeground(new java.awt.Color(30, 41, 59));
+        txtCodigo.setColorFoco(new java.awt.Color(37, 99, 235));
+        txtCodigo.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        txtCodigo.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
+        txtCodigo.setPreferredSize(new java.awt.Dimension(200, 40));
+        txtCodigo.setSelectionColor(new java.awt.Color(191, 219, 254));
+        txtCodigo.setSelectedTextColor(new java.awt.Color(30, 41, 59));
+        txtCodigo.setCaretColor(new java.awt.Color(37, 99, 235));
+        txtCodigo.setDisabledTextColor(new java.awt.Color(100, 116, 139));
+        txtCodigo.setColorPlaceholder(new java.awt.Color(100, 116, 139));
+        txtCodigo.setPlaceholder("Código único de inventario");
+        panelDatos.add(txtCodigo);
 
-        jLabel5.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jLabel5.setText("Categoría Técnica");
+        lblCmbCategoria.setText("Categoría");
+        lblCmbCategoria.setForeground(new java.awt.Color(30, 41, 59));
+        panelDatos.add(lblCmbCategoria);
 
-        jTextField4.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField4.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField4.setBorder(null);
-        jTextField4.addActionListener(this::jTextField4ActionPerformed);
+        cmbCategoria.setForeground(new java.awt.Color(30, 41, 59));
+        cmbCategoria.setColorFoco(new java.awt.Color(37, 99, 235));
+        cmbCategoria.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        cmbCategoria.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(3, 8, 3, 8)));
+        cmbCategoria.setPreferredSize(new java.awt.Dimension(180, 30));
+        panelDatos.add(cmbCategoria);
 
-        jLabel6.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jLabel6.setText("Modelo/Marca");
+        lblTxtMarca.setText("Marca");
+        lblTxtMarca.setForeground(new java.awt.Color(30, 41, 59));
+        panelDatos.add(lblTxtMarca);
 
-        jTextField5.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField5.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jTextField5.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField5.setBorder(null);
-        jTextField5.addActionListener(this::jTextField5ActionPerformed);
+        txtMarca.setForeground(new java.awt.Color(30, 41, 59));
+        txtMarca.setColorFoco(new java.awt.Color(37, 99, 235));
+        txtMarca.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        txtMarca.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
+        txtMarca.setPreferredSize(new java.awt.Dimension(200, 40));
+        txtMarca.setSelectionColor(new java.awt.Color(191, 219, 254));
+        txtMarca.setSelectedTextColor(new java.awt.Color(30, 41, 59));
+        txtMarca.setCaretColor(new java.awt.Color(37, 99, 235));
+        txtMarca.setDisabledTextColor(new java.awt.Color(100, 116, 139));
+        txtMarca.setColorPlaceholder(new java.awt.Color(100, 116, 139));
+        panelDatos.add(txtMarca);
 
-        jLabel7.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jLabel7.setText("Estado");
+        lblTxtModelo.setText("Modelo");
+        lblTxtModelo.setForeground(new java.awt.Color(30, 41, 59));
+        panelDatos.add(lblTxtModelo);
 
-        jTextField6.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField6.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jTextField6.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField6.setBorder(null);
-        jTextField6.addActionListener(this::jTextField6ActionPerformed);
+        txtModelo.setForeground(new java.awt.Color(30, 41, 59));
+        txtModelo.setColorFoco(new java.awt.Color(37, 99, 235));
+        txtModelo.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        txtModelo.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
+        txtModelo.setPreferredSize(new java.awt.Dimension(200, 40));
+        txtModelo.setSelectionColor(new java.awt.Color(191, 219, 254));
+        txtModelo.setSelectedTextColor(new java.awt.Color(30, 41, 59));
+        txtModelo.setCaretColor(new java.awt.Color(37, 99, 235));
+        txtModelo.setDisabledTextColor(new java.awt.Color(100, 116, 139));
+        txtModelo.setColorPlaceholder(new java.awt.Color(100, 116, 139));
+        panelDatos.add(txtModelo);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addComponent(jLabel4)
-                            .addGap(36, 36, 36)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addComponent(jLabel6)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addComponent(jLabel7)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22))
-        );
+        lblTxtTonelaje.setText("Tonelaje");
+        lblTxtTonelaje.setForeground(new java.awt.Color(30, 41, 59));
+        panelDatos.add(lblTxtTonelaje);
 
-        jPanel4.setBackground(new java.awt.Color(134, 137, 93));
+        txtTonelaje.setForeground(new java.awt.Color(30, 41, 59));
+        txtTonelaje.setColorFoco(new java.awt.Color(37, 99, 235));
+        txtTonelaje.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        txtTonelaje.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
+        txtTonelaje.setPreferredSize(new java.awt.Dimension(200, 40));
+        txtTonelaje.setSelectionColor(new java.awt.Color(191, 219, 254));
+        txtTonelaje.setSelectedTextColor(new java.awt.Color(30, 41, 59));
+        txtTonelaje.setCaretColor(new java.awt.Color(37, 99, 235));
+        txtTonelaje.setDisabledTextColor(new java.awt.Color(100, 116, 139));
+        txtTonelaje.setColorPlaceholder(new java.awt.Color(100, 116, 139));
+        txtTonelaje.setPlaceholder("Hasta 8 enteros y 2 decimales");
+        panelDatos.add(txtTonelaje);
 
-        jLabel8.setBackground(new java.awt.Color(93, 35, 22));
-        jLabel8.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(93, 36, 23));
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/multimedia/ELIMINARPEQUEÑO.png"))); // NOI18N
-        jLabel8.setText("ELIMINAR");
+        lblTxtHorasUso.setText("Horas de uso");
+        lblTxtHorasUso.setForeground(new java.awt.Color(30, 41, 59));
+        panelDatos.add(lblTxtHorasUso);
 
-        jLabel9.setBackground(new java.awt.Color(93, 35, 22));
-        jLabel9.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(93, 36, 23));
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/multimedia/guardar.png"))); // NOI18N
-        jLabel9.setText("GUARDAR");
+        txtHorasUso.setForeground(new java.awt.Color(30, 41, 59));
+        txtHorasUso.setColorFoco(new java.awt.Color(37, 99, 235));
+        txtHorasUso.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        txtHorasUso.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
+        txtHorasUso.setPreferredSize(new java.awt.Dimension(200, 40));
+        txtHorasUso.setSelectionColor(new java.awt.Color(191, 219, 254));
+        txtHorasUso.setSelectedTextColor(new java.awt.Color(30, 41, 59));
+        txtHorasUso.setCaretColor(new java.awt.Color(37, 99, 235));
+        txtHorasUso.setDisabledTextColor(new java.awt.Color(100, 116, 139));
+        txtHorasUso.setColorPlaceholder(new java.awt.Color(100, 116, 139));
+        txtHorasUso.setPlaceholder("Hasta 8 enteros y 2 decimales");
+        panelDatos.add(txtHorasUso);
 
-        jLabel10.setBackground(new java.awt.Color(93, 35, 22));
-        jLabel10.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(93, 36, 23));
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/multimedia/NUEVOPEQUEÑO.png"))); // NOI18N
-        jLabel10.setText("NUEVO");
+        lblCmbEstado.setText("Estado");
+        lblCmbEstado.setForeground(new java.awt.Color(30, 41, 59));
+        panelDatos.add(lblCmbEstado);
 
-        jLabel11.setBackground(new java.awt.Color(93, 35, 22));
-        jLabel11.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(93, 36, 23));
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/multimedia/EDITARPEQUEÑO.png"))); // NOI18N
-        jLabel11.setText("EDITAR");
+        cmbEstado.setForeground(new java.awt.Color(30, 41, 59));
+        cmbEstado.setColorFoco(new java.awt.Color(37, 99, 235));
+        cmbEstado.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        cmbEstado.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(3, 8, 3, 8)));
+        cmbEstado.setPreferredSize(new java.awt.Dimension(180, 30));
+        panelDatos.add(cmbEstado);
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel10)
-                .addGap(40, 40, 40)
-                .addComponent(jLabel11)
-                .addGap(51, 51, 51)
-                .addComponent(jLabel8)
-                .addContainerGap(193, Short.MAX_VALUE))
-            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                    .addContainerGap(472, Short.MAX_VALUE)
-                    .addComponent(jLabel9)
-                    .addGap(16, 16, 16)))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(41, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel11))
-                .addGap(27, 27, 27))
-            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                    .addContainerGap(41, Short.MAX_VALUE)
-                    .addComponent(jLabel9)
-                    .addGap(27, 27, 27)))
-        );
+        panelCreacion.add(panelDatos, java.awt.BorderLayout.CENTER);
 
-        jPanel5.setBackground(new java.awt.Color(134, 137, 93));
+        panelAccionesCreacion.setForeground(new java.awt.Color(30, 41, 59));
+        panelAccionesCreacion.setBackground(new java.awt.Color(248, 250, 252));
+        panelAccionesCreacion.setLayout(new java.awt.GridLayout(3, 1, 0, 8));
 
-        jLabel12.setBackground(new java.awt.Color(93, 34, 21));
-        jLabel12.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(93, 36, 23));
-        jLabel12.setText("GUARDAR");
+        btnNuevaCategoria.setText("NUEVA CATEGORÍA");
+        btnNuevaCategoria.setBackground(new java.awt.Color(239, 246, 255));
+        btnNuevaCategoria.setForeground(new java.awt.Color(30, 64, 175));
+        btnNuevaCategoria.setFondoActivo(new java.awt.Color(37, 99, 235));
+        btnNuevaCategoria.setTextoActivo(new java.awt.Color(255, 255, 255));
+        btnNuevaCategoria.setColorFoco(new java.awt.Color(37, 99, 235));
+        btnNuevaCategoria.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        btnNuevaCategoria.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        btnNuevaCategoria.setContentAreaFilled(false);
+        panelAccionesCreacion.add(btnNuevaCategoria);
 
-        jLabel13.setBackground(new java.awt.Color(93, 35, 22));
-        jLabel13.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(93, 36, 23));
-        jLabel13.setText("SALIR");
+        btnLimpiar.setText("LIMPIAR");
+        btnLimpiar.setBackground(new java.awt.Color(239, 246, 255));
+        btnLimpiar.setForeground(new java.awt.Color(30, 64, 175));
+        btnLimpiar.setFondoActivo(new java.awt.Color(37, 99, 235));
+        btnLimpiar.setTextoActivo(new java.awt.Color(255, 255, 255));
+        btnLimpiar.setColorFoco(new java.awt.Color(37, 99, 235));
+        btnLimpiar.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        btnLimpiar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        btnLimpiar.setContentAreaFilled(false);
+        panelAccionesCreacion.add(btnLimpiar);
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel12)
-                .addGap(30, 30, 30)
-                .addComponent(jLabel13)
-                .addGap(24, 24, 24))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel13))
-                .addContainerGap(16, Short.MAX_VALUE))
-        );
+        btnGuardar.setText("GUARDAR");
+        btnGuardar.setBackground(new java.awt.Color(239, 246, 255));
+        btnGuardar.setForeground(new java.awt.Color(30, 64, 175));
+        btnGuardar.setFondoActivo(new java.awt.Color(37, 99, 235));
+        btnGuardar.setTextoActivo(new java.awt.Color(255, 255, 255));
+        btnGuardar.setColorFoco(new java.awt.Color(37, 99, 235));
+        btnGuardar.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        btnGuardar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        btnGuardar.setContentAreaFilled(false);
+        panelAccionesCreacion.add(btnGuardar);
 
-        jPanel6.setBackground(new java.awt.Color(134, 137, 93));
+        panelCreacion.add(panelAccionesCreacion, java.awt.BorderLayout.SOUTH);
 
-        jTable1.setBackground(new java.awt.Color(170, 173, 129));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "ID", "NOMBRE", "CATEGORIA", "MODELO", "ESTADO"
-            }
-        ));
+        panelCentro.add(panelCreacion, java.awt.BorderLayout.WEST);
+
+        panelListado.setForeground(new java.awt.Color(30, 41, 59));
+        panelListado.setBackground(new java.awt.Color(248, 250, 252));
+        panelListado.setLayout(new java.awt.BorderLayout(0, 10));
+
+        panelFiltros.setForeground(new java.awt.Color(30, 41, 59));
+        panelFiltros.setBackground(new java.awt.Color(248, 250, 252));
+        panelFiltros.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 8, 6));
+
+        lblTxtBuscar.setText("Buscar:");
+        lblTxtBuscar.setForeground(new java.awt.Color(30, 41, 59));
+        panelFiltros.add(lblTxtBuscar);
+
+        txtBuscar.setForeground(new java.awt.Color(30, 41, 59));
+        txtBuscar.setColorFoco(new java.awt.Color(37, 99, 235));
+        txtBuscar.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        txtBuscar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
+        txtBuscar.setPreferredSize(new java.awt.Dimension(200, 40));
+        txtBuscar.setSelectionColor(new java.awt.Color(191, 219, 254));
+        txtBuscar.setSelectedTextColor(new java.awt.Color(30, 41, 59));
+        txtBuscar.setCaretColor(new java.awt.Color(37, 99, 235));
+        txtBuscar.setDisabledTextColor(new java.awt.Color(100, 116, 139));
+        txtBuscar.setColorPlaceholder(new java.awt.Color(100, 116, 139));
+        txtBuscar.setPlaceholder("Buscar por código, categoría, marca o modelo");
+        panelFiltros.add(txtBuscar);
+
+        lblCmbFiltroEstado.setText("Estado:");
+        lblCmbFiltroEstado.setForeground(new java.awt.Color(30, 41, 59));
+        panelFiltros.add(lblCmbFiltroEstado);
+
+        cmbFiltroEstado.setForeground(new java.awt.Color(30, 41, 59));
+        cmbFiltroEstado.setColorFoco(new java.awt.Color(37, 99, 235));
+        cmbFiltroEstado.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        cmbFiltroEstado.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(3, 8, 3, 8)));
+        cmbFiltroEstado.setPreferredSize(new java.awt.Dimension(180, 30));
+        panelFiltros.add(cmbFiltroEstado);
+
+        btnBuscar.setText("BUSCAR");
+        btnBuscar.setBackground(new java.awt.Color(239, 246, 255));
+        btnBuscar.setForeground(new java.awt.Color(30, 64, 175));
+        btnBuscar.setFondoActivo(new java.awt.Color(37, 99, 235));
+        btnBuscar.setTextoActivo(new java.awt.Color(255, 255, 255));
+        btnBuscar.setColorFoco(new java.awt.Color(37, 99, 235));
+        btnBuscar.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        btnBuscar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        btnBuscar.setContentAreaFilled(false);
+        panelFiltros.add(btnBuscar);
+
+        panelListado.add(panelFiltros, java.awt.BorderLayout.NORTH);
+
+        jScrollPane1.setForeground(new java.awt.Color(30, 41, 59));
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)));
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jTable1.setForeground(new java.awt.Color(30, 41, 59));
+        jTable1.setGridColor(new java.awt.Color(125, 211, 252));
+        jTable1.setSelectionBackground(new java.awt.Color(219, 234, 254));
+        jTable1.setSelectionForeground(new java.awt.Color(30, 64, 175));
+        jTable1.setFondoCabecera(new java.awt.Color(224, 242, 254));
+        jTable1.setTextoCabecera(new java.awt.Color(30, 64, 175));
+        jTable1.setBordeCabecera(new java.awt.Color(125, 211, 252));
+        jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)));
+        jTable1.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        jTable1.setRowHeight(30);
+        jTable1.setFillsViewportHeight(true);
         jScrollPane1.setViewportView(jTable1);
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        panelListado.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
-        jLabel2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(93, 36, 23));
-        jLabel2.setText("TABLA DE FLOTA");
+        panelAcciones.setForeground(new java.awt.Color(30, 41, 59));
+        panelAcciones.setBackground(new java.awt.Color(248, 250, 252));
+        panelAcciones.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 8, 5));
 
-        jLabel14.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(93, 36, 23));
-        jLabel14.setText("Datos de la Maquinaria");
+        btnEditar.setText("EDITAR");
+        btnEditar.setBackground(new java.awt.Color(239, 246, 255));
+        btnEditar.setForeground(new java.awt.Color(30, 64, 175));
+        btnEditar.setFondoActivo(new java.awt.Color(37, 99, 235));
+        btnEditar.setTextoActivo(new java.awt.Color(255, 255, 255));
+        btnEditar.setColorFoco(new java.awt.Color(37, 99, 235));
+        btnEditar.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        btnEditar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        btnEditar.setContentAreaFilled(false);
+        panelAcciones.add(btnEditar);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17))
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addComponent(jLabel14)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(286, 286, 286))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(jLabel2)
-                        .addGap(3, 3, 3))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel14)
-                        .addGap(1, 1, 1)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)))
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        btnEstadoRegistro.setText("DESACTIVAR");
+        btnEstadoRegistro.setBackground(new java.awt.Color(239, 246, 255));
+        btnEstadoRegistro.setForeground(new java.awt.Color(30, 64, 175));
+        btnEstadoRegistro.setFondoActivo(new java.awt.Color(37, 99, 235));
+        btnEstadoRegistro.setTextoActivo(new java.awt.Color(255, 255, 255));
+        btnEstadoRegistro.setColorFoco(new java.awt.Color(37, 99, 235));
+        btnEstadoRegistro.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        btnEstadoRegistro.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        btnEstadoRegistro.setContentAreaFilled(false);
+        panelAcciones.add(btnEstadoRegistro);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        panelListado.add(panelAcciones, java.awt.BorderLayout.SOUTH);
 
-        pack();
+        panelCentro.add(panelListado, java.awt.BorderLayout.CENTER);
+
+        jPanel1.add(panelCentro, java.awt.BorderLayout.CENTER);
+
+        lblEstadoCarga.setText(" ");
+        lblEstadoCarga.setForeground(new java.awt.Color(30, 41, 59));
+        jPanel1.add(lblEstadoCarga, java.awt.BorderLayout.SOUTH);
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
@@ -485,33 +441,17 @@ public class MAQUINARIAGESTION extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextField6ActionPerformed
 
     private void configurarVista() {
-        setTitle("Gestión de maquinaria");
-        getContentPane().removeAll();
-        getContentPane().setLayout(new BorderLayout());
-        getContentPane().setBackground(COLOR_FONDO);
-
-        JLabel titulo = new JLabel("GESTIÓN DE MAQUINARIA", SwingConstants.CENTER);
-        titulo.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 36));
-        titulo.setForeground(Color.BLACK);
-        titulo.setBorder(BorderFactory.createEmptyBorder(16, 10, 16, 10));
-        JPanel cabecera = new JPanel(new BorderLayout());
-        cabecera.setBackground(COLOR_CABECERA);
-        cabecera.add(titulo, BorderLayout.CENTER);
-
-        JPanel formulario = construirFormularioCreacion();
-        JPanel listado = construirListado();
-        JPanel centro = new JPanel(new BorderLayout(14, 0));
-        centro.setBackground(COLOR_FONDO);
-        centro.setBorder(BorderFactory.createEmptyBorder(14, 14, 8, 14));
-        centro.add(formulario, BorderLayout.WEST);
-        centro.add(listado, BorderLayout.CENTER);
-
-        lblEstadoCarga.setForeground(Color.DARK_GRAY);
-        lblEstadoCarga.setBorder(BorderFactory.createEmptyBorder(4, 16, 8, 16));
-        getContentPane().add(cabecera, BorderLayout.NORTH);
-        getContentPane().add(centro, BorderLayout.CENTER);
-        getContentPane().add(lblEstadoCarga, BorderLayout.SOUTH);
-
+        cmbEstado.setModel(new DefaultComboBoxModel<>(GestionMaquinariaController.ESTADOS_OPERATIVOS.toArray(String[]::new)));
+        DefaultComboBoxModel<String> estados = new DefaultComboBoxModel<>();
+        estados.addElement("TODOS");
+        for (String estado : GestionMaquinariaController.ESTADOS_OPERATIVOS) estados.addElement(estado);
+        cmbFiltroEstado.setModel(estados);
+        jTable1.setModel(new DefaultTableModel(new Object[]{"ID", "Código", "Categoría", "Marca", "Modelo", "Tonelaje", "Horas", "Estado operativo", "Estado del registro", "Fecha de registro"}, 0) {
+            @Override public boolean isCellEditable(int row, int column) { return false; }
+        });
+        jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        jTable1.setAutoCreateRowSorter(true);
+        jTable1.getTableHeader().setReorderingAllowed(false);
         txtCodigo.setToolTipText("Código único de inventario");
         txtTonelaje.setToolTipText("Hasta 8 enteros y 2 decimales");
         txtHorasUso.setToolTipText("Hasta 8 enteros y 2 decimales");
@@ -542,45 +482,6 @@ public class MAQUINARIAGESTION extends javax.swing.JInternalFrame {
         setMinimumSize(new Dimension(920, 620));
         setSize(1120, 700);
         actualizarBotonesSeleccion();
-    }
-
-    private JPanel construirFormularioCreacion() {
-        JPanel panel = new JPanel(new GridBagLayout());
-        panel.setBackground(COLOR_PANEL);
-        panel.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(COLOR_CABECERA),
-                BorderFactory.createEmptyBorder(12, 12, 12, 12)));
-        panel.setPreferredSize(new Dimension(350, 500));
-
-        JLabel titulo = new JLabel("DATOS DE LA MAQUINARIA");
-        titulo.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 18));
-        GridBagConstraints tituloConstraints = restricciones(0, 0);
-        tituloConstraints.gridwidth = 2;
-        tituloConstraints.insets = new Insets(4, 4, 18, 4);
-        panel.add(titulo, tituloConstraints);
-
-        agregarCampo(panel, 1, "Código", txtCodigo);
-        agregarCampo(panel, 2, "Categoría", cmbCategoria);
-        agregarCampo(panel, 3, "Marca", txtMarca);
-        agregarCampo(panel, 4, "Modelo", txtModelo);
-        agregarCampo(panel, 5, "Tonelaje", txtTonelaje);
-        agregarCampo(panel, 6, "Horas de uso", txtHorasUso);
-        agregarCampo(panel, 7, "Estado", cmbEstado);
-
-        GridBagConstraints categoriaNueva = restricciones(0, 8);
-        categoriaNueva.gridwidth = 2;
-        categoriaNueva.insets = new Insets(12, 4, 4, 4);
-        panel.add(btnNuevaCategoria, categoriaNueva);
-
-        JPanel acciones = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 0));
-        acciones.setBackground(COLOR_PANEL);
-        acciones.add(btnLimpiar);
-        acciones.add(btnGuardar);
-        GridBagConstraints botones = restricciones(0, 9);
-        botones.gridwidth = 2;
-        botones.insets = new Insets(22, 4, 4, 4);
-        panel.add(acciones, botones);
-        return panel;
     }
 
     private void crearCategoria() {
@@ -640,50 +541,6 @@ public class MAQUINARIAGESTION extends javax.swing.JInternalFrame {
                 }
             }
         }.execute();
-    }
-
-    private JPanel construirListado() {
-        JPanel panel = new JPanel(new BorderLayout(0, 10));
-        panel.setBackground(COLOR_FONDO);
-
-        JPanel filtros = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 4));
-        filtros.setBackground(COLOR_FONDO);
-        filtros.add(new JLabel("Buscar:"));
-        filtros.add(txtBuscar);
-        DefaultComboBoxModel<String> estados = new DefaultComboBoxModel<>();
-        estados.addElement("TODOS");
-        for (String estado : GestionMaquinariaController.ESTADOS_OPERATIVOS) {
-            estados.addElement(estado);
-        }
-        cmbFiltroEstado.setModel(estados);
-        filtros.add(new JLabel("Estado:"));
-        filtros.add(cmbFiltroEstado);
-        filtros.add(btnBuscar);
-
-        DefaultTableModel modeloTabla = new DefaultTableModel(new Object[]{
-            "ID", "Código", "Categoría", "Marca", "Modelo", "Tonelaje",
-            "Horas", "Estado operativo", "Estado del registro", "Fecha de registro"
-        }, 0) {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;
-            }
-        };
-        jTable1.setModel(modeloTabla);
-        jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        jTable1.setAutoCreateRowSorter(true);
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        JScrollPane scroll = new JScrollPane(jTable1);
-
-        JPanel acciones = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 4));
-        acciones.setBackground(COLOR_FONDO);
-        acciones.add(btnEditar);
-        acciones.add(btnEstadoRegistro);
-
-        panel.add(filtros, BorderLayout.NORTH);
-        panel.add(scroll, BorderLayout.CENTER);
-        panel.add(acciones, BorderLayout.SOUTH);
-        return panel;
     }
 
     private void cargarDatosIniciales() {
@@ -1091,15 +948,6 @@ public class MAQUINARIAGESTION extends javax.swing.JInternalFrame {
         return constraints;
     }
 
-    private static JButton crearBoton(String texto) {
-        JButton boton = new JButton(texto);
-        boton.setBackground(COLOR_ACCION);
-        boton.setForeground(Color.WHITE);
-        boton.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 14));
-        boton.setBorder(BorderFactory.createEmptyBorder(7, 13, 7, 13));
-        return boton;
-    }
-
     private String decimalVisible(BigDecimal valor) {
         return valor == null ? "" : valor.stripTrailingZeros().toPlainString();
     }
@@ -1126,33 +974,43 @@ public class MAQUINARIAGESTION extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private com.titanops.vista.componentes.Boton btnBuscar;
+    private com.titanops.vista.componentes.Boton btnEditar;
+    private com.titanops.vista.componentes.Boton btnEstadoRegistro;
+    private com.titanops.vista.componentes.Boton btnGuardar;
+    private com.titanops.vista.componentes.Boton btnLimpiar;
+    private com.titanops.vista.componentes.Boton btnNuevaCategoria;
+    private com.titanops.vista.componentes.Selector cmbCategoria;
+    private com.titanops.vista.componentes.Selector cmbEstado;
+    private com.titanops.vista.componentes.Selector cmbFiltroEstado;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private com.titanops.vista.componentes.Tabla jTable1;
+    private javax.swing.JLabel lblCmbCategoria;
+    private javax.swing.JLabel lblCmbEstado;
+    private javax.swing.JLabel lblCmbFiltroEstado;
+    private javax.swing.JLabel lblEstadoCarga;
+    private javax.swing.JLabel lblFormulario;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JLabel lblTxtBuscar;
+    private javax.swing.JLabel lblTxtCodigo;
+    private javax.swing.JLabel lblTxtHorasUso;
+    private javax.swing.JLabel lblTxtMarca;
+    private javax.swing.JLabel lblTxtModelo;
+    private javax.swing.JLabel lblTxtTonelaje;
+    private javax.swing.JPanel panelAcciones;
+    private javax.swing.JPanel panelAccionesCreacion;
+    private javax.swing.JPanel panelCabecera;
+    private javax.swing.JPanel panelCentro;
+    private javax.swing.JPanel panelCreacion;
+    private javax.swing.JPanel panelDatos;
+    private javax.swing.JPanel panelFiltros;
+    private javax.swing.JPanel panelListado;
+    private com.titanops.vista.componentes.CampoTexto txtBuscar;
+    private com.titanops.vista.componentes.CampoTexto txtCodigo;
+    private com.titanops.vista.componentes.CampoTexto txtHorasUso;
+    private com.titanops.vista.componentes.CampoTexto txtMarca;
+    private com.titanops.vista.componentes.CampoTexto txtModelo;
+    private com.titanops.vista.componentes.CampoTexto txtTonelaje;
     // End of variables declaration//GEN-END:variables
 }

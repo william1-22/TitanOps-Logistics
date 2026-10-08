@@ -2,216 +2,665 @@
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <Properties>
-    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-      <Color blue="5d" green="89" red="86" type="rgb"/>
-    </Property>
     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
       <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-        <EmptyBorder bottom="14" left="18" right="18" top="14"/>
+        <EmptyBorder bottom="14" left="18" right="18" top="14" />
       </Border>
     </Property>
     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[1120, 700]"/>
+      <Dimension value="[1120, 700]" />
+    </Property>
+    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="3b" green="29" red="1e" type="rgb" />
+    </Property>
+    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="ff" green="f6" red="ef" type="rgb" />
     </Property>
   </Properties>
   <AuxValues>
-    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
-    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
-    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
-    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
-    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
-    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
-    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
-    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
-    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,106,0,0,3,63"/>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0" />
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false" />
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true" />
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false" />
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false" />
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1" />
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0" />
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false" />
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2" />
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,106,0,0,3,63" />
   </AuxValues>
-
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout">
-    <Property name="horizontalGap" type="int" value="8"/>
-    <Property name="verticalGap" type="int" value="8"/>
+    <Property name="horizontalGap" type="int" value="8" />
+    <Property name="verticalGap" type="int" value="8" />
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JPanel" name="panelSuperior">
       <Properties>
-        <Property name="opaque" type="boolean" value="false"/>
+        <Property name="opaque" type="boolean" value="false" />
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="3b" green="29" red="1e" type="rgb" />
+        </Property>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="fc" green="fa" red="f8" type="rgb" />
+        </Property>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-          <BorderConstraints direction="North"/>
+          <BorderConstraints direction="North" />
         </Constraint>
       </Constraints>
-
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout">
-        <Property name="verticalGap" type="int" value="6"/>
+        <Property name="verticalGap" type="int" value="6" />
       </Layout>
       <SubComponents>
         <Container class="javax.swing.JPanel" name="panelCaptura">
           <Properties>
-            <Property name="opaque" type="boolean" value="false"/>
+            <Property name="opaque" type="boolean" value="false" />
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="3b" green="29" red="1e" type="rgb" />
+            </Property>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="fc" green="fa" red="f8" type="rgb" />
+            </Property>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-              <BorderConstraints direction="Center"/>
+              <BorderConstraints direction="Center" />
             </Constraint>
           </Constraints>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" />
           <SubComponents>
             <Container class="javax.swing.JPanel" name="panelFormulario">
               <Properties>
-                <Property name="opaque" type="boolean" value="false"/>
+                <Property name="opaque" type="boolean" value="false" />
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="3b" green="29" red="1e" type="rgb" />
+                </Property>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="fc" green="fa" red="f8" type="rgb" />
+                </Property>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-                  <BorderConstraints direction="Center"/>
+                  <BorderConstraints direction="Center" />
                 </Constraint>
               </Constraints>
-
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="lblObservaciones" min="-2" pref="85" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" max="-2" attributes="0"/>
-                                  <Component id="scrollObservaciones" min="-2" pref="191" max="-2" attributes="0"/>
-                                  <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                                  <Component id="panelAccionCrear" min="-2" pref="191" max="-2" attributes="0"/>
-                                  <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                                  <Component id="lblRelleno" min="-2" pref="191" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="lblMaquinaria" min="-2" pref="80" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="cmbMaquinaria" min="-2" pref="191" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="lblOperador" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                                      <Component id="cmbOperador" min="-2" pref="191" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="lblRuta" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="cmbRuta" min="-2" pref="191" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblRetorno" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                                      <Component id="spnRetorno" min="-2" pref="191" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                    <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                        <Group type="102" attributes="0">
+                          <Component id="lblObservaciones" min="-2" pref="85" max="-2" attributes="0">
+                            <Properties>
+                              <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                <Color blue="3b" green="29" red="1e" type="rgb" />
+                              </Property>
+                              <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                <Color blue="ff" green="f6" red="ef" type="rgb" />
+                              </Property>
+                            </Properties>
+                          </Component>
+                          <EmptySpace min="-2" max="-2" attributes="0" />
+                          <Component id="scrollObservaciones" min="-2" pref="191" max="-2" attributes="0">
+                            <Properties>
+                              <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                <Color blue="3b" green="29" red="1e" type="rgb" />
+                              </Property>
+                              <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                <Color blue="ff" green="f6" red="ef" type="rgb" />
+                              </Property>
+                            </Properties>
+                          </Component>
+                          <EmptySpace min="10" pref="10" max="-2" attributes="0" />
+                          <Component id="panelAccionCrear" min="-2" pref="191" max="-2" attributes="0">
+                            <Properties>
+                              <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                <Color blue="3b" green="29" red="1e" type="rgb" />
+                              </Property>
+                              <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                <Color blue="ff" green="f6" red="ef" type="rgb" />
+                              </Property>
+                            </Properties>
+                          </Component>
+                          <EmptySpace min="10" pref="10" max="-2" attributes="0" />
+                          <Component id="lblRelleno" min="-2" pref="191" max="-2" attributes="0">
+                            <Properties>
+                              <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                <Color blue="3b" green="29" red="1e" type="rgb" />
+                              </Property>
+                              <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                <Color blue="ff" green="f6" red="ef" type="rgb" />
+                              </Property>
+                            </Properties>
+                          </Component>
+                        </Group>
+                        <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                            <Component id="lblMaquinaria" min="-2" pref="80" max="-2" attributes="0">
+                              <Properties>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="3b" green="29" red="1e" type="rgb" />
+                                </Property>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="f6" red="ef" type="rgb" />
+                                </Property>
+                              </Properties>
+                            </Component>
+                            <EmptySpace max="-2" attributes="0" />
+                            <Component id="cmbMaquinaria" min="-2" pref="191" max="-2" attributes="0">
+                              <Properties>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="3b" green="29" red="1e" type="rgb" />
+                                </Property>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="f6" red="ef" type="rgb" />
+                                </Property>
+                              </Properties>
+                            </Component>
+                            <EmptySpace max="32767" attributes="0" />
+                            <Component id="lblOperador" min="-2" max="-2" attributes="0">
+                              <Properties>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="3b" green="29" red="1e" type="rgb" />
+                                </Property>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="f6" red="ef" type="rgb" />
+                                </Property>
+                              </Properties>
+                            </Component>
+                            <EmptySpace min="-2" pref="35" max="-2" attributes="0" />
+                            <Component id="cmbOperador" min="-2" pref="191" max="-2" attributes="0">
+                              <Properties>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="3b" green="29" red="1e" type="rgb" />
+                                </Property>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="f6" red="ef" type="rgb" />
+                                </Property>
+                              </Properties>
+                            </Component>
                           </Group>
-                          <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                            <Component id="lblRuta" min="-2" max="-2" attributes="0">
+                              <Properties>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="3b" green="29" red="1e" type="rgb" />
+                                </Property>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="f6" red="ef" type="rgb" />
+                                </Property>
+                              </Properties>
+                            </Component>
+                            <EmptySpace max="-2" attributes="0" />
+                            <Component id="cmbRuta" min="-2" pref="191" max="-2" attributes="0">
+                              <Properties>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="3b" green="29" red="1e" type="rgb" />
+                                </Property>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="f6" red="ef" type="rgb" />
+                                </Property>
+                              </Properties>
+                            </Component>
+                            <EmptySpace type="unrelated" min="-2" max="-2" attributes="0" />
+                            <Component id="lblRetorno" min="-2" max="-2" attributes="0">
+                              <Properties>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="3b" green="29" red="1e" type="rgb" />
+                                </Property>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="f6" red="ef" type="rgb" />
+                                </Property>
+                              </Properties>
+                            </Component>
+                            <EmptySpace min="-2" max="-2" attributes="0" />
+                            <Component id="spnRetorno" min="-2" pref="191" max="-2" attributes="0">
+                              <Properties>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="3b" green="29" red="1e" type="rgb" />
+                                </Property>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="f6" red="ef" type="rgb" />
+                                </Property>
+                              </Properties>
+                            </Component>
+                          </Group>
+                        </Group>
                       </Group>
+                      <EmptySpace min="-2" pref="1" max="-2" attributes="0" />
+                    </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="lblMaquinaria" alignment="3" min="-2" pref="58" max="-2" attributes="0"/>
-                                  <Component id="cmbMaquinaria" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                                  <Component id="lblOperador" alignment="3" min="-2" pref="58" max="-2" attributes="0"/>
-                                  <Component id="cmbOperador" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace min="8" pref="8" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="lblRuta" alignment="3" min="-2" pref="58" max="-2" attributes="0"/>
-                                  <Component id="cmbRuta" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="lblRetorno" alignment="3" min="-2" pref="58" max="-2" attributes="0"/>
-                                  <Component id="spnRetorno" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblObservaciones" min="-2" pref="58" max="-2" attributes="0"/>
-                              <Component id="scrollObservaciones" min="-2" max="-2" attributes="0"/>
-                              <Component id="panelAccionCrear" min="-2" pref="58" max="-2" attributes="0"/>
-                              <Component id="lblRelleno" min="-2" pref="58" max="-2" attributes="0"/>
-                          </Group>
+                    <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                        <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblMaquinaria" alignment="3" min="-2" pref="58" max="-2" attributes="0">
+                            <Properties>
+                              <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                <Color blue="3b" green="29" red="1e" type="rgb" />
+                              </Property>
+                              <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                <Color blue="ff" green="f6" red="ef" type="rgb" />
+                              </Property>
+                            </Properties>
+                          </Component>
+                          <Component id="cmbMaquinaria" alignment="3" min="-2" pref="30" max="-2" attributes="0">
+                            <Properties>
+                              <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                <Color blue="3b" green="29" red="1e" type="rgb" />
+                              </Property>
+                              <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                <Color blue="ff" green="f6" red="ef" type="rgb" />
+                              </Property>
+                            </Properties>
+                          </Component>
+                        </Group>
+                        <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                          <Component id="lblOperador" alignment="3" min="-2" pref="58" max="-2" attributes="0">
+                            <Properties>
+                              <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                <Color blue="3b" green="29" red="1e" type="rgb" />
+                              </Property>
+                              <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                <Color blue="ff" green="f6" red="ef" type="rgb" />
+                              </Property>
+                            </Properties>
+                          </Component>
+                          <Component id="cmbOperador" alignment="3" min="-2" pref="30" max="-2" attributes="0">
+                            <Properties>
+                              <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                <Color blue="3b" green="29" red="1e" type="rgb" />
+                              </Property>
+                              <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                <Color blue="ff" green="f6" red="ef" type="rgb" />
+                              </Property>
+                            </Properties>
+                          </Component>
+                        </Group>
                       </Group>
+                      <EmptySpace min="8" pref="8" max="-2" attributes="0" />
+                      <Group type="103" groupAlignment="0" attributes="0">
+                        <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblRuta" alignment="3" min="-2" pref="58" max="-2" attributes="0">
+                            <Properties>
+                              <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                <Color blue="3b" green="29" red="1e" type="rgb" />
+                              </Property>
+                              <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                <Color blue="ff" green="f6" red="ef" type="rgb" />
+                              </Property>
+                            </Properties>
+                          </Component>
+                          <Component id="cmbRuta" alignment="3" min="-2" pref="30" max="-2" attributes="0">
+                            <Properties>
+                              <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                <Color blue="3b" green="29" red="1e" type="rgb" />
+                              </Property>
+                              <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                <Color blue="ff" green="f6" red="ef" type="rgb" />
+                              </Property>
+                            </Properties>
+                          </Component>
+                        </Group>
+                        <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblRetorno" alignment="3" min="-2" pref="58" max="-2" attributes="0">
+                            <Properties>
+                              <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                <Color blue="3b" green="29" red="1e" type="rgb" />
+                              </Property>
+                              <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                <Color blue="ff" green="f6" red="ef" type="rgb" />
+                              </Property>
+                            </Properties>
+                          </Component>
+                          <Component id="spnRetorno" alignment="3" min="-2" pref="40" max="-2" attributes="0">
+                            <Properties>
+                              <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                <Color blue="3b" green="29" red="1e" type="rgb" />
+                              </Property>
+                              <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                <Color blue="ff" green="f6" red="ef" type="rgb" />
+                              </Property>
+                            </Properties>
+                          </Component>
+                        </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="8" max="-2" attributes="0" />
+                      <Group type="103" groupAlignment="0" attributes="0">
+                        <Component id="lblObservaciones" min="-2" pref="58" max="-2" attributes="0">
+                          <Properties>
+                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="3b" green="29" red="1e" type="rgb" />
+                            </Property>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="f6" red="ef" type="rgb" />
+                            </Property>
+                          </Properties>
+                        </Component>
+                        <Component id="scrollObservaciones" min="-2" max="-2" attributes="0">
+                          <Properties>
+                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="3b" green="29" red="1e" type="rgb" />
+                            </Property>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="f6" red="ef" type="rgb" />
+                            </Property>
+                          </Properties>
+                        </Component>
+                        <Component id="panelAccionCrear" min="-2" pref="58" max="-2" attributes="0">
+                          <Properties>
+                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="3b" green="29" red="1e" type="rgb" />
+                            </Property>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="f6" red="ef" type="rgb" />
+                            </Property>
+                          </Properties>
+                        </Component>
+                        <Component id="lblRelleno" min="-2" pref="58" max="-2" attributes="0">
+                          <Properties>
+                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="3b" green="29" red="1e" type="rgb" />
+                            </Property>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="f6" red="ef" type="rgb" />
+                            </Property>
+                          </Properties>
+                        </Component>
+                      </Group>
+                    </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="lblMaquinaria">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Maquinaria:"/>
+                    <Property name="text" type="java.lang.String" value="Maquinaria:" />
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="3b" green="29" red="1e" type="rgb" />
+                    </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="cmbMaquinaria">
+                <Component class="com.titanops.vista.componentes.Selector" name="cmbMaquinaria">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb" />
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="3b" green="29" red="1e" type="rgb" />
+                    </Property>
+                    <Property name="colorFoco" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="eb" green="63" red="25" type="rgb" />
+                    </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="SansSerif" size="13" style="0" />
+                    </Property>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
+                        <CompoundBorder>
+                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo" PropertyName="outside">
+                            <LineBorder thickness="1" roundedCorners="false">
+                              <Color PropertyName="color" blue="fc" green="d3" red="7d" type="rgb" />
+                            </LineBorder>
+                          </Border>
+                          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo" PropertyName="inside">
+                            <EmptyBorder top="3" left="8" bottom="3" right="8" />
+                          </Border>
+                        </CompoundBorder>
+                      </Border>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[180, 30]" />
+                    </Property>
+                  </Properties>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;MaquinariaOpcion&gt;"/>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;MaquinariaOpcion&gt;" />
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblOperador">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Operador:"/>
+                    <Property name="text" type="java.lang.String" value="Operador:" />
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="3b" green="29" red="1e" type="rgb" />
+                    </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="cmbOperador">
+                <Component class="com.titanops.vista.componentes.Selector" name="cmbOperador">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb" />
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="3b" green="29" red="1e" type="rgb" />
+                    </Property>
+                    <Property name="colorFoco" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="eb" green="63" red="25" type="rgb" />
+                    </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="SansSerif" size="13" style="0" />
+                    </Property>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
+                        <CompoundBorder>
+                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo" PropertyName="outside">
+                            <LineBorder thickness="1" roundedCorners="false">
+                              <Color PropertyName="color" blue="fc" green="d3" red="7d" type="rgb" />
+                            </LineBorder>
+                          </Border>
+                          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo" PropertyName="inside">
+                            <EmptyBorder top="3" left="8" bottom="3" right="8" />
+                          </Border>
+                        </CompoundBorder>
+                      </Border>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[180, 30]" />
+                    </Property>
+                  </Properties>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;OperadorOpcion&gt;"/>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;OperadorOpcion&gt;" />
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblRuta">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Ruta / proyecto:"/>
+                    <Property name="text" type="java.lang.String" value="Ruta / proyecto:" />
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="3b" green="29" red="1e" type="rgb" />
+                    </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="cmbRuta">
+                <Component class="com.titanops.vista.componentes.Selector" name="cmbRuta">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb" />
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="3b" green="29" red="1e" type="rgb" />
+                    </Property>
+                    <Property name="colorFoco" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="eb" green="63" red="25" type="rgb" />
+                    </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="SansSerif" size="13" style="0" />
+                    </Property>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
+                        <CompoundBorder>
+                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo" PropertyName="outside">
+                            <LineBorder thickness="1" roundedCorners="false">
+                              <Color PropertyName="color" blue="fc" green="d3" red="7d" type="rgb" />
+                            </LineBorder>
+                          </Border>
+                          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo" PropertyName="inside">
+                            <EmptyBorder top="3" left="8" bottom="3" right="8" />
+                          </Border>
+                        </CompoundBorder>
+                      </Border>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[180, 30]" />
+                    </Property>
+                  </Properties>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;RutaOpcion&gt;"/>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;RutaOpcion&gt;" />
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblRetorno">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Retorno estimado:"/>
+                    <Property name="text" type="java.lang.String" value="Retorno estimado:" />
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="3b" green="29" red="1e" type="rgb" />
+                    </Property>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JSpinner" name="spnRetorno">
+                  <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="3b" green="29" red="1e" type="rgb" />
+                    </Property>
+                  </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblObservaciones">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Observaciones:"/>
+                    <Property name="text" type="java.lang.String" value="Observaciones:" />
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="3b" green="29" red="1e" type="rgb" />
+                    </Property>
                   </Properties>
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="scrollObservaciones">
-
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="3b" green="29" red="1e" type="rgb" />
+                    </Property>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                        <LineBorder thickness="1" roundedCorners="false">
+                          <Color PropertyName="color" blue="fc" green="d3" red="7d" type="rgb" />
+                        </LineBorder>
+                      </Border>
+                    </Property>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb" />
+                    </Property>
+                  </Properties>
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout" />
                   <SubComponents>
-                    <Component class="javax.swing.JTextArea" name="txtObservaciones">
+                    <Component class="com.titanops.vista.componentes.AreaTexto" name="txtObservaciones">
                       <Properties>
-                        <Property name="columns" type="int" value="30"/>
-                        <Property name="rows" type="int" value="3"/>
+                        <Property name="columns" type="int" value="30" />
+                        <Property name="rows" type="int" value="3" />
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="ff" type="rgb" />
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="3b" green="29" red="1e" type="rgb" />
+                        </Property>
+                        <Property name="colorFoco" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="eb" green="63" red="25" type="rgb" />
+                        </Property>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="SansSerif" size="13" style="0" />
+                        </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
+                            <CompoundBorder>
+                              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo" PropertyName="outside">
+                                <LineBorder thickness="1" roundedCorners="false">
+                                  <Color PropertyName="color" blue="fc" green="d3" red="7d" type="rgb" />
+                                </LineBorder>
+                              </Border>
+                              <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo" PropertyName="inside">
+                                <EmptyBorder top="7" left="10" bottom="7" right="10" />
+                              </Border>
+                            </CompoundBorder>
+                          </Border>
+                        </Property>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[210, 82]" />
+                        </Property>
+                        <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="fe" green="db" red="bf" type="rgb" />
+                        </Property>
+                        <Property name="selectedTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="3b" green="29" red="1e" type="rgb" />
+                        </Property>
+                        <Property name="caretColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="eb" green="63" red="25" type="rgb" />
+                        </Property>
+                        <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="8b" green="74" red="64" type="rgb" />
+                        </Property>
+                        <Property name="colorPlaceholder" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="8b" green="74" red="64" type="rgb" />
+                        </Property>
                       </Properties>
                     </Component>
                   </SubComponents>
                 </Container>
                 <Container class="javax.swing.JPanel" name="panelAccionCrear">
                   <Properties>
-                    <Property name="opaque" type="boolean" value="false"/>
+                    <Property name="opaque" type="boolean" value="false" />
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="3b" green="29" red="1e" type="rgb" />
+                    </Property>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="fc" green="fa" red="f8" type="rgb" />
+                    </Property>
                   </Properties>
-
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout" />
                   <SubComponents>
-                    <Component class="javax.swing.JButton" name="btnAsignar">
+                    <Component class="com.titanops.vista.componentes.Boton" name="btnAsignar">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="INICIAR ASIGNACI&#xd3;N"/>
+                        <Property name="text" type="java.lang.String" value="INICIAR ASIGNACIÓN" />
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="f6" red="ef" type="rgb" />
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="af" green="40" red="1e" type="rgb" />
+                        </Property>
+                        <Property name="fondoActivo" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="eb" green="63" red="25" type="rgb" />
+                        </Property>
+                        <Property name="textoActivo" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="ff" type="rgb" />
+                        </Property>
+                        <Property name="colorFoco" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="eb" green="63" red="25" type="rgb" />
+                        </Property>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="SansSerif" size="13" style="1" />
+                        </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
+                            <CompoundBorder>
+                              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo" PropertyName="outside">
+                                <LineBorder thickness="1" roundedCorners="false">
+                                  <Color PropertyName="color" blue="fc" green="d3" red="7d" type="rgb" />
+                                </LineBorder>
+                              </Border>
+                              <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo" PropertyName="inside">
+                                <EmptyBorder top="8" left="14" bottom="8" right="14" />
+                              </Border>
+                            </CompoundBorder>
+                          </Border>
+                        </Property>
+                        <Property name="rolloverEnabled" type="boolean" value="true" />
+                        <Property name="contentAreaFilled" type="boolean" value="false" />
+                        <Property name="opaque" type="boolean" value="false" />
                       </Properties>
                     </Component>
                   </SubComponents>
                 </Container>
                 <Component class="javax.swing.JLabel" name="lblRelleno">
+                  <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="3b" green="29" red="1e" type="rgb" />
+                    </Property>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>
@@ -219,48 +668,172 @@
         </Container>
         <Container class="javax.swing.JPanel" name="panelFiltros">
           <Properties>
-            <Property name="opaque" type="boolean" value="false"/>
+            <Property name="opaque" type="boolean" value="false" />
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="3b" green="29" red="1e" type="rgb" />
+            </Property>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="fc" green="fa" red="f8" type="rgb" />
+            </Property>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-              <BorderConstraints direction="South"/>
+              <BorderConstraints direction="South" />
             </Constraint>
           </Constraints>
-
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
-            <Property name="alignment" type="int" value="0"/>
-            <Property name="horizontalGap" type="int" value="8"/>
-            <Property name="verticalGap" type="int" value="4"/>
+            <Property name="alignment" type="int" value="0" />
+            <Property name="horizontalGap" type="int" value="8" />
+            <Property name="verticalGap" type="int" value="4" />
           </Layout>
           <SubComponents>
             <Component class="javax.swing.JLabel" name="lblBuscar">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Buscar:"/>
+                <Property name="text" type="java.lang.String" value="Buscar:" />
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="3b" green="29" red="1e" type="rgb" />
+                </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtBuscar">
+            <Component class="com.titanops.vista.componentes.CampoTexto" name="txtBuscar">
               <Properties>
-                <Property name="columns" type="int" value="22"/>
+                <Property name="columns" type="int" value="22" />
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb" />
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="3b" green="29" red="1e" type="rgb" />
+                </Property>
+                <Property name="colorFoco" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="eb" green="63" red="25" type="rgb" />
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="SansSerif" size="13" style="0" />
+                </Property>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
+                    <CompoundBorder>
+                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo" PropertyName="outside">
+                        <LineBorder thickness="1" roundedCorners="false">
+                          <Color PropertyName="color" blue="fc" green="d3" red="7d" type="rgb" />
+                        </LineBorder>
+                      </Border>
+                      <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo" PropertyName="inside">
+                        <EmptyBorder top="7" left="10" bottom="7" right="10" />
+                      </Border>
+                    </CompoundBorder>
+                  </Border>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[200, 40]" />
+                </Property>
+                <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="fe" green="db" red="bf" type="rgb" />
+                </Property>
+                <Property name="selectedTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="3b" green="29" red="1e" type="rgb" />
+                </Property>
+                <Property name="caretColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="eb" green="63" red="25" type="rgb" />
+                </Property>
+                <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="8b" green="74" red="64" type="rgb" />
+                </Property>
+                <Property name="colorPlaceholder" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="8b" green="74" red="64" type="rgb" />
+                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblFiltroEstado">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Estado:"/>
+                <Property name="text" type="java.lang.String" value="Estado:" />
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="3b" green="29" red="1e" type="rgb" />
+                </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="cmbEstadoFiltro">
+            <Component class="com.titanops.vista.componentes.Selector" name="cmbEstadoFiltro">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb" />
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="3b" green="29" red="1e" type="rgb" />
+                </Property>
+                <Property name="colorFoco" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="eb" green="63" red="25" type="rgb" />
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="SansSerif" size="13" style="0" />
+                </Property>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
+                    <CompoundBorder>
+                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo" PropertyName="outside">
+                        <LineBorder thickness="1" roundedCorners="false">
+                          <Color PropertyName="color" blue="fc" green="d3" red="7d" type="rgb" />
+                        </LineBorder>
+                      </Border>
+                      <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo" PropertyName="inside">
+                        <EmptyBorder top="3" left="8" bottom="3" right="8" />
+                      </Border>
+                    </CompoundBorder>
+                  </Border>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[180, 30]" />
+                </Property>
+              </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;" />
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JButton" name="btnActualizar">
+            <Component class="com.titanops.vista.componentes.Boton" name="btnActualizar">
               <Properties>
-                <Property name="text" type="java.lang.String" value="ACTUALIZAR"/>
+                <Property name="text" type="java.lang.String" value="ACTUALIZAR" />
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="f6" red="ef" type="rgb" />
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="af" green="40" red="1e" type="rgb" />
+                </Property>
+                <Property name="fondoActivo" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="eb" green="63" red="25" type="rgb" />
+                </Property>
+                <Property name="textoActivo" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb" />
+                </Property>
+                <Property name="colorFoco" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="eb" green="63" red="25" type="rgb" />
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="SansSerif" size="13" style="1" />
+                </Property>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
+                    <CompoundBorder>
+                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo" PropertyName="outside">
+                        <LineBorder thickness="1" roundedCorners="false">
+                          <Color PropertyName="color" blue="fc" green="d3" red="7d" type="rgb" />
+                        </LineBorder>
+                      </Border>
+                      <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo" PropertyName="inside">
+                        <EmptyBorder top="8" left="14" bottom="8" right="14" />
+                      </Border>
+                    </CompoundBorder>
+                  </Border>
+                </Property>
+                <Property name="rolloverEnabled" type="boolean" value="true" />
+                <Property name="contentAreaFilled" type="boolean" value="false" />
+                <Property name="opaque" type="boolean" value="false" />
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblEstado">
               <Properties>
-                <Property name="text" type="java.lang.String" value=" "/>
+                <Property name="text" type="java.lang.String" value=" " />
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="3b" green="29" red="1e" type="rgb" />
+                </Property>
               </Properties>
             </Component>
           </SubComponents>
@@ -268,41 +841,169 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JScrollPane" name="scrollTabla">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="3b" green="29" red="1e" type="rgb" />
+        </Property>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+            <LineBorder thickness="1" roundedCorners="false">
+              <Color PropertyName="color" blue="fc" green="d3" red="7d" type="rgb" />
+            </LineBorder>
+          </Border>
+        </Property>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb" />
+        </Property>
+      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-          <BorderConstraints direction="Center"/>
+          <BorderConstraints direction="Center" />
         </Constraint>
       </Constraints>
-
-      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout" />
       <SubComponents>
-        <Component class="javax.swing.JTable" name="tabla">
+        <Component class="com.titanops.vista.componentes.Tabla" name="tabla">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb" />
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="3b" green="29" red="1e" type="rgb" />
+            </Property>
+            <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="fc" green="d3" red="7d" type="rgb" />
+            </Property>
+            <Property name="selectionBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="fe" green="ea" red="db" type="rgb" />
+            </Property>
+            <Property name="selectionForeground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="af" green="40" red="1e" type="rgb" />
+            </Property>
+            <Property name="fondoCabecera" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="fe" green="f2" red="e0" type="rgb" />
+            </Property>
+            <Property name="textoCabecera" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="af" green="40" red="1e" type="rgb" />
+            </Property>
+            <Property name="bordeCabecera" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="fc" green="d3" red="7d" type="rgb" />
+            </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                <LineBorder thickness="1" roundedCorners="false">
+                  <Color PropertyName="color" blue="fc" green="d3" red="7d" type="rgb" />
+                </LineBorder>
+              </Border>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="SansSerif" size="13" style="0" />
+            </Property>
+            <Property name="rowHeight" type="int" value="30" />
+            <Property name="showVerticalLines" type="boolean" value="false" />
+            <Property name="fillsViewportHeight" type="boolean" value="true" />
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="panelAcciones">
       <Properties>
-        <Property name="opaque" type="boolean" value="false"/>
+        <Property name="opaque" type="boolean" value="false" />
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="3b" green="29" red="1e" type="rgb" />
+        </Property>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="fc" green="fa" red="f8" type="rgb" />
+        </Property>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-          <BorderConstraints direction="South"/>
+          <BorderConstraints direction="South" />
         </Constraint>
       </Constraints>
-
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
-        <Property name="alignment" type="int" value="2"/>
-        <Property name="horizontalGap" type="int" value="10"/>
+        <Property name="alignment" type="int" value="2" />
+        <Property name="horizontalGap" type="int" value="10" />
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="btnFinalizar">
+        <Component class="com.titanops.vista.componentes.Boton" name="btnFinalizar">
           <Properties>
-            <Property name="text" type="java.lang.String" value="FINALIZAR"/>
+            <Property name="text" type="java.lang.String" value="FINALIZAR" />
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="f6" red="ef" type="rgb" />
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="af" green="40" red="1e" type="rgb" />
+            </Property>
+            <Property name="fondoActivo" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="eb" green="63" red="25" type="rgb" />
+            </Property>
+            <Property name="textoActivo" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb" />
+            </Property>
+            <Property name="colorFoco" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="eb" green="63" red="25" type="rgb" />
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="SansSerif" size="13" style="1" />
+            </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
+                <CompoundBorder>
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo" PropertyName="outside">
+                    <LineBorder thickness="1" roundedCorners="false">
+                      <Color PropertyName="color" blue="fc" green="d3" red="7d" type="rgb" />
+                    </LineBorder>
+                  </Border>
+                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo" PropertyName="inside">
+                    <EmptyBorder top="8" left="14" bottom="8" right="14" />
+                  </Border>
+                </CompoundBorder>
+              </Border>
+            </Property>
+            <Property name="rolloverEnabled" type="boolean" value="true" />
+            <Property name="contentAreaFilled" type="boolean" value="false" />
+            <Property name="opaque" type="boolean" value="false" />
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnCancelar">
+        <Component class="com.titanops.vista.componentes.Boton" name="btnCancelar">
           <Properties>
-            <Property name="text" type="java.lang.String" value="CANCELAR"/>
+            <Property name="text" type="java.lang.String" value="CANCELAR" />
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="f6" red="ef" type="rgb" />
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="af" green="40" red="1e" type="rgb" />
+            </Property>
+            <Property name="fondoActivo" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="eb" green="63" red="25" type="rgb" />
+            </Property>
+            <Property name="textoActivo" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb" />
+            </Property>
+            <Property name="colorFoco" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="eb" green="63" red="25" type="rgb" />
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="SansSerif" size="13" style="1" />
+            </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
+                <CompoundBorder>
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo" PropertyName="outside">
+                    <LineBorder thickness="1" roundedCorners="false">
+                      <Color PropertyName="color" blue="fc" green="d3" red="7d" type="rgb" />
+                    </LineBorder>
+                  </Border>
+                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo" PropertyName="inside">
+                    <EmptyBorder top="8" left="14" bottom="8" right="14" />
+                  </Border>
+                </CompoundBorder>
+              </Border>
+            </Property>
+            <Property name="rolloverEnabled" type="boolean" value="true" />
+            <Property name="contentAreaFilled" type="boolean" value="false" />
+            <Property name="opaque" type="boolean" value="false" />
           </Properties>
         </Component>
       </SubComponents>

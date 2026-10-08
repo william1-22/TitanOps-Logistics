@@ -11,7 +11,6 @@ import com.titanops.controlador.GestionOperadoresController.ResultadoCreacion;
 import com.titanops.controlador.GestionOperadoresController.ResultadoOperacion;
 import com.titanops.dao.OperadorDAO;
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
@@ -40,14 +39,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Operario extends javax.swing.JPanel {
 
-    private static final Color COLOR_FONDO = new Color(134, 137, 93);
-    private static final Color COLOR_ACCION = new Color(93, 36, 23);
     private static final DateTimeFormatter FORMATO_FECHA =
             DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
     private final GestionOperadoresController controller;
-    private final JButton btnEditar = crearBotonAccion("EDITAR");
-    private final JButton btnEstado = crearBotonAccion("DESACTIVAR");
-    private final JTextField txtTelefonoCreacion = new JTextField(16);
     private boolean cargando;
     private boolean recargaPendiente;
 
@@ -62,6 +56,7 @@ public class Operario extends javax.swing.JPanel {
         initComponents();
         this.controller = controller;
         configurarVista();
+
         recargarOperadores("");
     }
 
@@ -74,205 +69,259 @@ public class Operario extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
         contenidoOperario = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        txt_apellido_operario = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        txt_nombre_operario1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        txt_dui = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jLabel6 = new javax.swing.JLabel();
-        btn_operario = new javax.swing.JButton();
+        panelSuperior = new javax.swing.JPanel();
+        panelDatos = new javax.swing.JPanel();
+        lblTxt_nombre_operario2 = new javax.swing.JLabel();
+        txt_nombre_operario2 = new com.titanops.vista.componentes.CampoTexto();
+        lblJComboBox1 = new javax.swing.JLabel();
+        jComboBox1 = new com.titanops.vista.componentes.Selector();
+        lblTxt_apellido_operario = new javax.swing.JLabel();
+        txt_apellido_operario = new com.titanops.vista.componentes.CampoTexto();
+        lblJComboBox2 = new javax.swing.JLabel();
+        jComboBox2 = new com.titanops.vista.componentes.Selector();
+        lblTxt_dui = new javax.swing.JLabel();
+        txt_dui = new com.titanops.vista.componentes.CampoTexto();
+        lblJComboBox3 = new javax.swing.JLabel();
+        jComboBox3 = new com.titanops.vista.componentes.Selector();
+        lblTxtTelefonoCreacion = new javax.swing.JLabel();
+        txtTelefonoCreacion = new com.titanops.vista.componentes.CampoTexto();
+        btn_operario1 = new com.titanops.vista.componentes.Boton();
+        panelBuscar = new javax.swing.JPanel();
+        lblTxt_nombre_operario1 = new javax.swing.JLabel();
+        txt_nombre_operario1 = new com.titanops.vista.componentes.CampoTexto();
+        btn_operario = new com.titanops.vista.componentes.Boton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        txt_nombre_operario2 = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        btn_operario1 = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
+        jTable1 = new com.titanops.vista.componentes.Tabla();
+        panelAcciones = new javax.swing.JPanel();
+        btnEditar = new com.titanops.vista.componentes.Boton();
+        btnEstado = new com.titanops.vista.componentes.Boton();
 
-        contenidoOperario.setBackground(new java.awt.Color(134, 137, 93));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setPreferredSize(new java.awt.Dimension(900, 540));
+        setLayout(new java.awt.BorderLayout(12, 12));
 
-        jLabel1.setText("NOMBRE");
+        contenidoOperario.setForeground(new java.awt.Color(30, 41, 59));
+        contenidoOperario.setBackground(new java.awt.Color(239, 246, 255));
+        contenidoOperario.setLayout(new java.awt.BorderLayout(0, 12));
 
-        jLabel2.setText("APELLIDO");
+        panelSuperior.setForeground(new java.awt.Color(30, 41, 59));
+        panelSuperior.setBackground(new java.awt.Color(248, 250, 252));
+        panelSuperior.setLayout(new java.awt.BorderLayout(0, 12));
 
-        jLabel3.setText("DUI");
+        panelDatos.setForeground(new java.awt.Color(30, 41, 59));
+        panelDatos.setBackground(new java.awt.Color(248, 250, 252));
+        panelDatos.setLayout(new java.awt.GridLayout(4, 4, 12, 10));
 
-        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(0, 0, 0));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1. LIVIANA", "2. PESADA", "3. MORTORISTA " }));
-        jComboBox1.setBorder(null);
+        lblTxt_nombre_operario2.setText("Nombres");
+        lblTxt_nombre_operario2.setForeground(new java.awt.Color(30, 41, 59));
+        panelDatos.add(lblTxt_nombre_operario2);
 
-        jLabel4.setText("LICENCIA");
+        txt_nombre_operario2.setForeground(new java.awt.Color(30, 41, 59));
+        txt_nombre_operario2.setColorFoco(new java.awt.Color(37, 99, 235));
+        txt_nombre_operario2.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        txt_nombre_operario2.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
+        txt_nombre_operario2.setPreferredSize(new java.awt.Dimension(200, 40));
+        txt_nombre_operario2.setSelectionColor(new java.awt.Color(191, 219, 254));
+        txt_nombre_operario2.setSelectedTextColor(new java.awt.Color(30, 41, 59));
+        txt_nombre_operario2.setCaretColor(new java.awt.Color(37, 99, 235));
+        txt_nombre_operario2.setDisabledTextColor(new java.awt.Color(100, 116, 139));
+        txt_nombre_operario2.setColorPlaceholder(new java.awt.Color(100, 116, 139));
+        txt_nombre_operario2.setPlaceholder("Nombres del operador");
+        panelDatos.add(txt_nombre_operario2);
 
-        jLabel5.setText("TURNO");
+        lblJComboBox1.setText("Licencia");
+        lblJComboBox1.setForeground(new java.awt.Color(30, 41, 59));
+        panelDatos.add(lblJComboBox1);
 
-        jComboBox2.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jComboBox2.setForeground(new java.awt.Color(0, 0, 0));
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1. DIURNO", "2. NOCTURNO", "3. ROTATIVO " }));
-        jComboBox2.setBorder(null);
+        jComboBox1.setForeground(new java.awt.Color(30, 41, 59));
+        jComboBox1.setColorFoco(new java.awt.Color(37, 99, 235));
+        jComboBox1.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        jComboBox1.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(3, 8, 3, 8)));
+        jComboBox1.setPreferredSize(new java.awt.Dimension(180, 30));
+        panelDatos.add(jComboBox1);
 
-        jComboBox3.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox3.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jComboBox3.setForeground(new java.awt.Color(0, 0, 0));
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1. DISPONIBLE", "2. OCUPADO", "3. BAJA " }));
-        jComboBox3.setBorder(null);
+        lblTxt_apellido_operario.setText("Apellidos");
+        lblTxt_apellido_operario.setForeground(new java.awt.Color(30, 41, 59));
+        panelDatos.add(lblTxt_apellido_operario);
 
-        jLabel6.setText("ESTADO");
+        txt_apellido_operario.setForeground(new java.awt.Color(30, 41, 59));
+        txt_apellido_operario.setColorFoco(new java.awt.Color(37, 99, 235));
+        txt_apellido_operario.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        txt_apellido_operario.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
+        txt_apellido_operario.setPreferredSize(new java.awt.Dimension(200, 40));
+        txt_apellido_operario.setSelectionColor(new java.awt.Color(191, 219, 254));
+        txt_apellido_operario.setSelectedTextColor(new java.awt.Color(30, 41, 59));
+        txt_apellido_operario.setCaretColor(new java.awt.Color(37, 99, 235));
+        txt_apellido_operario.setDisabledTextColor(new java.awt.Color(100, 116, 139));
+        txt_apellido_operario.setColorPlaceholder(new java.awt.Color(100, 116, 139));
+        txt_apellido_operario.setPlaceholder("Apellidos del operador");
+        panelDatos.add(txt_apellido_operario);
 
-        btn_operario.setBackground(new java.awt.Color(93, 36, 23));
-        btn_operario.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
-        btn_operario.setForeground(new java.awt.Color(255, 255, 255));
-        btn_operario.setText("BUSCAR");
-        btn_operario.setBorder(null);
-        btn_operario.addActionListener(this::btn_operarioActionPerformed);
+        lblJComboBox2.setText("Turno");
+        lblJComboBox2.setForeground(new java.awt.Color(30, 41, 59));
+        panelDatos.add(lblJComboBox2);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+        jComboBox2.setForeground(new java.awt.Color(30, 41, 59));
+        jComboBox2.setColorFoco(new java.awt.Color(37, 99, 235));
+        jComboBox2.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        jComboBox2.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(3, 8, 3, 8)));
+        jComboBox2.setPreferredSize(new java.awt.Dimension(180, 30));
+        panelDatos.add(jComboBox2);
+
+        lblTxt_dui.setText("DUI");
+        lblTxt_dui.setForeground(new java.awt.Color(30, 41, 59));
+        panelDatos.add(lblTxt_dui);
+
+        txt_dui.setForeground(new java.awt.Color(30, 41, 59));
+        txt_dui.setColorFoco(new java.awt.Color(37, 99, 235));
+        txt_dui.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        txt_dui.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
+        txt_dui.setPreferredSize(new java.awt.Dimension(200, 40));
+        txt_dui.setSelectionColor(new java.awt.Color(191, 219, 254));
+        txt_dui.setSelectedTextColor(new java.awt.Color(30, 41, 59));
+        txt_dui.setCaretColor(new java.awt.Color(37, 99, 235));
+        txt_dui.setDisabledTextColor(new java.awt.Color(100, 116, 139));
+        txt_dui.setColorPlaceholder(new java.awt.Color(100, 116, 139));
+        txt_dui.setPlaceholder("DUI en formato 00000000-0");
+        panelDatos.add(txt_dui);
+
+        lblJComboBox3.setText("Estado");
+        lblJComboBox3.setForeground(new java.awt.Color(30, 41, 59));
+        panelDatos.add(lblJComboBox3);
+
+        jComboBox3.setForeground(new java.awt.Color(30, 41, 59));
+        jComboBox3.setColorFoco(new java.awt.Color(37, 99, 235));
+        jComboBox3.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        jComboBox3.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(3, 8, 3, 8)));
+        jComboBox3.setPreferredSize(new java.awt.Dimension(180, 30));
+        panelDatos.add(jComboBox3);
+
+        lblTxtTelefonoCreacion.setText("Teléfono");
+        lblTxtTelefonoCreacion.setForeground(new java.awt.Color(30, 41, 59));
+        panelDatos.add(lblTxtTelefonoCreacion);
+
+        txtTelefonoCreacion.setForeground(new java.awt.Color(30, 41, 59));
+        txtTelefonoCreacion.setColorFoco(new java.awt.Color(37, 99, 235));
+        txtTelefonoCreacion.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        txtTelefonoCreacion.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
+        txtTelefonoCreacion.setPreferredSize(new java.awt.Dimension(200, 40));
+        txtTelefonoCreacion.setSelectionColor(new java.awt.Color(191, 219, 254));
+        txtTelefonoCreacion.setSelectedTextColor(new java.awt.Color(30, 41, 59));
+        txtTelefonoCreacion.setCaretColor(new java.awt.Color(37, 99, 235));
+        txtTelefonoCreacion.setDisabledTextColor(new java.awt.Color(100, 116, 139));
+        txtTelefonoCreacion.setColorPlaceholder(new java.awt.Color(100, 116, 139));
+        txtTelefonoCreacion.setPlaceholder("Teléfono opcional en formato 0000-0000");
+        panelDatos.add(txtTelefonoCreacion);
+
+        btn_operario1.setText("GUARDAR");
+        btn_operario1.setBackground(new java.awt.Color(239, 246, 255));
+        btn_operario1.setForeground(new java.awt.Color(30, 64, 175));
+        btn_operario1.setFondoActivo(new java.awt.Color(37, 99, 235));
+        btn_operario1.setTextoActivo(new java.awt.Color(255, 255, 255));
+        btn_operario1.setColorFoco(new java.awt.Color(37, 99, 235));
+        btn_operario1.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        btn_operario1.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        btn_operario1.setContentAreaFilled(false);
+        btn_operario1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_operario1ActionPerformed(evt);
             }
-        ));
+        });
+        panelDatos.add(btn_operario1);
+
+        panelSuperior.add(panelDatos, java.awt.BorderLayout.CENTER);
+
+        panelBuscar.setForeground(new java.awt.Color(30, 41, 59));
+        panelBuscar.setBackground(new java.awt.Color(248, 250, 252));
+        panelBuscar.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 8, 4));
+
+        lblTxt_nombre_operario1.setText("Buscar:");
+        lblTxt_nombre_operario1.setForeground(new java.awt.Color(30, 41, 59));
+        panelBuscar.add(lblTxt_nombre_operario1);
+
+        txt_nombre_operario1.setForeground(new java.awt.Color(30, 41, 59));
+        txt_nombre_operario1.setColorFoco(new java.awt.Color(37, 99, 235));
+        txt_nombre_operario1.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        txt_nombre_operario1.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
+        txt_nombre_operario1.setPreferredSize(new java.awt.Dimension(200, 40));
+        txt_nombre_operario1.setSelectionColor(new java.awt.Color(191, 219, 254));
+        txt_nombre_operario1.setSelectedTextColor(new java.awt.Color(30, 41, 59));
+        txt_nombre_operario1.setCaretColor(new java.awt.Color(37, 99, 235));
+        txt_nombre_operario1.setDisabledTextColor(new java.awt.Color(100, 116, 139));
+        txt_nombre_operario1.setColorPlaceholder(new java.awt.Color(100, 116, 139));
+        txt_nombre_operario1.setPlaceholder("Buscar por nombre, DUI, teléfono, licencia, turno o estado");
+        panelBuscar.add(txt_nombre_operario1);
+
+        btn_operario.setText("BUSCAR");
+        btn_operario.setBackground(new java.awt.Color(239, 246, 255));
+        btn_operario.setForeground(new java.awt.Color(30, 64, 175));
+        btn_operario.setFondoActivo(new java.awt.Color(37, 99, 235));
+        btn_operario.setTextoActivo(new java.awt.Color(255, 255, 255));
+        btn_operario.setColorFoco(new java.awt.Color(37, 99, 235));
+        btn_operario.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        btn_operario.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        btn_operario.setContentAreaFilled(false);
+        btn_operario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_operarioActionPerformed(evt);
+            }
+        });
+        panelBuscar.add(btn_operario);
+
+        panelSuperior.add(panelBuscar, java.awt.BorderLayout.SOUTH);
+
+        contenidoOperario.add(panelSuperior, java.awt.BorderLayout.NORTH);
+
+        jScrollPane2.setForeground(new java.awt.Color(30, 41, 59));
+        jScrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)));
+        jScrollPane2.setBackground(new java.awt.Color(255, 255, 255));
+
+        jTable1.setForeground(new java.awt.Color(30, 41, 59));
+        jTable1.setGridColor(new java.awt.Color(125, 211, 252));
+        jTable1.setSelectionBackground(new java.awt.Color(219, 234, 254));
+        jTable1.setSelectionForeground(new java.awt.Color(30, 64, 175));
+        jTable1.setFondoCabecera(new java.awt.Color(224, 242, 254));
+        jTable1.setTextoCabecera(new java.awt.Color(30, 64, 175));
+        jTable1.setBordeCabecera(new java.awt.Color(125, 211, 252));
+        jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)));
+        jTable1.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        jTable1.setRowHeight(30);
+        jTable1.setFillsViewportHeight(true);
         jScrollPane2.setViewportView(jTable1);
 
-        jLabel7.setText("BUSCAR");
+        contenidoOperario.add(jScrollPane2, java.awt.BorderLayout.CENTER);
 
-        btn_operario1.setBackground(new java.awt.Color(93, 36, 23));
-        btn_operario1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
-        btn_operario1.setForeground(new java.awt.Color(255, 255, 255));
-        btn_operario1.setText("AGREGAR");
-        btn_operario1.setBorder(null);
-        btn_operario1.addActionListener(this::btn_operario1ActionPerformed);
+        panelAcciones.setForeground(new java.awt.Color(30, 41, 59));
+        panelAcciones.setBackground(new java.awt.Color(248, 250, 252));
+        panelAcciones.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 8, 5));
 
-        jLabel11.setBackground(new java.awt.Color(93, 35, 22));
-        jLabel11.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(93, 36, 23));
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/multimedia/EDITARPEQUEÑO.png"))); // NOI18N
-        jLabel11.setText("EDITAR");
+        btnEditar.setText("EDITAR");
+        btnEditar.setBackground(new java.awt.Color(239, 246, 255));
+        btnEditar.setForeground(new java.awt.Color(30, 64, 175));
+        btnEditar.setFondoActivo(new java.awt.Color(37, 99, 235));
+        btnEditar.setTextoActivo(new java.awt.Color(255, 255, 255));
+        btnEditar.setColorFoco(new java.awt.Color(37, 99, 235));
+        btnEditar.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        btnEditar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        btnEditar.setContentAreaFilled(false);
+        panelAcciones.add(btnEditar);
 
-        javax.swing.GroupLayout contenidoOperarioLayout = new javax.swing.GroupLayout(contenidoOperario);
-        contenidoOperario.setLayout(contenidoOperarioLayout);
-        contenidoOperarioLayout.setHorizontalGroup(
-            contenidoOperarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contenidoOperarioLayout.createSequentialGroup()
-                .addGroup(contenidoOperarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 726, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(contenidoOperarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(contenidoOperarioLayout.createSequentialGroup()
-                            .addGap(52, 52, 52)
-                            .addGroup(contenidoOperarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel2)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel1))
-                            .addGap(33, 33, 33)
-                            .addGroup(contenidoOperarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txt_nombre_operario2, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txt_apellido_operario, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txt_dui, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(55, 55, 55)
-                            .addGroup(contenidoOperarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel5)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel6))
-                            .addGap(38, 38, 38)
-                            .addGroup(contenidoOperarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jComboBox3, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(contenidoOperarioLayout.createSequentialGroup()
-                            .addGap(81, 81, 81)
-                            .addGroup(contenidoOperarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel11)
-                                .addGroup(contenidoOperarioLayout.createSequentialGroup()
-                                    .addComponent(jLabel7)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(txt_nombre_operario1, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(btn_operario, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(391, Short.MAX_VALUE))
-            .addGroup(contenidoOperarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(contenidoOperarioLayout.createSequentialGroup()
-                    .addGap(295, 295, 295)
-                    .addComponent(btn_operario1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(620, Short.MAX_VALUE)))
-        );
-        contenidoOperarioLayout.setVerticalGroup(
-            contenidoOperarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contenidoOperarioLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(contenidoOperarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(contenidoOperarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(txt_nombre_operario2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(contenidoOperarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel4)))
-                .addGroup(contenidoOperarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(contenidoOperarioLayout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(jLabel2))
-                    .addGroup(contenidoOperarioLayout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(contenidoOperarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_dui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGroup(contenidoOperarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(contenidoOperarioLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(contenidoOperarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(txt_apellido_operario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(contenidoOperarioLayout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addGroup(contenidoOperarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))))
-                .addGap(120, 120, 120)
-                .addGroup(contenidoOperarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_nombre_operario1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7)
-                    .addComponent(btn_operario))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel11)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(148, Short.MAX_VALUE))
-            .addGroup(contenidoOperarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(contenidoOperarioLayout.createSequentialGroup()
-                    .addGap(197, 197, 197)
-                    .addComponent(btn_operario1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(657, Short.MAX_VALUE)))
-        );
+        btnEstado.setText("DESACTIVAR");
+        btnEstado.setBackground(new java.awt.Color(239, 246, 255));
+        btnEstado.setForeground(new java.awt.Color(30, 64, 175));
+        btnEstado.setFondoActivo(new java.awt.Color(37, 99, 235));
+        btnEstado.setTextoActivo(new java.awt.Color(255, 255, 255));
+        btnEstado.setColorFoco(new java.awt.Color(37, 99, 235));
+        btnEstado.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        btnEstado.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        btnEstado.setContentAreaFilled(false);
+        panelAcciones.add(btnEstado);
 
-        jScrollPane1.setViewportView(contenidoOperario);
+        contenidoOperario.add(panelAcciones, java.awt.BorderLayout.SOUTH);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 844, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 780, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        add(contenidoOperario, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_operarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_operarioActionPerformed
@@ -284,13 +333,6 @@ public class Operario extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_operario1ActionPerformed
 
     private void configurarVista() {
-        removeAll();
-        setLayout(new BorderLayout());
-        add(jScrollPane1, BorderLayout.CENTER);
-        jScrollPane1.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        jScrollPane1.getVerticalScrollBar().setUnitIncrement(18);
-
         jComboBox1.setModel(new DefaultComboBoxModel<>(
                 GestionOperadoresController.LICENCIAS_SUGERIDAS.toArray(String[]::new)));
         jComboBox1.setEditable(true);
@@ -313,22 +355,6 @@ public class Operario extends javax.swing.JPanel {
         jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         jTable1.setAutoCreateRowSorter(true);
         jTable1.getTableHeader().setReorderingAllowed(false);
-
-        JPanel barraAcciones = new JPanel(new FlowLayout(FlowLayout.LEFT, 12, 5));
-        barraAcciones.setBackground(COLOR_FONDO);
-        barraAcciones.add(btnEditar);
-        barraAcciones.add(btnEstado);
-
-        JScrollPane tablaScroll = new JScrollPane(jTable1);
-        JPanel contenedorTabla = new JPanel(new BorderLayout(0, 6));
-        contenedorTabla.setBackground(COLOR_FONDO);
-        contenedorTabla.add(barraAcciones, BorderLayout.NORTH);
-        contenedorTabla.add(tablaScroll, BorderLayout.CENTER);
-        jScrollPane2.setViewportView(contenedorTabla);
-        jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane2.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
-        jScrollPane2.setPreferredSize(new Dimension(840, 430));
-        reconstruirFormularioCreacion();
 
         txt_nombre_operario2.setToolTipText("Nombres del operador");
         txt_apellido_operario.setToolTipText("Apellidos del operador");
@@ -681,65 +707,6 @@ public class Operario extends javax.swing.JPanel {
         return valor == null ? "" : valor.toString();
     }
 
-    private void reconstruirFormularioCreacion() {
-        txt_nombre_operario2.setColumns(18);
-        txt_apellido_operario.setColumns(18);
-        txt_dui.setColumns(12);
-        txt_nombre_operario1.setColumns(30);
-
-        contenidoOperario.removeAll();
-        contenidoOperario.setLayout(new GridBagLayout());
-        contenidoOperario.setBackground(COLOR_FONDO);
-        contenidoOperario.setBorder(BorderFactory.createEmptyBorder(18, 22, 18, 22));
-
-        agregarCampoCreacion(0, 0, "Nombres", txt_nombre_operario2);
-        agregarCampoCreacion(2, 0, "Licencia", jComboBox1);
-        agregarCampoCreacion(0, 1, "Apellidos", txt_apellido_operario);
-        agregarCampoCreacion(2, 1, "Turno", jComboBox2);
-        agregarCampoCreacion(0, 2, "DUI", txt_dui);
-        agregarCampoCreacion(2, 2, "Estado", jComboBox3);
-        agregarCampoCreacion(0, 3, "Teléfono", txtTelefonoCreacion);
-
-        GridBagConstraints guardar = restricciones(0, 4);
-        guardar.gridwidth = 4;
-        guardar.anchor = GridBagConstraints.CENTER;
-        guardar.insets = new Insets(15, 6, 22, 6);
-        contenidoOperario.add(btn_operario1, guardar);
-
-        GridBagConstraints etiquetaBuscar = restricciones(0, 5);
-        etiquetaBuscar.anchor = GridBagConstraints.LINE_END;
-        contenidoOperario.add(new JLabel("BUSCAR:"), etiquetaBuscar);
-        GridBagConstraints buscar = restricciones(1, 5);
-        buscar.gridwidth = 2;
-        buscar.fill = GridBagConstraints.HORIZONTAL;
-        buscar.weightx = 1.0;
-        contenidoOperario.add(txt_nombre_operario1, buscar);
-        GridBagConstraints botonBuscar = restricciones(3, 5);
-        botonBuscar.fill = GridBagConstraints.HORIZONTAL;
-        contenidoOperario.add(btn_operario, botonBuscar);
-
-        GridBagConstraints tabla = restricciones(0, 6);
-        tabla.gridwidth = 4;
-        tabla.fill = GridBagConstraints.BOTH;
-        tabla.weightx = 1.0;
-        tabla.weighty = 1.0;
-        tabla.insets = new Insets(15, 6, 6, 6);
-        contenidoOperario.add(jScrollPane2, tabla);
-        contenidoOperario.revalidate();
-        contenidoOperario.repaint();
-    }
-
-    private void agregarCampoCreacion(int columna, int fila, String etiqueta,
-                                      java.awt.Component componente) {
-        GridBagConstraints label = restricciones(columna, fila);
-        label.anchor = GridBagConstraints.LINE_END;
-        contenidoOperario.add(new JLabel(etiqueta + ":"), label);
-        GridBagConstraints campo = restricciones(columna + 1, fila);
-        campo.fill = GridBagConstraints.HORIZONTAL;
-        campo.weightx = 0.5;
-        contenidoOperario.add(componente, campo);
-    }
-
     private void agregarCampo(JPanel panel, int fila, String etiqueta,
                               java.awt.Component componente) {
         GridBagConstraints izquierda = restricciones(0, fila);
@@ -759,15 +726,6 @@ public class Operario extends javax.swing.JPanel {
         return constraints;
     }
 
-    private static JButton crearBotonAccion(String texto) {
-        JButton boton = new JButton(texto);
-        boton.setBackground(COLOR_ACCION);
-        boton.setForeground(Color.WHITE);
-        boton.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 16));
-        boton.setBorder(BorderFactory.createEmptyBorder(7, 14, 7, 14));
-        return boton;
-    }
-
     private void mostrarValidacion(String mensaje) {
         JOptionPane.showMessageDialog(this, mensaje, "Validación",
                 JOptionPane.WARNING_MESSAGE);
@@ -780,26 +738,32 @@ public class Operario extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_operario;
-    private javax.swing.JButton btn_operario1;
+    private com.titanops.vista.componentes.Boton btnEditar;
+    private com.titanops.vista.componentes.Boton btnEstado;
+    private com.titanops.vista.componentes.Boton btn_operario;
+    private com.titanops.vista.componentes.Boton btn_operario1;
     private javax.swing.JPanel contenidoOperario;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JScrollPane jScrollPane1;
+    private com.titanops.vista.componentes.Selector jComboBox1;
+    private com.titanops.vista.componentes.Selector jComboBox2;
+    private com.titanops.vista.componentes.Selector jComboBox3;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField txt_apellido_operario;
-    private javax.swing.JTextField txt_dui;
-    private javax.swing.JTextField txt_nombre_operario1;
-    private javax.swing.JTextField txt_nombre_operario2;
+    private com.titanops.vista.componentes.Tabla jTable1;
+    private javax.swing.JLabel lblJComboBox1;
+    private javax.swing.JLabel lblJComboBox2;
+    private javax.swing.JLabel lblJComboBox3;
+    private javax.swing.JLabel lblTxtTelefonoCreacion;
+    private javax.swing.JLabel lblTxt_apellido_operario;
+    private javax.swing.JLabel lblTxt_dui;
+    private javax.swing.JLabel lblTxt_nombre_operario1;
+    private javax.swing.JLabel lblTxt_nombre_operario2;
+    private javax.swing.JPanel panelAcciones;
+    private javax.swing.JPanel panelBuscar;
+    private javax.swing.JPanel panelDatos;
+    private javax.swing.JPanel panelSuperior;
+    private com.titanops.vista.componentes.CampoTexto txtTelefonoCreacion;
+    private com.titanops.vista.componentes.CampoTexto txt_apellido_operario;
+    private com.titanops.vista.componentes.CampoTexto txt_dui;
+    private com.titanops.vista.componentes.CampoTexto txt_nombre_operario1;
+    private com.titanops.vista.componentes.CampoTexto txt_nombre_operario2;
     // End of variables declaration//GEN-END:variables
 }

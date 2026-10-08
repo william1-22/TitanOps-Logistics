@@ -59,6 +59,7 @@ public class GESTIONUS1 extends javax.swing.JInternalFrame {
         this.idUsuarioEdicion = idUsuarioEdicion;
         this.controller = controller;
         configurarFormulario();
+
         cargarRoles();
     }
 
@@ -80,23 +81,21 @@ public class GESTIONUS1 extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel00 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JPasswordField();
-        jTextField2 = new javax.swing.JTextField();
+        jTextField1 = new com.titanops.vista.componentes.CampoClave();
+        jTextField2 = new com.titanops.vista.componentes.CampoTexto();
         jLabel2 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jTextField3 = new com.titanops.vista.componentes.CampoTexto();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        GUARDARUS = new javax.swing.JButton();
-        GUARDARUS1 = new javax.swing.JButton();
-        GUARDARUS2 = new javax.swing.JButton();
+        jComboBox1 = new com.titanops.vista.componentes.Selector<>();
+        GUARDARUS = new com.titanops.vista.componentes.Boton();
+        GUARDARUS1 = new com.titanops.vista.componentes.Boton();
+        GUARDARUS2 = new com.titanops.vista.componentes.Boton();
 
         setClosable(true);
         setMaximizable(true);
         setResizable(true);
 
-        jPanel1.setBackground(new java.awt.Color(134, 137, 93));
 
-        jPanel2.setBackground(new java.awt.Color(84, 88, 47));
 
         jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
         jLabel1.setText("CREAR USUARIO");
@@ -149,19 +148,19 @@ public class GESTIONUS1 extends javax.swing.JInternalFrame {
         jComboBox1.setForeground(new java.awt.Color(0, 0, 0));
         jComboBox1.setBorder(null);
 
-        GUARDARUS.setBackground(new java.awt.Color(93, 36, 23));
+        GUARDARUS.setBackground(new java.awt.Color(37, 99, 235));
         GUARDARUS.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         GUARDARUS.setForeground(new java.awt.Color(255, 255, 255));
         GUARDARUS.setText("GUARDAR");
         GUARDARUS.setBorder(null);
 
-        GUARDARUS1.setBackground(new java.awt.Color(93, 36, 23));
+        GUARDARUS1.setBackground(new java.awt.Color(37, 99, 235));
         GUARDARUS1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         GUARDARUS1.setForeground(new java.awt.Color(255, 255, 255));
         GUARDARUS1.setText("SALIR");
         GUARDARUS1.setBorder(null);
 
-        GUARDARUS2.setBackground(new java.awt.Color(93, 36, 23));
+        GUARDARUS2.setBackground(new java.awt.Color(37, 99, 235));
         GUARDARUS2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         GUARDARUS2.setForeground(new java.awt.Color(255, 255, 255));
         GUARDARUS2.setText("GESTIONAR");
@@ -194,12 +193,12 @@ public class GESTIONUS1 extends javax.swing.JInternalFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(GUARDARUS, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                        .addComponent(GUARDARUS1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(GUARDARUS2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(GUARDARUS)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(GUARDARUS1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(GUARDARUS2)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -209,27 +208,27 @@ public class GESTIONUS1 extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel00)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addComponent(jLabel2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(62, 62, 62)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(GUARDARUS, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(GUARDARUS1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(GUARDARUS2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(GUARDARUS)
+                    .addComponent(GUARDARUS1)
+                    .addComponent(GUARDARUS2))
                 .addContainerGap())
         );
 
@@ -246,6 +245,161 @@ public class GESTIONUS1 extends javax.swing.JInternalFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
+
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        jPanel1.setForeground(new java.awt.Color(30, 41, 59));
+        jPanel1.setBackground(new java.awt.Color(239, 246, 255));
+        jPanel2.setForeground(new java.awt.Color(30, 41, 59));
+        jPanel2.setBackground(new java.awt.Color(30, 64, 175));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(30, 41, 59));
+        jLabel00.setForeground(new java.awt.Color(30, 41, 59));
+        jLabel2.setForeground(new java.awt.Color(30, 41, 59));
+        jLabel3.setForeground(new java.awt.Color(30, 41, 59));
+
+
+        jPanel1.setForeground(new java.awt.Color(30, 41, 59));
+        jPanel1.setBackground(new java.awt.Color(239, 246, 255));
+        jPanel2.setForeground(new java.awt.Color(30, 41, 59));
+        jPanel2.setBackground(new java.awt.Color(30, 64, 175));
+        jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24));
+        jLabel1.setText("CREAR USUARIO");
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(30, 41, 59));
+        jLabel00.setForeground(new java.awt.Color(30, 41, 59));
+        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField1.setForeground(new java.awt.Color(30, 41, 59));
+        jTextField1.setColorFoco(new java.awt.Color(37, 99, 235));
+        jTextField1.setFont(new java.awt.Font("SansSerif", 0, 13));
+        jTextField1.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
+        jTextField1.setPreferredSize(new java.awt.Dimension(200, 40));
+        jTextField1.setSelectionColor(new java.awt.Color(191, 219, 254));
+        jTextField1.setSelectedTextColor(new java.awt.Color(30, 41, 59));
+        jTextField1.setCaretColor(new java.awt.Color(37, 99, 235));
+        jTextField1.setDisabledTextColor(new java.awt.Color(100, 116, 139));
+        jTextField1.setColorPlaceholder(new java.awt.Color(100, 116, 139));
+        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField2.setForeground(new java.awt.Color(30, 41, 59));
+        jTextField2.setColorFoco(new java.awt.Color(37, 99, 235));
+        jTextField2.setFont(new java.awt.Font("SansSerif", 0, 13));
+        jTextField2.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
+        jTextField2.setPreferredSize(new java.awt.Dimension(200, 40));
+        jTextField2.setSelectionColor(new java.awt.Color(191, 219, 254));
+        jTextField2.setSelectedTextColor(new java.awt.Color(30, 41, 59));
+        jTextField2.setCaretColor(new java.awt.Color(37, 99, 235));
+        jTextField2.setDisabledTextColor(new java.awt.Color(100, 116, 139));
+        jTextField2.setColorPlaceholder(new java.awt.Color(100, 116, 139));
+        jTextField2.setPlaceholder("Nombre de usuario para iniciar sesión");
+        jLabel2.setForeground(new java.awt.Color(30, 41, 59));
+        jTextField3.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField3.setForeground(new java.awt.Color(30, 41, 59));
+        jTextField3.setColorFoco(new java.awt.Color(37, 99, 235));
+        jTextField3.setFont(new java.awt.Font("SansSerif", 0, 13));
+        jTextField3.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
+        jTextField3.setPreferredSize(new java.awt.Dimension(200, 40));
+        jTextField3.setSelectionColor(new java.awt.Color(191, 219, 254));
+        jTextField3.setSelectedTextColor(new java.awt.Color(30, 41, 59));
+        jTextField3.setCaretColor(new java.awt.Color(37, 99, 235));
+        jTextField3.setDisabledTextColor(new java.awt.Color(100, 116, 139));
+        jTextField3.setColorPlaceholder(new java.awt.Color(100, 116, 139));
+        jTextField3.setPlaceholder("Nombre completo de la persona");
+        jLabel3.setForeground(new java.awt.Color(30, 41, 59));
+        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
+        jComboBox1.setForeground(new java.awt.Color(30, 41, 59));
+        jComboBox1.setColorFoco(new java.awt.Color(37, 99, 235));
+        jComboBox1.setFont(new java.awt.Font("SansSerif", 0, 13));
+        jComboBox1.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(3, 8, 3, 8)));
+        jComboBox1.setPreferredSize(new java.awt.Dimension(180, 30));
+        GUARDARUS.setText("GUARDAR");
+        GUARDARUS.setBackground(new java.awt.Color(239, 246, 255));
+        GUARDARUS.setForeground(new java.awt.Color(30, 64, 175));
+        GUARDARUS.setFondoActivo(new java.awt.Color(37, 99, 235));
+        GUARDARUS.setTextoActivo(new java.awt.Color(255, 255, 255));
+        GUARDARUS.setColorFoco(new java.awt.Color(37, 99, 235));
+        GUARDARUS.setFont(new java.awt.Font("SansSerif", 1, 13));
+        GUARDARUS.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        GUARDARUS.setRolloverEnabled(true);
+        GUARDARUS.setContentAreaFilled(false);
+        GUARDARUS.setOpaque(false);
+        GUARDARUS1.setText("SALIR");
+        GUARDARUS1.setBackground(new java.awt.Color(239, 246, 255));
+        GUARDARUS1.setForeground(new java.awt.Color(30, 64, 175));
+        GUARDARUS1.setFondoActivo(new java.awt.Color(37, 99, 235));
+        GUARDARUS1.setTextoActivo(new java.awt.Color(255, 255, 255));
+        GUARDARUS1.setColorFoco(new java.awt.Color(37, 99, 235));
+        GUARDARUS1.setFont(new java.awt.Font("SansSerif", 1, 13));
+        GUARDARUS1.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        GUARDARUS1.setRolloverEnabled(true);
+        GUARDARUS1.setContentAreaFilled(false);
+        GUARDARUS1.setOpaque(false);
+        GUARDARUS2.setText("GESTIONAR");
+        GUARDARUS2.setBackground(new java.awt.Color(239, 246, 255));
+        GUARDARUS2.setForeground(new java.awt.Color(30, 64, 175));
+        GUARDARUS2.setFondoActivo(new java.awt.Color(37, 99, 235));
+        GUARDARUS2.setTextoActivo(new java.awt.Color(255, 255, 255));
+        GUARDARUS2.setColorFoco(new java.awt.Color(37, 99, 235));
+        GUARDARUS2.setFont(new java.awt.Font("SansSerif", 1, 13));
+        GUARDARUS2.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        GUARDARUS2.setRolloverEnabled(true);
+        GUARDARUS2.setContentAreaFilled(false);
+        GUARDARUS2.setOpaque(false);
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -253,11 +407,6 @@ public class GESTIONUS1 extends javax.swing.JInternalFrame {
         boolean editando = idUsuarioEdicion != null;
         jLabel1.setText(editando ? "EDITAR USUARIO" : "CREAR USUARIO");
         GUARDARUS.setText(editando ? "ACTUALIZAR" : "GUARDAR");
-        aplicarTitulo(jTextField2, "Usuario");
-        aplicarTitulo(jTextField3, "Nombre completo");
-        aplicarTitulo(jTextField1,
-                editando ? "Nueva contraseña (opcional)" : "Contraseña");
-        aplicarTitulo(jComboBox1, "Rol");
 
         jTextField2.setToolTipText("Nombre de usuario para iniciar sesión");
         jTextField3.setToolTipText("Nombre completo de la persona");
@@ -268,13 +417,6 @@ public class GESTIONUS1 extends javax.swing.JInternalFrame {
         GUARDARUS.addActionListener(event -> guardarUsuario());
         GUARDARUS1.addActionListener(event -> dispose());
         getRootPane().setDefaultButton(GUARDARUS);
-    }
-
-    private void aplicarTitulo(javax.swing.JComponent componente, String titulo) {
-        TitledBorder borde = BorderFactory.createTitledBorder(
-                BorderFactory.createLineBorder(new Color(84, 88, 47)), titulo);
-        borde.setTitleColor(Color.DARK_GRAY);
-        componente.setBorder(borde);
     }
 
     private void cargarRoles() {
@@ -479,10 +621,10 @@ public class GESTIONUS1 extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton GUARDARUS;
-    private javax.swing.JButton GUARDARUS1;
-    private javax.swing.JButton GUARDARUS2;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private com.titanops.vista.componentes.Boton GUARDARUS;
+    private com.titanops.vista.componentes.Boton GUARDARUS1;
+    private com.titanops.vista.componentes.Boton GUARDARUS2;
+    private com.titanops.vista.componentes.Selector<String> jComboBox1;
     private javax.swing.JLabel jLabel00;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -490,8 +632,8 @@ public class GESTIONUS1 extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private com.titanops.vista.componentes.CampoClave jTextField1;
+    private com.titanops.vista.componentes.CampoTexto jTextField2;
+    private com.titanops.vista.componentes.CampoTexto jTextField3;
     // End of variables declaration//GEN-END:variables
 }
