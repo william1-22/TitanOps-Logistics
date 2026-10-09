@@ -609,6 +609,20 @@
           <SubComponents>
             <Component class="com.titanops.vista.componentes.Tabla" name="jTable1">
               <Properties>
+                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                  <Table columnCount="10" rowCount="0">
+                    <Column editable="false" title="ID" type="java.lang.Object"/>
+                    <Column editable="false" title="Nombres" type="java.lang.Object"/>
+                    <Column editable="false" title="Apellidos" type="java.lang.Object"/>
+                    <Column editable="false" title="DUI" type="java.lang.Object"/>
+                    <Column editable="false" title="Licencia" type="java.lang.Object"/>
+                    <Column editable="false" title="Turno" type="java.lang.Object"/>
+                    <Column editable="false" title="Teléfono" type="java.lang.Object"/>
+                    <Column editable="false" title="Estado operativo" type="java.lang.Object"/>
+                    <Column editable="false" title="Estado del registro" type="java.lang.Object"/>
+                    <Column editable="false" title="Fecha de registro" type="java.lang.Object"/>
+                  </Table>
+                </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="3b" green="29" red="1e" type="rgb"/>
                 </Property>

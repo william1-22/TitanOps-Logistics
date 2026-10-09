@@ -28,16 +28,22 @@ public class panelCrear extends JPanel {
     private boolean cargando;
 
     public panelCrear() {
-        this(new GestionRutasController(new RutaDestinoDAO()));
+        this(new GestionRutasController(new RutaDestinoDAO()), false);
     }
 
     panelCrear(GestionRutasController controller) {
+        this(controller, true);
+    }
+
+    private panelCrear(GestionRutasController controller, boolean cargarRutas) {
         this.controller = controller;
         initComponents();
         configurarVista();
         configurarEventos();
 
-        recargarRutas();
+        if (cargarRutas) {
+            recargarRutas();
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -137,6 +143,21 @@ public class panelCrear extends JPanel {
 
         add(panelSuperior, java.awt.BorderLayout.NORTH);
 
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {},
+            new String [] {"ID", "PROYECTO", "ORIGEN", "DESTINO", "KM", "ESTADO"}
+        ) {
+            Class[] types = new Class [] {java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class};
+            boolean[] canEdit = new boolean [] {false, false, false, false, false, false};
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         scrollTabla.setViewportView(tabla);
 
         add(scrollTabla, java.awt.BorderLayout.CENTER);
@@ -298,13 +319,6 @@ public class panelCrear extends JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void configurarVista() {
-        tabla.setModel(new DefaultTableModel(
-                new Object[]{"ID", "PROYECTO", "ORIGEN", "DESTINO", "KM", "ESTADO"}, 0) {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;
-            }
-        });
         tabla.setAutoCreateRowSorter(true);
         tabla.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         configurarBoton(btnGuardar);

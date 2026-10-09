@@ -49,15 +49,25 @@ public class Operario extends javax.swing.JPanel {
      * Creates new form Operario
      */
     public Operario() {
-        this(new GestionOperadoresController(new OperadorDAO()));
+        this(new GestionOperadoresController(new OperadorDAO()), false);
     }
 
     Operario(GestionOperadoresController controller) {
+        this(controller, true);
+    }
+
+    private Operario(GestionOperadoresController controller, boolean cargarOperadores) {
         initComponents();
         this.controller = controller;
         configurarVista();
 
-        recargarOperadores("");
+        if (cargarOperadores) {
+            recargarOperadores("");
+        }
+    }
+
+    static Operario paraEjecucion() {
+        return new Operario(new GestionOperadoresController(new OperadorDAO()));
     }
 
     /**
@@ -278,6 +288,21 @@ public class Operario extends javax.swing.JPanel {
         jScrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)));
         jScrollPane2.setBackground(new java.awt.Color(255, 255, 255));
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {},
+            new String [] {"ID", "Nombres", "Apellidos", "DUI", "Licencia", "Turno", "Teléfono", "Estado operativo", "Estado del registro", "Fecha de registro"}
+        ) {
+            Class[] types = new Class [] {java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class};
+            boolean[] canEdit = new boolean [] {false, false, false, false, false, false, false, false, false, false};
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTable1.setForeground(new java.awt.Color(30, 41, 59));
         jTable1.setGridColor(new java.awt.Color(125, 211, 252));
         jTable1.setSelectionBackground(new java.awt.Color(219, 234, 254));
@@ -342,16 +367,6 @@ public class Operario extends javax.swing.JPanel {
             "DISPONIBLE", "EN_RUTA", "DESCANSO"
         }));
 
-        DefaultTableModel modelo = new DefaultTableModel(new Object[]{
-            "ID", "Nombres", "Apellidos", "DUI", "Licencia", "Turno",
-            "Teléfono", "Estado operativo", "Estado del registro", "Fecha de registro"
-        }, 0) {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;
-            }
-        };
-        jTable1.setModel(modelo);
         jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         jTable1.setAutoCreateRowSorter(true);
         jTable1.getTableHeader().setReorderingAllowed(false);

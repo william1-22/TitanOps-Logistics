@@ -581,6 +581,16 @@
       <SubComponents>
         <Component class="com.titanops.vista.componentes.Tabla" name="tabla">
           <Properties>
+            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+              <Table columnCount="6" rowCount="0">
+                <Column editable="false" title="ID" type="java.lang.Object" />
+                <Column editable="false" title="PROYECTO" type="java.lang.Object" />
+                <Column editable="false" title="ORIGEN" type="java.lang.Object" />
+                <Column editable="false" title="DESTINO" type="java.lang.Object" />
+                <Column editable="false" title="KM" type="java.lang.Object" />
+                <Column editable="false" title="ESTADO" type="java.lang.Object" />
+              </Table>
+            </Property>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb" />
             </Property>

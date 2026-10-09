@@ -33,14 +33,6 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
         <Component id="jPanel1" alignment="0" max="32767" attributes="0">
-          <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="3b" green="29" red="1e" type="rgb" />
-            </Property>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="f6" red="ef" type="rgb" />
-            </Property>
-          </Properties>
         </Component>
       </Group>
     </DimensionLayout>
@@ -48,14 +40,6 @@
       <Group type="103" groupAlignment="0" attributes="0">
         <Group type="102" alignment="0" attributes="0">
           <Component id="jPanel1" min="-2" max="-2" attributes="0">
-            <Properties>
-              <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                <Color blue="3b" green="29" red="1e" type="rgb" />
-              </Property>
-              <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                <Color blue="ff" green="f6" red="ef" type="rgb" />
-              </Property>
-            </Properties>
           </Component>
           <EmptySpace min="0" pref="0" max="32767" attributes="0" />
         </Group>
@@ -76,50 +60,18 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
             <Component id="jPanel3" alignment="0" max="32767" attributes="0">
-              <Properties>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="3b" green="29" red="1e" type="rgb" />
-                </Property>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="f6" red="ef" type="rgb" />
-                </Property>
-              </Properties>
             </Component>
             <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="24" max="-2" attributes="0" />
               <Component id="btn_operario" min="-2" pref="190" max="-2" attributes="0">
-                <Properties>
-                  <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                    <Color blue="3b" green="29" red="1e" type="rgb" />
-                  </Property>
-                  <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                    <Color blue="ff" green="f6" red="ef" type="rgb" />
-                  </Property>
-                </Properties>
               </Component>
               <EmptySpace max="32767" attributes="0" />
               <Component id="btn_operario1" min="-2" pref="190" max="-2" attributes="0">
-                <Properties>
-                  <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                    <Color blue="3b" green="29" red="1e" type="rgb" />
-                  </Property>
-                  <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                    <Color blue="ff" green="f6" red="ef" type="rgb" />
-                  </Property>
-                </Properties>
               </Component>
               <EmptySpace min="-2" pref="24" max="-2" attributes="0" />
             </Group>
             <Group type="102" alignment="0" attributes="0">
               <Component id="panelVista" min="-2" max="-2" attributes="0">
-                <Properties>
-                  <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                    <Color blue="3b" green="29" red="1e" type="rgb" />
-                  </Property>
-                  <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                    <Color blue="ff" green="f6" red="ef" type="rgb" />
-                  </Property>
-                </Properties>
               </Component>
               <EmptySpace min="0" pref="0" max="32767" attributes="0" />
             </Group>
@@ -129,48 +81,16 @@
           <Group type="103" groupAlignment="0" attributes="0">
             <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel3" min="-2" max="-2" attributes="0">
-                <Properties>
-                  <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                    <Color blue="3b" green="29" red="1e" type="rgb" />
-                  </Property>
-                  <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                    <Color blue="ff" green="f6" red="ef" type="rgb" />
-                  </Property>
-                </Properties>
               </Component>
               <EmptySpace type="separate" max="-2" attributes="0" />
               <Group type="103" groupAlignment="3" attributes="0">
                 <Component id="btn_operario" alignment="3" min="-2" pref="42" max="-2" attributes="0">
-                  <Properties>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="3b" green="29" red="1e" type="rgb" />
-                    </Property>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="f6" red="ef" type="rgb" />
-                    </Property>
-                  </Properties>
                 </Component>
                 <Component id="btn_operario1" alignment="3" min="-2" pref="42" max="-2" attributes="0">
-                  <Properties>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="3b" green="29" red="1e" type="rgb" />
-                    </Property>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="f6" red="ef" type="rgb" />
-                    </Property>
-                  </Properties>
                 </Component>
               </Group>
               <EmptySpace min="-2" pref="18" max="-2" attributes="0" />
               <Component id="panelVista" min="-2" max="-2" attributes="0">
-                <Properties>
-                  <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                    <Color blue="3b" green="29" red="1e" type="rgb" />
-                  </Property>
-                  <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                    <Color blue="ff" green="f6" red="ef" type="rgb" />
-                  </Property>
-                </Properties>
               </Component>
               <EmptySpace pref="24" max="32767" attributes="0" />
             </Group>
@@ -193,14 +113,6 @@
                 <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="250" max="-2" attributes="0" />
                   <Component id="jLabel2" min="-2" max="-2" attributes="0">
-                    <Properties>
-                      <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                        <Color blue="3b" green="29" red="1e" type="rgb" />
-                      </Property>
-                      <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                        <Color blue="ff" green="f6" red="ef" type="rgb" />
-                      </Property>
-                    </Properties>
                   </Component>
                   <EmptySpace max="32767" attributes="0" />
                 </Group>
@@ -211,14 +123,6 @@
                 <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="14" max="-2" attributes="0" />
                   <Component id="jLabel2" min="-2" max="-2" attributes="0">
-                    <Properties>
-                      <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                        <Color blue="3b" green="29" red="1e" type="rgb" />
-                      </Property>
-                      <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                        <Color blue="ff" green="f6" red="ef" type="rgb" />
-                      </Property>
-                    </Properties>
                   </Component>
                   <EmptySpace pref="14" max="32767" attributes="0" />
                 </Group>
@@ -248,18 +152,16 @@
               <Color blue="fc" green="fa" red="f8" type="rgb" />
             </Property>
           </Properties>
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                <EmptySpace min="0" pref="900" max="32767" attributes="0" />
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                <EmptySpace min="0" pref="540" max="32767" attributes="0" />
-              </Group>
-            </DimensionLayout>
-          </Layout>
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" />
+          <SubComponents>
+            <Component class="com.titanops.vista.Operario" name="vistaOperarioDiseno">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+                  <BorderConstraints direction="Center" />
+                </Constraint>
+              </Constraints>
+            </Component>
+          </SubComponents>
         </Container>
         <Component class="com.titanops.vista.componentes.Boton" name="btn_operario">
           <Properties>

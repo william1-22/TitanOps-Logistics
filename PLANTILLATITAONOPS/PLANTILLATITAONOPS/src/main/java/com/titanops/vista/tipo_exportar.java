@@ -49,14 +49,21 @@ public class tipo_exportar extends javax.swing.JInternalFrame {
         GUARDARUS2 = new com.titanops.vista.componentes.Boton();
         GUARDARUS1 = new com.titanops.vista.componentes.Boton();
 
+        setBackground(new java.awt.Color(239, 246, 255));
         setClosable(true);
+        setForeground(new java.awt.Color(30, 41, 59));
         setMaximizable(true);
         setResizable(true);
 
+        jPanel1.setForeground(new java.awt.Color(30, 41, 59));
+        jPanel1.setBackground(new java.awt.Color(239, 246, 255));
 
+        jPanel3.setForeground(new java.awt.Color(30, 41, 59));
+        jPanel3.setBackground(new java.awt.Color(30, 64, 175));
 
         jLabel2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
         jLabel2.setText("EXPORTAR REPORTE");
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -75,35 +82,47 @@ public class tipo_exportar extends javax.swing.JInternalFrame {
                 .addGap(22, 22, 22))
         );
 
-        GUARDARUS.setBackground(new java.awt.Color(37, 99, 235));
-        GUARDARUS.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
-        GUARDARUS.setForeground(new java.awt.Color(255, 255, 255));
         GUARDARUS.setText("CSV");
-        GUARDARUS.setBorder(null);
+        GUARDARUS.setBackground(new java.awt.Color(239, 246, 255));
+        GUARDARUS.setForeground(new java.awt.Color(30, 64, 175));
+        GUARDARUS.setFondoActivo(new java.awt.Color(37, 99, 235));
+        GUARDARUS.setTextoActivo(new java.awt.Color(255, 255, 255));
+        GUARDARUS.setColorFoco(new java.awt.Color(37, 99, 235));
+        GUARDARUS.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        GUARDARUS.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        GUARDARUS.setContentAreaFilled(false);
 
-        GUARDARUS2.setBackground(new java.awt.Color(37, 99, 235));
-        GUARDARUS2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
-        GUARDARUS2.setForeground(new java.awt.Color(255, 255, 255));
         GUARDARUS2.setText("JSON");
-        GUARDARUS2.setBorder(null);
+        GUARDARUS2.setBackground(new java.awt.Color(239, 246, 255));
+        GUARDARUS2.setForeground(new java.awt.Color(30, 64, 175));
+        GUARDARUS2.setFondoActivo(new java.awt.Color(37, 99, 235));
+        GUARDARUS2.setTextoActivo(new java.awt.Color(255, 255, 255));
+        GUARDARUS2.setColorFoco(new java.awt.Color(37, 99, 235));
+        GUARDARUS2.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        GUARDARUS2.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        GUARDARUS2.setContentAreaFilled(false);
 
-        GUARDARUS1.setBackground(new java.awt.Color(37, 99, 235));
-        GUARDARUS1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
-        GUARDARUS1.setForeground(new java.awt.Color(255, 255, 255));
         GUARDARUS1.setText("PDF");
-        GUARDARUS1.setBorder(null);
+        GUARDARUS1.setBackground(new java.awt.Color(239, 246, 255));
+        GUARDARUS1.setForeground(new java.awt.Color(30, 64, 175));
+        GUARDARUS1.setFondoActivo(new java.awt.Color(37, 99, 235));
+        GUARDARUS1.setTextoActivo(new java.awt.Color(255, 255, 255));
+        GUARDARUS1.setColorFoco(new java.awt.Color(37, 99, 235));
+        GUARDARUS1.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        GUARDARUS1.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        GUARDARUS1.setContentAreaFilled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(GUARDARUS1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(GUARDARUS2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(GUARDARUS)
+            .addGroup(javax.swing.GroupLayout.Alignment.CENTER, jPanel1Layout.createSequentialGroup()
+                .addComponent(GUARDARUS1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(GUARDARUS2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(GUARDARUS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -112,19 +131,17 @@ public class tipo_exportar extends javax.swing.JInternalFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(69, 69, 69)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(GUARDARUS1)
-                    .addComponent(GUARDARUS2)
-                    .addComponent(GUARDARUS))
-                .addContainerGap(201, Short.MAX_VALUE))
+                    .addComponent(GUARDARUS1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(GUARDARUS2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(GUARDARUS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(193, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,80 +150,6 @@ public class tipo_exportar extends javax.swing.JInternalFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-
-        setForeground(new java.awt.Color(30, 41, 59));
-        setBackground(new java.awt.Color(239, 246, 255));
-        jPanel1.setForeground(new java.awt.Color(30, 41, 59));
-        jPanel1.setBackground(new java.awt.Color(239, 246, 255));
-        jPanel3.setForeground(new java.awt.Color(30, 41, 59));
-        jPanel3.setBackground(new java.awt.Color(30, 64, 175));
-        setForeground(new java.awt.Color(30, 41, 59));
-        setBackground(new java.awt.Color(239, 246, 255));
-        setForeground(new java.awt.Color(30, 41, 59));
-        setBackground(new java.awt.Color(239, 246, 255));
-        setForeground(new java.awt.Color(30, 41, 59));
-        setBackground(new java.awt.Color(239, 246, 255));
-        setForeground(new java.awt.Color(30, 41, 59));
-        setBackground(new java.awt.Color(239, 246, 255));
-        setForeground(new java.awt.Color(30, 41, 59));
-        setBackground(new java.awt.Color(239, 246, 255));
-        setForeground(new java.awt.Color(30, 41, 59));
-        setBackground(new java.awt.Color(239, 246, 255));
-        setForeground(new java.awt.Color(30, 41, 59));
-        setBackground(new java.awt.Color(239, 246, 255));
-        setForeground(new java.awt.Color(30, 41, 59));
-        setBackground(new java.awt.Color(239, 246, 255));
-        setForeground(new java.awt.Color(30, 41, 59));
-        setBackground(new java.awt.Color(239, 246, 255));
-        setForeground(new java.awt.Color(30, 41, 59));
-        setBackground(new java.awt.Color(239, 246, 255));
-        setForeground(new java.awt.Color(30, 41, 59));
-        setBackground(new java.awt.Color(239, 246, 255));
-        setForeground(new java.awt.Color(30, 41, 59));
-        setBackground(new java.awt.Color(239, 246, 255));
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-
-
-        jPanel1.setForeground(new java.awt.Color(30, 41, 59));
-        jPanel1.setBackground(new java.awt.Color(239, 246, 255));
-        jPanel3.setForeground(new java.awt.Color(30, 41, 59));
-        jPanel3.setBackground(new java.awt.Color(30, 64, 175));
-        jLabel2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24));
-        jLabel2.setText("EXPORTAR REPORTE");
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        GUARDARUS.setText("CSV");
-        GUARDARUS.setBackground(new java.awt.Color(239, 246, 255));
-        GUARDARUS.setForeground(new java.awt.Color(30, 64, 175));
-        GUARDARUS.setFondoActivo(new java.awt.Color(37, 99, 235));
-        GUARDARUS.setTextoActivo(new java.awt.Color(255, 255, 255));
-        GUARDARUS.setColorFoco(new java.awt.Color(37, 99, 235));
-        GUARDARUS.setFont(new java.awt.Font("SansSerif", 1, 13));
-        GUARDARUS.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
-        GUARDARUS.setRolloverEnabled(true);
-        GUARDARUS.setContentAreaFilled(false);
-        GUARDARUS.setOpaque(false);
-        GUARDARUS2.setText("JSON");
-        GUARDARUS2.setBackground(new java.awt.Color(239, 246, 255));
-        GUARDARUS2.setForeground(new java.awt.Color(30, 64, 175));
-        GUARDARUS2.setFondoActivo(new java.awt.Color(37, 99, 235));
-        GUARDARUS2.setTextoActivo(new java.awt.Color(255, 255, 255));
-        GUARDARUS2.setColorFoco(new java.awt.Color(37, 99, 235));
-        GUARDARUS2.setFont(new java.awt.Font("SansSerif", 1, 13));
-        GUARDARUS2.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
-        GUARDARUS2.setRolloverEnabled(true);
-        GUARDARUS2.setContentAreaFilled(false);
-        GUARDARUS2.setOpaque(false);
-        GUARDARUS1.setText("PDF");
-        GUARDARUS1.setBackground(new java.awt.Color(239, 246, 255));
-        GUARDARUS1.setForeground(new java.awt.Color(30, 64, 175));
-        GUARDARUS1.setFondoActivo(new java.awt.Color(37, 99, 235));
-        GUARDARUS1.setTextoActivo(new java.awt.Color(255, 255, 255));
-        GUARDARUS1.setColorFoco(new java.awt.Color(37, 99, 235));
-        GUARDARUS1.setFont(new java.awt.Font("SansSerif", 1, 13));
-        GUARDARUS1.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
-        GUARDARUS1.setRolloverEnabled(true);
-        GUARDARUS1.setContentAreaFilled(false);
-        GUARDARUS1.setOpaque(false);
         pack();
     }// </editor-fold>//GEN-END:initComponents
 

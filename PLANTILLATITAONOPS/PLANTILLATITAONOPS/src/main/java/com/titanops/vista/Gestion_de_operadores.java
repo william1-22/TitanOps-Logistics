@@ -15,9 +15,7 @@ public class Gestion_de_operadores extends javax.swing.JInternalFrame {
      */
     public Gestion_de_operadores() {
         initComponents();
-         panelVista.setLayout(new java.awt.BorderLayout());
-         mostrarPanel(new Operario());
-
+        mostrarPanel(Operario.paraEjecucion());
     }
 
     /**
@@ -33,6 +31,7 @@ public class Gestion_de_operadores extends javax.swing.JInternalFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         panelVista = new javax.swing.JPanel();
+        vistaOperarioDiseno = new com.titanops.vista.Operario();
         btn_operario = new com.titanops.vista.componentes.Boton();
         btn_operario1 = new com.titanops.vista.componentes.Boton();
 
@@ -45,6 +44,7 @@ public class Gestion_de_operadores extends javax.swing.JInternalFrame {
 
         jLabel2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 32)); // NOI18N
         jLabel2.setText("GESTIÓN DE OPERADORES");
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -63,29 +63,33 @@ public class Gestion_de_operadores extends javax.swing.JInternalFrame {
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout panelVistaLayout = new javax.swing.GroupLayout(panelVista);
-        panelVista.setLayout(panelVistaLayout);
-        panelVistaLayout.setHorizontalGroup(
-            panelVistaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 900, Short.MAX_VALUE)
-        );
-        panelVistaLayout.setVerticalGroup(
-            panelVistaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 540, Short.MAX_VALUE)
-        );
+        panelVista.setLayout(new java.awt.BorderLayout());
+        panelVista.add(vistaOperarioDiseno, java.awt.BorderLayout.CENTER);
 
-        btn_operario.setBackground(new java.awt.Color(37, 99, 235));
-        btn_operario.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        btn_operario.setForeground(new java.awt.Color(255, 255, 255));
         btn_operario.setText("OPERADORES");
-        btn_operario.setBorder(null);
+        btn_operario.setBackground(new java.awt.Color(239, 246, 255));
+        btn_operario.setForeground(new java.awt.Color(30, 64, 175));
+        btn_operario.setFondoActivo(new java.awt.Color(37, 99, 235));
+        btn_operario.setTextoActivo(new java.awt.Color(255, 255, 255));
+        btn_operario.setColorFoco(new java.awt.Color(37, 99, 235));
+        btn_operario.setFont(new java.awt.Font("SansSerif", 1, 13));
+        btn_operario.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        btn_operario.setRolloverEnabled(true);
+        btn_operario.setContentAreaFilled(false);
+        btn_operario.setOpaque(false);
         btn_operario.addActionListener(this::btn_operarioActionPerformed);
 
-        btn_operario1.setBackground(new java.awt.Color(37, 99, 235));
-        btn_operario1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        btn_operario1.setForeground(new java.awt.Color(255, 255, 255));
         btn_operario1.setText("CERTIFICACIONES");
-        btn_operario1.setBorder(null);
+        btn_operario1.setBackground(new java.awt.Color(239, 246, 255));
+        btn_operario1.setForeground(new java.awt.Color(30, 64, 175));
+        btn_operario1.setFondoActivo(new java.awt.Color(37, 99, 235));
+        btn_operario1.setTextoActivo(new java.awt.Color(255, 255, 255));
+        btn_operario1.setColorFoco(new java.awt.Color(37, 99, 235));
+        btn_operario1.setFont(new java.awt.Font("SansSerif", 1, 13));
+        btn_operario1.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
+        btn_operario1.setRolloverEnabled(true);
+        btn_operario1.setContentAreaFilled(false);
+        btn_operario1.setOpaque(false);
         btn_operario1.addActionListener(this::btn_operario1ActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -138,88 +142,24 @@ public class Gestion_de_operadores extends javax.swing.JInternalFrame {
         jPanel3.setBackground(new java.awt.Color(30, 64, 175));
         panelVista.setForeground(new java.awt.Color(30, 41, 59));
         panelVista.setBackground(new java.awt.Color(248, 250, 252));
-        setForeground(new java.awt.Color(30, 41, 59));
-        setBackground(new java.awt.Color(239, 246, 255));
-        setForeground(new java.awt.Color(30, 41, 59));
-        setBackground(new java.awt.Color(239, 246, 255));
-        setForeground(new java.awt.Color(30, 41, 59));
-        setBackground(new java.awt.Color(239, 246, 255));
-        setForeground(new java.awt.Color(30, 41, 59));
-        setBackground(new java.awt.Color(239, 246, 255));
-        setForeground(new java.awt.Color(30, 41, 59));
-        setBackground(new java.awt.Color(239, 246, 255));
-        setForeground(new java.awt.Color(30, 41, 59));
-        setBackground(new java.awt.Color(239, 246, 255));
-        setForeground(new java.awt.Color(30, 41, 59));
-        setBackground(new java.awt.Color(239, 246, 255));
-        setForeground(new java.awt.Color(30, 41, 59));
-        setBackground(new java.awt.Color(239, 246, 255));
-        setForeground(new java.awt.Color(30, 41, 59));
-        setBackground(new java.awt.Color(239, 246, 255));
-        setForeground(new java.awt.Color(30, 41, 59));
-        setBackground(new java.awt.Color(239, 246, 255));
-        setForeground(new java.awt.Color(30, 41, 59));
-        setBackground(new java.awt.Color(239, 246, 255));
-        setForeground(new java.awt.Color(30, 41, 59));
-        setBackground(new java.awt.Color(239, 246, 255));
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-
-
-        jPanel1.setForeground(new java.awt.Color(30, 41, 59));
-        jPanel1.setBackground(new java.awt.Color(239, 246, 255));
-        jPanel3.setForeground(new java.awt.Color(30, 41, 59));
-        jPanel3.setBackground(new java.awt.Color(30, 64, 175));
-        jLabel2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 32));
-        jLabel2.setText("GESTIÓN DE OPERADORES");
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        panelVista.setForeground(new java.awt.Color(30, 41, 59));
-        panelVista.setBackground(new java.awt.Color(248, 250, 252));
-        btn_operario.setText("OPERADORES");
-        btn_operario.setBackground(new java.awt.Color(239, 246, 255));
-        btn_operario.setForeground(new java.awt.Color(30, 64, 175));
-        btn_operario.setFondoActivo(new java.awt.Color(37, 99, 235));
-        btn_operario.setTextoActivo(new java.awt.Color(255, 255, 255));
-        btn_operario.setColorFoco(new java.awt.Color(37, 99, 235));
-        btn_operario.setFont(new java.awt.Font("SansSerif", 1, 13));
-        btn_operario.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
-        btn_operario.setRolloverEnabled(true);
-        btn_operario.setContentAreaFilled(false);
-        btn_operario.setOpaque(false);
-        btn_operario1.setText("CERTIFICACIONES");
-        btn_operario1.setBackground(new java.awt.Color(239, 246, 255));
-        btn_operario1.setForeground(new java.awt.Color(30, 64, 175));
-        btn_operario1.setFondoActivo(new java.awt.Color(37, 99, 235));
-        btn_operario1.setTextoActivo(new java.awt.Color(255, 255, 255));
-        btn_operario1.setColorFoco(new java.awt.Color(37, 99, 235));
-        btn_operario1.setFont(new java.awt.Font("SansSerif", 1, 13));
-        btn_operario1.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1), javax.swing.BorderFactory.createEmptyBorder(8, 14, 8, 14)));
-        btn_operario1.setRolloverEnabled(true);
-        btn_operario1.setContentAreaFilled(false);
-        btn_operario1.setOpaque(false);
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_operarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_operarioActionPerformed
-       mostrarPanel(new Operario());  
+        mostrarPanel(Operario.paraEjecucion());
     }//GEN-LAST:event_btn_operarioActionPerformed
 
     private void btn_operario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_operario1ActionPerformed
         mostrarPanel(new Certifiaciones());
     }//GEN-LAST:event_btn_operario1ActionPerformed
 
-    
-      private void mostrarPanel(javax.swing.JPanel panel) {
+    private void mostrarPanel(javax.swing.JPanel panel) {
+        panelVista.removeAll();
+        panelVista.add(panel, java.awt.BorderLayout.CENTER);
+        panelVista.revalidate();
+        panelVista.repaint();
+    }
 
-    panelVista.removeAll();
-
-    
-    // El JPanel ocupa exactamente TODO panelVista
-    panelVista.add(panel, java.awt.BorderLayout.CENTER);
-
-    panelVista.revalidate();
-    panelVista.repaint();
-}
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.titanops.vista.componentes.Boton btn_operario;
@@ -228,5 +168,6 @@ public class Gestion_de_operadores extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel panelVista;
+    private com.titanops.vista.Operario vistaOperarioDiseno;
     // End of variables declaration//GEN-END:variables
 }
