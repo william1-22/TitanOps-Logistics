@@ -67,19 +67,144 @@ public class FILES extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelNavegacion = new javax.swing.JPanel();
+        panelModulos = new javax.swing.JPanel();
+        btnUsuarios = new com.titanops.vista.componentes.Boton();
+        btnMaquinaria = new com.titanops.vista.componentes.Boton();
+        btnCategorias = new com.titanops.vista.componentes.Boton();
+        btnOperadores = new com.titanops.vista.componentes.Boton();
+        btnRutas = new com.titanops.vista.componentes.Boton();
+        btnReportes = new com.titanops.vista.componentes.Boton();
+        btnSesion = new com.titanops.vista.componentes.Boton();
         jDesktopPane1 = new javax.swing.JDesktopPane();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        gestion_categorias = new javax.swing.JMenuItem();
-        control_y_reportes = new javax.swing.JMenuItem();
-        btn_rutas = new javax.swing.JMenuItem();
-        gestion_operarios = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setForeground(new java.awt.Color(30, 41, 59));
+        setBackground(new java.awt.Color(239, 246, 255));
 
+        panelNavegacion.setBackground(new java.awt.Color(239, 246, 255));
+        panelNavegacion.setBorder(javax.swing.BorderFactory.createEmptyBorder(6, 8, 6, 8));
+        panelNavegacion.setLayout(new java.awt.BorderLayout(8, 0));
+
+        panelModulos.setOpaque(false);
+        panelModulos.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 6, 0));
+
+        btnUsuarios.setText("Usuarios");
+        btnUsuarios.setBackground(new java.awt.Color(239, 246, 255));
+        btnUsuarios.setForeground(new java.awt.Color(30, 64, 175));
+        btnUsuarios.setFondoActivo(new java.awt.Color(37, 99, 235));
+        btnUsuarios.setTextoActivo(new java.awt.Color(255, 255, 255));
+        btnUsuarios.setColorFoco(new java.awt.Color(37, 99, 235));
+        btnUsuarios.setFont(new java.awt.Font("SansSerif", 1, 13));
+        btnUsuarios.setBorder(javax.swing.BorderFactory.createCompoundBorder(
+            javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1),
+            javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
+        btnUsuarios.setRolloverEnabled(true);
+        btnUsuarios.setContentAreaFilled(false);
+        btnUsuarios.setOpaque(false);
+        btnUsuarios.addActionListener(this::btnUsuariosActionPerformed);
+        panelModulos.add(btnUsuarios);
+
+        btnMaquinaria.setText("Maquinaria");
+        btnMaquinaria.setBackground(new java.awt.Color(239, 246, 255));
+        btnMaquinaria.setForeground(new java.awt.Color(30, 64, 175));
+        btnMaquinaria.setFondoActivo(new java.awt.Color(37, 99, 235));
+        btnMaquinaria.setTextoActivo(new java.awt.Color(255, 255, 255));
+        btnMaquinaria.setColorFoco(new java.awt.Color(37, 99, 235));
+        btnMaquinaria.setFont(new java.awt.Font("SansSerif", 1, 13));
+        btnMaquinaria.setBorder(javax.swing.BorderFactory.createCompoundBorder(
+            javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1),
+            javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
+        btnMaquinaria.setRolloverEnabled(true);
+        btnMaquinaria.setContentAreaFilled(false);
+        btnMaquinaria.setOpaque(false);
+        btnMaquinaria.addActionListener(this::btnMaquinariaActionPerformed);
+        panelModulos.add(btnMaquinaria);
+
+        btnCategorias.setText("Categorías");
+        btnCategorias.setBackground(new java.awt.Color(239, 246, 255));
+        btnCategorias.setForeground(new java.awt.Color(30, 64, 175));
+        btnCategorias.setFondoActivo(new java.awt.Color(37, 99, 235));
+        btnCategorias.setTextoActivo(new java.awt.Color(255, 255, 255));
+        btnCategorias.setColorFoco(new java.awt.Color(37, 99, 235));
+        btnCategorias.setFont(new java.awt.Font("SansSerif", 1, 13));
+        btnCategorias.setBorder(javax.swing.BorderFactory.createCompoundBorder(
+            javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1),
+            javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
+        btnCategorias.setRolloverEnabled(true);
+        btnCategorias.setContentAreaFilled(false);
+        btnCategorias.setOpaque(false);
+        btnCategorias.addActionListener(this::btnCategoriasActionPerformed);
+        panelModulos.add(btnCategorias);
+
+        btnOperadores.setText("Operadores");
+        btnOperadores.setBackground(new java.awt.Color(239, 246, 255));
+        btnOperadores.setForeground(new java.awt.Color(30, 64, 175));
+        btnOperadores.setFondoActivo(new java.awt.Color(37, 99, 235));
+        btnOperadores.setTextoActivo(new java.awt.Color(255, 255, 255));
+        btnOperadores.setColorFoco(new java.awt.Color(37, 99, 235));
+        btnOperadores.setFont(new java.awt.Font("SansSerif", 1, 13));
+        btnOperadores.setBorder(javax.swing.BorderFactory.createCompoundBorder(
+            javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1),
+            javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
+        btnOperadores.setRolloverEnabled(true);
+        btnOperadores.setContentAreaFilled(false);
+        btnOperadores.setOpaque(false);
+        btnOperadores.addActionListener(this::btnOperadoresActionPerformed);
+        panelModulos.add(btnOperadores);
+
+        btnRutas.setText("Rutas");
+        btnRutas.setBackground(new java.awt.Color(239, 246, 255));
+        btnRutas.setForeground(new java.awt.Color(30, 64, 175));
+        btnRutas.setFondoActivo(new java.awt.Color(37, 99, 235));
+        btnRutas.setTextoActivo(new java.awt.Color(255, 255, 255));
+        btnRutas.setColorFoco(new java.awt.Color(37, 99, 235));
+        btnRutas.setFont(new java.awt.Font("SansSerif", 1, 13));
+        btnRutas.setBorder(javax.swing.BorderFactory.createCompoundBorder(
+            javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1),
+            javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
+        btnRutas.setRolloverEnabled(true);
+        btnRutas.setContentAreaFilled(false);
+        btnRutas.setOpaque(false);
+        btnRutas.addActionListener(this::btnRutasActionPerformed);
+        panelModulos.add(btnRutas);
+
+        btnReportes.setText("Control y reportes");
+        btnReportes.setBackground(new java.awt.Color(239, 246, 255));
+        btnReportes.setForeground(new java.awt.Color(30, 64, 175));
+        btnReportes.setFondoActivo(new java.awt.Color(37, 99, 235));
+        btnReportes.setTextoActivo(new java.awt.Color(255, 255, 255));
+        btnReportes.setColorFoco(new java.awt.Color(37, 99, 235));
+        btnReportes.setFont(new java.awt.Font("SansSerif", 1, 13));
+        btnReportes.setBorder(javax.swing.BorderFactory.createCompoundBorder(
+            javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1),
+            javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
+        btnReportes.setRolloverEnabled(true);
+        btnReportes.setContentAreaFilled(false);
+        btnReportes.setOpaque(false);
+        btnReportes.addActionListener(this::btnReportesActionPerformed);
+        panelModulos.add(btnReportes);
+
+        panelNavegacion.add(panelModulos, java.awt.BorderLayout.WEST);
+
+        btnSesion.setText("Iniciar sesión");
+        btnSesion.setBackground(new java.awt.Color(239, 246, 255));
+        btnSesion.setForeground(new java.awt.Color(30, 64, 175));
+        btnSesion.setFondoActivo(new java.awt.Color(37, 99, 235));
+        btnSesion.setTextoActivo(new java.awt.Color(255, 255, 255));
+        btnSesion.setColorFoco(new java.awt.Color(37, 99, 235));
+        btnSesion.setFont(new java.awt.Font("SansSerif", 1, 13));
+        btnSesion.setBorder(javax.swing.BorderFactory.createCompoundBorder(
+            javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1),
+            javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
+        btnSesion.setRolloverEnabled(true);
+        btnSesion.setContentAreaFilled(false);
+        btnSesion.setOpaque(false);
+        btnSesion.addActionListener(this::btnSesionActionPerformed);
+        panelNavegacion.add(btnSesion, java.awt.BorderLayout.EAST);
+
+        jDesktopPane1.setForeground(new java.awt.Color(30, 41, 59));
+        jDesktopPane1.setBackground(new java.awt.Color(239, 246, 255));
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
@@ -91,94 +216,14 @@ public class FILES extends javax.swing.JFrame {
             .addGap(0, 348, Short.MAX_VALUE)
         );
 
-        jMenu1.setText("File");
+        getContentPane().setLayout(new java.awt.BorderLayout());
+        getContentPane().add(panelNavegacion, java.awt.BorderLayout.NORTH);
+        getContentPane().add(jDesktopPane1, java.awt.BorderLayout.CENTER);
 
-        jMenuItem1.setText("LOGIN");
-        jMenuItem1.addActionListener(this::jMenuItem1ActionPerformed);
-        jMenu1.add(jMenuItem1);
-
-        jMenuItem2.setText("GESTIÓN USUARIOS");
-        jMenuItem2.addActionListener(this::jMenuItem2ActionPerformed);
-        jMenu1.add(jMenuItem2);
-
-        jMenuItem3.setText("MAQUINARIA");
-        jMenuItem3.addActionListener(this::jMenuItem3ActionPerformed);
-        jMenu1.add(jMenuItem3);
-
-        gestion_categorias.setText("GESTIÓN DE CATEGORÍAS");
-        gestion_categorias.addActionListener(this::gestion_categoriasActionPerformed);
-        jMenu1.add(gestion_categorias);
-
-        control_y_reportes.setText("CONTROL Y REPORTES");
-        control_y_reportes.addActionListener(this::control_y_reportesActionPerformed);
-        jMenu1.add(control_y_reportes);
-
-        btn_rutas.setText("RUTAS");
-        btn_rutas.addActionListener(this::btn_rutasActionPerformed);
-        jMenu1.add(btn_rutas);
-
-        gestion_operarios.setText("GESTION DE OPERARIOS");
-        gestion_operarios.addActionListener(this::gestion_operariosActionPerformed);
-        jMenu1.add(gestion_operarios);
-
-        jMenuBar1.add(jMenu1);
-
-        setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
-        );
-
-
-        setForeground(new java.awt.Color(30, 41, 59));
-        setBackground(new java.awt.Color(239, 246, 255));
-        jDesktopPane1.setForeground(new java.awt.Color(30, 41, 59));
-        jDesktopPane1.setBackground(new java.awt.Color(239, 246, 255));
-        setForeground(new java.awt.Color(30, 41, 59));
-        setBackground(new java.awt.Color(239, 246, 255));
-        setForeground(new java.awt.Color(30, 41, 59));
-        setBackground(new java.awt.Color(239, 246, 255));
-        jMenuBar1.setForeground(new java.awt.Color(30, 41, 59));
-        jMenu1.setForeground(new java.awt.Color(30, 41, 59));
-        jMenuItem1.setForeground(new java.awt.Color(30, 41, 59));
-        jMenuItem2.setForeground(new java.awt.Color(30, 41, 59));
-        jMenuItem3.setForeground(new java.awt.Color(30, 41, 59));
-        gestion_categorias.setForeground(new java.awt.Color(30, 41, 59));
-        control_y_reportes.setForeground(new java.awt.Color(30, 41, 59));
-        btn_rutas.setForeground(new java.awt.Color(30, 41, 59));
-        gestion_operarios.setForeground(new java.awt.Color(30, 41, 59));
-
-
-        jMenuBar1.setForeground(new java.awt.Color(30, 41, 59));
-        jMenu1.setText("File");
-        jMenu1.setForeground(new java.awt.Color(30, 41, 59));
-        jMenuItem1.setText("LOGIN");
-        jMenuItem1.setForeground(new java.awt.Color(30, 41, 59));
-        jMenuItem2.setText("GESTIÓN USUARIOS");
-        jMenuItem2.setForeground(new java.awt.Color(30, 41, 59));
-        jMenuItem3.setText("MAQUINARIA");
-        jMenuItem3.setForeground(new java.awt.Color(30, 41, 59));
-        gestion_categorias.setText("GESTIÓN DE CATEGORÍAS");
-        gestion_categorias.setForeground(new java.awt.Color(30, 41, 59));
-        control_y_reportes.setText("CONTROL Y REPORTES");
-        control_y_reportes.setForeground(new java.awt.Color(30, 41, 59));
-        btn_rutas.setText("RUTAS");
-        btn_rutas.setForeground(new java.awt.Color(30, 41, 59));
-        gestion_operarios.setText("GESTION DE OPERARIOS");
-        gestion_operarios.setForeground(new java.awt.Color(30, 41, 59));
-        jDesktopPane1.setForeground(new java.awt.Color(30, 41, 59));
-        jDesktopPane1.setBackground(new java.awt.Color(239, 246, 255));
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void btnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosActionPerformed
         System.out.println("1. CLICK");
 
         GESTIONUS1 panta = new GESTIONUS1(
@@ -190,9 +235,9 @@ public class FILES extends javax.swing.JFrame {
         jDesktopPane1.add(panta);
 
         panta.setVisible(true);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_btnUsuariosActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void btnMaquinariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaquinariaActionPerformed
 
         MAQUINARIAGESTION panta = new MAQUINARIAGESTION(jDesktopPane1);
 
@@ -201,44 +246,44 @@ public class FILES extends javax.swing.JFrame {
         jDesktopPane1.add(panta);
 
         panta.setVisible(true);
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_btnMaquinariaActionPerformed
 
-    private void gestion_categoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestion_categoriasActionPerformed
+    private void btnCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCategoriasActionPerformed
         GestionCategorias panta = new GestionCategorias();
         jDesktopPane1.add(panta);
         panta.setLocation(20, 20);
         panta.setVisible(true);
         panta.toFront();
-    }//GEN-LAST:event_gestion_categoriasActionPerformed
+    }//GEN-LAST:event_btnCategoriasActionPerformed
 
-    private void control_y_reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_control_y_reportesActionPerformed
+    private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
         Control_y_reportes panta = new Control_y_reportes(
                 jDesktopPane1,
                 usuarioAutenticado == null ? null : usuarioAutenticado.getIdUsuario());
         jDesktopPane1.add(panta);
         panta.setVisible(true);
-    }//GEN-LAST:event_control_y_reportesActionPerformed
+    }//GEN-LAST:event_btnReportesActionPerformed
 
-    private void btn_rutasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_rutasActionPerformed
+    private void btnRutasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRutasActionPerformed
        Rutas panta = new Rutas(
                usuarioAutenticado == null ? null : usuarioAutenticado.getIdUsuario());
        jDesktopPane1.add(panta);
        panta.setVisible(true);
-    }//GEN-LAST:event_btn_rutasActionPerformed
+    }//GEN-LAST:event_btnRutasActionPerformed
 
-    private void gestion_operariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestion_operariosActionPerformed
+    private void btnOperadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOperadoresActionPerformed
        Gestion_de_operadores panta = new Gestion_de_operadores();
        jDesktopPane1.add(panta);
        panta.setVisible(true);
-    }//GEN-LAST:event_gestion_operariosActionPerformed
+    }//GEN-LAST:event_btnOperadoresActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void btnSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSesionActionPerformed
         if (usuarioAutenticado == null) {
             mostrarLogin();
         } else {
             cerrarSesion();
         }
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_btnSesionActionPerformed
 
     private void mostrarLogin() {
         if (loginActivo != null && !loginActivo.isClosed()) {
@@ -277,13 +322,13 @@ public class FILES extends javax.swing.JFrame {
                 && "OPERADOR_DESPACHO".equalsIgnoreCase(rol.getNombreRol());
         boolean accesoOperativo = administrador || operadorDespacho;
 
-        jMenuItem1.setText(autenticado ? "CERRAR SESIÓN" : "INICIAR SESIÓN");
-        jMenuItem2.setEnabled(administrador);
-        jMenuItem3.setEnabled(accesoOperativo);
-        gestion_categorias.setEnabled(administrador);
-        control_y_reportes.setEnabled(accesoOperativo);
-        btn_rutas.setEnabled(accesoOperativo);
-        gestion_operarios.setEnabled(accesoOperativo);
+        btnSesion.setText(autenticado ? "Cerrar sesión" : "Iniciar sesión");
+        btnUsuarios.setEnabled(administrador);
+        btnMaquinaria.setEnabled(accesoOperativo);
+        btnCategorias.setEnabled(administrador);
+        btnReportes.setEnabled(accesoOperativo);
+        btnRutas.setEnabled(accesoOperativo);
+        btnOperadores.setEnabled(accesoOperativo);
     }
 
     private void cerrarSesion() {
@@ -332,15 +377,15 @@ public class FILES extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem btn_rutas;
-    private javax.swing.JMenuItem control_y_reportes;
-    private javax.swing.JMenuItem gestion_categorias;
-    private javax.swing.JMenuItem gestion_operarios;
+    private com.titanops.vista.componentes.Boton btnCategorias;
+    private com.titanops.vista.componentes.Boton btnMaquinaria;
+    private com.titanops.vista.componentes.Boton btnOperadores;
+    private com.titanops.vista.componentes.Boton btnReportes;
+    private com.titanops.vista.componentes.Boton btnRutas;
+    private com.titanops.vista.componentes.Boton btnSesion;
+    private com.titanops.vista.componentes.Boton btnUsuarios;
     private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JPanel panelModulos;
+    private javax.swing.JPanel panelNavegacion;
     // End of variables declaration//GEN-END:variables
 }
