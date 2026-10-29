@@ -79,8 +79,8 @@ public class FILES extends javax.swing.JFrame {
         jDesktopPane1 = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setForeground(new java.awt.Color(30, 41, 59));
         setBackground(new java.awt.Color(239, 246, 255));
+        setForeground(new java.awt.Color(30, 41, 59));
 
         panelNavegacion.setBackground(new java.awt.Color(239, 246, 255));
         panelNavegacion.setBorder(javax.swing.BorderFactory.createEmptyBorder(6, 8, 6, 8));
@@ -95,13 +95,9 @@ public class FILES extends javax.swing.JFrame {
         btnUsuarios.setFondoActivo(new java.awt.Color(37, 99, 235));
         btnUsuarios.setTextoActivo(new java.awt.Color(255, 255, 255));
         btnUsuarios.setColorFoco(new java.awt.Color(37, 99, 235));
-        btnUsuarios.setFont(new java.awt.Font("SansSerif", 1, 13));
-        btnUsuarios.setBorder(javax.swing.BorderFactory.createCompoundBorder(
-            javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1),
-            javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
-        btnUsuarios.setRolloverEnabled(true);
+        btnUsuarios.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        btnUsuarios.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
         btnUsuarios.setContentAreaFilled(false);
-        btnUsuarios.setOpaque(false);
         btnUsuarios.addActionListener(this::btnUsuariosActionPerformed);
         panelModulos.add(btnUsuarios);
 
@@ -111,13 +107,9 @@ public class FILES extends javax.swing.JFrame {
         btnMaquinaria.setFondoActivo(new java.awt.Color(37, 99, 235));
         btnMaquinaria.setTextoActivo(new java.awt.Color(255, 255, 255));
         btnMaquinaria.setColorFoco(new java.awt.Color(37, 99, 235));
-        btnMaquinaria.setFont(new java.awt.Font("SansSerif", 1, 13));
-        btnMaquinaria.setBorder(javax.swing.BorderFactory.createCompoundBorder(
-            javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1),
-            javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
-        btnMaquinaria.setRolloverEnabled(true);
+        btnMaquinaria.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        btnMaquinaria.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
         btnMaquinaria.setContentAreaFilled(false);
-        btnMaquinaria.setOpaque(false);
         btnMaquinaria.addActionListener(this::btnMaquinariaActionPerformed);
         panelModulos.add(btnMaquinaria);
 
@@ -127,13 +119,9 @@ public class FILES extends javax.swing.JFrame {
         btnCategorias.setFondoActivo(new java.awt.Color(37, 99, 235));
         btnCategorias.setTextoActivo(new java.awt.Color(255, 255, 255));
         btnCategorias.setColorFoco(new java.awt.Color(37, 99, 235));
-        btnCategorias.setFont(new java.awt.Font("SansSerif", 1, 13));
-        btnCategorias.setBorder(javax.swing.BorderFactory.createCompoundBorder(
-            javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1),
-            javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
-        btnCategorias.setRolloverEnabled(true);
+        btnCategorias.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        btnCategorias.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
         btnCategorias.setContentAreaFilled(false);
-        btnCategorias.setOpaque(false);
         btnCategorias.addActionListener(this::btnCategoriasActionPerformed);
         panelModulos.add(btnCategorias);
 
@@ -143,13 +131,9 @@ public class FILES extends javax.swing.JFrame {
         btnOperadores.setFondoActivo(new java.awt.Color(37, 99, 235));
         btnOperadores.setTextoActivo(new java.awt.Color(255, 255, 255));
         btnOperadores.setColorFoco(new java.awt.Color(37, 99, 235));
-        btnOperadores.setFont(new java.awt.Font("SansSerif", 1, 13));
-        btnOperadores.setBorder(javax.swing.BorderFactory.createCompoundBorder(
-            javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1),
-            javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
-        btnOperadores.setRolloverEnabled(true);
+        btnOperadores.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        btnOperadores.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
         btnOperadores.setContentAreaFilled(false);
-        btnOperadores.setOpaque(false);
         btnOperadores.addActionListener(this::btnOperadoresActionPerformed);
         panelModulos.add(btnOperadores);
 
@@ -159,13 +143,9 @@ public class FILES extends javax.swing.JFrame {
         btnRutas.setFondoActivo(new java.awt.Color(37, 99, 235));
         btnRutas.setTextoActivo(new java.awt.Color(255, 255, 255));
         btnRutas.setColorFoco(new java.awt.Color(37, 99, 235));
-        btnRutas.setFont(new java.awt.Font("SansSerif", 1, 13));
-        btnRutas.setBorder(javax.swing.BorderFactory.createCompoundBorder(
-            javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1),
-            javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
-        btnRutas.setRolloverEnabled(true);
+        btnRutas.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        btnRutas.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
         btnRutas.setContentAreaFilled(false);
-        btnRutas.setOpaque(false);
         btnRutas.addActionListener(this::btnRutasActionPerformed);
         panelModulos.add(btnRutas);
 
@@ -175,13 +155,9 @@ public class FILES extends javax.swing.JFrame {
         btnReportes.setFondoActivo(new java.awt.Color(37, 99, 235));
         btnReportes.setTextoActivo(new java.awt.Color(255, 255, 255));
         btnReportes.setColorFoco(new java.awt.Color(37, 99, 235));
-        btnReportes.setFont(new java.awt.Font("SansSerif", 1, 13));
-        btnReportes.setBorder(javax.swing.BorderFactory.createCompoundBorder(
-            javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1),
-            javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
-        btnReportes.setRolloverEnabled(true);
+        btnReportes.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        btnReportes.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
         btnReportes.setContentAreaFilled(false);
-        btnReportes.setOpaque(false);
         btnReportes.addActionListener(this::btnReportesActionPerformed);
         panelModulos.add(btnReportes);
 
@@ -193,31 +169,28 @@ public class FILES extends javax.swing.JFrame {
         btnSesion.setFondoActivo(new java.awt.Color(37, 99, 235));
         btnSesion.setTextoActivo(new java.awt.Color(255, 255, 255));
         btnSesion.setColorFoco(new java.awt.Color(37, 99, 235));
-        btnSesion.setFont(new java.awt.Font("SansSerif", 1, 13));
-        btnSesion.setBorder(javax.swing.BorderFactory.createCompoundBorder(
-            javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252), 1),
-            javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
-        btnSesion.setRolloverEnabled(true);
+        btnSesion.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        btnSesion.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
         btnSesion.setContentAreaFilled(false);
-        btnSesion.setOpaque(false);
         btnSesion.addActionListener(this::btnSesionActionPerformed);
         panelNavegacion.add(btnSesion, java.awt.BorderLayout.EAST);
 
+        getContentPane().add(panelNavegacion, java.awt.BorderLayout.NORTH);
+
         jDesktopPane1.setForeground(new java.awt.Color(30, 41, 59));
         jDesktopPane1.setBackground(new java.awt.Color(239, 246, 255));
+
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 464, Short.MAX_VALUE)
+            .addGap(0, 750, Short.MAX_VALUE)
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 348, Short.MAX_VALUE)
+            .addGap(0, 380, Short.MAX_VALUE)
         );
 
-        getContentPane().setLayout(new java.awt.BorderLayout());
-        getContentPane().add(panelNavegacion, java.awt.BorderLayout.NORTH);
         getContentPane().add(jDesktopPane1, java.awt.BorderLayout.CENTER);
 
         pack();

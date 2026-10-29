@@ -89,6 +89,7 @@ public class Control_y_reportes extends JInternalFrame {
 
         lblTitulo = new javax.swing.JLabel();
         tabsControl = new javax.swing.JTabbedPane();
+        panelReportesAnaliticos = new com.titanops.vista.ReportesAnaliticos();
         panelEstado = new javax.swing.JPanel();
         panelEstadoSuperior = new javax.swing.JPanel();
         panelFiltrosEstado = new javax.swing.JPanel();
@@ -369,6 +370,7 @@ public class Control_y_reportes extends JInternalFrame {
 
         tabsControl.addTab("MANTENIMIENTOS", panelMantenimientos);
 
+        tabsControl.addTab("REPORTES ANALÍTICOS", panelReportesAnaliticos);
         getContentPane().add(tabsControl, java.awt.BorderLayout.CENTER);
 
         lblEstadoCarga.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 12, 6, 12));
@@ -1337,6 +1339,7 @@ public class Control_y_reportes extends JInternalFrame {
                                ResumenControl resumen) {}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.titanops.vista.ReportesAnaliticos panelReportesAnaliticos;
     private com.titanops.vista.componentes.Boton btnBuscarEstado;
     private com.titanops.vista.componentes.Boton btnBuscarMantenimiento;
     private com.titanops.vista.componentes.Boton btnCancelar;

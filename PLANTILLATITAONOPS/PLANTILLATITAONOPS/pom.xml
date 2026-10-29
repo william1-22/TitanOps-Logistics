@@ -34,6 +34,13 @@
             <version>0.4</version>
         </dependency>
 
+        <!-- Generación de gráficos para reportes operativos -->
+        <dependency>
+            <groupId>org.jfree</groupId>
+            <artifactId>jfreechart</artifactId>
+            <version>1.5.4</version>
+        </dependency>
+
         <!-- Pruebas unitarias -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
