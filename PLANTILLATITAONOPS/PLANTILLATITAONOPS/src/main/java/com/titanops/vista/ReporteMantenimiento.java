@@ -180,7 +180,7 @@ public class ReporteMantenimiento extends javax.swing.JPanel {
         btnLimpiar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
         panelAcciones.add(btnLimpiar);
 
-        btnExportar.setText("EXPORTAR GRÁFICO PNG");
+        btnExportar.setText("EXPORTAR REPORTE PDF");
         btnExportar.setBackground(new java.awt.Color(239, 246, 255));
         btnExportar.setForeground(new java.awt.Color(30, 64, 175));
         btnExportar.setFondoActivo(new java.awt.Color(37, 99, 235));

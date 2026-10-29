@@ -376,7 +376,7 @@
                 </Component>
                 <Component class="com.titanops.vista.componentes.Boton" name="btnExportar">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="EXPORTAR GR&#xc1;FICO PNG"/>
+                    <Property name="text" type="java.lang.String" value="EXPORTAR REPORTE PDF"/>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="f6" red="ef" type="rgb"/>
                     </Property>

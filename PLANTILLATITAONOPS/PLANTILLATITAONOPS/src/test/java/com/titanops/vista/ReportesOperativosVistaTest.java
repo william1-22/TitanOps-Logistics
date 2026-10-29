@@ -28,11 +28,14 @@ class ReportesOperativosVistaTest {
     @TestFactory Stream<DynamicTest> generaNueveReportesEnSegundoPlanoYRenderiza() {
         return Stream.of(VISTAS).map(nombre -> DynamicTest.dynamicTest(nombre, () -> {
             JPanel[] panel = new JPanel[1];
+            EnlaceReporteOperativo[] enlaceRef = new EnlaceReporteOperativo[1];
             SwingUtilities.invokeAndWait(() -> {
                 try {
                     panel[0] = (JPanel) Class.forName("com.titanops.vista."+nombre).getConstructor().newInstance();
                     var enlace = enlazar(panel[0], new ReportesOperativosController(new ReportesDAODoble(), new GraficosReporteService()));
+                    enlaceRef[0] = enlace;
                     enlace.aplicarCatalogos(Map.of());
+                    assertEquals("EXPORTAR REPORTE PDF", campo(panel[0], "btnExportar", JButton.class).getText());
                     campo(panel[0], "btnGenerar", JButton.class).doClick();
                     assertFalse(campo(panel[0], "btnGenerar", JButton.class).isEnabled());
                 } catch(Exception e) { throw new RuntimeException(e); }
@@ -67,6 +70,11 @@ class ReportesOperativosVistaTest {
                         javax.imageio.ImageIO.write(imagen,"png",Path.of("target/reportes-qa/"+nombre+"-"+ancho+".png").toFile());
                     }
                     panel[0].removeNotify();
+                    Path pdfOut = Path.of("target/reportes-qa/" + nombre + ".pdf");
+                    enlaceRef[0].exportarPdfDirecto(pdfOut);
+                    assertTrue(Files.exists(pdfOut) && Files.size(pdfOut) > 1000);
+                    byte[] cabeceraPdf = Files.readAllBytes(pdfOut);
+                    assertEquals("%PDF-", new String(cabeceraPdf, 0, 5, java.nio.charset.StandardCharsets.US_ASCII));
                     campo(panel[0], "btnLimpiar", JButton.class).doClick();
                     assertTrue(campo(panel[0], "lblEstado", JLabel.class).getText().contains("restablecidos"));
                 } catch(Exception e) { throw new RuntimeException(e); }

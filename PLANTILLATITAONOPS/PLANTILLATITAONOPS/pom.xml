@@ -41,6 +41,13 @@
             <version>1.5.4</version>
         </dependency>
 
+        <!-- Generación de documentos PDF ejecutivos para reportes operativos -->
+        <dependency>
+            <groupId>com.github.librepdf</groupId>
+            <artifactId>openpdf</artifactId>
+            <version>1.3.43</version>
+        </dependency>
+
         <!-- Pruebas unitarias -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>

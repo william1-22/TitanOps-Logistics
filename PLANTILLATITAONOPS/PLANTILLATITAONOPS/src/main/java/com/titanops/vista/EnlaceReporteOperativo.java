@@ -228,38 +228,87 @@ final class EnlaceReporteOperativo {
         estado.setText("Filtros restablecidos. Pulsa GENERAR REPORTE para actualizar los resultados.");
     }
 
+    private String tituloReporte() {
+        return switch (numero) {
+            case 1 -> "Mantenimiento preventivo y correctivo";
+            case 2 -> "Costo de mantenimiento por hora de uso";
+            case 3 -> "Cumplimiento de tiempos de rutas";
+            case 5 -> "Datos generales y disponibilidad de maquinaria";
+            case 6 -> "Certificaciones y vigencia operativa";
+            case 7 -> "Auditoría y gestión de usuarios";
+            case 8 -> "Utilización y desgaste de flota";
+            case 9 -> "Historial de rutas, proyectos y observaciones";
+            case 10 -> "Productividad y carga laboral por turno";
+            default -> "Reporte Operativo #" + numero;
+        };
+    }
+
+    private String resumenFiltros() {
+        var partes = new java.util.ArrayList<String>();
+        var fmt = new java.text.SimpleDateFormat("dd/MM/yyyy");
+        for (var entry : filtros.entrySet()) {
+            String clave = entry.getKey();
+            Component comp = entry.getValue();
+            String valor;
+            if (comp instanceof JDateChooser chooser) {
+                valor = chooser.getDate() != null ? fmt.format(chooser.getDate()) : "Sin límite";
+            } else if (comp instanceof JComboBox<?> combo) {
+                valor = combo.getSelectedItem() != null ? combo.getSelectedItem().toString() : "TODOS";
+            } else if (comp instanceof JTextField txt) {
+                valor = txt.getText() != null && !txt.getText().isBlank() ? txt.getText().trim() : "TODOS";
+            } else {
+                continue;
+            }
+            partes.add(clave.replaceFirst("^(cmb|txt)", "") + ": " + valor);
+        }
+        return String.join("  |  ", partes);
+    }
+
+    void exportarPdfDirecto(Path destino) throws java.io.IOException {
+        if (resultado == null) {
+            throw new IllegalStateException("Primero debe generarse el reporte antes de exportar.");
+        }
+        String[] valores = java.util.Arrays.stream(indicadores).map(JLabel::getText).toArray(String[]::new);
+        com.titanops.reporte.ReporteOperativoPdfExporter.exportarPdf(
+                destino, numero, tituloReporte(), resumenFiltros(), titulos, valores, resultado);
+    }
+
     private void exportar() {
         if (resultado == null || ocupado) return;
-        JFreeChart grafico = resultado.graficoPrincipal();
-        String sufijo = "principal";
-        if (resultado.graficoSecundario() != null) {
-            int opcion = JOptionPane.showOptionDialog(vista, "Selecciona el gráfico que deseas exportar", "Exportar gráfico PNG",
-                    JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null,
-                    new String[]{"Principal", "Secundario", "Cancelar"}, "Principal");
-            if (opcion < 0 || opcion == 2) return;
-            if (opcion == 1) { grafico = resultado.graficoSecundario(); sufijo = "secundario"; }
-        }
         JFileChooser selector = new JFileChooser();
-        selector.setDialogTitle("Guardar gráfico PNG");
-        selector.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("Imagen PNG", "png"));
-        selector.setSelectedFile(new java.io.File("reporte-"+numero+"-"+sufijo+".png"));
+        selector.setDialogTitle("Exportar reporte completo a PDF");
+        selector.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("Documento PDF (*.pdf)", "pdf"));
+        selector.setSelectedFile(new java.io.File("reporte-operativo-" + numero + ".pdf"));
         if (selector.showSaveDialog(vista) != JFileChooser.APPROVE_OPTION) return;
         Path elegido = selector.getSelectedFile().toPath();
-        Path destino = elegido.toString().toLowerCase(java.util.Locale.ROOT).endsWith(".png") ? elegido : Path.of(elegido+".png");
-        if (Files.exists(destino) && JOptionPane.showConfirmDialog(vista, "El archivo ya existe. ¿Deseas reemplazarlo?", "Guardar PNG", JOptionPane.YES_NO_OPTION) != JOptionPane.YES_OPTION) return;
-        final JFreeChart seleccionado = grafico;
+        Path destino = elegido.toString().toLowerCase(java.util.Locale.ROOT).endsWith(".pdf")
+                ? elegido : Path.of(elegido + ".pdf");
+        if (Files.exists(destino) && JOptionPane.showConfirmDialog(
+                vista, "El archivo ya existe. ¿Deseas reemplazarlo?", "Guardar PDF",
+                JOptionPane.YES_NO_OPTION) != JOptionPane.YES_OPTION) return;
+        final String titulo = tituloReporte();
+        final String filtrosActivos = resumenFiltros();
+        final String[] valoresKpiActuales = java.util.Arrays.stream(indicadores).map(JLabel::getText).toArray(String[]::new);
+        final ResultadoReporte<?, ?> instantanea = resultado;
         ocupado = true;
         habilitar(true);
-        estado.setText("Exportando gráfico…");
+        estado.setText("Exportando reporte PDF…");
         new SwingWorker<Void, Void>() {
             protected Void doInBackground() throws Exception {
-                controller.getGraficosService().exportarGraficoAPng(seleccionado, destino, 1600, 900);
+                com.titanops.reporte.ReporteOperativoPdfExporter.exportarPdf(
+                        destino, numero, titulo, filtrosActivos, titulos, valoresKpiActuales, instantanea);
                 return null;
             }
             protected void done() {
-                try { get(); estado.setText("Gráfico guardado en " + destino); }
-                catch (Exception ex) { estado.setText("No se pudo guardar el gráfico. Revisa la carpeta y los permisos."); }
-                finally { ocupado = false; habilitar(true); }
+                try {
+                    get();
+                    estado.setText("Reporte PDF guardado en " + destino);
+                } catch (Exception ex) {
+                    estado.setText("No se pudo guardar el PDF. Revisa la carpeta y los permisos.");
+                } finally {
+                    ocupado = false;
+                    habilitar(true);
+                }
             }
         }.execute();
     }
