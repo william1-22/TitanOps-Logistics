@@ -14,6 +14,7 @@ public class ReporteHistorialRutas extends javax.swing.JPanel {
     @SuppressWarnings({"unchecked", "rawtypes"})
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
         panelSuperior = new javax.swing.JPanel();
         panelCabecera = new javax.swing.JPanel();
         lblTitulo = new javax.swing.JLabel();
@@ -60,296 +61,366 @@ public class ReporteHistorialRutas extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(248, 250, 252));
         setForeground(new java.awt.Color(30, 41, 59));
-        setPreferredSize(new java.awt.Dimension(1120, 660));
+        setPreferredSize(new java.awt.Dimension(1050, 920));
         setBorder(javax.swing.BorderFactory.createEmptyBorder(12, 14, 12, 14));
-        setLayout(new java.awt.BorderLayout(8, 8));
+        setLayout(new java.awt.BorderLayout(8, 14));
+
         panelSuperior.setBackground(new java.awt.Color(248, 250, 252));
         panelSuperior.setForeground(new java.awt.Color(30, 41, 59));
-        panelSuperior.setLayout(new java.awt.BorderLayout(8, 8));
+        panelSuperior.setLayout(new java.awt.BorderLayout(8, 14));
+
         panelCabecera.setBackground(new java.awt.Color(248, 250, 252));
         panelCabecera.setForeground(new java.awt.Color(30, 41, 59));
-        panelCabecera.setLayout(new java.awt.BorderLayout(8, 8));
+        panelCabecera.setLayout(new java.awt.BorderLayout(8, 10));
+
         lblTitulo.setText("Historial de rutas, proyectos y observaciones");
         lblTitulo.setForeground(new java.awt.Color(30, 64, 175));
-        lblTitulo.setFont(new java.awt.Font("SansSerif", 1, 18));
+        lblTitulo.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         panelCabecera.add(lblTitulo, java.awt.BorderLayout.NORTH);
+
         panelFiltros.setBackground(new java.awt.Color(248, 250, 252));
         panelFiltros.setForeground(new java.awt.Color(30, 41, 59));
         panelFiltros.setLayout(new java.awt.GridLayout(1, 4, 8, 4));
+
         filtrocmbRuta.setBackground(new java.awt.Color(248, 250, 252));
         filtrocmbRuta.setForeground(new java.awt.Color(30, 41, 59));
         filtrocmbRuta.setLayout(new java.awt.BorderLayout(0, 3));
+
         lblcmbRuta.setText("Ruta");
         lblcmbRuta.setForeground(new java.awt.Color(30, 41, 59));
-        lblcmbRuta.setFont(new java.awt.Font("SansSerif", 0, 12));
+        lblcmbRuta.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         filtrocmbRuta.add(lblcmbRuta, java.awt.BorderLayout.NORTH);
+
         cmbRuta.setPreferredSize(new java.awt.Dimension(165, 30));
-        cmbRuta.setBackground(new java.awt.Color(255, 255, 255));
         cmbRuta.setForeground(new java.awt.Color(30, 41, 59));
-        cmbRuta.setFont(new java.awt.Font("SansSerif", 0, 12));
+        cmbRuta.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         cmbRuta.setColorFoco(new java.awt.Color(30, 64, 175));
         filtrocmbRuta.add(cmbRuta, java.awt.BorderLayout.CENTER);
+
         panelFiltros.add(filtrocmbRuta);
+
         filtrocmbEstadoRuta.setBackground(new java.awt.Color(248, 250, 252));
         filtrocmbEstadoRuta.setForeground(new java.awt.Color(30, 41, 59));
         filtrocmbEstadoRuta.setLayout(new java.awt.BorderLayout(0, 3));
+
         lblcmbEstadoRuta.setText("Estado de ruta");
         lblcmbEstadoRuta.setForeground(new java.awt.Color(30, 41, 59));
-        lblcmbEstadoRuta.setFont(new java.awt.Font("SansSerif", 0, 12));
+        lblcmbEstadoRuta.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         filtrocmbEstadoRuta.add(lblcmbEstadoRuta, java.awt.BorderLayout.NORTH);
+
         cmbEstadoRuta.setPreferredSize(new java.awt.Dimension(165, 30));
-        cmbEstadoRuta.setBackground(new java.awt.Color(255, 255, 255));
         cmbEstadoRuta.setForeground(new java.awt.Color(30, 41, 59));
-        cmbEstadoRuta.setFont(new java.awt.Font("SansSerif", 0, 12));
+        cmbEstadoRuta.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         cmbEstadoRuta.setColorFoco(new java.awt.Color(30, 64, 175));
         filtrocmbEstadoRuta.add(cmbEstadoRuta, java.awt.BorderLayout.CENTER);
+
         panelFiltros.add(filtrocmbEstadoRuta);
+
         filtrocmbEstadoAsignacion.setBackground(new java.awt.Color(248, 250, 252));
         filtrocmbEstadoAsignacion.setForeground(new java.awt.Color(30, 41, 59));
         filtrocmbEstadoAsignacion.setLayout(new java.awt.BorderLayout(0, 3));
+
         lblcmbEstadoAsignacion.setText("Estado de viaje");
         lblcmbEstadoAsignacion.setForeground(new java.awt.Color(30, 41, 59));
-        lblcmbEstadoAsignacion.setFont(new java.awt.Font("SansSerif", 0, 12));
+        lblcmbEstadoAsignacion.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         filtrocmbEstadoAsignacion.add(lblcmbEstadoAsignacion, java.awt.BorderLayout.NORTH);
+
         cmbEstadoAsignacion.setPreferredSize(new java.awt.Dimension(165, 30));
-        cmbEstadoAsignacion.setBackground(new java.awt.Color(255, 255, 255));
         cmbEstadoAsignacion.setForeground(new java.awt.Color(30, 41, 59));
-        cmbEstadoAsignacion.setFont(new java.awt.Font("SansSerif", 0, 12));
+        cmbEstadoAsignacion.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         cmbEstadoAsignacion.setColorFoco(new java.awt.Color(30, 64, 175));
         filtrocmbEstadoAsignacion.add(cmbEstadoAsignacion, java.awt.BorderLayout.CENTER);
+
         panelFiltros.add(filtrocmbEstadoAsignacion);
+
         filtrocmbOperador.setBackground(new java.awt.Color(248, 250, 252));
         filtrocmbOperador.setForeground(new java.awt.Color(30, 41, 59));
         filtrocmbOperador.setLayout(new java.awt.BorderLayout(0, 3));
+
         lblcmbOperador.setText("Operador");
         lblcmbOperador.setForeground(new java.awt.Color(30, 41, 59));
-        lblcmbOperador.setFont(new java.awt.Font("SansSerif", 0, 12));
+        lblcmbOperador.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         filtrocmbOperador.add(lblcmbOperador, java.awt.BorderLayout.NORTH);
+
         cmbOperador.setPreferredSize(new java.awt.Dimension(165, 30));
-        cmbOperador.setBackground(new java.awt.Color(255, 255, 255));
         cmbOperador.setForeground(new java.awt.Color(30, 41, 59));
-        cmbOperador.setFont(new java.awt.Font("SansSerif", 0, 12));
+        cmbOperador.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         cmbOperador.setColorFoco(new java.awt.Color(30, 64, 175));
         filtrocmbOperador.add(cmbOperador, java.awt.BorderLayout.CENTER);
+
         panelFiltros.add(filtrocmbOperador);
+
         panelCabecera.add(panelFiltros, java.awt.BorderLayout.CENTER);
+
         panelAcciones.setBackground(new java.awt.Color(248, 250, 252));
         panelAcciones.setForeground(new java.awt.Color(30, 41, 59));
         panelAcciones.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 8, 4));
+
         btnGenerar.setText("GENERAR REPORTE");
         btnGenerar.setBackground(new java.awt.Color(239, 246, 255));
         btnGenerar.setForeground(new java.awt.Color(30, 64, 175));
         btnGenerar.setFondoActivo(new java.awt.Color(37, 99, 235));
         btnGenerar.setTextoActivo(new java.awt.Color(255, 255, 255));
         btnGenerar.setColorFoco(new java.awt.Color(37, 99, 235));
-        btnGenerar.setFont(new java.awt.Font("SansSerif", 1, 12));
+        btnGenerar.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         btnGenerar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
-        btnGenerar.setEnabled(true);
         panelAcciones.add(btnGenerar);
+
         btnLimpiar.setText("LIMPIAR FILTROS");
         btnLimpiar.setBackground(new java.awt.Color(239, 246, 255));
         btnLimpiar.setForeground(new java.awt.Color(30, 64, 175));
         btnLimpiar.setFondoActivo(new java.awt.Color(37, 99, 235));
         btnLimpiar.setTextoActivo(new java.awt.Color(255, 255, 255));
         btnLimpiar.setColorFoco(new java.awt.Color(37, 99, 235));
-        btnLimpiar.setFont(new java.awt.Font("SansSerif", 1, 12));
+        btnLimpiar.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         btnLimpiar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
-        btnLimpiar.setEnabled(true);
         panelAcciones.add(btnLimpiar);
+
         btnExportar.setText("EXPORTAR GRÁFICO PNG");
         btnExportar.setBackground(new java.awt.Color(239, 246, 255));
         btnExportar.setForeground(new java.awt.Color(30, 64, 175));
         btnExportar.setFondoActivo(new java.awt.Color(37, 99, 235));
         btnExportar.setTextoActivo(new java.awt.Color(255, 255, 255));
         btnExportar.setColorFoco(new java.awt.Color(37, 99, 235));
-        btnExportar.setFont(new java.awt.Font("SansSerif", 1, 12));
+        btnExportar.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         btnExportar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 211, 252)), javax.swing.BorderFactory.createEmptyBorder(7, 10, 7, 10)));
         btnExportar.setEnabled(false);
         panelAcciones.add(btnExportar);
+
         panelCabecera.add(panelAcciones, java.awt.BorderLayout.SOUTH);
+
         panelSuperior.add(panelCabecera, java.awt.BorderLayout.NORTH);
+
         panelResumen.setBackground(new java.awt.Color(248, 250, 252));
         panelResumen.setForeground(new java.awt.Color(30, 41, 59));
-        panelResumen.setLayout(new java.awt.GridLayout(1, 5, 8, 4));
+        panelResumen.setLayout(new java.awt.GridLayout(1, 5, 12, 4));
+
         tarjetaKpi1.setBackground(new java.awt.Color(239, 246, 255));
         tarjetaKpi1.setForeground(new java.awt.Color(30, 41, 59));
-        tarjetaKpi1.setBorder(javax.swing.BorderFactory.createEmptyBorder(8, 4, 8, 4));
+        tarjetaKpi1.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 8, 10, 8));
         tarjetaKpi1.setLayout(new java.awt.BorderLayout(0, 5));
+
         lblNombreKpi1.setText("Viajes");
         lblNombreKpi1.setForeground(new java.awt.Color(30, 41, 59));
-        lblNombreKpi1.setFont(new java.awt.Font("SansSerif", 0, 11));
-        lblNombreKpi1.setHorizontalAlignment(0);
+        lblNombreKpi1.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblNombreKpi1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         tarjetaKpi1.add(lblNombreKpi1, java.awt.BorderLayout.NORTH);
+
         lblKpi1.setText("—");
         lblKpi1.setForeground(new java.awt.Color(30, 64, 175));
-        lblKpi1.setFont(new java.awt.Font("SansSerif", 1, 18));
-        lblKpi1.setHorizontalAlignment(0);
+        lblKpi1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        lblKpi1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblKpi1.setToolTipText("Viajes");
         tarjetaKpi1.add(lblKpi1, java.awt.BorderLayout.CENTER);
+
         panelResumen.add(tarjetaKpi1);
+
         tarjetaKpi2.setBackground(new java.awt.Color(239, 246, 255));
         tarjetaKpi2.setForeground(new java.awt.Color(30, 41, 59));
-        tarjetaKpi2.setBorder(javax.swing.BorderFactory.createEmptyBorder(8, 4, 8, 4));
+        tarjetaKpi2.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 8, 10, 8));
         tarjetaKpi2.setLayout(new java.awt.BorderLayout(0, 5));
+
         lblNombreKpi2.setText("Finalizados / en curso");
         lblNombreKpi2.setForeground(new java.awt.Color(30, 41, 59));
-        lblNombreKpi2.setFont(new java.awt.Font("SansSerif", 0, 11));
-        lblNombreKpi2.setHorizontalAlignment(0);
+        lblNombreKpi2.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblNombreKpi2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         tarjetaKpi2.add(lblNombreKpi2, java.awt.BorderLayout.NORTH);
+
         lblKpi2.setText("—");
         lblKpi2.setForeground(new java.awt.Color(30, 64, 175));
-        lblKpi2.setFont(new java.awt.Font("SansSerif", 1, 18));
-        lblKpi2.setHorizontalAlignment(0);
+        lblKpi2.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        lblKpi2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblKpi2.setToolTipText("Finalizados / en curso");
         tarjetaKpi2.add(lblKpi2, java.awt.BorderLayout.CENTER);
+
         panelResumen.add(tarjetaKpi2);
+
         tarjetaKpi3.setBackground(new java.awt.Color(239, 246, 255));
         tarjetaKpi3.setForeground(new java.awt.Color(30, 41, 59));
-        tarjetaKpi3.setBorder(javax.swing.BorderFactory.createEmptyBorder(8, 4, 8, 4));
+        tarjetaKpi3.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 8, 10, 8));
         tarjetaKpi3.setLayout(new java.awt.BorderLayout(0, 5));
+
         lblNombreKpi3.setText("Programados / cancelados");
         lblNombreKpi3.setForeground(new java.awt.Color(30, 41, 59));
-        lblNombreKpi3.setFont(new java.awt.Font("SansSerif", 0, 11));
-        lblNombreKpi3.setHorizontalAlignment(0);
+        lblNombreKpi3.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblNombreKpi3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         tarjetaKpi3.add(lblNombreKpi3, java.awt.BorderLayout.NORTH);
+
         lblKpi3.setText("—");
         lblKpi3.setForeground(new java.awt.Color(30, 64, 175));
-        lblKpi3.setFont(new java.awt.Font("SansSerif", 1, 18));
-        lblKpi3.setHorizontalAlignment(0);
+        lblKpi3.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        lblKpi3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblKpi3.setToolTipText("Programados / cancelados");
         tarjetaKpi3.add(lblKpi3, java.awt.BorderLayout.CENTER);
+
         panelResumen.add(tarjetaKpi3);
+
         tarjetaKpi4.setBackground(new java.awt.Color(239, 246, 255));
         tarjetaKpi4.setForeground(new java.awt.Color(30, 41, 59));
-        tarjetaKpi4.setBorder(javax.swing.BorderFactory.createEmptyBorder(8, 4, 8, 4));
+        tarjetaKpi4.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 8, 10, 8));
         tarjetaKpi4.setLayout(new java.awt.BorderLayout(0, 5));
+
         lblNombreKpi4.setText("Efectividad (%)");
         lblNombreKpi4.setForeground(new java.awt.Color(30, 41, 59));
-        lblNombreKpi4.setFont(new java.awt.Font("SansSerif", 0, 11));
-        lblNombreKpi4.setHorizontalAlignment(0);
+        lblNombreKpi4.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblNombreKpi4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         tarjetaKpi4.add(lblNombreKpi4, java.awt.BorderLayout.NORTH);
+
         lblKpi4.setText("—");
         lblKpi4.setForeground(new java.awt.Color(30, 64, 175));
-        lblKpi4.setFont(new java.awt.Font("SansSerif", 1, 18));
-        lblKpi4.setHorizontalAlignment(0);
+        lblKpi4.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        lblKpi4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblKpi4.setToolTipText("Efectividad (%)");
         tarjetaKpi4.add(lblKpi4, java.awt.BorderLayout.CENTER);
+
         panelResumen.add(tarjetaKpi4);
+
         tarjetaKpi5.setBackground(new java.awt.Color(239, 246, 255));
         tarjetaKpi5.setForeground(new java.awt.Color(30, 41, 59));
-        tarjetaKpi5.setBorder(javax.swing.BorderFactory.createEmptyBorder(8, 4, 8, 4));
+        tarjetaKpi5.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 8, 10, 8));
         tarjetaKpi5.setLayout(new java.awt.BorderLayout(0, 5));
+
         lblNombreKpi5.setText("Cancelación (%)");
         lblNombreKpi5.setForeground(new java.awt.Color(30, 41, 59));
-        lblNombreKpi5.setFont(new java.awt.Font("SansSerif", 0, 11));
-        lblNombreKpi5.setHorizontalAlignment(0);
+        lblNombreKpi5.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblNombreKpi5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         tarjetaKpi5.add(lblNombreKpi5, java.awt.BorderLayout.NORTH);
+
         lblKpi5.setText("—");
         lblKpi5.setForeground(new java.awt.Color(30, 64, 175));
-        lblKpi5.setFont(new java.awt.Font("SansSerif", 1, 18));
-        lblKpi5.setHorizontalAlignment(0);
+        lblKpi5.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        lblKpi5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblKpi5.setToolTipText("Cancelación (%)");
         tarjetaKpi5.add(lblKpi5, java.awt.BorderLayout.CENTER);
+
         panelResumen.add(tarjetaKpi5);
+
         panelSuperior.add(panelResumen, java.awt.BorderLayout.SOUTH);
+
         add(panelSuperior, java.awt.BorderLayout.NORTH);
-        divisionResultados.setOrientation(0);
+
+        divisionResultados.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
         divisionResultados.setResizeWeight(0.6);
-        divisionResultados.setDividerLocation(260);
-        divisionResultados.setContinuousLayout(true);
+        divisionResultados.setDividerLocation(420);
+        divisionResultados.setDividerSize(10);
+        divisionResultados.setOneTouchExpandable(true);
         divisionResultados.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+
         panelGraficos.setBackground(new java.awt.Color(248, 250, 252));
         panelGraficos.setForeground(new java.awt.Color(30, 41, 59));
         panelGraficos.setMinimumSize(new java.awt.Dimension(300, 150));
         panelGraficos.setLayout(new java.awt.GridLayout(1, 1, 8, 4));
+
         panelGrafico1.setBackground(new java.awt.Color(248, 250, 252));
         panelGrafico1.setForeground(new java.awt.Color(30, 41, 59));
         panelGrafico1.setMinimumSize(new java.awt.Dimension(150, 120));
         panelGrafico1.setLayout(new java.awt.BorderLayout(0, 0));
+
         lblGrafico1.setText("Genera el reporte para visualizar el gráfico");
         lblGrafico1.setForeground(new java.awt.Color(30, 41, 59));
-        lblGrafico1.setFont(new java.awt.Font("SansSerif", 0, 12));
-        lblGrafico1.setHorizontalAlignment(0);
+        lblGrafico1.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        lblGrafico1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         panelGrafico1.add(lblGrafico1, java.awt.BorderLayout.CENTER);
+
         panelGraficos.add(panelGrafico1);
+
         divisionResultados.setTopComponent(panelGraficos);
+
         scrollDatos.setMinimumSize(new java.awt.Dimension(300, 100));
-        tablaDatos.setModel(new javax.swing.table.DefaultTableModel(new Object[0][], new String[]{"ID VIAJE", "PROYECTO", "TRAYECTO", "ESTADO RUTA", "MAQUINARIA", "OPERADOR", "TURNO", "ESTADO VIAJE", "ASIGNACIÓN", "RETORNO REAL", "OBSERVACIONES"}) {
-            @Override public boolean isCellEditable(int row, int column) { return false; }
-        });
+
         tablaDatos.setAutoCreateRowSorter(true);
-        tablaDatos.setAutoResizeMode(0);
+        tablaDatos.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         tablaDatos.setRowHeight(28);
-        tablaDatos.setBackground(new java.awt.Color(255, 255, 255));
         tablaDatos.setForeground(new java.awt.Color(30, 41, 59));
-        tablaDatos.setFont(new java.awt.Font("SansSerif", 0, 12));
+        tablaDatos.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         tablaDatos.setGridColor(new java.awt.Color(125, 211, 252));
         tablaDatos.setFondoCabecera(new java.awt.Color(224, 242, 254));
         tablaDatos.setTextoCabecera(new java.awt.Color(30, 64, 175));
         tablaDatos.setBordeCabecera(new java.awt.Color(125, 211, 252));
-        tablaDatos.getColumnModel().getColumn(0).setPreferredWidth(140);
-        tablaDatos.getColumnModel().getColumn(1).setPreferredWidth(140);
-        tablaDatos.getColumnModel().getColumn(2).setPreferredWidth(140);
-        tablaDatos.getColumnModel().getColumn(3).setPreferredWidth(140);
-        tablaDatos.getColumnModel().getColumn(4).setPreferredWidth(140);
-        tablaDatos.getColumnModel().getColumn(5).setPreferredWidth(140);
-        tablaDatos.getColumnModel().getColumn(6).setPreferredWidth(140);
-        tablaDatos.getColumnModel().getColumn(7).setPreferredWidth(140);
-        tablaDatos.getColumnModel().getColumn(8).setPreferredWidth(140);
-        tablaDatos.getColumnModel().getColumn(9).setPreferredWidth(140);
-        tablaDatos.getColumnModel().getColumn(10).setPreferredWidth(140);
+        tablaDatos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID VIAJE", "PROYECTO", "TRAYECTO", "ESTADO RUTA", "MAQUINARIA", "OPERADOR", "TURNO", "ESTADO VIAJE", "ASIGNACIÓN", "RETORNO REAL", "OBSERVACIONES"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         scrollDatos.setViewportView(tablaDatos);
+        if (tablaDatos.getColumnModel().getColumnCount() > 0) {
+            tablaDatos.getColumnModel().getColumn(0).setPreferredWidth(140);
+            tablaDatos.getColumnModel().getColumn(1).setPreferredWidth(140);
+            tablaDatos.getColumnModel().getColumn(2).setPreferredWidth(140);
+            tablaDatos.getColumnModel().getColumn(3).setPreferredWidth(140);
+            tablaDatos.getColumnModel().getColumn(4).setPreferredWidth(140);
+            tablaDatos.getColumnModel().getColumn(5).setPreferredWidth(140);
+            tablaDatos.getColumnModel().getColumn(6).setPreferredWidth(140);
+            tablaDatos.getColumnModel().getColumn(7).setPreferredWidth(140);
+            tablaDatos.getColumnModel().getColumn(8).setPreferredWidth(140);
+            tablaDatos.getColumnModel().getColumn(9).setPreferredWidth(140);
+            tablaDatos.getColumnModel().getColumn(10).setPreferredWidth(140);
+        }
+
         divisionResultados.setBottomComponent(scrollDatos);
+
         add(divisionResultados, java.awt.BorderLayout.CENTER);
+
         lblEstado.setText("Selecciona los filtros y genera el reporte.");
         lblEstado.setForeground(new java.awt.Color(30, 41, 59));
-        lblEstado.setFont(new java.awt.Font("SansSerif", 0, 12));
+        lblEstado.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         add(lblEstado, java.awt.BorderLayout.SOUTH);
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel panelSuperior;
-    private javax.swing.JPanel panelCabecera;
-    private javax.swing.JLabel lblTitulo;
-    private javax.swing.JPanel panelFiltros;
-    private javax.swing.JPanel filtrocmbRuta;
-    private javax.swing.JLabel lblcmbRuta;
-    private com.titanops.vista.componentes.Selector<com.titanops.reporte.ReportesDTO.OpcionFiltro> cmbRuta;
-    private javax.swing.JPanel filtrocmbEstadoRuta;
-    private javax.swing.JLabel lblcmbEstadoRuta;
-    private com.titanops.vista.componentes.Selector<String> cmbEstadoRuta;
-    private javax.swing.JPanel filtrocmbEstadoAsignacion;
-    private javax.swing.JLabel lblcmbEstadoAsignacion;
-    private com.titanops.vista.componentes.Selector<String> cmbEstadoAsignacion;
-    private javax.swing.JPanel filtrocmbOperador;
-    private javax.swing.JLabel lblcmbOperador;
-    private com.titanops.vista.componentes.Selector<com.titanops.reporte.ReportesDTO.OpcionFiltro> cmbOperador;
-    private javax.swing.JPanel panelAcciones;
+    private com.titanops.vista.componentes.Boton btnExportar;
     private com.titanops.vista.componentes.Boton btnGenerar;
     private com.titanops.vista.componentes.Boton btnLimpiar;
-    private com.titanops.vista.componentes.Boton btnExportar;
-    private javax.swing.JPanel panelResumen;
-    private javax.swing.JPanel tarjetaKpi1;
-    private javax.swing.JLabel lblNombreKpi1;
-    private javax.swing.JLabel lblKpi1;
-    private javax.swing.JPanel tarjetaKpi2;
-    private javax.swing.JLabel lblNombreKpi2;
-    private javax.swing.JLabel lblKpi2;
-    private javax.swing.JPanel tarjetaKpi3;
-    private javax.swing.JLabel lblNombreKpi3;
-    private javax.swing.JLabel lblKpi3;
-    private javax.swing.JPanel tarjetaKpi4;
-    private javax.swing.JLabel lblNombreKpi4;
-    private javax.swing.JLabel lblKpi4;
-    private javax.swing.JPanel tarjetaKpi5;
-    private javax.swing.JLabel lblNombreKpi5;
-    private javax.swing.JLabel lblKpi5;
+    private com.titanops.vista.componentes.Selector<String> cmbEstadoAsignacion;
+    private com.titanops.vista.componentes.Selector<String> cmbEstadoRuta;
+    private com.titanops.vista.componentes.Selector<com.titanops.reporte.ReportesDTO.OpcionFiltro> cmbOperador;
+    private com.titanops.vista.componentes.Selector<com.titanops.reporte.ReportesDTO.OpcionFiltro> cmbRuta;
     private javax.swing.JSplitPane divisionResultados;
-    private javax.swing.JPanel panelGraficos;
-    private javax.swing.JPanel panelGrafico1;
+    private javax.swing.JPanel filtrocmbEstadoAsignacion;
+    private javax.swing.JPanel filtrocmbEstadoRuta;
+    private javax.swing.JPanel filtrocmbOperador;
+    private javax.swing.JPanel filtrocmbRuta;
+    private javax.swing.JLabel lblEstado;
     private javax.swing.JLabel lblGrafico1;
+    private javax.swing.JLabel lblKpi1;
+    private javax.swing.JLabel lblKpi2;
+    private javax.swing.JLabel lblKpi3;
+    private javax.swing.JLabel lblKpi4;
+    private javax.swing.JLabel lblKpi5;
+    private javax.swing.JLabel lblNombreKpi1;
+    private javax.swing.JLabel lblNombreKpi2;
+    private javax.swing.JLabel lblNombreKpi3;
+    private javax.swing.JLabel lblNombreKpi4;
+    private javax.swing.JLabel lblNombreKpi5;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JLabel lblcmbEstadoAsignacion;
+    private javax.swing.JLabel lblcmbEstadoRuta;
+    private javax.swing.JLabel lblcmbOperador;
+    private javax.swing.JLabel lblcmbRuta;
+    private javax.swing.JPanel panelAcciones;
+    private javax.swing.JPanel panelCabecera;
+    private javax.swing.JPanel panelFiltros;
+    private javax.swing.JPanel panelGrafico1;
+    private javax.swing.JPanel panelGraficos;
+    private javax.swing.JPanel panelResumen;
+    private javax.swing.JPanel panelSuperior;
     private javax.swing.JScrollPane scrollDatos;
     private com.titanops.vista.componentes.Tabla tablaDatos;
-    private javax.swing.JLabel lblEstado;
+    private javax.swing.JPanel tarjetaKpi1;
+    private javax.swing.JPanel tarjetaKpi2;
+    private javax.swing.JPanel tarjetaKpi3;
+    private javax.swing.JPanel tarjetaKpi4;
+    private javax.swing.JPanel tarjetaKpi5;
     // End of variables declaration//GEN-END:variables
 }

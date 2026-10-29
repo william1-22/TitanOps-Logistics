@@ -66,6 +66,7 @@ public class GraficosReporteService {
                 true, true, false
         );
         aplicarEstiloCorporativoBarras(chart);
+        chart.getCategoryPlot().getRangeAxis().setStandardTickUnits(org.jfree.chart.axis.NumberAxis.createIntegerTickUnits());
         return chart;
     }
 
@@ -166,6 +167,7 @@ public class GraficosReporteService {
                 true, true, false
         );
         aplicarEstiloCorporativoBarras(chart);
+        chart.getCategoryPlot().getRangeAxis().setLowerMargin(0.15);
         return chart;
     }
 
@@ -248,6 +250,7 @@ public class GraficosReporteService {
                 true, true, false
         );
         aplicarEstiloCorporativoBarras(chart);
+        chart.getCategoryPlot().getRangeAxis().setStandardTickUnits(org.jfree.chart.axis.NumberAxis.createIntegerTickUnits());
         return chart;
     }
 
@@ -281,6 +284,7 @@ public class GraficosReporteService {
                 true, true, false
         );
         aplicarEstiloCorporativoBarras(chart);
+        chart.getCategoryPlot().getRangeAxis().setStandardTickUnits(org.jfree.chart.axis.NumberAxis.createIntegerTickUnits());
         return chart;
     }
 
@@ -340,6 +344,7 @@ public class GraficosReporteService {
                 true, true, false
         );
         aplicarEstiloCorporativoBarras(chart);
+        chart.getCategoryPlot().getRangeAxis().setStandardTickUnits(org.jfree.chart.axis.NumberAxis.createIntegerTickUnits());
         return chart;
     }
 
@@ -370,6 +375,7 @@ public class GraficosReporteService {
                 true, true, false
         );
         aplicarEstiloCorporativoBarras(chart);
+        chart.getCategoryPlot().getRangeAxis().setStandardTickUnits(org.jfree.chart.axis.NumberAxis.createIntegerTickUnits());
         return chart;
     }
 
@@ -421,7 +427,11 @@ public class GraficosReporteService {
         int alto = altoPreferido > 0 ? altoPreferido : 360;
         ChartPanel chartPanel = new ChartPanel(chart);
         chartPanel.setPreferredSize(new Dimension(ancho, alto));
-        chartPanel.setMouseWheelEnabled(true);
+        chartPanel.setMinimumDrawWidth(200);
+        chartPanel.setMinimumDrawHeight(150);
+        chartPanel.setMaximumDrawWidth(1920);
+        chartPanel.setMaximumDrawHeight(1080);
+        chartPanel.setMouseWheelEnabled(false);
         chartPanel.setBackground(Color.WHITE);
         return chartPanel;
     }
@@ -501,10 +511,17 @@ public class GraficosReporteService {
         plot.getDomainAxis().setTickLabelFont(new Font("SansSerif", Font.PLAIN, 11));
         plot.getRangeAxis().setLabelFont(new Font("SansSerif", Font.BOLD, 12));
         plot.getRangeAxis().setTickLabelFont(new Font("SansSerif", Font.PLAIN, 11));
+        plot.getRangeAxis().setUpperMargin(0.18);
 
         if (plot.getRenderer() instanceof BarRenderer renderer) {
             renderer.setBarPainter(new StandardBarPainter());
             renderer.setShadowVisible(false);
+            renderer.setMaximumBarWidth(0.18);
+            renderer.setItemMargin(0.10);
+            renderer.setDefaultItemLabelGenerator(new org.jfree.chart.labels.StandardCategoryItemLabelGenerator());
+            renderer.setDefaultItemLabelsVisible(true);
+            renderer.setDefaultItemLabelFont(new Font("SansSerif", Font.BOLD, 11));
+            renderer.setDefaultItemLabelPaint(COLOR_TEXTO);
             renderer.setSeriesPaint(0, COLOR_AZUL_CORPORATIVO);
             renderer.setSeriesPaint(1, COLOR_ROJO_ALERTA);
             renderer.setSeriesPaint(2, COLOR_VERDE_EXITO);

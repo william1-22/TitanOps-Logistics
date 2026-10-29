@@ -57,10 +57,11 @@ class ReportesOperativosVistaTest {
                     assertTrue(campo(panel[0], "btnExportar", JButton.class).isEnabled());
                     panel[0].addNotify();
                     assertNotNull(campo(panel[0], "scrollDatos", JScrollPane.class).getColumnHeader());
+                    int alto = Math.max(670, panel[0].getPreferredSize().height);
                     for (int ancho : new int[]{960, 1160}) {
-                        panel[0].setSize(ancho, 670); layout(panel[0]);
+                        panel[0].setSize(ancho, alto); layout(panel[0]);
                         assertTrue(campo(panel[0], "scrollDatos", JScrollPane.class).getHeight() >= 100);
-                        var imagen = new java.awt.image.BufferedImage(ancho,670,java.awt.image.BufferedImage.TYPE_INT_RGB);
+                        var imagen = new java.awt.image.BufferedImage(ancho, alto, java.awt.image.BufferedImage.TYPE_INT_RGB);
                         var g=imagen.createGraphics();panel[0].printAll(g);g.dispose();
                         Files.createDirectories(Path.of("target/reportes-qa"));
                         javax.imageio.ImageIO.write(imagen,"png",Path.of("target/reportes-qa/"+nombre+"-"+ancho+".png").toFile());

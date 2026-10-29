@@ -147,10 +147,10 @@ public class Control_y_reportes extends JInternalFrame {
         setMaximizable(true);
         setResizable(true);
         setTitle("Control operativo y reportes");
-        setPreferredSize(new java.awt.Dimension(1160, 760));
+        setPreferredSize(new java.awt.Dimension(980, 630));
 
         lblTitulo.setText("CONTROL OPERATIVO");
-        lblTitulo.setBorder(javax.swing.BorderFactory.createEmptyBorder(18, 8, 18, 8));
+        lblTitulo.setBorder(javax.swing.BorderFactory.createEmptyBorder(8, 8, 8, 8));
         getContentPane().add(lblTitulo, java.awt.BorderLayout.NORTH);
 
         panelEstado.setBorder(javax.swing.BorderFactory.createEmptyBorder(12, 14, 12, 14));
@@ -410,7 +410,7 @@ public class Control_y_reportes extends JInternalFrame {
         scrollMantenimientos.setBackground(new java.awt.Color(255, 255, 255));
         panelAccionesMantenimiento.setForeground(new java.awt.Color(30, 41, 59));
         panelAccionesMantenimiento.setBackground(new java.awt.Color(248, 250, 252));
-        lblTitulo.setFont(new java.awt.Font("SansSerif", 1, 26));
+        lblTitulo.setFont(new java.awt.Font("SansSerif", 1, 20));
         lblTitulo.setHorizontalAlignment(0);
         lblTitulo.setBackground(new java.awt.Color(30, 64, 175));
         lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
@@ -500,8 +500,8 @@ public class Control_y_reportes extends JInternalFrame {
 
 
         lblTitulo.setText("CONTROL OPERATIVO");
-        lblTitulo.setBorder(javax.swing.BorderFactory.createEmptyBorder(18, 8, 18, 8));
-        lblTitulo.setFont(new java.awt.Font("SansSerif", 1, 26));
+        lblTitulo.setBorder(javax.swing.BorderFactory.createEmptyBorder(8, 8, 8, 8));
+        lblTitulo.setFont(new java.awt.Font("SansSerif", 1, 20));
         lblTitulo.setBackground(new java.awt.Color(30, 64, 175));
         lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
         lblTitulo.setOpaque(true);
